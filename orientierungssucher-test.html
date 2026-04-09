@@ -267,19 +267,19 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
         <input type="hidden" id="e-score"><input type="hidden" id="e-ref"><input type="hidden" id="e-depth">
         <button type="submit" class="f-submit" id="e-btn">Gespräch anfragen</button>
         <div class="f-note">Kein Newsletter. Jochen antwortet persönlich innerhalb von 48h.</div>
-        <div class="f-err" id="f-err">Etwas hat nicht geklappt. Schreib direkt an <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="452e2a2835243636052b2a3721363120372b68292024212037362d2c356b2120">[email&#160;protected]</a></div>
+        <div class="f-err" id="f-err">Etwas hat nicht geklappt. Schreib direkt an kompass@nordstern-leadership.de</div>
       </form>
     </div>
     <div class="f-ok" id="f-ok"><div class="f-ok-t">Nachricht angekommen.</div><div class="f-ok-s">Ich melde mich persönlich innerhalb von 48 Stunden.</div></div>
   </div>
 
   <footer class="footer">
-    <p>© 2025 NORDSTERN Leadership · <a href="/cdn-cgi/l/email-protection#6c0703011c0d1f1f2c02031e081f18091e024100090d08091e1f04051c420809"><span class="__cf_email__" data-cfemail="8ae1e5e7faebf9f9cae4e5f8eef9feeff8e4a7e6efebeeeff8f9e2e3faa4eeef">[email&#160;protected]</span></a></p>
+    <p>© 2025 NORDSTERN Leadership · kompass@nordstern-leadership.de</p>
     
   </footer>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const FORMSPREE_ID = 'xreovnld';
 const _p=new URLSearchParams(window.location.search);
 const _refId=_p.get('ref')||'';const _depth=parseInt(_p.get('depth')||'0');
@@ -340,4 +340,7 @@ async function submitEmail(e){
   try{const res=await fetch(`https://formspree.io/f/${FORMSPREE_ID}`,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:document.getElementById('e-name').value,email:document.getElementById('e-email').value,test:'Klarheits-Check (Orientierungssucher)',score:document.getElementById('e-score').value,ref:_refId,depth:_depth,_replyto:document.getElementById('e-email').value})});if(res.ok){document.getElementById('ef-wrap').style.display='none';document.getElementById('f-ok').style.display='block';}else throw new Error();}
   catch{btn.textContent='Gespräch anfragen';btn.disabled=false;document.getElementById('f-err').style.display='block';}
 }
-function restartTest(){Object.keys(rState).forEach(k=>delete rState[k]);document.querySelectorAll('.r-opt').forEach(o=>o.classList.remove('sel'));[{id:'sl-done'
+function restartTest(){Object.keys(rState).forEach(k=>delete rState[k]);document.querySelectorAll('.r-opt').forEach(o=>o.classList.remove('sel'));[{id:'sl-done',v:30},{id:'sl-vis',v:40},{id:'sl-proj',v:5}].forEach(x=>{const el=document.getElementById(x.id);el.value=x.v;el.dispatchEvent(new Event('input'));});document.getElementById('result-sec').style.display='none';['share-sec','email-sec'].forEach(id=>{document.getElementById(id).style.display='none';});document.getElementById('test-card').scrollIntoView({behavior:'smooth'});}
+</script>
+</body>
+</html>

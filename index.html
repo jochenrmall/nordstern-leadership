@@ -225,7 +225,7 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
         <input type="hidden" id="e-depth">
         <button type="submit" class="form-submit" id="e-btn">Gespräch anfragen</button>
         <div class="form-note">Kein Newsletter. Jochen antwortet persönlich innerhalb von 48h.</div>
-        <div class="form-err" id="e-err">Etwas hat nicht geklappt. Schreib direkt an <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b4dfdbd9c4d5c7c7f4dadbc6d0c7c0d1c6da99d8d1d5d0d1c6c7dcddc49ad0d1">[email&#160;protected]</a></div>
+        <div class="form-err" id="e-err">Etwas hat nicht geklappt. Schreib direkt an kompass@nordstern-leadership.de</div>
       </form>
     </div>
     <div class="form-ok" id="form-ok">
@@ -235,12 +235,12 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
   </div>
 
   <footer class="footer">
-    <p>© 2025 NORDSTERN Leadership · <a href="/cdn-cgi/l/email-protection#fe9591938e9f8d8dbe90918c9a8d8a9b8c90d3929b9f9a9b8c8d96978ed09a9b"><span class="__cf_email__" data-cfemail="076c686a77667474476968756374736275692a6b6266636275746f6e77296362">[email&#160;protected]</span></a></p>
+    <p>© 2025 NORDSTERN Leadership · kompass@nordstern-leadership.de</p>
     
   </footer>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const FORMSPREE_ID = 'xreovnld';
 
 // ── Referral tracking ──
@@ -446,4 +446,13 @@ async function submitForm(e){
 
 function restart(){
   cur=0;answers=[];
- 
+  document.getElementById('quiz-screen').style.display='block';
+  document.getElementById('result-screen').style.display='none';
+  ['deep-div','share-sec','email-sec'].forEach(id=>{document.getElementById(id).style.display='none';});
+  document.getElementById('email-form-wrap').style.display='block';
+  document.getElementById('form-ok').style.display='none';
+  renderQ();
+}
+</script>
+</body>
+</html>

@@ -277,19 +277,19 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
         <input type="hidden" id="e-score"><input type="hidden" id="e-ref"><input type="hidden" id="e-depth">
         <button type="submit" class="f-submit" id="e-btn">Gespräch anfragen</button>
         <div class="f-note">Kein Newsletter. Jochen antwortet persönlich.</div>
-        <div class="f-err" id="f-err">Etwas hat nicht geklappt. Schreib direkt an <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f49f9b9984958787b49a9b8690878091869ad9989195909186879c9d84da9091">[email&#160;protected]</a></div>
+        <div class="f-err" id="f-err">Etwas hat nicht geklappt. Schreib direkt an kompass@nordstern-leadership.de</div>
       </form>
     </div>
     <div class="f-ok" id="f-ok"><div class="f-ok-t">Nachricht angekommen.</div><div class="f-ok-s">Ich melde mich persönlich innerhalb von 48 Stunden.</div></div>
   </div>
 
   <footer class="footer">
-    <p>© 2025 NORDSTERN Leadership · <a href="/cdn-cgi/l/email-protection#e48f8b8994859797a48a8b9680979081968ac9888185808196978c8d94ca8081"><span class="__cf_email__" data-cfemail="6f0400021f0e1c1c2f01001d0b1c1b0a1d0142030a0e0b0a1d1c07061f410b0a">[email&#160;protected]</span></a></p>
+    <p>© 2025 NORDSTERN Leadership · kompass@nordstern-leadership.de</p>
     
   </footer>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const FORMSPREE_ID = 'xreovnld';
 const _p=new URLSearchParams(window.location.search);
 const _refId=_p.get('ref')||'';const _depth=parseInt(_p.get('depth')||'0');
@@ -359,4 +359,7 @@ async function submitEmail(e){
   catch{btn.textContent='Gespräch anfragen';btn.disabled=false;err.style.display='block';}
 }
 
-function restartTest(){Object.keys(rState).forEach(k=>delete rState[k]);document.querySelectorAll('.r-opt').forEach(o=>o.classList.remove('sel'));[{id:'sl-dep',v:65},{id:'sl-corr',
+function restartTest(){Object.keys(rState).forEach(k=>delete rState[k]);document.querySelectorAll('.r-opt').forEach(o=>o.classList.remove('sel'));[{id:'sl-dep',v:65},{id:'sl-corr',v:4},{id:'sl-why',v:40},{id:'sl-react',v:70}].forEach(x=>{const el=document.getElementById(x.id);el.value=x.v;el.dispatchEvent(new Event('input'));});document.getElementById('result-sec').style.display='none';['share-sec','email-sec'].forEach(id=>{document.getElementById(id).style.display='none';});document.getElementById('test-card').scrollIntoView({behavior:'smooth'});}
+</script>
+</body>
+</html>
