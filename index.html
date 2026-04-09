@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NORDSTERN Leadership Kompass</title>
+<meta name="description" content="Welcher Führungstyp bist du wirklich? 8 ehrliche Fragen. Dein Führungsprofil.">
+<meta property="og:title" content="NORDSTERN Leadership Kompass">
+<meta property="og:description" content="8 Fragen. Dein Führungstyp. Kostenlos.">
+<meta property="og:url" content="https://nordstern-leadership.de">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--white:#fff;--black:#1d1d1f;
+--g50:#fafafa;--g100:#f5f5f7;--g200:#e8e8ed;--g300:#d2d2d7;--g400:#c7c7cc;--g600:#6e6e73;--g700:#86868b;
+--border:rgba(0,0,0,.08);--border-md:rgba(0,0,0,.15);
+--font:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Arial,sans-serif;
+--font-d:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
+--r-sm:8px;--r-md:12px;--r-lg:18px;
+--shadow:0 4px 20px rgba(0,0,0,.07),0 1px 4px rgba(0,0,0,.04);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--white);color:var(--black);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+/* compass bg */
+.cbg{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(90vw,700px);height:min(90vw,700px);opacity:.032;pointer-events:none;z-index:0}
+/* layout */
+.page{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding:0 20px 80px}
+/* nav */
+.nav{width:100%;max-width:720px;padding:28px 0 0;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-d);font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--black);text-decoration:none}
+.nav-logo span{color:var(--g600);font-weight:400}
+/* hero */
+.hero{max-width:600px;width:100%;text-align:center;padding:64px 0 48px}
+.hero-tag{display:inline-block;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--g600);background:var(--g100);border:1px solid var(--g200);padding:6px 16px;border-radius:100px;margin-bottom:24px}
+.hero h1{font-family:var(--font-d);font-size:clamp(34px,6vw,54px);font-weight:600;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
+.hero h1 em{font-style:normal;color:var(--g600)}
+.hero p{font-size:17px;color:var(--g600);line-height:1.6;max-width:420px;margin:0 auto 28px}
+.hero-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--g700)}
+.hero-meta span{display:flex;align-items:center;gap:5px}
+.dot{width:3px;height:3px;border-radius:50%;background:var(--g400)}
+/* card */
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow);width:100%;max-width:640px;padding:40px 44px}
+@media(max-width:600px){.card{padding:28px 20px}}
+/* progress */
+.prog-wrap{margin-bottom:28px}
+.prog-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.prog-lbl{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--g600)}
+.prog-ct{font-size:13px;color:var(--g700)}
+.prog-track{height:2px;background:var(--g200);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:var(--black);border-radius:2px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+/* question */
+.q-text{font-family:var(--font-d);font-size:clamp(18px,3vw,22px);font-weight:500;letter-spacing:-.02em;line-height:1.35;margin-bottom:24px}
+/* options */
+.opts{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.opt{border:1px solid var(--border);border-radius:var(--r-md);padding:14px 18px;cursor:pointer;transition:all .18s;background:var(--white);text-align:left;width:100%;min-height:48px}
+.opt:hover{border-color:var(--border-md);background:var(--g100);transform:translateY(-1px)}
+.opt.sel{border:1.5px solid var(--black);background:var(--g100)}
+.opt-hdr{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.opt-let{width:22px;height:22px;border-radius:50%;background:var(--g200);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--g600);flex-shrink:0;transition:all .18s}
+.opt.sel .opt-let{background:var(--black);color:var(--white)}
+.opt-txt{font-size:14px;font-weight:500;color:var(--black);line-height:1.4}
+.opt-ex{font-size:12px;color:var(--g600);padding-left:32px;font-style:italic;line-height:1.45}
+/* buttons */
+.btn-row{display:flex;gap:10px}
+.btn{padding:12px 22px;border-radius:100px;font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer;transition:all .18s;border:1px solid var(--border);background:transparent;color:var(--black);min-height:44px}
+.btn:hover:not(:disabled){background:var(--g100);border-color:var(--border-md)}
+.btn:disabled{opacity:.3;cursor:default}
+.btn-p{background:var(--black);color:var(--white);border-color:var(--black);flex:1}
+.btn-p:hover:not(:disabled){background:#333;border-color:#333}
+/* result */
+.result{display:none}
+.r-badge{display:inline-block;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--g600);background:var(--g100);border:1px solid var(--g200);padding:5px 14px;border-radius:100px;margin-bottom:14px}
+.r-type{font-family:var(--font-d);font-size:clamp(28px,5vw,36px);font-weight:600;letter-spacing:-.03em;margin-bottom:8px}
+.r-tagline{font-size:16px;color:var(--g600);line-height:1.5;margin-bottom:24px}
+.scores{margin-bottom:24px}
+.scores-lbl{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--g600);margin-bottom:12px}
+.s-row{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.s-name{font-size:12px;color:var(--g600);width:130px;flex-shrink:0}
+.s-track{flex:1;height:3px;background:var(--g200);border-radius:3px;overflow:hidden}
+.s-fill{height:100%;background:var(--black);border-radius:3px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.s-fill.dim{background:var(--g300)}
+.s-n{font-size:11px;color:var(--g700);width:14px;text-align:right}
+.prof-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+@media(max-width:420px){.prof-grid{grid-template-columns:1fr}}
+.prof-card{background:var(--g100);border-radius:var(--r-sm);padding:12px 14px}
+.prof-lbl{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--g700);margin-bottom:4px}
+.prof-val{font-size:13px;color:var(--black);line-height:1.4}
+.r-msg{background:var(--g100);border-radius:var(--r-md);padding:20px 24px;margin-bottom:20px;font-size:15px;color:var(--black);line-height:1.7;border-left:3px solid var(--black)}
+.r-msg p+p{margin-top:12px}
+.r-msg .cta{font-size:16px;font-weight:500;margin-top:14px}
+/* deep dive section */
+.deep-div{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px 32px;margin-top:16px;text-align:center}
+@media(max-width:600px){.deep-div{padding:22px 18px}}
+.dd-eyebrow{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--g600);margin-bottom:8px}
+.dd-title{font-family:var(--font-d);font-size:20px;font-weight:600;letter-spacing:-.02em;margin-bottom:8px}
+.dd-sub{font-size:14px;color:var(--g600);line-height:1.55;margin-bottom:20px}
+.dd-btn{display:inline-block;padding:14px 32px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;transition:background .18s;min-height:44px}
+.dd-btn:hover{background:#333}
+/* share section */
+.share-sec{background:var(--g50);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px 28px;margin-top:14px;text-align:center}
+@media(max-width:600px){.share-sec{padding:20px 16px}}
+.share-q{font-size:15px;font-weight:500;color:var(--black);margin-bottom:6px}
+.share-sub{font-size:13px;color:var(--g600);line-height:1.5;margin-bottom:16px}
+.share-btn{padding:12px 28px;background:transparent;color:var(--black);border:1px solid var(--border-md);border-radius:100px;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;transition:all .18s;min-height:44px}
+.share-btn:hover{background:var(--g100)}
+.share-toast{font-size:13px;color:var(--g600);margin-top:10px;min-height:20px;transition:opacity .3s}
+/* email cap */
+.email-sec{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px 32px;margin-top:14px;width:100%;max-width:640px}
+@media(max-width:600px){.email-sec{padding:22px 18px}}
+.email-sec h3{font-family:var(--font-d);font-size:20px;font-weight:600;letter-spacing:-.02em;margin-bottom:8px}
+.email-sec p{font-size:14px;color:var(--g600);line-height:1.55;margin-bottom:20px}
+.form-row{display:flex;gap:10px;flex-wrap:wrap}
+.form-row .fi{flex:1;min-width:140px}
+.fi input{width:100%;padding:12px 15px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font);font-size:14px;color:var(--black);background:var(--white);outline:none;transition:border-color .18s;min-height:44px}
+.fi input:focus{border-color:var(--black)}
+.fi input::placeholder{color:var(--g400)}
+.form-submit{padding:12px 24px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;transition:background .18s;white-space:nowrap;min-height:44px;width:100%;margin-top:8px}
+.form-submit:hover{background:#333}
+.form-note{font-size:11px;color:var(--g700);margin-top:8px}
+.form-err{display:none;font-size:12px;color:#c0392b;margin-top:6px}
+.form-ok{display:none;text-align:center;padding:16px}
+.form-ok-t{font-size:17px;font-weight:500;margin-bottom:5px}
+.form-ok-s{font-size:13px;color:var(--g600)}
+.restart{background:none;border:none;font-size:13px;color:var(--g700);cursor:pointer;text-decoration:underline;font-family:var(--font);margin-top:16px;display:block;text-align:center;width:100%}
+/* footer */
+.footer{max-width:720px;width:100%;padding:40px 0 0;text-align:center;font-size:12px;color:var(--g700);border-top:1px solid var(--border);margin-top:40px}
+.footer a{color:var(--g700);text-decoration:underline}
+/* mobile full-width buttons */
+@media(max-width:480px){
+  .btn-row{flex-direction:column-reverse}
+  .btn-row .btn{width:100%;text-align:center}
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.fi{animation:fadeIn .4s ease both}
+</style>
+</head>
+<body>
+<svg class="cbg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <circle cx="200" cy="200" r="195" stroke="#1d1d1f" stroke-width="1.5"/>
+  <circle cx="200" cy="200" r="180" stroke="#1d1d1f" stroke-width="0.5"/>
+  <g stroke="#1d1d1f"><line x1="200" y1="5" x2="200" y2="22" stroke-width="2"/><line x1="200" y1="378" x2="200" y2="395" stroke-width="2"/><line x1="5" y1="200" x2="22" y2="200" stroke-width="2"/><line x1="378" y1="200" x2="395" y2="200" stroke-width="2"/><line x1="338.2" y1="61.8" x2="326.9" y2="73.1" stroke-width="1.5"/><line x1="61.8" y1="61.8" x2="73.1" y2="73.1" stroke-width="1.5"/><line x1="61.8" y1="338.2" x2="73.1" y2="326.9" stroke-width="1.5"/><line x1="338.2" y1="338.2" x2="326.9" y2="326.9" stroke-width="1.5"/></g>
+  <text x="200" y="50" text-anchor="middle" font-family="-apple-system" font-size="20" font-weight="600" fill="#1d1d1f">N</text>
+  <text x="200" y="368" text-anchor="middle" font-family="-apple-system" font-size="16" fill="#1d1d1f">S</text>
+  <text x="368" y="205" text-anchor="middle" font-family="-apple-system" font-size="16" fill="#1d1d1f">O</text>
+  <text x="32" y="205" text-anchor="middle" font-family="-apple-system" font-size="16" fill="#1d1d1f">W</text>
+  <circle cx="200" cy="200" r="120" stroke="#1d1d1f" stroke-width="0.5"/>
+  <circle cx="200" cy="200" r="60" stroke="#1d1d1f" stroke-width="0.5"/>
+  <line x1="200" y1="80" x2="200" y2="320" stroke="#1d1d1f" stroke-width="0.5"/>
+  <line x1="80" y1="200" x2="320" y2="200" stroke="#1d1d1f" stroke-width="0.5"/>
+  <polygon points="200,65 193,200 207,200" fill="#1d1d1f"/>
+  <polygon points="200,335 193,200 207,200" fill="none" stroke="#1d1d1f" stroke-width="1.5"/>
+  <circle cx="200" cy="200" r="6" fill="#1d1d1f"/>
+  <circle cx="200" cy="200" r="3" fill="white"/>
+</svg>
+
+<div class="page">
+  <nav class="nav">
+    <span class="nav-logo">NORDSTERN <span>Leadership</span></span>
+    
+  </nav>
+
+  <header class="hero" id="hero">
+    <div class="hero-tag">Kostenlose Standortbestimmung</div>
+    <h1>Welcher Führungstyp<br><em>bist du wirklich?</em></h1>
+    <p>8 ehrliche Fragen. Dein Führungsprofil.</p>
+    <div class="hero-meta">
+      <span><div class="dot"></div>8 Fragen</span>
+      <span><div class="dot"></div>ca. 4 Minuten</span>
+    </div>
+    <button onclick="startQuiz()" style="display:block;margin:32px auto 0;padding:15px 40px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:16px;font-weight:500;cursor:pointer;min-height:48px;transition:background .18s" onmouseover="this.style.background='#333'" onmouseout="this.style.background='var(--black)'">Jetzt starten</button>
+  </header>
+
+  <div class="card" id="quiz-card" style="display:none">
+    <div id="quiz-screen">
+      <div class="prog-wrap">
+        <div class="prog-hdr"><span class="prog-lbl">Standortbestimmung</span><span class="prog-ct" id="q-ct">1 / 8</span></div>
+        <div class="prog-track"><div class="prog-fill" id="prog" style="width:0%"></div></div>
+      </div>
+      <div class="q-text" id="q-text"></div>
+      <div class="opts" id="opts"></div>
+      <div class="btn-row">
+        <button class="btn" id="btn-back" onclick="goBack()" disabled>Zurück</button>
+        <button class="btn btn-p" id="btn-next" onclick="goNext()" disabled>Weiter</button>
+      </div>
+    </div>
+    <div class="result" id="result-screen">
+      <div class="r-badge" id="r-badge"></div>
+      <div class="r-type" id="r-type"></div>
+      <div class="r-tagline" id="r-tagline"></div>
+      <div class="scores"><div class="scores-lbl">Dein Profil im Überblick</div><div id="r-scores"></div></div>
+      <div class="prof-grid" id="r-prof"></div>
+      <div class="r-msg" id="r-msg"></div>
+      <button class="restart" onclick="restart()">Nochmal starten</button>
+    </div>
+  </div>
+
+  <!-- Deep dive - shown after result -->
+  <div class="deep-div" id="deep-div" style="display:none;max-width:640px;width:100%">
+    <div class="dd-eyebrow">Tiefer gehen</div>
+    <div class="dd-title" id="dd-title"></div>
+    <div class="dd-sub" id="dd-sub"></div>
+    <a class="dd-btn" id="dd-btn" href="#">Check starten →</a>
+  </div>
+
+  <!-- Share section -->
+  <div class="share-sec" id="share-sec" style="display:none;max-width:640px;width:100%">
+    <div class="share-q">Wen aus deinem Umfeld würde das gerade treffen?</div>
+    <div class="share-sub">Wenn du jemanden kennst, der an einem ähnlichen Punkt steht — schick ihm diesen Link. Manchmal ist der richtige Moment alles.</div>
+    <button class="share-btn" onclick="doShare()">Link teilen →</button>
+    <div class="share-toast" id="share-toast"></div>
+  </div>
+
+  <!-- Email capture -->
+  <div class="email-sec" id="email-sec" style="display:none">
+    <div id="email-form-wrap">
+      <h3>Lass uns ins Gespräch kommen.</h3>
+      <p>Ich melde mich persönlich bei dir — mit einem konkreten nächsten Schritt, der zu deinem Führungstyp passt.</p>
+      <form onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="fi"><input type="text" id="e-name" placeholder="Dein Vorname" required autocomplete="given-name"></div>
+          <div class="fi"><input type="email" id="e-email" placeholder="Deine E-Mail" required autocomplete="email"></div>
+        </div>
+        <input type="hidden" id="e-type">
+        <input type="hidden" id="e-ref">
+        <input type="hidden" id="e-depth">
+        <button type="submit" class="form-submit" id="e-btn">Gespräch anfragen</button>
+        <div class="form-note">Kein Newsletter. Jochen antwortet persönlich innerhalb von 48h.</div>
+        <div class="form-err" id="e-err">Etwas hat nicht geklappt. Schreib direkt an <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b4dfdbd9c4d5c7c7f4dadbc6d0c7c0d1c6da99d8d1d5d0d1c6c7dcddc49ad0d1">[email&#160;protected]</a></div>
+      </form>
+    </div>
+    <div class="form-ok" id="form-ok">
+      <div class="form-ok-t">Nachricht angekommen.</div>
+      <div class="form-ok-s">Ich melde mich persönlich — in der Regel innerhalb von 48 Stunden.</div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 NORDSTERN Leadership · <a href="/cdn-cgi/l/email-protection#fe9591938e9f8d8dbe90918c9a8d8a9b8c90d3929b9f9a9b8c8d96978ed09a9b"><span class="__cf_email__" data-cfemail="076c686a77667474476968756374736275692a6b6266636275746f6e77296362">[email&#160;protected]</span></a></p>
+    
+  </footer>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const FORMSPREE_ID = 'xreovnld';
+
+// ── Referral tracking ──
+const _params = new URLSearchParams(window.location.search);
+const _refId   = _params.get('ref')    || '';
+const _depth   = parseInt(_params.get('depth') || '0');
+const _parent  = _params.get('parent') || '';
+const _myId    = (() => { let id = sessionStorage.getItem('ns_id'); if (!id) { id = Math.random().toString(36).slice(2,10); sessionStorage.setItem('ns_id', id); } return id; })();
+
+if (_refId && FORMSPREE_ID !== 'YOUR_FORM_ID') {
+  fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+    method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({type:'referral_visit', ref:_refId, depth:_depth, parent:_parent, page:'index'})
+  }).catch(()=>{});
+}
+
+function _shareUrl() {
+  const u = new URL(window.location.origin + window.location.pathname);
+  u.searchParams.set('ref', _myId);
+  u.searchParams.set('depth', String(_depth + 1));
+  if (_myId) u.searchParams.set('parent', _myId);
+  return u.toString();
+}
+
+async function doShare() {
+  const url = _shareUrl();
+  const toast = document.getElementById('share-toast');
+  if (navigator.share) {
+    try { await navigator.share({ title:'NORDSTERN Leadership Kompass', text:'Welcher Führungstyp bist du wirklich? 8 ehrliche Fragen.', url }); toast.textContent = 'Geteilt. ✓'; } catch(e) {}
+  } else {
+    try { await navigator.clipboard.writeText(url); toast.textContent = 'Link kopiert! ✓'; } catch(e) { toast.textContent = url; }
+  }
+  setTimeout(() => { toast.textContent = ''; }, 3000);
+}
+
+// ── Quiz data ──
+const Q = [
+  { text:"Warum bist du eigentlich Führungskraft geworden?", opts:[
+    {l:"A",t:"Weil ich fachlich der Stärkste in meinem Bereich war — und das wurde anerkannt.",ex:"z.B. bester Techniker, Prozessexperte, niemand kennt das System so gut wie ich.",v:0},
+    {l:"B",t:"Weil ich wusste, dass ich mehr Wirkung haben kann als mein Vorgänger.",ex:"z.B. ich hatte klare Ideen, wie man das Team auf ein höheres Level bringt.",v:1},
+    {l:"C",t:"Weil das Team und mein Chef es mir zugetraut haben — ich habe nicht Nein gesagt.",ex:"z.B. ich war immer der Ansprechpartner, der inoffizielle Koordinator.",v:2},
+    {l:"D",t:"Weil ich etwas bewegen und Menschen wirklich weiterentwickeln wollte.",ex:"z.B. ich hatte eine klare Vorstellung, welche Art von Führungskraft ich sein möchte.",v:3}
+  ]},
+  { text:"Ein Mitarbeiter macht denselben Fehler zum zweiten Mal. Was geht dir als erstes durch den Kopf?", opts:[
+    {l:"A",t:"Irgendwo stimmt der Prozess nicht — das ist ein Systemfehler, kein Personenfehler.",ex:"z.B. ich prüfe die SOP, die Einweisung, das Übergabeprotokoll.",v:0},
+    {l:"B",t:"Das ist nicht akzeptabel — das muss klar angesprochen werden, sonst schadet das der Gruppe.",ex:"z.B. ich suche direkt das Gespräch und mache unmissverständlich klar, was erwartet wird.",v:1},
+    {l:"C",t:"Ich frage mich, ob ich ihn gut genug eingearbeitet habe oder zu wenig unterstützt habe.",ex:"z.B. ich mache mir Gedanken, bevor ich das Gespräch suche.",v:2},
+    {l:"D",t:"Ich nutze es als Anlass für ein echtes Gespräch: Was steckt dahinter? Was braucht er wirklich?",ex:"z.B. ich unterscheide zwischen Symptom und Ursache, bevor ich reagiere.",v:3}
+  ]},
+  { text:"Dein Mitarbeiter kommt mit einer Frage, die er eigentlich selbst beantworten könnte. Du...", opts:[
+    {l:"A",t:"...entscheide direkt und klar. Das spart Zeit, und ich kenne die richtige Antwort.",ex:"z.B. ich will keine langen Diskussionen — ich gebe die Lösung und wir machen weiter.",v:0},
+    {l:"B",t:"...entscheide, aber es ärgert mich — ich erwarte, dass mein Team eigenständiger arbeitet.",ex:"z.B. ich beantworte es, sage aber klar: nächstes Mal selbst lösen.",v:1},
+    {l:"C",t:"...beantworte es ausführlich — ich möchte, dass er wirklich versteht.",ex:"z.B. ich nehme mir Zeit, auch wenn es eigentlich schnell gehen sollte.",v:2},
+    {l:"D",t:"...gebe die Frage zurück: Was denkst du selbst? Was spricht für welche Option?",ex:"z.B. ich sehe es als Chance, ihn zu befähigen, statt die Abhängigkeit zu verstärken.",v:3}
+  ]},
+  { text:"Dein Team verfehlt ein wichtiges Quartalsziel. Was beschäftigt dich am meisten?", opts:[
+    {l:"A",t:"Welcher Prozess oder welche Kennzahl hat versagt? Wo war der Engpass?",ex:"z.B. ich will den Root Cause verstehen, bevor ich jemanden zur Rechenschaft ziehe.",v:0},
+    {l:"B",t:"Wer hat nicht geliefert — und wie stelle ich sicher, dass das nicht wieder passiert?",ex:"z.B. ich halte das Ergebnis für nicht verhandelbar und suche den Verantwortlichen.",v:1},
+    {l:"C",t:"Hoffentlich sieht mein Chef das nicht als mein Versagen. Ich muss das richtig erklären.",ex:"z.B. ich mache mir mehr Sorgen um mein Image als um den Lerneffekt.",v:2},
+    {l:"D",t:"Was habe ich als Führungskraft nicht gesehen, nicht ermöglicht oder zu spät korrigiert?",ex:"z.B. ich nehme zuerst Ownership, bevor ich auf andere schaue.",v:3}
+  ]},
+  { text:"Was unterscheidet dich am meisten von deinem Team?", opts:[
+    {l:"A",t:"Ich kenne die technischen Zusammenhänge und Prozesse tiefer als die meisten.",ex:"z.B. ich bin die letzte Instanz bei komplexen fachlichen Fragen.",v:0},
+    {l:"B",t:"Ich habe einen stärkeren Antrieb und mehr Leistungsbereitschaft.",ex:"z.B. ich gehe weiter als andere — mehr Initiative, mehr Einsatz.",v:1},
+    {l:"C",t:"Ich sorge dafür, dass alle miteinander funktionieren und niemand untergeht.",ex:"z.B. ich bin der soziale Kitt — ich spüre Spannungen, bevor andere sie sehen.",v:2},
+    {l:"D",t:"Ich versuche, den Blick zu schärfen: Wohin geht das? Welches Potenzial steckt hier?",ex:"z.B. ich denke in Entwicklungslinien, nicht nur in Tagesaufgaben.",v:3}
+  ]},
+  { text:"Wie fühlst du dich, wenn du eine unpopuläre Entscheidung treffen musst?", opts:[
+    {l:"A",t:"Ich erkläre die Fakten sachlich — wer die Daten versteht, wird die Entscheidung nachvollziehen.",ex:"z.B. ich präsentiere den Business Case und erwarte rationale Zustimmung.",v:0},
+    {l:"B",t:"Das gehört zur Führung dazu. Beliebt sein und klar führen schließen sich manchmal aus.",ex:"z.B. ich treffe die Entscheidung und stehe dazu — auch wenn es kurzfristig unbequem ist.",v:1},
+    {l:"C",t:"Ich verzögere es so lange wie möglich und suche Rückendeckung, bevor ich kommuniziere.",ex:"z.B. ich will sicher sein, dass genug Zustimmung da ist, bevor ich nach vorne trete.",v:2},
+    {l:"D",t:"Ich tue es bewusst, erkläre das Warum — und halte die Unsicherheit danach aus.",ex:"z.B. ich weiß, dass ich nicht jeden überzeugen kann, und bin damit im Frieden.",v:3}
+  ]},
+  { text:"Welcher Satz beschreibt deine Führungsrolle am besten?", opts:[
+    {l:"A",t:'"Ich bringe mein Team dazu, die Dinge richtig zu machen."',ex:"Qualität, Prozesstreue, Genauigkeit — das ist mein Maßstab.",v:0},
+    {l:"B",t:'"Ich bringe mein Team dazu, Höchstleistungen zu erbringen."',ex:"Performance, Tempo, Ergebnis — das treibt mich an.",v:1},
+    {l:"C",t:'"Ich bringe mein Team dazu, harmonisch zusammenzuarbeiten."',ex:"Atmosphäre, Zusammenhalt, gegenseitiges Vertrauen — das ist mir wichtig.",v:2},
+    {l:"D",t:'"Ich bringe mein Team dazu, die richtigen Dinge aus eigener Überzeugung zu tun."',ex:"Eigenverantwortung, Sinn, Wachstum — das ist mein Nordstern.",v:3}
+  ]},
+  { text:"Was macht dir an deiner Führungsrolle gerade am meisten zu schaffen?", opts:[
+    {l:"A",t:"Ich komme kaum noch zu meiner eigentlichen Facharbeit — Führungsaufgaben fressen mich.",ex:"z.B. ich vermisse die Zeit, wenn ich einfach selbst lösen konnte.",v:0},
+    {l:"B",t:"Ich habe das Gefühl, dass mein Einsatz nicht ausreichend gesehen oder gewürdigt wird.",ex:"z.B. ich arbeite mehr als andere, aber die Anerkennung bleibt aus.",v:1},
+    {l:"C",t:"Konflikte und schwierige Gespräche kosten mich unverhältnismäßig viel Energie.",ex:"z.B. ich bereite mich tagelang vor und schlafe schlecht danach.",v:2},
+    {l:"D",t:"Ich weiß, dass mehr in mir steckt — aber mir fehlt noch das richtige Werkzeug für den nächsten Schritt.",ex:"z.B. ich spüre die Lücke zwischen meinem Anspruch und meiner Wirkung.",v:3}
+  ]}
+];
+
+const TYPES = [
+  { key:"Der Steuermann", badge:"Führungstyp 1 · Fachführung",
+    tagline:"Du führst über Kompetenz und Prozesse — und das mit echtem Können.",
+    staerke:"Technische Tiefe, Systemdenken, Verlässlichkeit", hebel:"Fremdführung, Delegation, Beziehungsarbeit",
+    risiko:"Führung als verlängerter Arm der Facharbeit", next:"Loslassen: Wirkung entsteht durch andere, nicht durch dich selbst",
+    msg:"Du bist der Anker — das Team weiß, dass es sich auf dich verlassen kann. Gleichzeitig stelle ich fest, dass ein großer Teil deiner Energie noch in die Sache geht, nicht in die Menschen.\n\nDas Paradoxe: Je besser du fachlich bist, desto schwerer fällt der Schritt, andere wirklich führen zu lassen. Genau diese Lücke zwischen Fach- und Menschenführung ist der Schlüssel zu deiner nächsten Entwicklungsstufe.",
+    cta:"Du weißt, dass du mehr delegieren solltest — aber wie genau? Wie viel deiner Zeit ist wirklich Führung?",
+    ctaTitle:"Führungszeit-Check", ctaUrl:"steuermann-test.html", ctaBtnLabel:"Führungszeit-Check starten →"
+  },
+  { key:"Der Antreiber", badge:"Führungstyp 2 · Ergebnisführung",
+    tagline:"Du lieferst — und du erwartest dasselbe von anderen.",
+    staerke:"Ergebnisorientierung, Entscheidungsfreude, Klarheit", hebel:"Purpose jenseits des eigenen Aufstiegs, Followership",
+    risiko:"Führung als Vehikel für persönliche Ziele", next:"Warum folgen dir Menschen — wegen dir oder wegen der Hierarchie?",
+    msg:"Du weißt, wo du hinwillst, und du ziehst die Anderen mit. Das ist eine echte Stärke — und gleichzeitig eine Einbahnstraße, wenn Menschen dir folgen, weil sie müssen, nicht weil sie wollen.\n\nDie entscheidende Frage: Wächst dein Team, wenn du nicht im Raum bist? Genau dort liegt dein nächster Durchbruch.",
+    cta:"Du lieferst Ergebnisse — aber entsteht dabei Wirkung? Wie viel hängt wirklich an dir persönlich?",
+    ctaTitle:"Wirkungscheck", ctaUrl:"antreiber-test.html", ctaBtnLabel:"Wirkungscheck starten →"
+  },
+  { key:"Der Vermittler", badge:"Führungstyp 3 · Beziehungsführung",
+    tagline:"Du hältst das Team zusammen — und zahlst dafür einen hohen persönlichen Preis.",
+    staerke:"Empathie, Teamgefühl, soziale Wahrnehmung", hebel:"Klarheit, Entscheidungskraft, Konfliktfähigkeit",
+    risiko:"Führung durch Zustimmung statt durch Orientierung", next:"Deine Fürsorge ist eine Stärke — sie braucht eine Richtung",
+    msg:"Du spürst, was das Team braucht, bevor andere es sehen. Das ist selten und wertvoll. Aber ich bemerke: Die Energie, die du in Harmonie investierst, kostet dich an den falschen Stellen.\n\nEchte Fürsorge bedeutet manchmal, unbequeme Wahrheiten auszusprechen. Genau dieser Schritt von Sympathie zu echter Autorität ist dein nächstes Level.",
+    cta:"Du gibst viel — aber gibst du auch die richtigen Dinge? Wie sieht deine Energiebilanz wirklich aus?",
+    ctaTitle:"Energiebilanz-Check", ctaUrl:"vermittler-test.html", ctaBtnLabel:"Energiebilanz-Check starten →"
+  },
+  { key:"Der Orientierungssucher", badge:"Führungstyp 4 · Wachstumsführung",
+    tagline:"Du weißt, wo du hinwillst — dir fehlt noch die richtige Struktur für den Durchbruch.",
+    staerke:"Selbstreflexion, Wachstumsbereitschaft, Purpose-Orientierung", hebel:"Konsequente Umsetzung, klare Entwicklungsstruktur",
+    risiko:"Viel Bewusstsein, wenig Hebel — Frustration über die Lücke", next:"Du bist bereit. Jetzt braucht es Struktur und Begleitung, keine weiteren Erkenntnisse",
+    msg:"Du denkst schon an Orten, die viele Führungskräfte noch nie betreten haben. Gleichzeitig spüre ich: Die Lücke zwischen deinem Anspruch und deiner heutigen Realität ist manchmal frustrierend.\n\nDas Gute: Du bist genau an dem Punkt, wo echte Entwicklung passiert. Dir fehlen nicht mehr Erkenntnisse — dir fehlt Struktur, Begleitung und ein konkreter nächster Schritt.",
+    cta:"Du hast Klarheit über dein Wollen — aber wie klar ist dein konkreter nächster Schritt?",
+    ctaTitle:"Klarheits-Check", ctaUrl:"orientierungssucher-test.html", ctaBtnLabel:"Klarheits-Check starten →"
+  }
+];
+
+let cur=0, answers=[];
+
+function startQuiz(){
+  document.getElementById('hero').style.display='none';
+  const c=document.getElementById('quiz-card');c.style.display='block';c.classList.add('fi');
+  renderQ();
+}
+
+function renderQ(){
+  const q=Q[cur];
+  document.getElementById('q-ct').textContent=`${cur+1} / ${Q.length}`;
+  document.getElementById('prog').style.width=`${(cur/Q.length)*100}%`;
+  document.getElementById('q-text').textContent=q.text;
+  const el=document.getElementById('opts'); el.innerHTML='';
+  q.opts.forEach((o,i)=>{
+    const b=document.createElement('button'); b.className='opt'+(answers[cur]===i?' sel':'');
+    b.innerHTML=`<div class="opt-hdr"><div class="opt-let">${o.l}</div><div class="opt-txt">${o.t}</div></div><div class="opt-ex">${o.ex}</div>`;
+    b.onclick=()=>{ answers[cur]=i; document.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); document.getElementById('btn-next').disabled=false; };
+    el.appendChild(b);
+  });
+  document.getElementById('btn-back').disabled=cur===0;
+  document.getElementById('btn-next').disabled=answers[cur]===undefined;
+  document.getElementById('btn-next').textContent=cur===Q.length-1?'Ergebnis anzeigen →':'Weiter';
+}
+function goNext(){ if(cur===Q.length-1){showResult();}else{cur++;renderQ();} }
+function goBack(){ if(cur>0){cur--;renderQ();} }
+
+function showResult(){
+  const sc=[0,0,0,0]; answers.forEach((a,qi)=>{ sc[Q[qi].opts[a].v]++; });
+  const mi=sc.indexOf(Math.max(...sc)); const t=TYPES[mi];
+  document.getElementById('prog').style.width='100%';
+  document.getElementById('quiz-screen').style.display='none';
+  const rs=document.getElementById('result-screen'); rs.style.display='block'; rs.classList.add('fi');
+
+  document.getElementById('r-badge').textContent=t.badge;
+  document.getElementById('r-type').textContent=t.key;
+  document.getElementById('r-tagline').textContent=t.tagline;
+
+  const names=['Der Steuermann','Der Antreiber','Der Vermittler','Der Orientierungssucher'];
+  let bh=''; sc.forEach((s,i)=>{ const p=Math.round(s/Q.length*100); bh+=`<div class="s-row"><div class="s-name"${i===mi?' style="font-weight:500;color:var(--black)"':''}>${names[i]}</div><div class="s-track"><div class="s-fill${i===mi?'':' dim'}" style="width:0" data-p="${p}"></div></div><div class="s-n">${s}</div></div>`; });
+  document.getElementById('r-scores').innerHTML=bh;
+  setTimeout(()=>{ document.querySelectorAll('.s-fill[data-p]').forEach(e=>{ e.style.width=e.dataset.p+'%'; }); },100);
+
+  document.getElementById('r-prof').innerHTML=`
+    <div class="prof-card"><div class="prof-lbl">Stärken</div><div class="prof-val">${t.staerke}</div></div>
+    <div class="prof-card"><div class="prof-lbl">Dein Hebel</div><div class="prof-val">${t.hebel}</div></div>
+    <div class="prof-card"><div class="prof-lbl">Blinder Fleck</div><div class="prof-val">${t.risiko}</div></div>
+    <div class="prof-card"><div class="prof-lbl">Nächster Schritt</div><div class="prof-val">${t.next}</div></div>`;
+
+  document.getElementById('r-msg').innerHTML=t.msg.split('\n\n').map(p=>`<p>${p}</p>`).join('')
+    +'<p class="cta">Du bist intelligent, du reflektierst — und du weißt, dass dir für den vollen Durchbruch noch das ein oder andere Werkzeug fehlt. <strong>Hast du Bock auf die gemeinsame Reise?</strong></p>';
+
+  // Deep dive
+  const dd=document.getElementById('deep-div'); dd.style.display='block'; dd.classList.add('fi');
+  document.getElementById('dd-title').textContent=t.ctaTitle;
+  document.getElementById('dd-sub').textContent=t.cta;
+  const ddBtn=document.getElementById('dd-btn'); ddBtn.textContent=t.ctaBtnLabel;
+  ddBtn.href=t.ctaUrl+window.location.search; // carry ref params
+
+  // Share
+  const ss=document.getElementById('share-sec'); ss.style.display='block'; ss.classList.add('fi');
+
+  // Email
+  document.getElementById('e-type').value=t.key;
+  document.getElementById('e-ref').value=_refId;
+  document.getElementById('e-depth').value=String(_depth);
+  const es=document.getElementById('email-sec'); es.style.display='block'; es.classList.add('fi');
+}
+
+async function submitForm(e){
+  e.preventDefault();
+  const btn=document.getElementById('e-btn'); btn.textContent='Wird gesendet…'; btn.disabled=true;
+  const errEl=document.getElementById('e-err'); errEl.style.display='none';
+  if(FORMSPREE_ID==='YOUR_FORM_ID'){document.getElementById('email-form-wrap').style.display='none';document.getElementById('form-ok').style.display='block';return;}
+  try{
+    const res=await fetch(`https://formspree.io/f/${FORMSPREE_ID}`,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:document.getElementById('e-name').value,email:document.getElementById('e-email').value,typ:document.getElementById('e-type').value,ref:_refId,depth:_depth,_replyto:document.getElementById('e-email').value})});
+    if(res.ok){document.getElementById('email-form-wrap').style.display='none';document.getElementById('form-ok').style.display='block';}
+    else throw new Error();
+  }catch{btn.textContent='Gespräch anfragen';btn.disabled=false;errEl.style.display='block';}
+}
+
+function restart(){
+  cur=0;answers=[];
+ 

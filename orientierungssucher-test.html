@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klarheits-Check · NORDSTERN Leadership</title>
+<meta name="description" content="Hast du Klarheit — oder sammelst du noch Erkenntnisse? 8 Minuten. Dein persönlicher Klarheitsquotient.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--white:#fff;--black:#1d1d1f;--g50:#fafafa;--g100:#f5f5f7;--g200:#e8e8ed;--g300:#d2d2d7;--g400:#c7c7cc;--g600:#6e6e73;--g700:#86868b;--border:rgba(0,0,0,.08);--border-md:rgba(0,0,0,.15);--font:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Arial,sans-serif;--font-d:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Arial,sans-serif;--r-sm:8px;--r-md:12px;--r-lg:18px;--shadow:0 4px 20px rgba(0,0,0,.07),0 1px 4px rgba(0,0,0,.04)}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--white);color:var(--black);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.cbg{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(90vw,700px);height:min(90vw,700px);opacity:.032;pointer-events:none;z-index:0}
+.page{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding:0 20px 80px}
+.nav{width:100%;max-width:720px;padding:28px 0 0;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-d);font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--black);text-decoration:none}
+.nav-logo span{color:var(--g600);font-weight:400}
+.nav-back{font-size:13px;color:var(--g600);text-decoration:none}
+.nav-back:hover{color:var(--black)}
+.hero{max-width:580px;width:100%;text-align:center;padding:64px 0 48px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--g600);background:var(--g100);border:1px solid var(--g200);padding:6px 16px;border-radius:100px;margin-bottom:24px}
+.tag-dot{width:6px;height:6px;border-radius:50%;background:var(--black);flex-shrink:0}
+.hero h1{font-family:var(--font-d);font-size:clamp(30px,5.5vw,48px);font-weight:600;letter-spacing:-.03em;line-height:1.12;margin-bottom:16px}
+.hero h1 em{font-style:normal;color:var(--g600)}
+.hero p{font-size:16px;color:var(--g600);line-height:1.6;max-width:400px;margin:0 auto 28px}
+.hero-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--g700)}
+.hero-meta span{display:flex;align-items:center;gap:5px}
+.dot{width:3px;height:3px;border-radius:50%;background:var(--g400)}
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow);width:100%;max-width:640px;padding:40px 44px}
+@media(max-width:600px){.card{padding:28px 20px}}
+.sec-eye{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--g600);margin-bottom:6px}
+.sec-q{font-family:var(--font-d);font-size:clamp(16px,2.5vw,18px);font-weight:500;letter-spacing:-.015em;line-height:1.4;color:var(--black);margin-bottom:6px}
+.sec-sub{font-size:13px;color:var(--g600);line-height:1.5;margin-bottom:18px}
+.div{height:1px;background:var(--g200);margin:24px 0}
+.sl-block{margin-bottom:22px}
+.sl-hdr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.sl-lbl{font-size:14px;font-weight:500;color:var(--black);line-height:1.35;max-width:78%}
+.sl-val{font-size:20px;font-weight:600;font-family:var(--font-d);color:var(--black);min-width:52px;text-align:right;letter-spacing:-.02em}
+.sl-val .u{font-size:12px;font-weight:400;color:var(--g600)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:3px;background:var(--g200);border-radius:3px;outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--black);cursor:pointer;transition:transform .1s}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15)}
+input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:var(--black);border:none}
+.sl-anch{display:flex;justify-content:space-between;font-size:11px;color:var(--g400);margin-top:6px}
+.r-block{margin-bottom:22px}
+.r-opts{display:flex;flex-direction:column;gap:8px}
+.r-opt{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border:1px solid var(--border);border-radius:var(--r-md);cursor:pointer;transition:all .15s;background:var(--white);min-height:48px}
+.r-opt:hover{border-color:var(--border-md);background:var(--g100)}
+.r-opt.sel{border-color:var(--black);background:var(--g100)}
+.r-circle{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--g300);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.r-opt.sel .r-circle{border-color:var(--black);background:var(--black)}
+.r-dot{width:7px;height:7px;border-radius:50%;background:var(--white);opacity:0;transition:opacity .15s}
+.r-opt.sel .r-dot{opacity:1}
+.r-txt{font-size:14px;color:var(--black);line-height:1.45}
+.cta-btn{display:block;width:100%;padding:14px 24px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:16px;font-weight:500;cursor:pointer;transition:background .18s;text-align:center;margin-top:8px;min-height:48px}
+.cta-btn:hover{background:#333}
+.err-msg{display:none;font-size:13px;color:#c0392b;text-align:center;margin-top:10px}
+.result-sec{display:none}
+.gauge-wrap{text-align:center;padding:8px 0 22px}
+.gauge-bg{fill:none;stroke:var(--g200);stroke-width:12}
+.gauge-fill{fill:none;stroke:var(--black);stroke-width:12;stroke-linecap:round;transition:stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1)}
+.g-num{font-family:var(--font-d);font-size:42px;font-weight:600;letter-spacing:-.04em;fill:var(--black)}
+.g-unit{font-size:16px;fill:var(--g600)}
+.g-sub{font-size:13px;fill:var(--g600)}
+.r-lv-badge{display:inline-block;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:100px;background:var(--g100);border:1px solid var(--g200);color:var(--g600);margin-bottom:14px}
+.r-lv-t{font-family:var(--font-d);font-size:clamp(20px,3.5vw,26px);font-weight:600;letter-spacing:-.025em;margin-bottom:8px}
+.r-lv-d{font-size:15px;color:var(--g600);line-height:1.65;margin-bottom:24px}
+.bdown{margin-bottom:22px}
+.bdown-t{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--g600);margin-bottom:12px}
+.b-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.b-lbl{font-size:12px;color:var(--g600);width:150px;flex-shrink:0;line-height:1.3}
+.b-track{flex:1;height:3px;background:var(--g200);border-radius:3px;overflow:hidden}
+.b-fill{height:100%;background:var(--black);border-radius:3px;transition:width 1s cubic-bezier(.4,0,.2,1)}
+.b-v{font-size:11px;color:var(--g700);width:28px;text-align:right}
+.hebel-t{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--g600);margin-bottom:12px}
+.hebel-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.h-card{background:var(--g100);border-radius:var(--r-md);padding:15px 17px;display:flex;gap:13px;align-items:flex-start}
+.h-num{width:26px;height:26px;border-radius:50%;background:var(--black);color:var(--white);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.h-ct-t{font-size:14px;font-weight:500;color:var(--black);margin-bottom:3px}
+.h-ct-d{font-size:13px;color:var(--g600);line-height:1.5}
+.share-sec{background:var(--g50);border:1px solid var(--border);border-radius:var(--r-lg);padding:22px 26px;margin-top:14px;max-width:640px;width:100%;text-align:center}
+.share-q{font-size:15px;font-weight:500;color:var(--black);margin-bottom:5px}
+.share-sub{font-size:13px;color:var(--g600);line-height:1.5;margin-bottom:14px}
+.share-btn{padding:11px 26px;background:transparent;color:var(--black);border:1px solid var(--border-md);border-radius:100px;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;transition:all .18s;min-height:44px}
+.share-btn:hover{background:var(--g100)}
+.share-toast{font-size:13px;color:var(--g600);margin-top:8px;min-height:18px}
+.email-sec{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px 32px;margin-top:14px;max-width:640px;width:100%}
+@media(max-width:600px){.email-sec{padding:22px 18px}}
+.email-sec h3{font-family:var(--font-d);font-size:19px;font-weight:600;letter-spacing:-.02em;margin-bottom:7px}
+.email-sec p{font-size:14px;color:var(--g600);line-height:1.55;margin-bottom:18px}
+.form-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.fi{flex:1;min-width:140px}
+.fi input{width:100%;padding:12px 15px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font);font-size:14px;color:var(--black);background:var(--white);outline:none;transition:border-color .18s;min-height:44px}
+.fi input:focus{border-color:var(--black)}
+.fi input::placeholder{color:var(--g400)}
+.f-submit{width:100%;padding:13px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;transition:background .18s;min-height:44px}
+.f-submit:hover{background:#333}
+.f-note{font-size:11px;color:var(--g700);margin-top:7px}
+.f-err{display:none;font-size:12px;color:#c0392b;margin-top:6px}
+.f-ok{display:none;text-align:center;padding:16px}
+.f-ok-t{font-size:17px;font-weight:500;margin-bottom:4px}
+.f-ok-s{font-size:13px;color:var(--g600)}
+.restart-lnk{background:none;border:none;font-size:13px;color:var(--g700);cursor:pointer;text-decoration:underline;font-family:var(--font);margin-top:14px;display:block;text-align:center;width:100%}
+.footer{max-width:720px;width:100%;padding:40px 0 0;text-align:center;font-size:12px;color:var(--g700);border-top:1px solid var(--border);margin-top:40px}
+.footer a{color:var(--g700);text-decoration:underline}
+@media(max-width:480px){.form-row{flex-direction:column}}
+@keyframes fi{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.ani{animation:fi .4s ease both}
+</style>
+</head>
+<body>
+<svg class="cbg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <circle cx="200" cy="200" r="195" stroke="#1d1d1f" stroke-width="1.5"/><circle cx="200" cy="200" r="180" stroke="#1d1d1f" stroke-width="0.5"/>
+  <g stroke="#1d1d1f"><line x1="200" y1="5" x2="200" y2="22" stroke-width="2"/><line x1="200" y1="378" x2="200" y2="395" stroke-width="2"/><line x1="5" y1="200" x2="22" y2="200" stroke-width="2"/><line x1="378" y1="200" x2="395" y2="200" stroke-width="2"/><line x1="338.2" y1="61.8" x2="326.9" y2="73.1" stroke-width="1.5"/><line x1="61.8" y1="61.8" x2="73.1" y2="73.1" stroke-width="1.5"/><line x1="61.8" y1="338.2" x2="73.1" y2="326.9" stroke-width="1.5"/><line x1="338.2" y1="338.2" x2="326.9" y2="326.9" stroke-width="1.5"/></g>
+  <text x="200" y="50" text-anchor="middle" font-family="-apple-system" font-size="20" font-weight="600" fill="#1d1d1f">N</text><text x="200" y="368" text-anchor="middle" font-family="-apple-system" font-size="16" fill="#1d1d1f">S</text><text x="368" y="205" text-anchor="middle" font-family="-apple-system" font-size="16" fill="#1d1d1f">O</text><text x="32" y="205" text-anchor="middle" font-family="-apple-system" font-size="16" fill="#1d1d1f">W</text>
+  <circle cx="200" cy="200" r="120" stroke="#1d1d1f" stroke-width="0.5"/><circle cx="200" cy="200" r="60" stroke="#1d1d1f" stroke-width="0.5"/>
+  <line x1="200" y1="80" x2="200" y2="320" stroke="#1d1d1f" stroke-width="0.5"/><line x1="80" y1="200" x2="320" y2="200" stroke="#1d1d1f" stroke-width="0.5"/>
+  <polygon points="200,65 193,200 207,200" fill="#1d1d1f"/><polygon points="200,335 193,200 207,200" fill="none" stroke="#1d1d1f" stroke-width="1.5"/>
+  <circle cx="200" cy="200" r="6" fill="#1d1d1f"/><circle cx="200" cy="200" r="3" fill="white"/>
+</svg>
+
+<div class="page">
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">NORDSTERN <span>Leadership</span></a>
+    <a href="index.html" class="nav-back">← Zur Standortbestimmung</a>
+  </nav>
+
+  <header class="hero" id="hero">
+    <div class="hero-tag"><div class="tag-dot"></div>Für den Orientierungssucher</div>
+    <h1>Hast du Klarheit —<br><em>oder sammelst du noch?</em></h1>
+    <p>8 Minuten.<br>Dein persönlicher Klarheitsquotient.<br>Drei konkrete nächste Schritte.</p>
+    <div class="hero-meta">
+      <span><div class="dot"></div>8 Fragen</span>
+      <span><div class="dot"></div>Sofort-Auswertung</span>
+    </div>
+    <button onclick="startTest()" style="display:block;margin:28px auto 0;padding:14px 38px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer;min-height:48px;transition:background .18s" onmouseover="this.style.background='#333'" onmouseout="this.style.background='var(--black)'">Test starten</button>
+  </header>
+
+  <div class="card" id="test-card" style="display:none">
+
+    <div class="sec-eye">Konkreter nächster Schritt</div>
+    <div class="sec-q">Wie klar ist dein Weg — heute, diese Woche?</div>
+    <div class="sec-sub">Nicht das große Ziel in 5 Jahren. Sondern was du konkret als nächstes tust.</div>
+
+    <div class="r-block">
+      <div class="sec-sub">Wenn ich dich jetzt frage: Was ist dein konkreter nächster Führungsschritt diese Woche — was antwortest du?</div>
+      <div class="r-opts" id="r-next">
+        <div class="r-opt" onclick="sel('r-next',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich habe viele Ideen und Optionen — aber keinen konkreten Schritt.</div></div>
+        <div class="r-opt" onclick="sel('r-next',this,33)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich weiß ungefähr, was ich will — aber der konkrete Schritt ist noch unklar.</div></div>
+        <div class="r-opt" onclick="sel('r-next',this,66)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich habe einen konkreten Plan — aber setze ihn nicht immer um.</div></div>
+        <div class="r-opt" onclick="sel('r-next',this,100)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich weiß genau, was ich diese Woche tue — und tue es.</div></div>
+      </div>
+    </div>
+
+    <div class="sl-block">
+      <div class="sl-hdr"><div class="sl-lbl">Wie viele Bücher, Podcasts oder Kurse hast du in den letzten 6 Monaten gestartet — und wie viele davon abgeschlossen?</div><div class="sl-val" id="v-done">30<span class="u"> %</span></div></div>
+      <input type="range" id="sl-done" min="0" max="100" value="30" step="5" oninput="document.getElementById('v-done').innerHTML=this.value+'<span class=\'u\'> %</span>'">
+      <div class="sl-anch"><span>0 % — nichts fertig</span><span>100 % — alles fertig</span></div>
+    </div>
+
+    <div class="div"></div>
+
+    <div class="sec-eye">Wissen vs. Tun</div>
+    <div class="sec-q">Wie groß ist die Lücke zwischen dem, was du weißt, und dem, was du tust?</div>
+
+    <div class="r-block">
+      <div class="sec-sub">Wie oft passiert es dir, dass du etwas weißt — aber es nicht tust?</div>
+      <div class="r-opts" id="r-gap">
+        <div class="r-opt" onclick="sel('r-gap',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Regelmäßig. Ich erkenne viele Muster, handle aber selten sofort danach.</div></div>
+        <div class="r-opt" onclick="sel('r-gap',this,33)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Manchmal. Bei wichtigen Dingen warte ich oft zu lang.</div></div>
+        <div class="r-opt" onclick="sel('r-gap',this,66)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Selten. Ich setze meist um — auch wenn es Zeit braucht.</div></div>
+        <div class="r-opt" onclick="sel('r-gap',this,100)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Kaum. Erkenntnis bedeutet für mich fast automatisch Handlung.</div></div>
+      </div>
+    </div>
+
+    <div class="sl-block">
+      <div class="sl-hdr"><div class="sl-lbl">Wie klar bist du darüber, welche konkrete Führungssituation du in 12 Monaten haben willst?</div><div class="sl-val" id="v-vis">40<span class="u"> %</span></div></div>
+      <input type="range" id="sl-vis" min="0" max="100" value="40" step="5" oninput="document.getElementById('v-vis').innerHTML=this.value+'<span class=\'u\'> %</span>'">
+      <div class="sl-anch"><span>0 % — keine Ahnung</span><span>100 % — kristallklar</span></div>
+    </div>
+
+    <div class="div"></div>
+
+    <div class="sec-eye">Entscheidungsfreudig</div>
+    <div class="sec-q">Wann hast du zuletzt eine Entscheidung getroffen, die dich Überwindung gekostet hat?</div>
+
+    <div class="r-block">
+      <div class="sec-sub">Wann war das letzte Mal, dass du eine Entscheidung getroffen hast, bei der du nicht 100% sicher warst — und es trotzdem getan hast?</div>
+      <div class="r-opts" id="r-decide">
+        <div class="r-opt" onclick="sel('r-decide',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich warte meist, bis ich sicher bin. Das dauert oft lange.</div></div>
+        <div class="r-opt" onclick="sel('r-decide',this,33)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Manchmal — bei kleineren Dingen. Bei größeren warte ich.</div></div>
+        <div class="r-opt" onclick="sel('r-decide',this,66)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Regelmäßig — ich akzeptiere, dass 70% gut genug sind.</div></div>
+        <div class="r-opt" onclick="sel('r-decide',this,100)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Häufig. Unvollständige Informationen sind mein Normalzustand.</div></div>
+      </div>
+    </div>
+
+    <div class="sl-block">
+      <div class="sl-hdr"><div class="sl-lbl">Wie viele aktive Entwicklungsprojekte (Themen, die du "demnächst angehen willst") hast du gerade parallel laufen?</div><div class="sl-val" id="v-proj">5<span class="u"> </span></div></div>
+      <input type="range" id="sl-proj" min="0" max="15" value="5" step="1" oninput="document.getElementById('v-proj').innerHTML=this.value+'<span class=\'u\'></span>'">
+      <div class="sl-anch"><span>0 — keine</span><span>15 — sehr viele</span></div>
+    </div>
+
+    <div class="div"></div>
+
+    <div class="sec-eye">Begleitung & Struktur</div>
+    <div class="sec-q">Wie viel Struktur bringst du selbst mit?</div>
+
+    <div class="r-block">
+      <div class="sec-sub">Du hast eine gute Idee für deine Führungsentwicklung. Was passiert damit in den nächsten 2 Wochen?</div>
+      <div class="r-opts" id="r-idea">
+        <div class="r-opt" onclick="sel('r-idea',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Sie landet auf meiner Liste — und bleibt dort.</div></div>
+        <div class="r-opt" onclick="sel('r-idea',this,33)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich denke viel darüber nach, aber der erste konkrete Schritt fehlt.</div></div>
+        <div class="r-opt" onclick="sel('r-idea',this,66)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich starte — aber verliere manchmal den Faden.</div></div>
+        <div class="r-opt" onclick="sel('r-idea',this,100)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich mache in dieser Woche den ersten konkreten Schritt. Ohne Ausnahme.</div></div>
+      </div>
+    </div>
+
+    <div class="r-block">
+      <div class="sec-sub">Wie hilft dir eine externe Begleitung (Coaching, Mentor, Peer-Gruppe)?</div>
+      <div class="r-opts" id="r-coach">
+        <div class="r-opt" onclick="sel('r-coach',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich arbeite lieber allein. Externe Perspektiven helfen mir kaum.</div></div>
+        <div class="r-opt" onclick="sel('r-coach',this,33)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Manchmal hilfreich — aber ich nutze es nicht systematisch.</div></div>
+        <div class="r-opt" onclick="sel('r-coach',this,66)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich weiß, dass es helfen würde. Ich tue es zu selten.</div></div>
+        <div class="r-opt" onclick="sel('r-coach',this,100)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Externen Input einzuholen ist für mich eine Stärke, keine Schwäche.</div></div>
+      </div>
+    </div>
+
+    <button class="cta-btn" onclick="calcResult()">Klarheitsquotient berechnen</button>
+    <div class="err-msg" id="calc-err">Bitte alle Fragen beantworten.</div>
+
+    <div class="result-sec" id="result-sec">
+      <div class="div"></div>
+      <div class="gauge-wrap">
+        <svg width="240" height="148" viewBox="0 0 240 148" style="overflow:visible">
+          <path class="gauge-bg" d="M 20 130 A 100 100 0 0 1 220 130"/>
+          <path class="gauge-fill" id="g-fill" d="M 20 130 A 100 100 0 0 1 220 130" stroke-dasharray="314" stroke-dashoffset="314"/>
+          <text class="g-num" x="120" y="115" text-anchor="middle" id="g-num">0</text>
+          <text class="g-unit" x="120" y="133" text-anchor="middle">%</text>
+          <text class="g-sub" x="120" y="148" text-anchor="middle">Klarheitsquotient</text>
+        </svg>
+      </div>
+      <div style="text-align:center;margin-bottom:22px">
+        <div class="r-lv-badge" id="r-lv-badge"></div>
+        <div class="r-lv-t" id="r-lv-t"></div>
+        <div class="r-lv-d" id="r-lv-d"></div>
+      </div>
+      <div class="bdown"><div class="bdown-t">Dein Bild im Detail</div><div id="r-bdown"></div></div>
+      <div class="hebel-t">Deine drei konkreten nächsten Schritte</div>
+      <div class="hebel-grid" id="r-hebel"></div>
+      <button class="restart-lnk" onclick="restartTest()">Test wiederholen</button>
+    </div>
+  </div>
+
+  <div class="share-sec" id="share-sec" style="display:none">
+    <div class="share-q">Wen aus deinem Umfeld würde das gerade treffen?</div>
+    <div class="share-sub">Wenn du jemanden kennst, der an einem ähnlichen Punkt steht — schick ihm diesen Link.</div>
+    <button class="share-btn" onclick="doShare()">Link teilen →</button>
+    <div class="share-toast" id="share-toast"></div>
+  </div>
+
+  <div class="email-sec" id="email-sec" style="display:none">
+    <div id="ef-wrap">
+      <h3>Der nächste Schritt beginnt jetzt.</h3>
+      <p>Du weißt, dass du bereit bist. Was dir fehlt, ist Struktur und jemand, der mitdenkt. Genau das biete ich dir.</p>
+      <form onsubmit="submitEmail(event)">
+        <div class="form-row"><div class="fi"><input type="text" id="e-name" placeholder="Dein Vorname" required></div><div class="fi"><input type="email" id="e-email" placeholder="Deine E-Mail" required></div></div>
+        <input type="hidden" id="e-score"><input type="hidden" id="e-ref"><input type="hidden" id="e-depth">
+        <button type="submit" class="f-submit" id="e-btn">Gespräch anfragen</button>
+        <div class="f-note">Kein Newsletter. Jochen antwortet persönlich innerhalb von 48h.</div>
+        <div class="f-err" id="f-err">Etwas hat nicht geklappt. Schreib direkt an <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="452e2a2835243636052b2a3721363120372b68292024212037362d2c356b2120">[email&#160;protected]</a></div>
+      </form>
+    </div>
+    <div class="f-ok" id="f-ok"><div class="f-ok-t">Nachricht angekommen.</div><div class="f-ok-s">Ich melde mich persönlich innerhalb von 48 Stunden.</div></div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 NORDSTERN Leadership · <a href="/cdn-cgi/l/email-protection#6c0703011c0d1f1f2c02031e081f18091e024100090d08091e1f04051c420809"><span class="__cf_email__" data-cfemail="8ae1e5e7faebf9f9cae4e5f8eef9feeff8e4a7e6efebeeeff8f9e2e3faa4eeef">[email&#160;protected]</span></a></p>
+    
+  </footer>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const FORMSPREE_ID = 'xreovnld';
+const _p=new URLSearchParams(window.location.search);
+const _refId=_p.get('ref')||'';const _depth=parseInt(_p.get('depth')||'0');
+const _myId=(()=>{let id=sessionStorage.getItem('ns_id');if(!id){id=Math.random().toString(36).slice(2,10);sessionStorage.setItem('ns_id',id);}return id;})();
+if(_refId&&FORMSPREE_ID!=='YOUR_FORM_ID'){fetch(`https://formspree.io/f/${FORMSPREE_ID}`,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({type:'referral_visit',ref:_refId,depth:_depth,page:'orientierungssucher'})}).catch(()=>{});}
+function _shareUrl(){const u=new URL(window.location.origin+window.location.pathname);u.searchParams.set('ref',_myId);u.searchParams.set('depth',String(_depth+1));if(_refId)u.searchParams.set('parent',_myId);return u.toString();}
+async function doShare(){const url=_shareUrl();const toast=document.getElementById('share-toast');if(navigator.share){try{await navigator.share({title:'NORDSTERN Klarheits-Check',text:'Hast du Klarheit — oder sammelst du noch Erkenntnisse?',url});toast.textContent='Geteilt. ✓';}catch(e){}}else{try{await navigator.clipboard.writeText(url);toast.textContent='Link kopiert! ✓';}catch(e){toast.textContent=url;}}setTimeout(()=>{toast.textContent='';},3000);}
+
+const rState={};
+function sel(g,el,score){document.querySelectorAll(`#${g} .r-opt`).forEach(o=>o.classList.remove('sel'));el.classList.add('sel');rState[g]=score;}
+function startTest(){document.getElementById('hero').style.display='none';const c=document.getElementById('test-card');c.style.display='block';c.classList.add('ani');}
+
+function calcResult(){
+  const req=['r-next','r-gap','r-decide','r-idea','r-coach'];
+  for(const r of req){if(rState[r]===undefined){document.getElementById('calc-err').style.display='block';return;}}
+  document.getElementById('calc-err').style.display='none';
+  const done=parseInt(document.getElementById('sl-done').value);
+  const vis=parseInt(document.getElementById('sl-vis').value);
+  const proj=parseInt(document.getElementById('sl-proj').value);
+  const s_done=done; const s_vis=vis; const s_proj=Math.round((1-proj/15)*100);
+  const s_next=rState['r-next']; const s_gap=rState['r-gap']; const s_decide=rState['r-decide']; const s_idea=rState['r-idea']; const s_coach=rState['r-coach'];
+  const score=Math.round(s_next*.17+s_done*.12+s_vis*.13+s_gap*.15+s_decide*.13+s_proj*.1+s_idea*.12+s_coach*.08);
+  showResult(score,{s_next,s_done,s_vis,s_gap,s_decide,s_proj,s_idea,s_coach});
+}
+
+function showResult(score,d){
+  document.getElementById('e-score').value=`Klarheitsquotient: ${score}%`;
+  document.getElementById('e-ref').value=_refId;document.getElementById('e-depth').value=String(_depth);
+  const rs=document.getElementById('result-sec');rs.style.display='block';rs.classList.add('ani');rs.scrollIntoView({behavior:'smooth',block:'start'});
+  setTimeout(()=>{const arc=314;const off=arc-(score/100)*arc;document.getElementById('g-fill').style.strokeDashoffset=off;let n=0;const iv=setInterval(()=>{n=Math.min(n+2,score);document.getElementById('g-num').textContent=n;if(n>=score)clearInterval(iv);},18);},200);
+  let lvBadge,lvTitle,lvDesc;
+  if(score<30){lvBadge='Erkenntnissammler';lvTitle='Du weißt viel — und tust noch wenig damit.';lvDesc='Dein Bewusstsein für Führung ist auf einem hohen Niveau. Die Frustration entsteht, weil du spürst: Erkenntnis allein verändert nichts. Was du jetzt brauchst, ist kein weiteres Buch — sondern einen Kontext, in dem Erkenntnisse zu Handlungen werden.';}
+  else if(score<60){lvBadge='Umsetzer in Entwicklung';lvTitle='Du bewegst dich — und brauchst Struktur, um zu beschleunigen.';lvDesc='Du hast aufgehört, nur zu wissen — du beginnst zu tun. Die Herausforderung: Ohne klare Struktur verlierst du den Faden. Die nächste Ebene ist nicht mehr Erkenntnis, sondern konsequente Praxis.';}
+  else{lvBadge='Konsequenter Leader';lvTitle:'Du weißt, was du willst — und tust es.';lvDesc='Erkenntnis und Handlung sind bei dir eng verbunden. Das ist selten. Dein nächster Schritt ist nicht mehr Richtung, sondern Tiefe: Wie schaffst du ein Umfeld, das dieses Niveau auch von anderen fordert?';}
+  document.getElementById('r-lv-badge').textContent=lvBadge;document.getElementById('r-lv-t').textContent=lvTitle;document.getElementById('r-lv-d').textContent=lvDesc;
+  const dims=[{l:'Konkreter Schritt',v:d.s_next},{l:'Abschlussquote',v:d.s_done},{l:'12-Monats-Vision',v:d.s_vis},{l:'Wissen→Handlung',v:d.s_gap},{l:'Entscheidungsfreude',v:d.s_decide},{l:'Fokus (wenig parallel)',v:d.s_proj},{l:'Idee→Umsetzung',v:d.s_idea},{l:'Externe Perspektive',v:d.s_coach}];
+  let bh='';dims.forEach(b=>{bh+=`<div class="b-row"><div class="b-lbl">${b.l}</div><div class="b-track"><div class="b-fill" data-v="${b.v}" style="width:0%"></div></div><div class="b-v">${b.v}</div></div>`;});
+  document.getElementById('r-bdown').innerHTML=bh;
+  setTimeout(()=>{document.querySelectorAll('.b-fill[data-v]').forEach(e=>{e.style.width=e.dataset.v+'%';});},300);
+  const hebelAll=[
+    {c:d=>d.s_next<50,t:'Den nächsten Schritt in einen Satz fassen',d:'Formuliere heute: "Bis Freitag mache ich folgendes — konkret, messbar." Nicht "ich will besser delegieren". Sondern "Bis Freitag habe ich mit Max ein 20-Minuten-Gespräch über seine Entscheidungsautonomie in der Schicht geführt." Ein Satz. Kein Plan.'},
+    {c:d=>d.s_done<50,t:'Abschluss vor Neubeginn',d:'Führe diese Regel ein: Bevor du ein neues Buch, einen neuen Kurs oder ein neues Thema startest, schließe das letzte ab. Nicht perfekt — aber mit einer bewussten Abschlusshandlung: Was nehme ich mit? Was ändere ich konkret?'},
+    {c:d=>d.s_vis<50,t:'12-Monats-Bild skizzieren',d:'Nimm dir 30 Minuten. Frage: In welcher Führungssituation will ich in 12 Monaten sein? Nicht Position oder Titel — sondern: Wie sehen meine Gespräche aus? Wie entscheidet mein Team? Was mache ich, was ich heute nicht tue? Schreib es auf.'},
+    {c:d=>d.s_gap<50,t:'Wissen sofort verankern',d:'Nach jeder Erkenntnis — Buch, Gespräch, Podcast — stelle dir eine Frage: Was ändere ich morgen konkret? Nicht "was nehme ich mit". Was. Ändere. Ich. Morgen. Ein Satz. Geht in deinen Kalender.'},
+    {c:d=>d.s_decide<50,t:'70%-Regel einführen',d:'Entscheide künftig bei 70% Informationsstand — nicht bei 100%. Definiere für dich: Was ist der schlechteste Fall, wenn diese Entscheidung falsch ist? Wenn die Antwort "verkraftbar" ist: Entscheide jetzt. Warten ist auch eine Entscheidung — meistens die schlechtere.'},
+    {c:d=>d.s_proj<50,t:'Parallele Themen radikal kürzen',d:'Schreibe alle deine aktiven Entwicklungsthemen auf. Streiche alles, was du in den letzten 3 Monaten nicht aktiv weiterverfolgt hast. Behalte maximal zwei. Fokus schlägt Breite.'},
+    {c:d=>d.s_idea<50,t:'Ideen sofort verpflichten',d:'Wenn du eine gute Idee hast: Schreibe in der gleichen Sekunde auf, was du als nächstes tust — mit Datum. Nicht "ich werde..." sondern "Am [Datum] mache ich [konkreter Schritt]." Ideen ohne Termin sind Wünsche.'},
+    {c:d=>d.s_coach<60,t:'Externe Perspektive einplanen',d:'Plane pro Quartal mindestens ein Gespräch ein, in dem jemand anderes deine Führungssituation von außen betrachtet — Coach, Mentor, Peer. Nicht um Antworten zu bekommen. Sondern um die richtigen Fragen zu hören.'},
+  ];
+  const matched=hebelAll.filter(h=>h.c(d)).slice(0,3);if(matched.length<3)hebelAll.filter(h=>!h.c(d)).forEach(h=>{if(matched.length<3)matched.push(h);});
+  document.getElementById('r-hebel').innerHTML=matched.map((h,i)=>`<div class="h-card"><div class="h-num">${i+1}</div><div><div class="h-ct-t">${h.t}</div><div class="h-ct-d">${h.d}</div></div></div>`).join('');
+  document.getElementById('share-sec').style.display='block';document.getElementById('email-sec').style.display='block';
+}
+
+async function submitEmail(e){
+  e.preventDefault();const btn=document.getElementById('e-btn');btn.textContent='Wird gesendet…';btn.disabled=true;
+  if(FORMSPREE_ID==='YOUR_FORM_ID'){document.getElementById('ef-wrap').style.display='none';document.getElementById('f-ok').style.display='block';return;}
+  try{const res=await fetch(`https://formspree.io/f/${FORMSPREE_ID}`,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:document.getElementById('e-name').value,email:document.getElementById('e-email').value,test:'Klarheits-Check (Orientierungssucher)',score:document.getElementById('e-score').value,ref:_refId,depth:_depth,_replyto:document.getElementById('e-email').value})});if(res.ok){document.getElementById('ef-wrap').style.display='none';document.getElementById('f-ok').style.display='block';}else throw new Error();}
+  catch{btn.textContent='Gespräch anfragen';btn.disabled=false;document.getElementById('f-err').style.display='block';}
+}
+function restartTest(){Object.keys(rState).forEach(k=>delete rState[k]);document.querySelectorAll('.r-opt').forEach(o=>o.classList.remove('sel'));[{id:'sl-done'
