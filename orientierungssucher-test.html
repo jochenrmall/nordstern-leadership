@@ -308,7 +308,7 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
       <input type="hidden" id="rm-type">
       <button class="rm-submit" onclick="submitResultMail()">Ergebnis zusenden →</button>
       <div class="rm-note">Kein Newsletter. Einmalig dein Profil — fertig.</div>
-      <div class="rm-err" id="rm-err">Etwas hat nicht geklappt. Schreib direkt an kompass@nordstern-leadership.de</div>
+      <div class="rm-err" id="rm-err">Etwas hat nicht geklappt. Schreib direkt an <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6a0105071a0b19192a0405180e191e0f180447060f0b0e0f181902031a440e0f">[email&#160;protected]</a></div>
     </div>
     <div class="rm-ok" id="rm-ok">Ergebnis ist unterwegs. ✓</div>
   </div>
@@ -329,19 +329,19 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
         <input type="hidden" id="e-score"><input type="hidden" id="e-ref"><input type="hidden" id="e-depth">
         <button type="submit" class="f-submit" id="e-btn">Gespräch anfragen</button>
         <div class="f-note">Kein Newsletter. Jochen antwortet persönlich innerhalb von 48h.</div>
-        <div class="f-err" id="f-err">Etwas hat nicht geklappt. Schreib direkt an kompass@nordstern-leadership.de</div>
+        <div class="f-err" id="f-err">Etwas hat nicht geklappt. Schreib direkt an <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7d1612100d1c0e0e3d13120f190e09180f135011181c19180f0e15140d531918">[email&#160;protected]</a></div>
       </form>
     </div>
     <div class="f-ok" id="f-ok"><div class="f-ok-t">Nachricht angekommen.</div><div class="f-ok-s">Ich melde mich persönlich innerhalb von 48 Stunden.</div></div>
   </div>
 
   <footer class="footer">
-    <p>© 2025 NORDSTERN Leadership · kompass@nordstern-leadership.de</p>
+    <p>© 2025 NORDSTERN Leadership · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ee8581839e8f9d9dae80819c8a9d9a8b9c80c3828b8f8a8b9c9d86879ec08a8b">[email&#160;protected]</a></p>
     
   </footer>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const FORMSPREE_ID = 'xreovnld';
 const _p=new URLSearchParams(window.location.search);
 const _refId=_p.get('ref')||'';const _depth=parseInt(_p.get('depth')||'0');
@@ -434,18 +434,4 @@ async function submitResultMail() {
   try {
     const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
       method: 'POST',
-      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-      body: JSON.stringify({name, email, typ, type:'result_mail', ref:_refId, depth:_depth, _replyto:email})
-    });
-    if (res.ok) {
-      document.getElementById('rm-form-wrap').style.display='none';
-      document.getElementById('rm-ok').style.display='block';
-    } else throw new Error();
-  } catch {
-    btn.textContent='Ergebnis zusenden →'; btn.disabled=false;
-    errEl.style.display='block';
-  }
-}
-</script>
-</body>
-</html>
+      head
