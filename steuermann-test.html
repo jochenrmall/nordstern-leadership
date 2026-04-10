@@ -111,6 +111,25 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .infobox-title{font-size:13px;font-weight:500;color:var(--black);margin:0 0 2px 0}
 .infobox-sub{font-size:12px;color:var(--g600);margin:0;line-height:1.5}
 
+
+/* quote block */
+.quote-block{display:block;background:var(--g100);border-left:3px solid var(--g300);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:12px 16px;margin-top:16px;font-size:14px;color:var(--black);line-height:1.6}
+.quote-src{display:block;font-size:12px;color:var(--g600);margin-top:6px;font-style:normal}
+
+
+/* result mail */
+.result-mail-sec{background:var(--g50);border:1px solid var(--border);border-radius:var(--r-lg);padding:22px 28px;margin-top:10px;max-width:640px;width:100%}
+@media(max-width:600px){.result-mail-sec{padding:18px 16px}}
+.result-mail-sec h3{font-family:var(--font-d);font-size:17px;font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
+.result-mail-sec p{font-size:13px;color:var(--g600);line-height:1.5;margin-bottom:14px}
+.rm-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.rm-row .fi{flex:1;min-width:130px}
+.rm-submit{width:100%;padding:12px;background:transparent;color:var(--black);border:1px solid var(--border-md);border-radius:100px;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;transition:all .18s;min-height:44px}
+.rm-submit:hover{background:var(--g100)}
+.rm-note{font-size:11px;color:var(--g700);margin-top:6px}
+.rm-ok{display:none;font-size:14px;color:var(--g600);text-align:center;padding:10px 0}
+.rm-err{display:none;font-size:12px;color:#c0392b;margin-top:5px}
+
 .footer{max-width:720px;width:100%;padding:40px 0 0;text-align:center;font-size:12px;color:var(--g700);border-top:1px solid var(--border);margin-top:40px}
 .footer a{color:var(--g700);text-decoration:underline}
 @media(max-width:480px){.form-row{flex-direction:column}}
@@ -274,6 +293,22 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
     </div>
   </div>
 
+  <div class="result-mail-sec" id="result-mail-sec" style="display:none;max-width:640px;width:100%">
+    <h3>Ergebnis per Mail erhalten</h3>
+    <p>Ich schicke dir dein Führungsprofil direkt in dein Postfach — kein Gespräch, kein Versprechen.</p>
+    <div id="rm-form-wrap">
+      <div class="rm-row">
+        <div class="fi"><input type="text" id="rm-name" placeholder="Dein Vorname" style="min-height:44px;width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font);font-size:14px;outline:none"></div>
+        <div class="fi"><input type="email" id="rm-email" placeholder="Deine E-Mail" style="min-height:44px;width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font);font-size:14px;outline:none"></div>
+      </div>
+      <input type="hidden" id="rm-type">
+      <button class="rm-submit" onclick="submitResultMail()">Ergebnis zusenden →</button>
+      <div class="rm-note">Kein Newsletter. Einmalig dein Profil — fertig.</div>
+      <div class="rm-err" id="rm-err">Etwas hat nicht geklappt. Schreib direkt an kompass@nordstern-leadership.de</div>
+    </div>
+    <div class="rm-ok" id="rm-ok">Ergebnis ist unterwegs. ✓</div>
+  </div>
+
   <div class="share-sec" id="share-sec" style="display:none">
     <div class="share-q">Wen aus deinem Umfeld würde das gerade treffen?</div>
     <div class="share-sub">Wenn du jemanden kennst, der an einem ähnlichen Punkt steht — schick ihm diesen Link. Manchmal ist der richtige Moment alles.</div>
@@ -335,7 +370,7 @@ function showResult(score,d){_trackResult('Führungszeit-Check', score, 'steuerm
   const rs=document.getElementById('result-sec');rs.style.display='block';rs.classList.add('ani');rs.scrollIntoView({behavior:'smooth',block:'start'});
   setTimeout(()=>{const arc=314;const off=arc-(score/100)*arc;document.getElementById('g-fill').style.strokeDashoffset=off;let n=0;const iv=setInterval(()=>{n=Math.min(n+2,score);document.getElementById('g-num').textContent=n;if(n>=score)clearInterval(iv);},18);},200);
   let lvBadge,lvTitle,lvDesc;
-  if(score<30){lvBadge='Fachkraft mit Führungstitel';lvTitle='Du führst noch durch Facharbeit — nicht durch Menschen.';lvDesc='Deine technische Kompetenz ist unbestritten. Aber du bezahlst dafür, dass du der Engpass bist: Entscheidungen, Lösungen, Qualitätssicherung — alles läuft durch dich. Das skaliert nicht. Das erschöpft.';}
+  if(score<30){lvBadge='Fachkraft mit Führungstitel';lvTitle='Du führst noch durch Facharbeit — nicht durch Menschen.';lvDesc='Deine technische Kompetenz ist unbestritten. Aber du bezahlst dafür, dass du der Engpass bist: Entscheidungen, Lösungen, Qualitätssicherung — alles läuft durch dich. Das skaliert nicht. Das erschöpft.'\n\n<span class=\"quote-block\"><em>"Bei Unsicherheit entsteht oft der Reflex, Dinge stärker steuern zu wollen. Das kann dazu führen, dass wir uns an Details festbeißen — und dadurch erst recht den Überblick verlieren."</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>;}
   else if(score<60){lvBadge='Führungskraft in Transition';lvTitle='Du hast angefangen loszulassen — noch nicht konsequent.';lvDesc='Du erkennst, dass echte Führung mehr ist als Facharbeit mit Verantwortung. Du delegierst — manchmal. Du gibst Lösungen zurück — gelegentlich. Der nächste Schritt: Konsequenz im Alltag, nicht nur im Prinzip.';}
   else{lvBadge='Echter Führungsquotient';lvTitle='Du führst durch Menschen, nicht durch Facharbeit.';lvDesc='Du hast den Übergang gemacht: Dein Wert liegt nicht in dem, was du selbst lieferst — sondern in dem, was durch dich entsteht. Dein Team wächst. Du wächst.';}
   document.getElementById('r-lv-badge').textContent=lvBadge;document.getElementById('r-lv-t').textContent=lvTitle;document.getElementById('r-lv-d').textContent=lvDesc;
@@ -358,6 +393,8 @@ function showResult(score,d){_trackResult('Führungszeit-Check', score, 'steuerm
 
   document.getElementById('email-h3').textContent = 'Du weißt, dass du mehr delegieren solltest.';
   document.getElementById('email-p').textContent = 'Ich zeige dir einen konkreten ersten Schritt — für deine Situation, nicht für ein allgemeines Profil.';
+  document.getElementById('rm-type').value=typ||'';
+  document.getElementById('result-mail-sec').style.display='block';
   document.getElementById('share-sec').style.display='block';document.getElementById('email-sec').style.display='block';
 }
 
@@ -367,7 +404,7 @@ async function submitEmail(e){
   try{const res=await fetch(`https://formspree.io/f/${FORMSPREE_ID}`,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:document.getElementById('e-name').value,email:document.getElementById('e-email').value,test:'Führungszeit-Check (Steuermann)',score:document.getElementById('e-score').value,ref:_refId,depth:_depth,_replyto:document.getElementById('e-email').value})});if(res.ok){document.getElementById('ef-wrap').style.display='none';document.getElementById('f-ok').style.display='block';}else throw new Error();}
   catch{btn.textContent='Gespräch anfragen';btn.disabled=false;document.getElementById('f-err').style.display='block';}
 }
-function restartTest(){Object.keys(rState).forEach(k=>delete rState[k]);document.querySelectorAll('.r-opt').forEach(o=>o.classList.remove('sel'));[{id:'sl-fach',v:60},{id:'sl-sol',v:70},{id:'sl-intr',v:8},{id:'sl-corr',v:65}].forEach(x=>{const el=document.getElementById(x.id);el.value=x.v;el.dispatchEvent(new Event('input'));});document.getElementById('result-sec').style.display='none';['share-sec','email-sec'].forEach(id=>{document.getElementById(id).style.display='none';});document.getElementById('test-card').scrollIntoView({behavior:'smooth'});}
+function restartTest(){Object.keys(rState).forEach(k=>delete rState[k]);document.querySelectorAll('.r-opt').forEach(o=>o.classList.remove('sel'));[{id:'sl-fach',v:60},{id:'sl-sol',v:70},{id:'sl-intr',v:8},{id:'sl-corr',v:65}].forEach(x=>{const el=document.getElementById(x.id);el.value=x.v;el.dispatchEvent(new Event('input'));});document.getElementById('result-sec').style.display='none';['result-mail-sec','share-sec','email-sec'].forEach(id=>{document.getElementById(id).style.display='none';});document.getElementById('test-card').scrollIntoView({behavior:'smooth'});}
 
 function _trackResult(typ, score, page) {
   if (FORMSPREE_ID === 'YOUR_FORM_ID') return;
@@ -376,6 +413,35 @@ function _trackResult(typ, score, page) {
     headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
     body: JSON.stringify({type:'result_view', page:page, typ:typ, score:score||'', ref:_refId, depth:_depth})
   }).catch(()=>{});
+}
+
+async function submitResultMail() {
+  const name = document.getElementById('rm-name').value.trim();
+  const email = document.getElementById('rm-email').value.trim();
+  const typ = document.getElementById('rm-type').value;
+  const errEl = document.getElementById('rm-err');
+  errEl.style.display = 'none';
+  if (!name || !email) return;
+  const btn = document.querySelector('.rm-submit');
+  btn.textContent = 'Wird gesendet…'; btn.disabled = true;
+  if (FORMSPREE_ID === 'YOUR_FORM_ID') {
+    document.getElementById('rm-form-wrap').style.display = 'none';
+    document.getElementById('rm-ok').style.display = 'block'; return;
+  }
+  try {
+    const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({name, email, typ, type:'result_mail', ref:_refId, depth:_depth, _replyto:email})
+    });
+    if (res.ok) {
+      document.getElementById('rm-form-wrap').style.display='none';
+      document.getElementById('rm-ok').style.display='block';
+    } else throw new Error();
+  } catch {
+    btn.textContent='Ergebnis zusenden →'; btn.disabled=false;
+    errEl.style.display='block';
+  }
 }
 </script>
 </body>

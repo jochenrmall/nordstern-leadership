@@ -123,6 +123,25 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
 .form-ok-s{font-size:13px;color:var(--g600)}
 .restart{background:none;border:none;font-size:13px;color:var(--g700);cursor:pointer;text-decoration:underline;font-family:var(--font);margin-top:16px;display:block;text-align:center;width:100%}
 
+
+
+/* result mail */
+.result-mail-sec{background:var(--g50);border:1px solid var(--border);border-radius:var(--r-lg);padding:22px 28px;margin-top:10px;max-width:640px;width:100%}
+@media(max-width:600px){.result-mail-sec{padding:18px 16px}}
+.result-mail-sec h3{font-family:var(--font-d);font-size:17px;font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
+.result-mail-sec p{font-size:13px;color:var(--g600);line-height:1.5;margin-bottom:14px}
+.rm-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.rm-row .fi{flex:1;min-width:130px}
+.rm-submit{width:100%;padding:12px;background:transparent;color:var(--black);border:1px solid var(--border-md);border-radius:100px;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;transition:all .18s;min-height:44px}
+.rm-submit:hover{background:var(--g100)}
+.rm-note{font-size:11px;color:var(--g700);margin-top:6px}
+.rm-ok{display:none;font-size:14px;color:var(--g600);text-align:center;padding:10px 0}
+.rm-err{display:none;font-size:12px;color:#c0392b;margin-top:5px}
+
+/* quote block */
+.quote-block{display:block;background:var(--g100);border-left:3px solid var(--g300);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:12px 16px;margin-top:16px;font-size:14px;color:var(--black);line-height:1.6}
+.quote-src{display:block;font-size:12px;color:var(--g600);margin-top:6px;font-style:normal}
+
 /* infobox */
 .infobox{background:var(--g100);border:1px solid var(--g200);border-radius:var(--r-lg);padding:20px 24px;max-width:500px;margin:0 auto 24px;text-align:left}
 .infobox-lbl{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--g600);margin-bottom:14px}
@@ -235,6 +254,23 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
     <a class="dd-btn" id="dd-btn" href="#">Check starten →</a>
   </div>
 
+  <!-- Result mail -->
+  <div class="result-mail-sec" id="result-mail-sec" style="display:none">
+    <h3>Ergebnis per Mail erhalten</h3>
+    <p>Ich schicke dir dein Führungsprofil direkt in dein Postfach — kein Gespräch, kein Versprechen.</p>
+    <div id="rm-form-wrap">
+      <div class="rm-row">
+        <div class="fi"><input type="text" id="rm-name" placeholder="Dein Vorname" style="min-height:44px;width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font);font-size:14px;outline:none" required></div>
+        <div class="fi"><input type="email" id="rm-email" placeholder="Deine E-Mail" style="min-height:44px;width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font);font-size:14px;outline:none" required></div>
+      </div>
+      <input type="hidden" id="rm-type">
+      <button class="rm-submit" onclick="submitResultMail()">Ergebnis zusenden →</button>
+      <div class="rm-note">Kein Newsletter. Einmalig dein Profil — fertig.</div>
+      <div class="rm-err" id="rm-err">Etwas hat nicht geklappt. Schreib direkt an kompass@nordstern-leadership.de</div>
+    </div>
+    <div class="rm-ok" id="rm-ok">Ergebnis ist unterwegs. ✓</div>
+  </div>
+
   <!-- Share section -->
   <div class="share-sec" id="share-sec" style="display:none;max-width:640px;width:100%">
     <div class="share-q">Wen aus deinem Umfeld würde das gerade treffen?</div>
@@ -318,7 +354,7 @@ const Q = [
     {l:"D",t:"Weil ich etwas bewegen und Menschen wirklich weiterentwickeln wollte.",ex:"z.B. ich hatte eine klare Vorstellung, welche Art von Führungskraft ich sein möchte.",v:3}
   ]},
   { text:"Ein Mitarbeiter macht denselben Fehler zum zweiten Mal. Was geht dir als erstes durch den Kopf?", opts:[
-    {l:"A",t:"Irgendwo stimmt der Prozess nicht — das ist ein Systemfehler, kein Personenfehler.",ex:"z.B. ich prüfe die SOP, die Einweisung, das Übergabeprotokoll.",v:0},
+    {l:"A",t:"Irgendwo stimmt der Prozess nicht — das ist ein Systemfehler, kein Personenfehler.",ex:"z.B. ich prüfe die Arbeitsanweisung, die Einweisung, das Übergabeprotokoll.",v:0},
     {l:"B",t:"Das ist nicht akzeptabel — das muss klar angesprochen werden, sonst schadet das der Gruppe.",ex:"z.B. ich suche direkt das Gespräch und mache unmissverständlich klar, was erwartet wird.",v:1},
     {l:"C",t:"Ich frage mich, ob ich ihn gut genug eingearbeitet habe oder zu wenig unterstützt habe.",ex:"z.B. ich mache mir Gedanken, bevor ich das Gespräch suche.",v:2},
     {l:"D",t:"Ich nutze es als Anlass für ein echtes Gespräch: Was steckt dahinter? Was braucht er wirklich?",ex:"z.B. ich unterscheide zwischen Symptom und Ursache, bevor ich reagiere.",v:3}
@@ -366,7 +402,7 @@ const TYPES = [
     tagline:"Du führst über Kompetenz und Prozesse — und das mit echtem Können.",
     staerke:"Technische Tiefe, Systemdenken, Verlässlichkeit", hebel:"Fremdführung, Delegation, Beziehungsarbeit",
     risiko:"Führung als verlängerter Arm der Facharbeit", next:"Loslassen: Wirkung entsteht durch andere, nicht durch dich selbst",
-    msg:"Du bist ein Anker — das Team weiß, dass es sich auf dich verlassen kann. Gleichzeitig stelle ich fest, dass ein großer Teil deiner Energie noch in die Sache geht, nicht in die Menschen.\n\nDas Paradoxe: Je besser du fachlich bist, desto schwerer fällt der Schritt, andere wirklich führen zu lassen. Genau diese Lücke zwischen Fach- und Menschenführung ist der Schlüssel zu deiner nächsten Entwicklungsstufe.",
+    msg:"Du bist ein Anker — das Team weiß, dass es sich auf dich verlassen kann. Gleichzeitig stelle ich fest, dass ein großer Teil deiner Energie noch in die Sache geht, nicht in die Menschen.\n\nDas Paradoxe: Je besser du fachlich bist, desto schwerer fällt der Schritt, andere wirklich führen zu lassen. Genau diese Lücke zwischen Fach- und Menschenführung ist der Schlüssel zu deiner nächsten Entwicklungsstufe.\n\n<span class=\"quote-block\"><em>\"Bei Unsicherheit entsteht oft der Reflex, Dinge stärker steuern zu wollen. Das kann dazu führen, dass wir uns an Details festbeißen — und dadurch erst recht den Überblick verlieren.\"</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>",
     cta:"Du weißt, dass du mehr delegieren solltest — aber wie genau? Wie viel deiner Zeit ist wirklich Führung?",
     ctaTitle:"Führungszeit-Check", ctaUrl:"steuermann-test.html", ctaBtnLabel:"Führungszeit-Check starten →"
   },
@@ -374,7 +410,7 @@ const TYPES = [
     tagline:"Du lieferst — und du erwartest dasselbe von anderen.",
     staerke:"Ergebnisorientierung, Entscheidungsfreude, Klarheit", hebel:"Purpose jenseits des eigenen Aufstiegs, Followership",
     risiko:"Führung als Vehikel für persönliche Ziele", next:"Warum folgen dir Menschen — wegen dir oder wegen der Hierarchie?",
-    msg:"Du weißt, wo du hinwillst, und du ziehst die Anderen mit. Das ist eine echte Stärke — und gleichzeitig eine Einbahnstraße, wenn Menschen dir folgen, weil sie müssen, nicht weil sie wollen.\n\nDie entscheidende Frage: Wächst dein Team, wenn du nicht im Raum bist? Genau dort liegt dein nächster Durchbruch.",
+    msg:"Du weißt, wo du hinwillst, und du ziehst die Anderen mit. Das ist eine echte Stärke — und gleichzeitig eine Einbahnstraße, wenn Menschen dir folgen, weil sie müssen, nicht weil sie wollen.\n\nDie entscheidende Frage: Wächst dein Team, wenn du nicht im Raum bist? Genau dort liegt dein nächster Durchbruch.\n\n<span class=\"quote-block\"><em>\"Wenn ich handele, steckt das andere oft an.\"</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>",
     cta:"Du lieferst Ergebnisse — aber entsteht dabei Wirkung? Wie viel hängt wirklich an dir persönlich?",
     ctaTitle:"Wirkungscheck", ctaUrl:"antreiber-test.html", ctaBtnLabel:"Wirkungscheck starten →"
   },
@@ -382,7 +418,7 @@ const TYPES = [
     tagline:"Du hältst das Team zusammen — und zahlst dafür einen hohen persönlichen Preis.",
     staerke:"Empathie, Teamgefühl, soziale Wahrnehmung", hebel:"Klarheit, Entscheidungskraft, Konfliktfähigkeit",
     risiko:"Führung durch Zustimmung statt durch Orientierung", next:"Deine Fürsorge ist eine Stärke — sie braucht eine Richtung",
-    msg:"Du spürst, was das Team braucht, bevor andere es sehen. Das ist selten und wertvoll. Aber ich bemerke: Die Energie, die du in Harmonie investierst, kostet dich an den falschen Stellen.\n\nEchte Fürsorge bedeutet manchmal, unbequeme Wahrheiten auszusprechen. Genau dieser Schritt von Sympathie zu echter Autorität ist dein nächstes Level.",
+    msg:"Du spürst, was das Team braucht, bevor andere es sehen. Das ist selten und wertvoll. Aber ich bemerke: Die Energie, die du in Harmonie investierst, kostet dich an den falschen Stellen.\n\nEchte Fürsorge bedeutet manchmal, unbequeme Wahrheiten auszusprechen. Genau dieser Schritt von Sympathie zu echter Autorität ist dein nächstes Level.\n\n<span class=\"quote-block\"><em>\"Führungskräfte sollten immer wieder fragen: Was haben wir bereits geschafft? Worauf sind wir stolz? Dadurch entsteht gelebte Wertschätzung — und ein wirksamer Puffer gegen Stress.\"</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>",
     cta:"Du gibst viel — aber gibst du auch die richtigen Dinge? Wie sieht deine Energiebilanz wirklich aus?",
     ctaTitle:"Energiebilanz-Check", ctaUrl:"vermittler-test.html", ctaBtnLabel:"Energiebilanz-Check starten →"
   },
@@ -390,7 +426,7 @@ const TYPES = [
     tagline:"Du weißt, wo du hinwillst — dir fehlt noch die richtige Struktur für den Durchbruch.",
     staerke:"Selbstreflexion, Wachstumsbereitschaft, Purpose-Orientierung", hebel:"Konsequente Umsetzung, klare Entwicklungsstruktur",
     risiko:"Viel Bewusstsein, wenig Hebel — Frustration über die Lücke", next:"Du bist bereit. Jetzt braucht es Struktur und Begleitung, keine weiteren Erkenntnisse",
-    msg:"Du denkst schon an Orten, die viele Führungskräfte noch nie betreten haben. Gleichzeitig spüre ich: Die Lücke zwischen deinem Anspruch und deiner heutigen Realität ist manchmal frustrierend.\n\nDas Gute: Du bist genau an dem Punkt, wo echte Entwicklung passiert. Dir fehlen nicht mehr Erkenntnisse — dir fehlt Struktur, Begleitung und ein konkreter nächster Schritt.",
+    msg:"Du denkst schon an Orten, die viele Führungskräfte noch nie betreten haben. Gleichzeitig spüre ich: Die Lücke zwischen deinem Anspruch und deiner heutigen Realität ist manchmal frustrierend.\n\nDas Gute: Du bist genau an dem Punkt, wo echte Entwicklung passiert. Dir fehlen nicht mehr Erkenntnisse — dir fehlt Struktur, Begleitung und ein konkreter nächster Schritt.\n\n<span class=\"quote-block\"><em>\"Was ist der allerkleinste konkrete Schritt, den ich jetzt gehen kann? Dadurch registriert unser Körper: Ich bin handlungsfähig — auch wenn ich nicht sofort die ganze Welt retten kann.\"</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>",
     cta:"Du hast Klarheit über dein Wollen — aber wie klar ist dein konkreter nächster Schritt?",
     ctaTitle:"Klarheits-Check", ctaUrl:"orientierungssucher-test.html", ctaBtnLabel:"Klarheits-Check starten →"
   }
@@ -449,6 +485,8 @@ function showResult(){
     +'<p class="cta">Du bist intelligent, du reflektierst — und du weißt, dass dir für den vollen Durchbruch noch das ein oder andere Werkzeug fehlt. <strong>Hast du Bock auf die gemeinsame Reise?</strong></p>';
 
   // Deep dive
+  document.getElementById('rm-type').value=t.key;
+  const rms=document.getElementById('result-mail-sec'); rms.style.display='block'; rms.classList.add('fi');
   const dd=document.getElementById('deep-div'); dd.style.display='block'; dd.classList.add('fi');
   document.getElementById('dd-title').textContent=t.ctaTitle;
   document.getElementById('dd-sub').textContent=t.cta;
@@ -487,11 +525,39 @@ async function submitForm(e){
   }catch{btn.textContent='Gespräch anfragen';btn.disabled=false;errEl.style.display='block';}
 }
 
+async function submitResultMail() {
+  const name = document.getElementById('rm-name').value.trim();
+  const email = document.getElementById('rm-email').value.trim();
+  const typ = document.getElementById('rm-type').value;
+  const errEl = document.getElementById('rm-err');
+  errEl.style.display = 'none';
+  if (!name || !email) return;
+  const btn = document.querySelector('.rm-submit');
+  btn.textContent = 'Wird gesendet…'; btn.disabled = true;
+  if (FORMSPREE_ID === 'YOUR_FORM_ID') {
+    document.getElementById('rm-form-wrap').style.display = 'none';
+    document.getElementById('rm-ok').style.display = 'block'; return;
+  }
+  try {
+    const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({name, email, typ, type: 'result_mail', ref: _refId, depth: _depth, _replyto: email})
+    });
+    if (res.ok) {
+      document.getElementById('rm-form-wrap').style.display = 'none';
+      document.getElementById('rm-ok').style.display = 'block';
+    } else throw new Error();
+  } catch {
+    btn.textContent = 'Ergebnis zusenden →'; btn.disabled = false;
+    errEl.style.display = 'block';
+  }
+}
 function restart(){
   cur=0;answers=[];
   document.getElementById('quiz-screen').style.display='block';
   document.getElementById('result-screen').style.display='none';
-  ['deep-div','share-sec','email-sec'].forEach(id=>{document.getElementById(id).style.display='none';});
+  ['deep-div','result-mail-sec','share-sec','email-sec'].forEach(id=>{document.getElementById(id).style.display='none';});
   document.getElementById('email-form-wrap').style.display='block';
   document.getElementById('form-ok').style.display='none';
   renderQ();
