@@ -313,7 +313,7 @@ function calcResult(){
   showResult(score,{s_cost,s_prev,s_mood,s_give,s_meeting,s_delay,s_expect,s_no,s_teams});
 }
 
-function showResult(score,d){
+function showResult(score,d){_trackResult('Energiebilanz-Check', score, 'vermittler');
   document.getElementById('e-score').value=`Energiequotient: ${score}%`;
   document.getElementById('e-ref').value=_refId;document.getElementById('e-depth').value=String(_depth);
   const rs=document.getElementById('result-sec');rs.style.display='block';rs.classList.add('ani');rs.scrollIntoView({behavior:'smooth',block:'start'});
@@ -350,6 +350,15 @@ async function submitEmail(e){
   catch{btn.textContent='Gespräch anfragen';btn.disabled=false;document.getElementById('f-err').style.display='block';}
 }
 function restartTest(){Object.keys(rState).forEach(k=>delete rState[k]);document.querySelectorAll('.r-opt').forEach(o=>o.classList.remove('sel'));[{id:'sl-cost',v:70},{id:'sl-prev',v:50},{id:'sl-mood',v:60},{id:'sl-give',v:75}].forEach(x=>{const el=document.getElementById(x.id);el.value=x.v;el.dispatchEvent(new Event('input'));});document.getElementById('result-sec').style.display='none';['share-sec','email-sec'].forEach(id=>{document.getElementById(id).style.display='none';});document.getElementById('test-card').scrollIntoView({behavior:'smooth'});}
+
+function _trackResult(typ, score, page) {
+  if (FORMSPREE_ID === 'YOUR_FORM_ID') return;
+  fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    body: JSON.stringify({type:'result_view', page:page, typ:typ, score:score||'', ref:_refId, depth:_depth})
+  }).catch(()=>{});
+}
 </script>
 </body>
 </html>

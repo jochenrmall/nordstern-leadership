@@ -392,7 +392,7 @@ function goBack(){ if(cur>0){cur--;renderQ();} }
 
 function showResult(){
   const sc=[0,0,0,0]; answers.forEach((a,qi)=>{ sc[Q[qi].opts[a].v]++; });
-  const mi=sc.indexOf(Math.max(...sc)); const t=TYPES[mi];
+  const mi=sc.indexOf(Math.max(...sc)); const t=TYPES[mi]; _trackResult(t.key, '', 'index');
   document.getElementById('prog').style.width='100%';
   document.getElementById('quiz-screen').style.display='none';
   const rs=document.getElementById('result-screen'); rs.style.display='block'; rs.classList.add('fi');
@@ -452,6 +452,15 @@ function restart(){
   document.getElementById('email-form-wrap').style.display='block';
   document.getElementById('form-ok').style.display='none';
   renderQ();
+}
+
+function _trackResult(typ, score, page) {
+  if (FORMSPREE_ID === 'YOUR_FORM_ID') return;
+  fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    body: JSON.stringify({type:'result_view', page:page, typ:typ, score:score||'', ref:_refId, depth:_depth})
+  }).catch(()=>{});
 }
 </script>
 </body>
