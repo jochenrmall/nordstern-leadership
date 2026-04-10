@@ -109,6 +109,16 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .f-ok-t{font-size:17px;font-weight:500;margin-bottom:4px}
 .f-ok-s{font-size:13px;color:var(--g600)}
 .restart-lnk{background:none;border:none;font-size:13px;color:var(--g700);cursor:pointer;text-decoration:underline;font-family:var(--font);margin-top:14px;display:block;text-align:center;width:100%}
+
+/* infobox */
+.infobox{background:var(--g100);border:1px solid var(--g200);border-radius:var(--r-lg);padding:20px 24px;max-width:500px;margin:0 auto 24px;text-align:left}
+.infobox-lbl{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--g600);margin-bottom:14px}
+.infobox-items{display:flex;flex-direction:column;gap:12px}
+.infobox-item{display:flex;align-items:flex-start;gap:11px}
+.infobox-icon{width:26px;height:26px;border-radius:50%;background:var(--white);border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;color:var(--black)}
+.infobox-title{font-size:13px;font-weight:500;color:var(--black);margin:0 0 2px 0}
+.infobox-sub{font-size:12px;color:var(--g600);margin:0;line-height:1.5}
+
 .footer{max-width:720px;width:100%;padding:40px 0 0;text-align:center;font-size:12px;color:var(--g700);border-top:1px solid var(--border);margin-top:40px}
 .footer a{color:var(--g700);text-decoration:underline}
 @media(max-width:480px){.form-row{flex-direction:column}}
@@ -141,7 +151,24 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
       <span><div class="dot"></div>8 Fragen</span>
       <span><div class="dot"></div>Sofort-Auswertung</span>
     </div>
-    <button onclick="startTest()" style="display:block;margin:28px auto 0;padding:14px 38px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer;min-height:48px;transition:background .18s" onmouseover="this.style.background='#333'" onmouseout="this.style.background='var(--black)'">Test starten</button>
+    <div class="infobox">
+      <p class="infobox-lbl">Was du in 8 Minuten erfährst</p>
+      <div class="infobox-items">
+        <div class="infobox-item">
+          <div class="infobox-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><line x1="7" y1="4" x2="7" y2="7.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="7" cy="9.5" r="0.7" fill="currentColor"/></svg></div>
+          <div><p class="infobox-title">Dein persönlicher Score</p><p class="infobox-sub">Dein Wirkungsquotient — wie viel Wirkung du wirklich erzeugst.</p></div>
+        </div>
+        <div class="infobox-item">
+          <div class="infobox-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 7 L6.5 9 L9.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><p class="infobox-title">Dein blinder Fleck</p><p class="infobox-sub">Was andere sehen — und du selbst kaum bemerkst.</p></div>
+        </div>
+        <div class="infobox-item">
+          <div class="infobox-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2 L7 7 L10 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/></svg></div>
+          <div><p class="infobox-title">Drei konkrete Hebel</p><p class="infobox-sub">Zugeschnitten auf dein Ergebnis, nicht auf ein allgemeines Antreiber-Profil.</p></div>
+        </div>
+      </div>
+    </div>
+    <button onclick="startTest()" style="display:block;margin:0 auto 0;padding:14px 38px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer;min-height:48px;transition:background .18s" onmouseover="this.style.background='#333'" onmouseout="this.style.background='var(--black)'">Test starten</button>
   </header>
 
   <div class="card" id="test-card" style="display:none">
@@ -171,7 +198,7 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
     <div class="r-block">
       <div class="sec-sub">Du bist eine Woche komplett nicht erreichbar — MS Teams stumm, kein Telefon. Was passiert?</div>
       <div class="r-opts" id="r-absent">
-        <div class="r-opt" onclick="sel('r-absent',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Das Team kämpft. Wichtige Entscheidungen warten auf meine Rückkehr.</div></div>
+        <div class="r-opt" onclick="sel('r-absent',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Das Team stagniert bei unbekannten Problemen — Entscheidungen werden vertagt.</div></div>
         <div class="r-opt" onclick="sel('r-absent',this,33)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Die meisten Routinedinge laufen, aber Unbekanntes wird vertagt.</div></div>
         <div class="r-opt" onclick="sel('r-absent',this,66)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Das Team läuft. Nur wirklich strategische Dinge warten auf mich.</div></div>
         <div class="r-opt" onclick="sel('r-absent',this,100)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich komme zurück und finde ein gut dokumentiertes Protokoll statt einen Rückstand.</div></div>
@@ -203,7 +230,7 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
     <div class="r-block">
       <div class="sec-sub">Dein Team löst ein Problem — aber anders als du es gemacht hättest. Das Ergebnis ist gut. Deine Reaktion?</div>
       <div class="r-opts" id="r-diff">
-        <div class="r-opt" onclick="sel('r-diff',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich erkläre trotzdem, wie ich es gemacht hätte. Beste Lösung muss gelehrt werden.</div></div>
+        <div class="r-opt" onclick="sel('r-diff',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich zeige, wie ich es angegangen wäre — der eigene Weg interessiert mich weniger.</div></div>
         <div class="r-opt" onclick="sel('r-diff',this,33)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich lasse es durchgehen, aber es stört mich ein wenig.</div></div>
         <div class="r-opt" onclick="sel('r-diff',this,66)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich anerkenne es — und frage nach dem Gedankengang dahinter.</div></div>
         <div class="r-opt" onclick="sel('r-diff',this,100)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich freue mich. Andere Wege zum Ziel bedeuten Wachstum im Team.</div></div>
@@ -270,8 +297,8 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
   <!-- Email -->
   <div class="email-sec" id="email-sec" style="display:none">
     <div id="ef-wrap">
-      <h3>Nächster Schritt: Lass uns reden.</h3>
-      <p>Du weißt jetzt, wo du stehst. Ich zeige dir, wie der Weg von hier konkret aussieht.</p>
+      <h3 id="email-h3">Nächster Schritt: Lass uns reden.</h3>
+      <p id="email-p">Ich melde mich persönlich — mit einem konkreten nächsten Schritt, der zu deinem Ergebnis passt.</p>
       <form onsubmit="submitEmail(event)">
         <div class="form-row"><div class="fi"><input type="text" id="e-name" placeholder="Dein Vorname" required></div><div class="fi"><input type="email" id="e-email" placeholder="Deine E-Mail" required></div></div>
         <input type="hidden" id="e-score"><input type="hidden" id="e-ref"><input type="hidden" id="e-depth">
@@ -348,6 +375,9 @@ function showResult(score,d){_trackResult('Wirkungscheck', score, 'antreiber');
   const matched=hebelAll.filter(h=>h.c(d)).slice(0,3);
   if(matched.length<3)hebelAll.filter(h=>!h.c(d)).forEach(h=>{if(matched.length<3)matched.push(h);});
   document.getElementById('r-hebel').innerHTML=matched.map((h,i)=>`<div class="h-card"><div class="h-num">${i+1}</div><div class="h-ct"><div class="h-ct-t">${h.t}</div><div class="h-ct-d">${h.d}</div></div></div>`).join('');
+
+  document.getElementById('email-h3').textContent = 'Du lieferst — aber wächst dein Team auch ohne dich?';
+  document.getElementById('email-p').textContent = 'Ich gebe dir eine ehrliche Einschätzung zu genau dem, was du mir beschrieben hast.';
   document.getElementById('share-sec').style.display='block';document.getElementById('email-sec').style.display='block';
 }
 

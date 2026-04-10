@@ -122,6 +122,16 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
 .form-ok-t{font-size:17px;font-weight:500;margin-bottom:5px}
 .form-ok-s{font-size:13px;color:var(--g600)}
 .restart{background:none;border:none;font-size:13px;color:var(--g700);cursor:pointer;text-decoration:underline;font-family:var(--font);margin-top:16px;display:block;text-align:center;width:100%}
+
+/* infobox */
+.infobox{background:var(--g100);border:1px solid var(--g200);border-radius:var(--r-lg);padding:20px 24px;max-width:500px;margin:0 auto 24px;text-align:left}
+.infobox-lbl{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--g600);margin-bottom:14px}
+.infobox-items{display:flex;flex-direction:column;gap:12px}
+.infobox-item{display:flex;align-items:flex-start;gap:11px}
+.infobox-icon{width:26px;height:26px;border-radius:50%;background:var(--white);border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;color:var(--black)}
+.infobox-title{font-size:13px;font-weight:500;color:var(--black);margin:0 0 2px 0}
+.infobox-sub{font-size:12px;color:var(--g600);margin:0;line-height:1.5}
+
 /* footer */
 .footer{max-width:720px;width:100%;padding:40px 0 0;text-align:center;font-size:12px;color:var(--g700);border-top:1px solid var(--border);margin-top:40px}
 .footer a{color:var(--g700);text-decoration:underline}
@@ -167,7 +177,30 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
       <span><div class="dot"></div>8 Fragen</span>
       <span><div class="dot"></div>ca. 4 Minuten</span>
     </div>
-    <button onclick="startQuiz()" style="display:block;margin:32px auto 0;padding:15px 40px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:16px;font-weight:500;cursor:pointer;min-height:48px;transition:background .18s" onmouseover="this.style.background='#333'" onmouseout="this.style.background='var(--black)'">Jetzt starten</button>
+    <div class="infobox" id="infobox">
+      <p class="infobox-lbl">Was du in 4 Minuten erfährst</p>
+      <div class="infobox-items">
+        <div class="infobox-item">
+          <div class="infobox-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><line x1="7" y1="4" x2="7" y2="7.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="7" cy="9.5" r="0.7" fill="currentColor"/></svg>
+          </div>
+          <div><p class="infobox-title">Dein Führungstyp</p><p class="infobox-sub">Welches Muster dich antreibt — und wo es dich bremst.</p></div>
+        </div>
+        <div class="infobox-item">
+          <div class="infobox-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 7 L6.5 9 L9.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div><p class="infobox-title">Dein blinder Fleck</p><p class="infobox-sub">Was andere sehen — und du selbst kaum bemerkst.</p></div>
+        </div>
+        <div class="infobox-item">
+          <div class="infobox-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2 L7 7 L10 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/></svg>
+          </div>
+          <div><p class="infobox-title">Dein konkreter nächster Schritt</p><p class="infobox-sub">Nicht allgemein — zugeschnitten auf dein Ergebnis.</p></div>
+        </div>
+      </div>
+    </div>
+    <button onclick="startQuiz()" style="display:block;margin:0 auto 0;padding:15px 40px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:16px;font-weight:500;cursor:pointer;min-height:48px;transition:background .18s" onmouseover="this.style.background='#333'" onmouseout="this.style.background='var(--black)'">Jetzt starten</button>
   </header>
 
   <div class="card" id="quiz-card" style="display:none">
@@ -213,8 +246,8 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
   <!-- Email capture -->
   <div class="email-sec" id="email-sec" style="display:none">
     <div id="email-form-wrap">
-      <h3>Lass uns ins Gespräch kommen.</h3>
-      <p>Ich melde mich persönlich bei dir — mit einem konkreten nächsten Schritt, der zu deinem Führungstyp passt.</p>
+      <h3 id="email-h3">Lass uns ins Gespräch kommen.</h3>
+      <p id="email-p">Ich melde mich persönlich bei dir — mit einem konkreten nächsten Schritt, der zu deinem Ergebnis passt.</p>
       <form onsubmit="submitForm(event)">
         <div class="form-row">
           <div class="fi"><input type="text" id="e-name" placeholder="Dein Vorname" required autocomplete="given-name"></div>
@@ -281,7 +314,7 @@ const Q = [
   { text:"Warum bist du eigentlich Führungskraft geworden?", opts:[
     {l:"A",t:"Weil ich fachlich der Stärkste in meinem Bereich war — und das wurde anerkannt.",ex:"z.B. bester Techniker, Prozessexperte, niemand kennt das System so gut wie ich.",v:0},
     {l:"B",t:"Weil ich wusste, dass ich mehr Wirkung haben kann als mein Vorgänger.",ex:"z.B. ich hatte klare Ideen, wie man das Team auf ein höheres Level bringt.",v:1},
-    {l:"C",t:"Weil das Team und mein Chef es mir zugetraut haben — ich habe nicht Nein gesagt.",ex:"z.B. ich war immer der Ansprechpartner, der inoffizielle Koordinator.",v:2},
+    {l:"C",t:"Weil das Team und mein Chef es mir zugetraut haben — ich habe nicht Nein gesagt.",ex:"z.B. ich war immer die erste Anlaufstelle, die inoffizielle Koordinationsperson.",v:2},
     {l:"D",t:"Weil ich etwas bewegen und Menschen wirklich weiterentwickeln wollte.",ex:"z.B. ich hatte eine klare Vorstellung, welche Art von Führungskraft ich sein möchte.",v:3}
   ]},
   { text:"Ein Mitarbeiter macht denselben Fehler zum zweiten Mal. Was geht dir als erstes durch den Kopf?", opts:[
@@ -291,15 +324,15 @@ const Q = [
     {l:"D",t:"Ich nutze es als Anlass für ein echtes Gespräch: Was steckt dahinter? Was braucht er wirklich?",ex:"z.B. ich unterscheide zwischen Symptom und Ursache, bevor ich reagiere.",v:3}
   ]},
   { text:"Dein Mitarbeiter kommt mit einer Frage, die er eigentlich selbst beantworten könnte. Du...", opts:[
-    {l:"A",t:"...entscheide direkt und klar. Das spart Zeit, und ich kenne die richtige Antwort.",ex:"z.B. ich will keine langen Diskussionen — ich gebe die Lösung und wir machen weiter.",v:0},
-    {l:"B",t:"...entscheide, aber es ärgert mich — ich erwarte, dass mein Team eigenständiger arbeitet.",ex:"z.B. ich beantworte es, sage aber klar: nächstes Mal selbst lösen.",v:1},
-    {l:"C",t:"...beantworte es ausführlich — ich möchte, dass er wirklich versteht.",ex:"z.B. ich nehme mir Zeit, auch wenn es eigentlich schnell gehen sollte.",v:2},
+    {l:"A",t:"...entscheide ich direkt und klar. Das spart Zeit, und ich kenne die richtige Antwort.",ex:"z.B. ich will keine langen Diskussionen — ich gebe die Lösung und wir machen weiter.",v:0},
+    {l:"B",t:"...entscheide ich — aber es ärgert mich — ich erwarte, dass mein Team eigenständiger arbeitet.",ex:"z.B. ich beantworte es, sage aber klar: nächstes Mal selbst lösen.",v:1},
+    {l:"C",t:"...beantworte es ausführlich — ich möchte, dass die Person wirklich versteht.",ex:"z.B. ich nehme mir Zeit, auch wenn es eigentlich schnell gehen sollte.",v:2},
     {l:"D",t:"...gebe die Frage zurück: Was denkst du selbst? Was spricht für welche Option?",ex:"z.B. ich sehe es als Chance, ihn zu befähigen, statt die Abhängigkeit zu verstärken.",v:3}
   ]},
   { text:"Dein Team verfehlt ein wichtiges Quartalsziel. Was beschäftigt dich am meisten?", opts:[
     {l:"A",t:"Welcher Prozess oder welche Kennzahl hat versagt? Wo war der Engpass?",ex:"z.B. ich will den Root Cause verstehen, bevor ich jemanden zur Rechenschaft ziehe.",v:0},
     {l:"B",t:"Wer hat nicht geliefert — und wie stelle ich sicher, dass das nicht wieder passiert?",ex:"z.B. ich halte das Ergebnis für nicht verhandelbar und suche den Verantwortlichen.",v:1},
-    {l:"C",t:"Hoffentlich sieht mein Chef das nicht als mein Versagen. Ich muss das richtig erklären.",ex:"z.B. ich mache mir mehr Sorgen um mein Image als um den Lerneffekt.",v:2},
+    {l:"C",t:"Ich mache mir Gedanken, wie das nach oben wahrgenommen wird — und wie ich es richtig kommuniziere.",ex:"z.B. die Außenwirkung beschäftigt mich genauso wie das Ergebnis selbst.",v:2},
     {l:"D",t:"Was habe ich als Führungskraft nicht gesehen, nicht ermöglicht oder zu spät korrigiert?",ex:"z.B. ich nehme zuerst Ownership, bevor ich auf andere schaue.",v:3}
   ]},
   { text:"Was unterscheidet dich am meisten von deinem Team?", opts:[
@@ -333,7 +366,7 @@ const TYPES = [
     tagline:"Du führst über Kompetenz und Prozesse — und das mit echtem Können.",
     staerke:"Technische Tiefe, Systemdenken, Verlässlichkeit", hebel:"Fremdführung, Delegation, Beziehungsarbeit",
     risiko:"Führung als verlängerter Arm der Facharbeit", next:"Loslassen: Wirkung entsteht durch andere, nicht durch dich selbst",
-    msg:"Du bist der Anker — das Team weiß, dass es sich auf dich verlassen kann. Gleichzeitig stelle ich fest, dass ein großer Teil deiner Energie noch in die Sache geht, nicht in die Menschen.\n\nDas Paradoxe: Je besser du fachlich bist, desto schwerer fällt der Schritt, andere wirklich führen zu lassen. Genau diese Lücke zwischen Fach- und Menschenführung ist der Schlüssel zu deiner nächsten Entwicklungsstufe.",
+    msg:"Du bist ein Anker — das Team weiß, dass es sich auf dich verlassen kann. Gleichzeitig stelle ich fest, dass ein großer Teil deiner Energie noch in die Sache geht, nicht in die Menschen.\n\nDas Paradoxe: Je besser du fachlich bist, desto schwerer fällt der Schritt, andere wirklich führen zu lassen. Genau diese Lücke zwischen Fach- und Menschenführung ist der Schlüssel zu deiner nächsten Entwicklungsstufe.",
     cta:"Du weißt, dass du mehr delegieren solltest — aber wie genau? Wie viel deiner Zeit ist wirklich Führung?",
     ctaTitle:"Führungszeit-Check", ctaUrl:"steuermann-test.html", ctaBtnLabel:"Führungszeit-Check starten →"
   },
@@ -429,6 +462,16 @@ function showResult(){
   document.getElementById('e-type').value=t.key;
   document.getElementById('e-ref').value=_refId;
   document.getElementById('e-depth').value=String(_depth);
+
+  // Type-specific email form text
+  const emailTexts = {
+    'Der Steuermann': {h:'Du weißt, dass du mehr delegieren solltest.', p:'Ich zeige dir einen konkreten ersten Schritt — für deine Situation, nicht für einen generischen Steuermann.'},
+    'Der Antreiber': {h:'Du lieferst — aber wächst dein Team auch ohne dich?', p:'Ich gebe dir eine ehrliche Einschätzung zu genau dem, was du mir beschrieben hast.'},
+    'Der Vermittler': {h:'Du gibst viel. Ich sage dir konkret, wo deine Energie verloren geht.', p:'Basierend auf deinen Antworten — nicht auf einem allgemeinen Vermittler-Profil.'},
+    'Der Orientierungssucher': {h:'Du weißt, was du willst.', p:'Ich helfe dir, den einen nächsten Schritt zu finden — nicht zehn.'}
+  };
+  const et = emailTexts[t.key];
+  if(et){ document.getElementById('email-h3').textContent=et.h; document.getElementById('email-p').textContent=et.p; }
   const es=document.getElementById('email-sec'); es.style.display='block'; es.classList.add('fi');
 }
 
