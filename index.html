@@ -214,7 +214,7 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
           <div class="infobox-icon">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2 L7 7 L10 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/></svg>
           </div>
-          <div><p class="infobox-title">Dein konkreter nächster Schritt</p><p class="infobox-sub">Nicht allgemein — zugeschnitten auf dein Ergebnis.</p></div>
+          <div><p class="infobox-title">Dein konkreter nächster Schritt</p><p class="infobox-sub">Kein generisches Ergebnis. Was konkret für dich gilt.</p></div>
         </div>
       </div>
     </div>
@@ -265,7 +265,7 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
       <input type="hidden" id="rm-type">
       <button class="rm-submit" onclick="submitResultMail()">Ergebnis zusenden →</button>
       <div class="rm-note">Kein Newsletter. Einmalig dein Profil — fertig.</div>
-      <div class="rm-err" id="rm-err">Etwas hat nicht geklappt. Schreib direkt an kompass@nordstern-leadership.de</div>
+      <div class="rm-err" id="rm-err">Etwas hat nicht geklappt. Schreib direkt an kompass&#64;nordstern&#45;leadership&#46;de</div>
     </div>
     <div class="rm-ok" id="rm-ok">Ergebnis ist unterwegs. ✓</div>
   </div>
@@ -281,8 +281,8 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
   <!-- Email capture -->
   <div class="email-sec" id="email-sec" style="display:none">
     <div id="email-form-wrap">
-      <h3 id="email-h3">Lass uns ins Gespräch kommen.</h3>
-      <p id="email-p">Ich melde mich persönlich bei dir — mit einem konkreten nächsten Schritt, der zu deinem Ergebnis passt.</p>
+      <h3 id="email-h3">Wenn du willst, reden wir.</h3>
+      <p id="email-p">Ich melde mich. Direkt. Ohne Umwege.</p>
       <form onsubmit="submitForm(event)">
         <div class="form-row">
           <div class="fi"><input type="text" id="e-name" placeholder="Dein Vorname" required autocomplete="given-name"></div>
@@ -293,7 +293,7 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
         <input type="hidden" id="e-depth">
         <button type="submit" class="form-submit" id="e-btn">Gespräch anfragen</button>
         <div class="form-note">Kein Newsletter. Jochen antwortet persönlich innerhalb von 48h.</div>
-        <div class="form-err" id="e-err">Etwas hat nicht geklappt. Schreib direkt an kompass@nordstern-leadership.de</div>
+        <div class="form-err" id="e-err">Etwas hat nicht geklappt. Schreib direkt an kompass&#64;nordstern&#45;leadership&#46;de</div>
       </form>
     </div>
     <div class="form-ok" id="form-ok">
@@ -303,7 +303,7 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
   </div>
 
   <footer class="footer">
-    <p>© 2025 NORDSTERN Leadership · kompass@nordstern-leadership.de</p>
+    <p>© 2025 NORDSTERN Leadership · kompass&#64;nordstern&#45;leadership&#46;de</p>
     
   </footer>
 </div>
@@ -398,35 +398,35 @@ const Q = [
 
 const TYPES = [
   { key:"Der Steuermann", badge:"Führungstyp 1 · Fachführung",
-    tagline:"Du führst über Kompetenz und Prozesse — und das mit echtem Können.",
-    staerke:"Technische Tiefe, Systemdenken, Verlässlichkeit", hebel:"Fremdführung, Delegation, Beziehungsarbeit",
-    risiko:"Führung als verlängerter Arm der Facharbeit", next:"Loslassen: Wirkung entsteht durch andere, nicht durch dich selbst",
-    msg:"Du bist ein Anker — das Team weiß, dass es sich auf dich verlassen kann. Gleichzeitig stelle ich fest, dass ein großer Teil deiner Energie noch in die Sache geht, nicht in die Menschen.\n\nDas Paradoxe: Je besser du fachlich bist, desto schwerer fällt der Schritt, andere wirklich führen zu lassen. Genau diese Lücke zwischen Fach- und Menschenführung ist der Schlüssel zu deiner nächsten Entwicklungsstufe.\n\n<span class=\"quote-block\"><em>\"Bei Unsicherheit entsteht oft der Reflex, Dinge stärker steuern zu wollen. Das kann dazu führen, dass wir uns an Details festbeißen — und dadurch erst recht den Überblick verlieren.\"</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>",
-    cta:"Du weißt, dass du mehr delegieren solltest — aber wie genau? Wie viel deiner Zeit ist wirklich Führung?",
+    tagline:"Dein Team läuft, wenn du da bist. Die Frage ist: was passiert, wenn du nicht da bist?",
+    staerke:"Tiefe Fachkenntnis, Verlässlichkeit, Überblick", hebel:"Aufgaben wirklich übergeben, andere entscheiden lassen",
+    risiko:"Alle wollen durch dich — du wirst zum Engpass", next:"Was würde passieren, wenn du eine Woche offline bist?",
+    msg:"Dein Team läuft, wenn du da bist. Ich kenne diesen Typ — ich war selbst einer. Die Fachkompetenz ist real. Aber sie wird irgendwann zum Engpass. Nicht weil du schlecht führst. Sondern weil du so gut bist, dass alle durch dich wollen.\n\nDas verändert sich nicht von allein. Irgendwann musst du aufhören, die beste Fachkraft im Raum zu sein — und anfangen, die Person zu sein, die andere besser macht.\n\n<span class=\"quote-block\"><em>\"Bei Unsicherheit entsteht oft der Reflex, Dinge stärker steuern zu wollen. Das kann dazu führen, dass wir uns an Details festbeißen — und dadurch erst recht den Überblick verlieren.\"</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>",
+    cta:"Wie viel deiner Zeit ist wirklich Führung — und wie viel davon könntest du morgen abgeben?",
     ctaTitle:"Führungszeit-Check", ctaUrl:"steuermann-test.html", ctaBtnLabel:"Führungszeit-Check starten →"
   },
   { key:"Der Antreiber", badge:"Führungstyp 2 · Ergebnisführung",
-    tagline:"Du lieferst — und du erwartest dasselbe von anderen.",
-    staerke:"Ergebnisorientierung, Entscheidungsfreude, Klarheit", hebel:"Purpose jenseits des eigenen Aufstiegs, Followership",
-    risiko:"Führung als Vehikel für persönliche Ziele", next:"Warum folgen dir Menschen — wegen dir oder wegen der Hierarchie?",
-    msg:"Du weißt, wo du hinwillst, und du ziehst die Anderen mit. Das ist eine echte Stärke — und gleichzeitig eine Einbahnstraße, wenn Menschen dir folgen, weil sie müssen, nicht weil sie wollen.\n\nDie entscheidende Frage: Wächst dein Team, wenn du nicht im Raum bist? Genau dort liegt dein nächster Durchbruch.\n\n<span class=\"quote-block\"><em>\"Wenn ich handele, steckt das andere oft an.\"</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>",
-    cta:"Du lieferst Ergebnisse — aber entsteht dabei Wirkung? Wie viel hängt wirklich an dir persönlich?",
+    tagline:"Du lieferst. Das ist keine Frage. Aber lieferst du auch, wenn du mal nicht da bist?",
+    staerke:"Klare Ansagen, hohes Tempo, Ergebniswille", hebel:"Anderen Raum lassen, Wachstum wichtiger als Kontrolle",
+    risiko:"Team funktioniert — aber wächst nicht", next:"Wächst dein Team auch, wenn du nicht im Raum bist?",
+    msg:"Du lieferst. Das ist keine Frage. Aber ich kenne diesen Typ — und ich weiß, wo er sich selbst im Weg steht.\n\nIrgendwann merkst du: Das Team funktioniert, wenn du drückst. Aber wächst es auch, wenn du nicht im Raum bist? Genau das ist der Unterschied zwischen einem Hochleister und jemandem, der echte Wirkung erzeugt. Das eine macht dich unentbehrlich. Das andere macht dich frei.\n\n<span class=\"quote-block\"><em>\"Wenn ich handele, steckt das andere oft an.\"</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>",
+    cta:"Wächst dein Team, wenn du nicht im Raum bist? Ehrliche Antwort: 8 Minuten, drei Hebel.",
     ctaTitle:"Wirkungscheck", ctaUrl:"antreiber-test.html", ctaBtnLabel:"Wirkungscheck starten →"
   },
   { key:"Der Vermittler", badge:"Führungstyp 3 · Beziehungsführung",
-    tagline:"Du hältst das Team zusammen — und zahlst dafür einen hohen persönlichen Preis.",
-    staerke:"Empathie, Teamgefühl, soziale Wahrnehmung", hebel:"Klarheit, Entscheidungskraft, Konfliktfähigkeit",
-    risiko:"Führung durch Zustimmung statt durch Orientierung", next:"Deine Fürsorge ist eine Stärke — sie braucht eine Richtung",
-    msg:"Du spürst, was das Team braucht, bevor andere es sehen. Das ist selten und wertvoll. Aber ich bemerke: Die Energie, die du in Harmonie investierst, kostet dich an den falschen Stellen.\n\nEchte Fürsorge bedeutet manchmal, unbequeme Wahrheiten auszusprechen. Genau dieser Schritt von Sympathie zu echter Autorität ist dein nächstes Level.\n\n<span class=\"quote-block\"><em>\"Führungskräfte sollten immer wieder fragen: Was haben wir bereits geschafft? Worauf sind wir stolz? Dadurch entsteht gelebte Wertschätzung — und ein wirksamer Puffer gegen Stress.\"</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>",
-    cta:"Du gibst viel — aber gibst du auch die richtigen Dinge? Wie sieht deine Energiebilanz wirklich aus?",
+    tagline:"Du hältst einiges zusammen, was ohne dich auseinanderfallen würde. Und du weißt, was das kostet.",
+    staerke:"Gespür für Menschen, Teamzusammenhalt, Zuverlässigkeit", hebel:"Klare Erwartungen aussprechen, auch unbequeme Wahrheiten",
+    risiko:"Harmonie vor Klarheit — niemand weiß, wo du wirklich stehst", next:"Wissen die Menschen um dich, was du wirklich erwartest?",
+    msg:"Du hältst einiges zusammen, was ohne dich auseinanderfallen würde. Und du weißt, was das kostet.\n\nIch habe das oft gesehen. Die Menschen mögen dich. Aber mögen sie dich wegen dir — oder wegen dem, was du für sie tust? Das ist keine Provokation. Das ist die wichtigste Frage, die du dir stellen kannst. Weil die Antwort entscheidet, ob du führst — oder nur managst.\n\n<span class=\"quote-block\"><em>\"Führungskräfte sollten immer wieder fragen: Was haben wir bereits geschafft? Worauf sind wir stolz? Dadurch entsteht gelebte Wertschätzung — und ein wirksamer Puffer gegen Stress.\"</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>",
+    cta:"Was kostet dich am meisten — und wofür kriegst du am wenigsten zurück?",
     ctaTitle:"Energiebilanz-Check", ctaUrl:"vermittler-test.html", ctaBtnLabel:"Energiebilanz-Check starten →"
   },
   { key:"Der Orientierungssucher", badge:"Führungstyp 4 · Wachstumsführung",
-    tagline:"Du weißt, wo du hinwillst — dir fehlt noch die richtige Struktur für den Durchbruch.",
-    staerke:"Selbstreflexion, Wachstumsbereitschaft, Purpose-Orientierung", hebel:"Konsequente Umsetzung, klare Entwicklungsstruktur",
-    risiko:"Viel Bewusstsein, wenig Hebel — Frustration über die Lücke", next:"Du bist bereit. Jetzt braucht es Struktur und Begleitung, keine weiteren Erkenntnisse",
-    msg:"Du denkst schon an Orten, die viele Führungskräfte noch nie betreten haben. Gleichzeitig spüre ich: Die Lücke zwischen deinem Anspruch und deiner heutigen Realität ist manchmal frustrierend.\n\nDas Gute: Du bist genau an dem Punkt, wo echte Entwicklung passiert. Dir fehlen nicht mehr Erkenntnisse — dir fehlt Struktur, Begleitung und ein konkreter nächster Schritt.\n\n<span class=\"quote-block\"><em>\"Was ist der allerkleinste konkrete Schritt, den ich jetzt gehen kann? Dadurch registriert unser Körper: Ich bin handlungsfähig — auch wenn ich nicht sofort die ganze Welt retten kann.\"</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>",
-    cta:"Du hast Klarheit über dein Wollen — aber wie klar ist dein konkreter nächster Schritt?",
+    tagline:"Du hast das Zeug dazu. Das ist nicht die Frage. Die Frage ist: warum passiert es noch nicht?",
+    staerke:"Hohe Selbstwahrnehmung, Entwicklungswille, großes Bild", hebel:"Weniger anfangen, mehr fertigmachen — einen Schritt, nicht zehn",
+    risiko:"Viel wissen, wenig tun — die Lücke wächst und frustriert", next:"Was ist der eine konkrete Schritt, den du diese Woche gehst?",
+    msg:"Du hast das Zeug dazu. Das ist nicht die Frage.\n\nDie Frage ist: warum passiert es noch nicht? Ich kenne dieses Muster. Viel nachdenken, viel lesen, viel verstehen — und trotzdem das Gefühl, auf der Stelle zu treten. Das ist kein Charakterfehler. Aber es braucht eine andere Antwort als das nächste Buch oder der nächste Podcast. Es braucht einen klaren Schritt. Heute.\n\n<span class=\"quote-block\"><em>\"Was ist der allerkleinste konkrete Schritt, den ich jetzt gehen kann? Dadurch registriert unser Körper: Ich bin handlungsfähig — auch wenn ich nicht sofort die ganze Welt retten kann.\"</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>",
+    cta:"Du weißt, was du willst. Der konkrete nächste Schritt fehlt noch — 8 Minuten, herausfinden.",
     ctaTitle:"Klarheits-Check", ctaUrl:"orientierungssucher-test.html", ctaBtnLabel:"Klarheits-Check starten →"
   }
 ];
@@ -502,10 +502,10 @@ function showResult(){
 
   // Type-specific email form text
   const emailTexts = {
-    'Der Steuermann': {h:'Du weißt, dass du mehr delegieren solltest.', p:'Ich zeige dir einen konkreten ersten Schritt — für deine Situation, nicht für einen generischen Steuermann.'},
-    'Der Antreiber': {h:'Du lieferst — aber wächst dein Team auch ohne dich?', p:'Ich gebe dir eine ehrliche Einschätzung zu genau dem, was du mir beschrieben hast.'},
-    'Der Vermittler': {h:'Du gibst viel. Ich sage dir konkret, wo deine Energie verloren geht.', p:'Basierend auf deinen Antworten — nicht auf einem allgemeinen Vermittler-Profil.'},
-    'Der Orientierungssucher': {h:'Du weißt, was du willst.', p:'Ich helfe dir, den einen nächsten Schritt zu finden — nicht zehn.'}
+    'Der Steuermann': {h:'Ich sage dir, wo der Engpass wirklich sitzt.', p:'Nicht allgemein. Konkret — basierend auf dem, was du mir gerade gezeigt hast.'},
+    'Der Antreiber': {h:'Ich sage dir, wo ich den Engpass sehe. Direkt.', p:'Kein Umweg, keine Theorie — was du konkret ändern kannst.'},
+    'Der Vermittler': {h:'Ich sage dir, was das kostet — und was du dafür bekommst.', p:'Basierend auf dem, was du mir gerade beschrieben hast.'},
+    'Der Orientierungssucher': {h:'Einen Schritt. Nicht zehn.', p:'Genau das fehlt dir gerade — und ich sage dir welchen.'}
   };
   const et = emailTexts[t.key];
   if(et){ document.getElementById('email-h3').textContent=et.h; document.getElementById('email-p').textContent=et.p; }
