@@ -294,24 +294,16 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
       <div class="bdown"><div class="bdown-t">Dein Bild im Detail</div><div id="r-bdown"></div></div>
       <div class="hebel-t">Deine drei konkreten nächsten Schritte</div>
       <div class="hebel-grid" id="r-hebel"></div>
-      <div class="rm-inner" style="background:var(--g100);border-radius:var(--r-lg);padding:20px 22px;margin-top:20px">
-        <p style="font-size:14px;font-weight:500;color:var(--black);margin:0 0 6px 0">Ergebnis per Mail erhalten</p>
-        <p style="font-size:12px;color:var(--g600);margin:0 0 14px 0">Ich schicke dir dein Profil direkt ins Postfach — kein Gespräch, kein Versprechen.</p>
-        <div id="rm-form-inner">
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
-            <input type="text" id="rm-name" placeholder="Dein Vorname" style="flex:1;min-width:120px;padding:10px 13px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font);font-size:13px;min-height:42px;outline:none">
-            <input type="email" id="rm-email" placeholder="Deine E-Mail" style="flex:1;min-width:120px;padding:10px 13px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font);font-size:13px;min-height:42px;outline:none">
-          </div>
-          <input type="hidden" id="rm-type">
-          <button onclick="submitResultMail()" style="width:100%;padding:11px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:13px;font-weight:500;cursor:pointer;min-height:42px" id="rm-btn">Ergebnis zusenden →</button>
-          <p style="font-size:11px;color:var(--g700);margin:6px 0 0">Kein Newsletter. Einmalig dein Profil — fertig.</p>
-        </div>
-        <div id="rm-ok" style="display:none;font-size:14px;color:var(--g600);text-align:center;padding:8px 0">Ergebnis ist unterwegs. ✓</div>
-      </div>
       <button class="restart-lnk" onclick="restartTest()">Test wiederholen</button>
     </div>
   </div>
 
+  <div class="result-mail-sec" id="result-mail-sec" style="display:none;max-width:640px;width:100%">
+    <h3>Ergebnis per Mail erhalten</h3>
+    <p>Ich schicke dir dein Führungsprofil direkt in dein Postfach — kein Gespräch, kein Versprechen.</p>
+    <div id="rm-form-wrap">
+      <div class="rm-row">
+        <div class="fi"><input type="text" id="rm-name" placeholder="Dein Vorname" style="min-height:44px;width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font);font-size:14px;outline:none"></div>
         <div class="fi"><input type="email" id="rm-email" placeholder="Deine E-Mail" style="min-height:44px;width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font);font-size:14px;outline:none"></div>
       </div>
       <input type="hidden" id="rm-type">
@@ -322,11 +314,19 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
     <div class="rm-ok" id="rm-ok">Ergebnis ist unterwegs. ✓</div>
   </div>
 
+  <div class="share-sec" id="share-sec" style="display:none">
+    <div class="share-q">Wen aus deinem Umfeld würde das gerade treffen?</div>
     <div class="share-sub">Wenn du jemanden kennst, der an einem ähnlichen Punkt steht — schick ihm diesen Link.</div>
     <button class="share-btn" onclick="doShare()">Link teilen →</button>
     <div class="share-toast" id="share-toast"></div>
   </div>
 
+  <div class="email-sec" id="email-sec" style="display:none">
+    <div id="ef-wrap">
+      <h3>Der nächste Schritt beginnt jetzt.</h3>
+      <p>Du weißt, dass du bereit bist. Was dir fehlt, ist Struktur und jemand, der mitdenkt. Genau das biete ich dir.</p>
+      <form onsubmit="submitEmail(event)">
+        <div class="form-row"><div class="fi"><input type="text" id="e-name" placeholder="Dein Vorname" required></div><div class="fi"><input type="email" id="e-email" placeholder="Deine E-Mail" required></div></div>
         <input type="hidden" id="e-score"><input type="hidden" id="e-ref"><input type="hidden" id="e-depth">
         <button type="submit" class="f-submit" id="e-btn">Gespräch anfragen</button>
         <div class="f-note">Kein Newsletter. Jochen antwortet persönlich innerhalb von 48h.</div>
@@ -399,6 +399,8 @@ function showResult(score,d){_trackResult('Klarheits-Check', score, 'orientierun
   document.getElementById('email-h3').textContent = 'Du weißt, was du willst.';
   document.getElementById('email-p').textContent = 'Ich helfe dir, den einen nächsten Schritt zu finden — nicht zehn.';
   document.getElementById('rm-type').value=typ||'';
+  document.getElementById('result-mail-sec').style.display='block';
+  document.getElementById('share-sec').style.display='block';document.getElementById('email-sec').style.display='block';
 }
 
 async function submitEmail(e){
@@ -407,7 +409,7 @@ async function submitEmail(e){
   try{const res=await fetch(`https://formspree.io/f/${FORMSPREE_ID}`,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:document.getElementById('e-name').value,email:document.getElementById('e-email').value,test:'Klarheits-Check (Orientierungssucher)',score:document.getElementById('e-score').value,ref:_refId,depth:_depth,_replyto:document.getElementById('e-email').value})});if(res.ok){document.getElementById('ef-wrap').style.display='none';document.getElementById('f-ok').style.display='block';}else throw new Error();}
   catch{btn.textContent='Gespräch anfragen';btn.disabled=false;document.getElementById('f-err').style.display='block';}
 }
-function restartTest(){Object.keys(rState).forEach(k=>delete rState[k]);document.querySelectorAll('.r-opt').forEach(o=>o.classList.remove('sel'));[{id:'sl-done',v:30},{id:'sl-vis',v:40},{id:'sl-proj',v:5}].forEach(x=>{const el=document.getElementById(x.id);el.value=x.v;el.dispatchEvent(new Event('input'));});document.getElementById('result-sec').style.display='none';;document.getElementById('rm-form-inner').style.display='block';document.getElementById('rm-ok').style.display='none';document.getElementById('rm-btn').textContent='Ergebnis zusenden →';document.getElementById('rm-btn').disabled=false;document.getElementById('test-card').scrollIntoView({behavior:'smooth'});}
+function restartTest(){Object.keys(rState).forEach(k=>delete rState[k]);document.querySelectorAll('.r-opt').forEach(o=>o.classList.remove('sel'));[{id:'sl-done',v:30},{id:'sl-vis',v:40},{id:'sl-proj',v:5}].forEach(x=>{const el=document.getElementById(x.id);el.value=x.v;el.dispatchEvent(new Event('input'));});document.getElementById('result-sec').style.display='none';['result-mail-sec','share-sec','email-sec'].forEach(id=>{document.getElementById(id).style.display='none';});document.getElementById('test-card').scrollIntoView({behavior:'smooth'});}
 
 function _trackResult(typ, score, page) {
   if (FORMSPREE_ID === 'YOUR_FORM_ID') return;
@@ -422,9 +424,15 @@ async function submitResultMail() {
   const name = document.getElementById('rm-name').value.trim();
   const email = document.getElementById('rm-email').value.trim();
   const typ = document.getElementById('rm-type').value;
+  const errEl = document.getElementById('rm-err');
+  errEl.style.display = 'none';
   if (!name || !email) return;
-  const btn = document.getElementById('rm-btn');
+  const btn = document.querySelector('.rm-submit');
   btn.textContent = 'Wird gesendet…'; btn.disabled = true;
+  if (FORMSPREE_ID === 'YOUR_FORM_ID') {
+    document.getElementById('rm-form-wrap').style.display = 'none';
+    document.getElementById('rm-ok').style.display = 'block'; return;
+  }
   try {
     const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
       method: 'POST',
@@ -432,10 +440,13 @@ async function submitResultMail() {
       body: JSON.stringify({name, email, typ, type:'result_mail', ref:_refId, depth:_depth, _replyto:email})
     });
     if (res.ok) {
-      document.getElementById('rm-form-inner').style.display='none';
+      document.getElementById('rm-form-wrap').style.display='none';
       document.getElementById('rm-ok').style.display='block';
     } else throw new Error();
-  } catch { btn.textContent='Ergebnis zusenden →'; btn.disabled=false; }
+  } catch {
+    btn.textContent='Ergebnis zusenden →'; btn.disabled=false;
+    errEl.style.display='block';
+  }
 }
 
 // expose to global scope (Cloudflare Rocket Loader fix)

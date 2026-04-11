@@ -279,6 +279,29 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
     <div class="share-toast" id="share-toast"></div>
   </div>
 
+  <!-- Email capture -->
+  <div class="email-sec" id="email-sec" style="display:none">
+    <div id="email-form-wrap">
+      <h3 id="email-h3">Wenn du willst, reden wir.</h3>
+      <p id="email-p">Ich melde mich. Direkt. Ohne Umwege.</p>
+      <form onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="fi"><input type="text" id="e-name" placeholder="Dein Vorname" required autocomplete="given-name"></div>
+          <div class="fi"><input type="email" id="e-email" placeholder="Deine E-Mail" required autocomplete="email"></div>
+        </div>
+        <input type="hidden" id="e-type">
+        <input type="hidden" id="e-ref">
+        <input type="hidden" id="e-depth">
+        <button type="submit" class="form-submit" id="e-btn">Gespräch anfragen</button>
+        <div class="form-note">Kein Newsletter. Jochen antwortet persönlich innerhalb von 48h.</div>
+        <div class="form-err" id="e-err">Etwas hat nicht geklappt. Bitte versuche es später nochmal.</div>
+      </form>
+    </div>
+    <div class="form-ok" id="form-ok">
+      <div class="form-ok-t">Nachricht angekommen.</div>
+      <div class="form-ok-s">Ich melde mich persönlich — in der Regel innerhalb von 48 Stunden.</div>
+    </div>
+  </div>
 
   <footer class="footer">
     <p>© 2025 NORDSTERN Leadership</p>
@@ -473,32 +496,70 @@ function showResult(){
   // Share
   const ss=document.getElementById('share-sec'); ss.style.display='block'; ss.classList.add('fi');
 
+  // Email
+  document.getElementById('e-type').value=t.key;
+  document.getElementById('e-ref').value=_refId;
+  document.getElementById('e-depth').value=String(_depth);
+
+  // Type-specific email form text
+  const emailTexts = {
+    'Der Steuermann': {h:'Ich sage dir, wo der Engpass wirklich sitzt.', p:'Nicht allgemein. Konkret — basierend auf dem, was du mir gerade gezeigt hast.'},
+    'Der Antreiber': {h:'Ich sage dir, wo ich den Engpass sehe. Direkt.', p:'Kein Umweg, keine Theorie — was du konkret ändern kannst.'},
+    'Der Vermittler': {h:'Ich sage dir, was das kostet — und was du dafür bekommst.', p:'Basierend auf dem, was du mir gerade beschrieben hast.'},
+    'Der Orientierungssucher': {h:'Einen Schritt. Nicht zehn.', p:'Genau das fehlt dir gerade — und ich sage dir welchen.'}
+  };
+  const et = emailTexts[t.key];
+  if(et){ document.getElementById('email-h3').textContent=et.h; document.getElementById('email-p').textContent=et.p; }
+  const es=document.getElementById('email-sec'); es.style.display='block'; es.classList.add('fi');
+}
+
+async function submitForm(e){
+  e.preventDefault();
+  const btn=document.getElementById('e-btn'); btn.textContent='Wird gesendet…'; btn.disabled=true;
+  const errEl=document.getElementById('e-err'); errEl.style.display='none';
+  if(FORMSPREE_ID==='YOUR_FORM_ID'){document.getElementById('email-form-wrap').style.display='none';document.getElementById('form-ok').style.display='block';return;}
+  try{
+    const res=await fetch(`https://formspree.io/f/${FORMSPREE_ID}`,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:document.getElementById('e-name').value,email:document.getElementById('e-email').value,typ:document.getElementById('e-type').value,ref:_refId,depth:_depth,_replyto:document.getElementById('e-email').value})});
+    if(res.ok){document.getElementById('email-form-wrap').style.display='none';document.getElementById('form-ok').style.display='block';}
+    else throw new Error();
+  }catch{btn.textContent='Gespräch anfragen';btn.disabled=false;errEl.style.display='block';}
 }
 
 async function submitResultMail() {
   const name = document.getElementById('rm-name').value.trim();
   const email = document.getElementById('rm-email').value.trim();
   const typ = document.getElementById('rm-type').value;
+  const errEl = document.getElementById('rm-err');
+  errEl.style.display = 'none';
   if (!name || !email) return;
-  const btn = document.getElementById('rm-btn');
+  const btn = document.querySelector('.rm-submit');
   btn.textContent = 'Wird gesendet…'; btn.disabled = true;
+  if (FORMSPREE_ID === 'YOUR_FORM_ID') {
+    document.getElementById('rm-form-wrap').style.display = 'none';
+    document.getElementById('rm-ok').style.display = 'block'; return;
+  }
   try {
     const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
       method: 'POST',
       headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-      body: JSON.stringify({name, email, typ, type:'result_mail', ref:_refId, depth:_depth, _replyto:email})
+      body: JSON.stringify({name, email, typ, type: 'result_mail', ref: _refId, depth: _depth, _replyto: email})
     });
     if (res.ok) {
-      document.getElementById('rm-form-inner').style.display='none';
-      document.getElementById('rm-ok').style.display='block';
+      document.getElementById('rm-form-wrap').style.display = 'none';
+      document.getElementById('rm-ok').style.display = 'block';
     } else throw new Error();
-  } catch { btn.textContent='Ergebnis zusenden →'; btn.disabled=false; }
+  } catch {
+    btn.textContent = 'Ergebnis zusenden →'; btn.disabled = false;
+    errEl.style.display = 'block';
+  }
 }
 function restart(){
   cur=0;answers=[];
   document.getElementById('quiz-screen').style.display='block';
   document.getElementById('result-screen').style.display='none';
-  ['deep-div','result-mail-sec','share-sec'].forEach(id=>{document.getElementById(id).style.display='none';});
+  ['deep-div','result-mail-sec','share-sec','email-sec'].forEach(id=>{document.getElementById(id).style.display='none';});
+  document.getElementById('email-form-wrap').style.display='block';
+  document.getElementById('form-ok').style.display='none';
   renderQ();
 }
 
@@ -515,6 +576,7 @@ function _trackResult(typ, score, page) {
 window.startQuiz=startQuiz;
 window.goNext=goNext;
 window.goBack=goBack;
+window.submitForm=submitForm;
 window.doShare=doShare;
 window.restart=restart;
 </script>
