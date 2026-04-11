@@ -457,15 +457,6 @@ async function submitResultMail() {
     errEl.style.display='block';
   }
 }
-
-// expose to global scope (Cloudflare Rocket Loader fix)
-window.startTest=startTest;
-window.calcResult=calcResult;
-window.sel=sel;
-window.submitEmail=submitEmail;
-window.submitResultMail=submitResultMail;
-window.doShare=doShare;
-window.restartTest=restartTest;
 </script>
 </body>
 </html>
