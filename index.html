@@ -571,6 +571,14 @@ function _trackResult(typ, score, page) {
     body: JSON.stringify({type:'result_view', page:page, typ:typ, score:score||'', ref:_refId, depth:_depth})
   }).catch(()=>{});
 }
+
+// expose to global scope (Cloudflare Rocket Loader fix)
+window.startQuiz=startQuiz;
+window.goNext=goNext;
+window.goBack=goBack;
+window.submitForm=submitForm;
+window.doShare=doShare;
+window.restart=restart;
 </script>
 </body>
 </html>
