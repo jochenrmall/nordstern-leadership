@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="all">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Klarheits-Check · NORDSTERN Leadership</title>
 <meta name="description" content="Hast du Klarheit — oder sammelst du noch Erkenntnisse? 8 Minuten. Dein persönlicher Klarheitsquotient.">
@@ -341,7 +342,7 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
   </footer>
 </div>
 
-<script>
+<script data-cfasync="false">
 const FORMSPREE_ID = 'xreovnld';
 const _p=new URLSearchParams(window.location.search);
 const _refId=_p.get('ref')||'';const _depth=parseInt(_p.get('depth')||'0');
@@ -373,10 +374,11 @@ function showResult(score,d){_trackResult('Klarheits-Check', score, 'orientierun
   const rs=document.getElementById('result-sec');rs.style.display='block';rs.classList.add('ani');rs.scrollIntoView({behavior:'smooth',block:'start'});
   setTimeout(()=>{const arc=314;const off=arc-(score/100)*arc;document.getElementById('g-fill').style.strokeDashoffset=off;let n=0;const iv=setInterval(()=>{n=Math.min(n+2,score);document.getElementById('g-num').textContent=n;if(n>=score)clearInterval(iv);},18);},200);
   let lvBadge,lvTitle,lvDesc;
-  if(score<30){lvBadge='Erkenntnissammler';lvTitle='Du weißt viel — und tust noch wenig damit.';lvDesc='Dein Bewusstsein für Führung ist auf einem hohen Niveau. Die Frustration entsteht, weil du spürst: Erkenntnis allein verändert nichts. Was du jetzt brauchst, ist kein weiteres Buch — sondern einen Kontext, in dem Erkenntnisse zu Handlungen werden.'\n\n<span class=\"quote-block\"><em>"Was ist der allerkleinste konkrete Schritt, den ich jetzt gehen kann? Dadurch registriert unser Körper: Ich bin handlungsfähig — auch wenn ich nicht sofort die ganze Welt retten kann."</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>;}
+  if(score<30){lvBadge='Erkenntnissammler';lvTitle='Du weißt viel — und tust noch wenig damit.';lvDesc='Dein Bewusstsein für Führung ist auf einem hohen Niveau. Die Frustration entsteht, weil du spürst: Erkenntnis allein verändert nichts. Was du jetzt brauchst, ist kein weiteres Buch — sondern einen Kontext, in dem Erkenntnisse zu Handlungen werden.';}
   else if(score<60){lvBadge='Umsetzer in Entwicklung';lvTitle='Du bewegst dich — und brauchst Struktur, um zu beschleunigen.';lvDesc='Du hast aufgehört, nur zu wissen — du beginnst zu tun. Die Herausforderung: Ohne klare Struktur verlierst du den Faden. Die nächste Ebene ist nicht mehr Erkenntnis, sondern konsequente Praxis.';}
-  else{lvBadge='Konsequenter Leader';lvTitle:'Du weißt, was du willst — und tust es.';lvDesc='Erkenntnis und Handlung sind bei dir eng verbunden. Das ist selten. Dein nächster Schritt ist nicht mehr Richtung, sondern Tiefe: Wie schaffst du ein Umfeld, das dieses Niveau auch von anderen fordert?';}
+  else{lvBadge='Konsequenter Leader';lvTitle='Du weißt, was du willst — und tust es.';lvDesc='Erkenntnis und Handlung sind bei dir eng verbunden. Das ist selten. Dein nächster Schritt ist nicht mehr Richtung, sondern Tiefe: Wie schaffst du ein Umfeld, das dieses Niveau auch von anderen fordert?';}
   document.getElementById('r-lv-badge').textContent=lvBadge;document.getElementById('r-lv-t').textContent=lvTitle;document.getElementById('r-lv-d').textContent=lvDesc;
+  var _q=document.createElement('p');_q.textContent='Was ist der allerkleinste konkrete Schritt, den ich jetzt gehen kann? Dadurch registriert unser Körper: Ich bin handlungsfähig. (Eva Asselmann)';_q.style='font-size:13px;color:#6e6e73;font-style:italic;margin-top:12px;border-left:3px solid #d2d2d7;padding-left:12px';document.getElementById('r-lv-d').appendChild(_q);\n  var qDiv=document.createElement("div");qDiv.className="quote-block";qDiv.innerHTML="<em>\"Was ist der allerkleinste konkrete Schritt, den ich jetzt gehen kann? Dadurch registriert unser Körper: Ich bin handlungsfähig — auch wenn ich nicht sofort die ganze Welt retten kann.\"</em><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span>";document.getElementById("r-lv-d").appendChild(qDiv);
   const dims=[{l:'Konkreter Schritt',v:d.s_next},{l:'Abschlussquote',v:d.s_done},{l:'12-Monats-Vision',v:d.s_vis},{l:'Wissen→Handlung',v:d.s_gap},{l:'Entscheidungsfreude',v:d.s_decide},{l:'Fokus (wenig parallel)',v:d.s_proj},{l:'Idee→Umsetzung',v:d.s_idea},{l:'Externe Perspektive',v:d.s_coach}];
   let bh='';dims.forEach(b=>{bh+=`<div class="b-row"><div class="b-lbl">${b.l}</div><div class="b-track"><div class="b-fill" data-v="${b.v}" style="width:0%"></div></div><div class="b-v">${b.v}</div></div>`;});
   document.getElementById('r-bdown').innerHTML=bh;

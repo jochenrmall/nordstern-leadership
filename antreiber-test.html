@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="all">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wirkungscheck · NORDSTERN Leadership</title>
 <meta name="description" content="Lieferst du Ergebnis — oder entsteht Wirkung? 8 Minuten. Dein persönlicher Wirkungsquotient.">
@@ -351,7 +352,7 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
   </footer>
 </div>
 
-<script>
+<script data-cfasync="false">
 const FORMSPREE_ID = 'xreovnld';
 const _p=new URLSearchParams(window.location.search);
 const _refId=_p.get('ref')||'';const _depth=parseInt(_p.get('depth')||'0');
@@ -389,10 +390,11 @@ function showResult(score,d){_trackResult('Wirkungscheck', score, 'antreiber');
     let n=0;const iv=setInterval(()=>{n=Math.min(n+2,score);document.getElementById('g-num').textContent=n;if(n>=score)clearInterval(iv);},18);
   },200);
   let lvBadge,lvTitle,lvDesc;
-  if(score<30){lvBadge='Hochleister mit Engpass';lvTitle='Du lieferst selbst — dein Team hängt an dir.';lvDesc='Deine Energie und dein Antrieb sind real. Aber ein Team, das nur funktioniert, wenn du da bist, ist kein Multiplikator — es ist eine Abhängigkeit. Das kostet dich langfristig mehr, als es bringt.'\n\n<span class=\"quote-block\"><em>"Wenn ich handele, steckt das andere oft an."</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>;}
+  if(score<30){lvBadge='Hochleister mit Engpass';lvTitle='Du lieferst selbst — dein Team hängt an dir.';lvDesc='Deine Energie und dein Antrieb sind real. Aber ein Team, das nur funktioniert, wenn du da bist, ist kein Multiplikator — es ist eine Abhängigkeit. Das kostet dich langfristig mehr, als es bringt.';}
   else if(score<60){lvBadge='Multiplikator in Entwicklung';lvTitle='Du siehst die Richtung — und gehst erste Schritte.';lvDesc='Du weißt, dass dein Team mehr Eigenständigkeit braucht. Du arbeitest daran. Die Herausforderung: Konsequenz. Loslassen im Alltag ist schwerer als im Prinzip.';}
   else{lvBadge='Echter Multiplikator';lvTitle='Dein Team wächst — auch ohne dich im Raum.';lvDesc='Du hast verstanden, dass deine Aufgabe nicht ist, die beste Lösung zu liefern. Deine Aufgabe ist, ein Team zu bauen, das das selbst kann. Das ist selten.';}
   document.getElementById('r-lv-badge').textContent=lvBadge;document.getElementById('r-lv-t').textContent=lvTitle;document.getElementById('r-lv-d').textContent=lvDesc;
+  var _q=document.createElement('p');_q.textContent='Wenn ich handele, steckt das andere oft an. (Eva Asselmann)';_q.style='font-size:13px;color:#6e6e73;font-style:italic;margin-top:12px;border-left:3px solid #d2d2d7;padding-left:12px';document.getElementById('r-lv-d').appendChild(_q);\n  var qDiv=document.createElement("div");qDiv.className="quote-block";qDiv.innerHTML="<em>\"Wenn ich handele, steckt das andere oft an.\"</em><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span>";document.getElementById("r-lv-d").appendChild(qDiv);
   const dims=[{l:'Teamautonomie',v:d.s_dep},{l:'Entscheidungsqualität',v:d.s_corr},{l:'Warum-Klarheit',v:d.s_why},{l:'Proaktive Führung',v:d.s_react},{l:'Funktioniert ohne dich',v:d.s_absent},{l:'Bewusstes Entwickeln',v:d.s_slow},{l:'Lösungsoffenheit',v:d.s_diff},{l:'Entscheidungsrahmen',v:d.s_err}];
   let bh='';dims.forEach(b=>{bh+=`<div class="b-row"><div class="b-lbl">${b.l}</div><div class="b-track"><div class="b-fill" data-v="${b.v}" style="width:0%"></div></div><div class="b-v">${b.v}</div></div>`;});
   document.getElementById('r-bdown').innerHTML=bh;
