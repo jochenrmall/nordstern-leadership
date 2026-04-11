@@ -2,9 +2,10 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="all">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Energiebilanz-Check \u00b7 NORDSTERN Leadership</title>
-<meta name="description" content="Investierst du deine Energie \u2014 oder verlierst du sie? 8 Minuten. Deine pers\u00f6nliche Energiebilanz.">
+<title>Energiebilanz-Check · NORDSTERN Leadership</title>
+<meta name="description" content="Investierst du deine Energie — oder verlierst du sie? 8 Minuten. Deine persönliche Energiebilanz.">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--white:#fff;--black:#1d1d1f;--g50:#fafafa;--g100:#f5f5f7;--g200:#e8e8ed;--g300:#d2d2d7;--g400:#c7c7cc;--g600:#6e6e73;--g700:#86868b;--border:rgba(0,0,0,.08);--border-md:rgba(0,0,0,.15);--font:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Arial,sans-serif;--font-d:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Arial,sans-serif;--r-sm:8px;--r-md:12px;--r-lg:18px;--shadow:0 4px 20px rgba(0,0,0,.07),0 1px 4px rgba(0,0,0,.04)}
@@ -101,6 +102,35 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .f-ok-t{font-size:17px;font-weight:500;margin-bottom:4px}
 .f-ok-s{font-size:13px;color:var(--g600)}
 .restart-lnk{background:none;border:none;font-size:13px;color:var(--g700);cursor:pointer;text-decoration:underline;font-family:var(--font);margin-top:14px;display:block;text-align:center;width:100%}
+
+/* infobox */
+.infobox{background:var(--g100);border:1px solid var(--g200);border-radius:var(--r-lg);padding:20px 24px;max-width:500px;margin:0 auto 24px;text-align:left}
+.infobox-lbl{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--g600);margin-bottom:14px}
+.infobox-items{display:flex;flex-direction:column;gap:12px}
+.infobox-item{display:flex;align-items:flex-start;gap:11px}
+.infobox-icon{width:26px;height:26px;border-radius:50%;background:var(--white);border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;color:var(--black)}
+.infobox-title{font-size:13px;font-weight:500;color:var(--black);margin:0 0 2px 0}
+.infobox-sub{font-size:12px;color:var(--g600);margin:0;line-height:1.5}
+
+
+/* quote block */
+.quote-block{display:block;background:var(--g100);border-left:3px solid var(--g300);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:12px 16px;margin-top:16px;font-size:14px;color:var(--black);line-height:1.6}
+.quote-src{display:block;font-size:12px;color:var(--g600);margin-top:6px;font-style:normal}
+
+
+/* result mail */
+.result-mail-sec{background:var(--g50);border:1px solid var(--border);border-radius:var(--r-lg);padding:22px 28px;margin-top:10px;max-width:640px;width:100%}
+@media(max-width:600px){.result-mail-sec{padding:18px 16px}}
+.result-mail-sec h3{font-family:var(--font-d);font-size:17px;font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
+.result-mail-sec p{font-size:13px;color:var(--g600);line-height:1.5;margin-bottom:14px}
+.rm-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.rm-row .fi{flex:1;min-width:130px}
+.rm-submit{width:100%;padding:12px;background:transparent;color:var(--black);border:1px solid var(--border-md);border-radius:100px;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;transition:all .18s;min-height:44px}
+.rm-submit:hover{background:var(--g100)}
+.rm-note{font-size:11px;color:var(--g700);margin-top:6px}
+.rm-ok{display:none;font-size:14px;color:var(--g600);text-align:center;padding:10px 0}
+.rm-err{display:none;font-size:12px;color:#c0392b;margin-top:5px}
+
 .footer{max-width:720px;width:100%;padding:40px 0 0;text-align:center;font-size:12px;color:var(--g700);border-top:1px solid var(--border);margin-top:40px}
 .footer a{color:var(--g700);text-decoration:underline}
 @media(max-width:480px){.form-row{flex-direction:column}}
@@ -122,37 +152,53 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 <div class="page">
   <nav class="nav">
     <a href="index.html" class="nav-logo">NORDSTERN <span>Leadership</span></a>
-    <a href="index.html" class="nav-back">\u2190 Zur Standortbestimmung</a>
+    <a href="index.html" class="nav-back">← Zur Standortbestimmung</a>
   </nav>
 
   <header class="hero" id="hero">
-    <div class="hero-tag"><div class="tag-dot"></div>F\u00fcr den Vermittler</div>
-    <h1>Investierst du deine Energie \u2014<br><em>oder verlierst du sie?</em></h1>
-    <p>8 Minuten. Deine pers\u00f6nliche Energiebilanz. Drei konkrete Hebel.</p>
+    <div class="hero-tag"><div class="tag-dot"></div>Für den Vermittler</div>
+    <h1>Investierst du deine Energie —<br><em>oder verlierst du sie?</em></h1>
+    <p>8 Minuten.<br>Deine persönliche Energiebilanz.<br>Drei konkrete Hebel.</p>
     <div class="hero-meta">
       <span><div class="dot"></div>8 Fragen</span>
-      <span><div class="dot"></div>~8 Minuten</span>
       <span><div class="dot"></div>Sofort-Auswertung</span>
     </div>
-    <button onclick="startTest()" style="display:block;margin:28px auto 0;padding:14px 38px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer;min-height:48px;transition:background .18s" onmouseover="this.style.background='#333'" onmouseout="this.style.background='var(--black)'">Test starten</button>
+    <div class="infobox">
+      <p class="infobox-lbl">Was du in 8 Minuten erfährst</p>
+      <div class="infobox-items">
+        <div class="infobox-item">
+          <div class="infobox-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><line x1="7" y1="4" x2="7" y2="7.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="7" cy="9.5" r="0.7" fill="currentColor"/></svg></div>
+          <div><p class="infobox-title">Dein persönlicher Score</p><p class="infobox-sub">Dein Energiequotient — wo du investierst und wo du verlierst.</p></div>
+        </div>
+        <div class="infobox-item">
+          <div class="infobox-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 7 L6.5 9 L9.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><p class="infobox-title">Dein blinder Fleck</p><p class="infobox-sub">Was andere sehen — und du selbst kaum bemerkst.</p></div>
+        </div>
+        <div class="infobox-item">
+          <div class="infobox-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2 L7 7 L10 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/></svg></div>
+          <div><p class="infobox-title">Drei konkrete Hebel</p><p class="infobox-sub">Zugeschnitten auf dein Ergebnis, nicht auf ein allgemeines Vermittler-Profil.</p></div>
+        </div>
+      </div>
+    </div>
+    <button onclick="startTest()" style="display:block;margin:0 auto 0;padding:14px 38px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer;min-height:48px;transition:background .18s" onmouseover="this.style.background='#333'" onmouseout="this.style.background='var(--black)'">Test starten</button>
   </header>
 
   <div class="card" id="test-card" style="display:none">
 
     <div class="sec-eye">Dein Energiehaushalt</div>
     <div class="sec-q">Was kostet dich am meisten?</div>
-    <div class="sec-sub">Sch\u00e4tze ehrlich \u2014 nicht wie es sein sollte, sondern wie du dich tats\u00e4chlich f\u00fchlst.</div>
+    <div class="sec-sub">Schätze ehrlich — nicht wie es sein sollte, sondern wie du dich tatsächlich fühlst.</div>
 
     <div class="sl-block">
-      <div class="sl-hdr"><div class="sl-lbl">Wie viel Energie kostet dich ein schwieriges Gespr\u00e4ch (Vorbereitung + Nachbearbeitung zusammen)?</div><div class="sl-val" id="v-cost">70<span class="u"> %</span></div></div>
+      <div class="sl-hdr"><div class="sl-lbl">Wie viel Energie kostet dich ein schwieriges Gespräch (Vorbereitung + Nachbearbeitung zusammen)?</div><div class="sl-val" id="v-cost">70<span class="u"> %</span></div></div>
       <input type="range" id="sl-cost" min="0" max="100" value="70" step="5" oninput="document.getElementById('v-cost').innerHTML=this.value+'<span class=\'u\'> %</span>'">
-      <div class="sl-anch"><span>0 % \u2014 kostet mich kaum etwas</span><span>100 % \u2014 ersch\u00f6pft mich komplett</span></div>
+      <div class="sl-anch"><span>0 % — kostet mich kaum etwas</span><span>100 % — erschöpft mich komplett</span></div>
     </div>
 
     <div class="sl-block">
-      <div class="sl-hdr"><div class="sl-lbl">Wie viel Zeit verbringst du damit, Konflikte im Team zu antizipieren und zu verhindern \u2014 bevor sie entstehen?</div><div class="sl-val" id="v-prev">50<span class="u"> %</span></div></div>
+      <div class="sl-hdr"><div class="sl-lbl">Wie viel Zeit verbringst du damit, Konflikte im Team zu antizipieren und zu verhindern — bevor sie entstehen?</div><div class="sl-val" id="v-prev">50<span class="u"> %</span></div></div>
       <input type="range" id="sl-prev" min="0" max="100" value="50" step="5" oninput="document.getElementById('v-prev').innerHTML=this.value+'<span class=\'u\'> %</span>'">
-      <div class="sl-anch"><span>0 % \u2014 wenig</span><span>100 % \u2014 sehr viel</span></div>
+      <div class="sl-anch"><span>0 % — wenig</span><span>100 % — sehr viel</span></div>
     </div>
 
     <div class="div"></div>
@@ -161,32 +207,32 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
     <div class="sec-q">Sagst du, was du wirklich meinst?</div>
 
     <div class="r-block">
-      <div class="sec-sub">Du verl\u00e4sst ein Meeting. Wie oft hast du nicht das gesagt, was du eigentlich dachtest?</div>
+      <div class="sec-sub">Du verlässt ein Meeting. Wie oft hast du nicht das gesagt, was du eigentlich dachtest?</div>
       <div class="r-opts" id="r-meeting">
-        <div class="r-opt" onclick="sel('r-meeting',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Regelm\u00e4\u00dfig. Ich warte auf den richtigen Moment \u2014 der selten kommt.</div></div>
-        <div class="r-opt" onclick="sel('r-meeting',this,33)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Manchmal. Bei Kontroversen halte ich mich eher zur\u00fcck.</div></div>
-        <div class="r-opt" onclick="sel('r-meeting',this,66)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Selten. Ich sage meist, was ich denke \u2014 wenn die Atmosph\u00e4re stimmt.</div></div>
-        <div class="r-opt" onclick="sel('r-meeting',this,100)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Kaum. Ich sage, was ich denke \u2014 auch wenn es unbequem ist.</div></div>
+        <div class="r-opt" onclick="sel('r-meeting',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich bemerke es oft erst danach — der richtige Moment kommt selten von selbst.</div></div>
+        <div class="r-opt" onclick="sel('r-meeting',this,33)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Manchmal. Bei Kontroversen halte ich mich eher zurück.</div></div>
+        <div class="r-opt" onclick="sel('r-meeting',this,66)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Selten. Ich sage meist, was ich denke — wenn die Atmosphäre stimmt.</div></div>
+        <div class="r-opt" onclick="sel('r-meeting',this,100)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Kaum. Ich sage, was ich denke — auch wenn es unbequem ist.</div></div>
       </div>
     </div>
 
     <div class="r-block">
-      <div class="sec-sub">Wie oft verschiebst du eine klare Ansage, weil du die Reaktion f\u00fcrchtest?</div>
+      <div class="sec-sub">Wie oft verschiebst du eine klare Ansage, weil du die Reaktion fürchtest?</div>
       <div class="r-opts" id="r-delay">
-        <div class="r-opt" onclick="sel('r-delay',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">H\u00e4ufig. Ich suche erst Zustimmung, bevor ich nach vorne trete.</div></div>
+        <div class="r-opt" onclick="sel('r-delay',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich hole mir Rückendeckung, bevor ich nach vorne trete — das kostet Zeit.</div></div>
         <div class="r-opt" onclick="sel('r-delay',this,33)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Manchmal. Bei bekannt schwierigen Personen verzoegere ich es.</div></div>
-        <div class="r-opt" onclick="sel('r-delay',this,66)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Selten. Ich sage es \u2014 aber brauche oft eine Anlaufzeit.</div></div>
+        <div class="r-opt" onclick="sel('r-delay',this,66)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Selten. Ich sage es — aber brauche oft eine Anlaufzeit.</div></div>
         <div class="r-opt" onclick="sel('r-delay',this,100)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Kaum. Ich spreche es direkt an, sobald ich es erkenne.</div></div>
       </div>
     </div>
 
     <div class="div"></div>
 
-    <div class="sec-eye">Autorit\u00e4t & Orientierung</div>
-    <div class="sec-q">Wei\u00df dein Team, wo du stehst?</div>
+    <div class="sec-eye">Autorität & Orientierung</div>
+    <div class="sec-q">Weiß dein Team, wo du stehst?</div>
 
     <div class="r-block">
-      <div class="sec-sub">Wie klar wei\u00df dein Team, was du von ihm erwartest \u2014 nicht nur aufgabenbezogen, sondern wie ihr zusammenarbeitet?</div>
+      <div class="sec-sub">Wie klar weiß dein Team, was du von ihm erwartest — nicht nur aufgabenbezogen, sondern wie ihr zusammenarbeitet?</div>
       <div class="r-opts" id="r-expect">
         <div class="r-opt" onclick="sel('r-expect',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Unklar. Ich kommuniziere Erwartungen selten explizit.</div></div>
         <div class="r-opt" onclick="sel('r-expect',this,33)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Teilweise. Bei Aufgaben ja, bei Verhaltenserwartungen eher nicht.</div></div>
@@ -196,39 +242,39 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
     </div>
 
     <div class="sl-block">
-      <div class="sl-hdr"><div class="sl-lbl">Wie viel Prozent deiner F\u00fchrungszeit verbringst du damit, die Stimmung im Team zu managen?</div><div class="sl-val" id="v-mood">60<span class="u"> %</span></div></div>
+      <div class="sl-hdr"><div class="sl-lbl">Wie viel Prozent deiner Führungszeit verbringst du damit, die Stimmung im Team zu managen?</div><div class="sl-val" id="v-mood">60<span class="u"> %</span></div></div>
       <input type="range" id="sl-mood" min="0" max="100" value="60" step="5" oninput="document.getElementById('v-mood').innerHTML=this.value+'<span class=\'u\'> %</span>'">
-      <div class="sl-anch"><span>0 % \u2014 wenig</span><span>100 % \u2014 fast alles</span></div>
+      <div class="sl-anch"><span>0 % — wenig</span><span>100 % — fast alles</span></div>
     </div>
 
     <div class="div"></div>
 
     <div class="sec-eye">Nein sagen & Grenzen</div>
-    <div class="sec-q">Kannst du Nein sagen \u2014 und dich danach gut f\u00fchlen?</div>
+    <div class="sec-q">Kannst du Nein sagen — und dich danach gut fühlen?</div>
 
     <div class="r-block">
-      <div class="sec-sub">Wann hast du zuletzt "Nein" gesagt und dich danach wirklich gut gef\u00fchlt \u2014 ohne Schuldgef\u00fchl?</div>
+      <div class="sec-sub">Wann hast du zuletzt "Nein" gesagt und dich danach wirklich gut gefühlt — ohne Schuldgefühl?</div>
       <div class="r-opts" id="r-no">
-        <div class="r-opt" onclick="sel('r-no',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Das tue ich kaum. Nein sagen hinterl\u00e4sst immer ein schlechtes Gef\u00fchl.</div></div>
+        <div class="r-opt" onclick="sel('r-no',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Nein sagen fällt mir schwer — es hinterlässt meistens ein ungutes Gefühl.</div></div>
         <div class="r-opt" onclick="sel('r-no',this,33)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Selten. Manchmal gelingt es, aber das Gewissen meldet sich meist danach.</div></div>
-        <div class="r-opt" onclick="sel('r-no',this,66)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Manchmal. Bei klaren Grenzen f\u00fchlt es sich richtig an.</div></div>
-        <div class="r-opt" onclick="sel('r-no',this,100)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Regelm\u00e4\u00dfig. Nein ist f\u00fcr mich F\u00fcrsorge \u2014 f\u00fcr das Wesentliche.</div></div>
+        <div class="r-opt" onclick="sel('r-no',this,66)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Manchmal. Bei klaren Grenzen fühlt es sich richtig an.</div></div>
+        <div class="r-opt" onclick="sel('r-no',this,100)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Regelmäßig. Nein ist für mich Fürsorge — für das Wesentliche.</div></div>
       </div>
     </div>
 
     <div class="sl-block">
-      <div class="sl-hdr"><div class="sl-lbl">Wie oft verl\u00e4sst du Gespr\u00e4che mit dem Gef\u00fchl, mehr gegeben als genommen zu haben?</div><div class="sl-val" id="v-give">75<span class="u"> %</span></div></div>
+      <div class="sl-hdr"><div class="sl-lbl">Wie oft verlässt du Gespräche mit dem Gefühl, mehr gegeben als genommen zu haben?</div><div class="sl-val" id="v-give">75<span class="u"> %</span></div></div>
       <input type="range" id="sl-give" min="0" max="100" value="75" step="5" oninput="document.getElementById('v-give').innerHTML=this.value+'<span class=\'u\'> %</span>'">
-      <div class="sl-anch"><span>0 % \u2014 ausgeglichen</span><span>100 % \u2014 immer ersch\u00f6pft danach</span></div>
+      <div class="sl-anch"><span>0 % — ausgeglichen</span><span>100 % — immer erschöpft danach</span></div>
     </div>
 
     <div class="r-block">
-      <div class="sec-sub">MS Teams-Nachricht deines Chefs am Freitagabend: "Kannst du das kurz \u00fcbernehmen?" Du hast eigentlich Feierabend. Was passiert?</div>
+      <div class="sec-sub">MS Teams-Nachricht deines Chefs am Freitagabend: "Kannst du das kurz übernehmen?" Du hast eigentlich Feierabend. Was passiert?</div>
       <div class="r-opts" id="r-teams">
-        <div class="r-opt" onclick="sel('r-teams',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich mache es. Ablehnen f\u00fchlt sich nicht wie eine Option an.</div></div>
-        <div class="r-opt" onclick="sel('r-teams',this,33)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich \u00fcberlege kurz, mache es dann aber doch.</div></div>
+        <div class="r-opt" onclick="sel('r-teams',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich mache es — die Anfrage nicht anzunehmen kommt mir kaum in den Sinn.</div></div>
+        <div class="r-opt" onclick="sel('r-teams',this,33)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich überlege kurz, mache es dann aber doch.</div></div>
         <div class="r-opt" onclick="sel('r-teams',this,66)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich frage nach, ob es wirklich so dringend ist.</div></div>
-        <div class="r-opt" onclick="sel('r-teams',this,100)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich antworte Montag. Meine Grenzen sind klar \u2014 auch f\u00fcr andere.</div></div>
+        <div class="r-opt" onclick="sel('r-teams',this,100)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich antworte Montag. Meine Grenzen sind klar — auch für andere.</div></div>
       </div>
     </div>
 
@@ -254,42 +300,51 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
       <div class="bdown"><div class="bdown-t">Dein Bild im Detail</div><div id="r-bdown"></div></div>
       <div class="hebel-t">Deine drei konkreten Hebel</div>
       <div class="hebel-grid" id="r-hebel"></div>
-
-      <div style="display:none;border-top:1px solid var(--g200);padding-top:20px;margin-top:20px" id="result-mail">
-        <p style="font-size:14px;font-weight:500;color:var(--black);margin:0 0 4px">Ergebnis per Mail erhalten</p>
-        <p style="font-size:12px;color:var(--g600);margin:0 0 14px;line-height:1.5">Ich schicke dir dein Profil direkt ins Postfach — kein Gespräch, kein Versprechen.</p>
-        <div id="result-mail-form">
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
-            <input type="text" id="rm-name" placeholder="Dein Vorname" style="flex:1;min-width:120px;padding:10px 12px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font);font-size:13px;outline:none;min-height:42px">
-            <input type="email" id="rm-email" placeholder="Deine E-Mail" style="flex:1;min-width:140px;padding:10px 12px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font);font-size:13px;outline:none;min-height:42px">
-          </div>
-          <input type="hidden" id="rm-type">
-          <button id="rm-btn" onclick="submitResultMail()" style="width:100%;padding:12px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;min-height:44px">Ergebnis zusenden →</button>
-          <p style="font-size:11px;color:var(--g700);text-align:center;margin:7px 0 0">Kein Newsletter. Einmalig dein Profil — fertig.</p>
-        </div>
-        <div id="result-mail-ok" style="display:none;text-align:center;font-size:14px;color:var(--g600);padding:8px 0">Ergebnis ist unterwegs. ✓</div>
-      </div>
       <button class="restart-lnk" onclick="restartTest()">Test wiederholen</button>
     </div>
   </div>
 
-    <div class="share-sub">Wenn du jemanden kennst, der an einem \u00e4hnlichen Punkt steht \u2014 schick ihm diesen Link.</div>
-    <button class="share-btn" onclick="doShare()">Link teilen \u2192</button>
+  <div class="result-mail-sec" id="result-mail-sec" style="display:none;max-width:640px;width:100%">
+    <h3>Ergebnis per Mail erhalten</h3>
+    <p>Ich schicke dir dein Führungsprofil direkt in dein Postfach — kein Gespräch, kein Versprechen.</p>
+    <div id="rm-form-wrap">
+      <div class="rm-row">
+        <div class="fi"><input type="text" id="rm-name" placeholder="Dein Vorname" style="min-height:44px;width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font);font-size:14px;outline:none"></div>
+        <div class="fi"><input type="email" id="rm-email" placeholder="Deine E-Mail" style="min-height:44px;width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font);font-size:14px;outline:none"></div>
+      </div>
+      <input type="hidden" id="rm-type">
+      <button class="rm-submit" onclick="submitResultMail()">Ergebnis zusenden →</button>
+      <div class="rm-note">Kein Newsletter. Einmalig dein Profil — fertig.</div>
+      <div class="rm-err" id="rm-err">Etwas hat nicht geklappt. Bitte versuche es später nochmal.</div>
+    </div>
+    <div class="rm-ok" id="rm-ok">Ergebnis ist unterwegs. ✓</div>
+  </div>
+
+  <div class="share-sec" id="share-sec" style="display:none">
+    <div class="share-q">Wen aus deinem Umfeld würde das gerade treffen?</div>
+    <div class="share-sub">Wenn du jemanden kennst, der an einem ähnlichen Punkt steht — schick ihm diesen Link.</div>
+    <button class="share-btn" onclick="doShare()">Link teilen →</button>
     <div class="share-toast" id="share-toast"></div>
   </div>
 
+  <div class="email-sec" id="email-sec" style="display:none">
+    <div id="ef-wrap">
+      <h3 id="email-h3">Nächster Schritt: Lass uns reden.</h3>
+      <p id="email-p">Ich melde mich persönlich — mit einem konkreten nächsten Schritt, der zu deinem Ergebnis passt.</p>
+      <form onsubmit="submitEmail(event)">
+        <div class="form-row"><div class="fi"><input type="text" id="e-name" placeholder="Dein Vorname" required></div><div class="fi"><input type="email" id="e-email" placeholder="Deine E-Mail" required></div></div>
         <input type="hidden" id="e-score"><input type="hidden" id="e-ref"><input type="hidden" id="e-depth">
-        <button type="submit" class="f-submit" id="e-btn">Gespr\u00e4ch anfragen</button>
-        <div class="f-note">Kein Newsletter. Jochen antwortet pers\u00f6nlich.</div>
+        <button type="submit" class="f-submit" id="e-btn">Gespräch anfragen</button>
+        <div class="f-note">Kein Newsletter. Jochen antwortet persönlich.</div>
         <div class="f-err" id="f-err">Etwas hat nicht geklappt. Bitte versuche es später nochmal.</div>
       </form>
     </div>
-    <div class="f-ok" id="f-ok"><div class="f-ok-t">Nachricht angekommen.</div><div class="f-ok-s">Ich melde mich pers\u00f6nlich innerhalb von 48 Stunden.</div></div>
+    <div class="f-ok" id="f-ok"><div class="f-ok-t">Nachricht angekommen.</div><div class="f-ok-s">Ich melde mich persönlich innerhalb von 48 Stunden.</div></div>
   </div>
 
   <footer class="footer">
-    <p>\u00a9 2025 NORDSTERN Leadership \u00b7 <a href="mailto:jochen.r.mall@gmail.com">jochen.r.mall@gmail.com</a></p>
-    <p style="margin-top:5px">Dr.-Ing. Jochen Mall \u00b7 MHP \u2013 A Porsche Company \u00b7 Hochschule Heilbronn ab Sept. 2026</p>
+    <p>© 2025 NORDSTERN Leadership</p>
+    
   </footer>
 </div>
 
@@ -300,7 +355,7 @@ const _refId=_p.get('ref')||'';const _depth=parseInt(_p.get('depth')||'0');
 const _myId=(()=>{let id=sessionStorage.getItem('ns_id');if(!id){id=Math.random().toString(36).slice(2,10);sessionStorage.setItem('ns_id',id);}return id;})();
 if(_refId&&FORMSPREE_ID!=='YOUR_FORM_ID'){fetch(`https://formspree.io/f/${FORMSPREE_ID}`,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({type:'referral_visit',ref:_refId,depth:_depth,page:'vermittler'})}).catch(()=>{});}
 function _shareUrl(){const u=new URL(window.location.origin+window.location.pathname);u.searchParams.set('ref',_myId);u.searchParams.set('depth',String(_depth+1));if(_refId)u.searchParams.set('parent',_myId);return u.toString();}
-async function doShare(){const url=_shareUrl();const toast=document.getElementById('share-toast');if(navigator.share){try{await navigator.share({title:'NORDSTERN Energiebilanz-Check',text:'Investierst du deine Energie \u2014 oder verlierst du sie?',url});toast.textContent='Geteilt. \u2713';}catch(e){}}else{try{await navigator.clipboard.writeText(url);toast.textContent='Link kopiert! \u2713';}catch(e){toast.textContent=url;}}setTimeout(()=>{toast.textContent='';},3000);}
+async function doShare(){const url=_shareUrl();const toast=document.getElementById('share-toast');if(navigator.share){try{await navigator.share({title:'NORDSTERN Energiebilanz-Check',text:'Investierst du deine Energie — oder verlierst du sie?',url});toast.textContent='Geteilt. ✓';}catch(e){}}else{try{await navigator.clipboard.writeText(url);toast.textContent='Link kopiert! ✓';}catch(e){toast.textContent=url;}}setTimeout(()=>{toast.textContent='';},3000);}
 
 const rState={};
 function sel(g,el,score){document.querySelectorAll(`#${g} .r-opt`).forEach(o=>o.classList.remove('sel'));el.classList.add('sel');rState[g]=score;}
@@ -321,55 +376,96 @@ function calcResult(){
   showResult(score,{s_cost,s_prev,s_mood,s_give,s_meeting,s_delay,s_expect,s_no,s_teams});
 }
 
-function showResult(score,d){
-  if(FORMSPREE_ID!=='YOUR_FORM_ID'){fetch('https://formspree.io/f/'+FORMSPREE_ID,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({type:'result_view',page:'vermittler',ref:_refId,depth:_depth})}).catch(()=>{});};
+function showResult(score,d){_trackResult('Energiebilanz-Check', score, 'vermittler');
   document.getElementById('e-score').value=`Energiequotient: ${score}%`;
   document.getElementById('e-ref').value=_refId;document.getElementById('e-depth').value=String(_depth);
   const rs=document.getElementById('result-sec');rs.style.display='block';rs.classList.add('ani');rs.scrollIntoView({behavior:'smooth',block:'start'});
   setTimeout(()=>{const arc=314;const off=arc-(score/100)*arc;document.getElementById('g-fill').style.strokeDashoffset=off;let n=0;const iv=setInterval(()=>{n=Math.min(n+2,score);document.getElementById('g-num').textContent=n;if(n>=score)clearInterval(iv);},18);},200);
   let lvBadge,lvTitle,lvDesc;
-  if(score<30){lvBadge='Soziale St\u00fctze mit Leck';lvTitle='Du gibst \u2014 und verlierst dabei dich selbst.';lvDesc='Deine F\u00e4higkeit, das Team zusammenzuhalten, ist real und wertvoll. Aber ich sehe: Du investierst in Harmonie, statt in Richtung. Das ersch\u00f6pft dich \u2014 und gibt dem Team keine Orientierung.';}
-  else if(score<60){lvBadge='F\u00fchrungskraft im \u00dcbergang';lvTitle='Du sp\u00fcrst die Grenze \u2014 und lernst, sie zu setzen.';lvDesc='Du hast begonnen, Klarheit zu wagen. Manchmal gelingt es, manchmal nicht. Das Muster dahinter: Du f\u00fcrsorge f\u00fcr andere \u2014 aber noch nicht konsequent f\u00fcr dich selbst.';}
-  else{lvBadge='Orientierender Leader';lvTitle:'Deine F\u00fcrsorge hat eine Richtung \u2014 und sch\u00fctzt dich dabei.';lvDesc='Du hast den \u00dcbergang gemacht: von Harmonie als Ziel zu Klarheit als F\u00fcrsorge. Dein Team wei\u00df, wo du stehst. Und du wei\u00dft, wo du stehst.';}
+  if(score<30){lvBadge='Soziale Stütze mit Leck';lvTitle='Du gibst — und verlierst dabei dich selbst.';lvDesc='Deine Fähigkeit, das Team zusammenzuhalten, ist real und wertvoll. Aber ich sehe: Du investierst in Harmonie, statt in Richtung. Das erschöpft dich — und gibt dem Team keine Orientierung.';}
+  else if(score<60){lvBadge='Führungskraft im Übergang';lvTitle='Du spürst die Grenze — und lernst, sie zu setzen.';lvDesc='Du hast begonnen, Klarheit zu wagen. Manchmal gelingt es, manchmal nicht. Das Muster dahinter: Du fürsorge für andere — aber noch nicht konsequent für dich selbst.';}
+  else{lvBadge='Orientierender Leader';lvTitle='Deine Fürsorge hat eine Richtung — und schützt dich dabei.';lvDesc='Du hast den Übergang gemacht: von Harmonie als Ziel zu Klarheit als Fürsorge. Dein Team weiß, wo du stehst. Und du weißt, wo du stehst.';}
   document.getElementById('r-lv-badge').textContent=lvBadge;document.getElementById('r-lv-t').textContent=lvTitle;document.getElementById('r-lv-d').textContent=lvDesc;
-  const dims=[{l:'Gespr\u00e4chsenergie',v:d.s_cost},{l:'Konfliktpr\u00e4vention',v:d.s_prev},{l:'Stimmungsmanagement',v:d.s_mood},{l:'Gespr\u00e4chsbilanz',v:d.s_give},{l:'Authentizit\u00e4t',v:d.s_meeting},{l:'Klarheit',v:d.s_delay},{l:'Erwartungsklarheit',v:d.s_expect},{l:'Nein-Kompetenz',v:d.s_no},{l:'Grenzen nach oben',v:d.s_teams}];
+  var _q=document.createElement('p');_q.textContent='Was haben wir bereits geschafft? Worauf sind wir stolz? Diese Frage ist ein wirksamer Puffer gegen Stress. (Eva Asselmann)';_q.style='font-size:13px;color:#6e6e73;font-style:italic;margin-top:12px;border-left:3px solid #d2d2d7;padding-left:12px';document.getElementById('r-lv-d').appendChild(_q);
+  const dims=[{l:'Gesprächsenergie',v:d.s_cost},{l:'Konfliktprävention',v:d.s_prev},{l:'Stimmungsmanagement',v:d.s_mood},{l:'Gesprächsbilanz',v:d.s_give},{l:'Authentizität',v:d.s_meeting},{l:'Klarheit',v:d.s_delay},{l:'Erwartungsklarheit',v:d.s_expect},{l:'Nein-Kompetenz',v:d.s_no},{l:'Grenzen nach oben',v:d.s_teams}];
   let bh='';dims.forEach(b=>{bh+=`<div class="b-row"><div class="b-lbl">${b.l}</div><div class="b-track"><div class="b-fill" data-v="${b.v}" style="width:0%"></div></div><div class="b-v">${b.v}</div></div>`;});
   document.getElementById('r-bdown').innerHTML=bh;
   setTimeout(()=>{document.querySelectorAll('.b-fill[data-v]').forEach(e=>{e.style.width=e.dataset.v+'%';});},300);
   const hebelAll=[
-    {c:d=>d.s_cost<40,t:'Gespr\u00e4che vorbereiten statt bef\u00fcrchten',d:'F\u00fchre f\u00fcr dich ein einfaches Protokoll: Was will ich in diesem Gespr\u00e4ch sagen? Ein Satz. Nicht mehr. Vorbereitete Klarheit kostet halb so viel Energie wie das, was in deinem Kopf kreist.'},
-    {c:d=>d.s_prev<40,t:'Konflikt als Information, nicht als Gefahr',d:'Ersetze den Impuls "Wie verhindere ich das?" durch "Was sagt mir dieser Konflikt?" Konflikte im Team sind Daten \u2014 sie zeigen, wo Erwartungen unklar sind. Das ist dein F\u00fchrungsauftrag, nicht dein Problem.'},
-    {c:d=>d.s_meeting<50,t:'Sagen, was du denkst \u2014 sofort',d:'F\u00fchre eine pers\u00f6nliche Regel ein: Wenn ich in einem Meeting etwas denke und es nicht sage, sage ich es sp\u00e4testens in den ersten 30 Minuten danach \u2014 direkt. Nicht via MS Teams. Sprachlos zu bleiben kostet mehr als ein kurzes Gespr\u00e4ch.'},
-    {c:d=>d.s_delay<50,t:'Ansagen nicht vertagen',d:'Wenn du wei\u00dft, dass du etwas ansprechen musst: tue es innerhalb von 24 Stunden. Jeder Tag l\u00e4nger erh\u00f6ht den Energieaufwand exponentiell. Nicht weil das Gespr\u00e4ch schwerer wird \u2014 sondern weil du es in deinem Kopf bereits zehnmal gef\u00fchrt hast.'},
-    {c:d=>d.s_expect<50,t:'Erwartungen laut aussprechen',d:'Vereinbare mit deinem Team ein 30-min\u00fctiges Gespr\u00e4ch. Thema: Ich erkl\u00e4re, was mir in unserer Zusammenarbeit wirklich wichtig ist \u2014 nicht nur was, sondern wie. Explizite Erwartungen eliminieren Reibungsverluste.'},
-    {c:d=>d.s_mood<40,t:'Stimmungsverantwortung abgeben',d:'Merke dir: Die Stimmung im Team ist nicht deine Aufgabe zu regulieren \u2014 sie ist ein Spiegel der Strukturen. Wenn die Stimmung schlecht ist, l\u00f6se das strukturelle Problem. Nicht das emotionale Symptom.'},
-    {c:d=>d.s_no<50,t:'Nein als F\u00fcrsorge \u00fcben',d:'Definiere diese Woche eine klare Grenze, die du kommunizierst. Nicht aggressiv \u2014 sachlich. "Das mache ich nicht, weil..." und dann ein echter Grund. Nein ohne Entschuldigung ist kein Egoismus. Es ist Selbstrespekt.'},
-    {c:d=>d.s_teams<50,t:'Erreichbarkeitszeiten definieren',d:'Kommuniziere deinem Team und deinem Vorgesetzten deine Nicht-Erreichbarkeitszeiten. In MS Teams kannst du einen Status setzen. Das ist kein R\u00fcckzug \u2014 das ist professionelle Grenzziehung. Wer immer erreichbar ist, ist nie wirklich da.'},
-    {c:d=>d.s_give<40,t:'Energiebilanz t\u00e4glich pr\u00fcfen',d:'F\u00fchre 7 Tage lang ein Mini-Protokoll: Welche Gespr\u00e4che haben dir Energie gegeben? Welche haben sie genommen? Nach einer Woche siehst du ein Muster \u2014 und eine Entscheidungsgrundlage.'},
+    {c:d=>d.s_cost<40,t:'Gespräche vorbereiten statt befürchten',d:'Führe für dich ein einfaches Protokoll: Was will ich in diesem Gespräch sagen? Ein Satz. Nicht mehr. Vorbereitete Klarheit kostet halb so viel Energie wie das, was in deinem Kopf kreist.'},
+    {c:d=>d.s_prev<40,t:'Konflikt als Information, nicht als Gefahr',d:'Ersetze den Impuls "Wie verhindere ich das?" durch "Was sagt mir dieser Konflikt?" Konflikte im Team sind Daten — sie zeigen, wo Erwartungen unklar sind. Das ist dein Führungsauftrag, nicht dein Problem.'},
+    {c:d=>d.s_meeting<50,t:'Sagen, was du denkst — sofort',d:'Führe eine persönliche Regel ein: Wenn ich in einem Meeting etwas denke und es nicht sage, sage ich es spätestens in den ersten 30 Minuten danach — direkt. Nicht via MS Teams. Sprachlos zu bleiben kostet mehr als ein kurzes Gespräch.'},
+    {c:d=>d.s_delay<50,t:'Ansagen nicht vertagen',d:'Wenn du weißt, dass du etwas ansprechen musst: tue es innerhalb von 24 Stunden. Jeder Tag länger erhöht den Energieaufwand exponentiell. Nicht weil das Gespräch schwerer wird — sondern weil du es in deinem Kopf bereits zehnmal geführt hast.'},
+    {c:d=>d.s_expect<50,t:'Erwartungen laut aussprechen',d:'Vereinbare mit deinem Team ein 30-minütiges Gespräch. Thema: Ich erkläre, was mir in unserer Zusammenarbeit wirklich wichtig ist — nicht nur was, sondern wie. Explizite Erwartungen eliminieren Reibungsverluste.'},
+    {c:d=>d.s_mood<40,t:'Stimmungsverantwortung abgeben',d:'Merke dir: Die Stimmung im Team ist nicht deine Aufgabe zu regulieren — sie ist ein Spiegel der Strukturen. Wenn die Stimmung schlecht ist, löse das strukturelle Problem. Nicht das emotionale Symptom.'},
+    {c:d=>d.s_no<50,t:'Nein als Fürsorge üben',d:'Definiere diese Woche eine klare Grenze, die du kommunizierst. Nicht aggressiv — sachlich. "Das mache ich nicht, weil..." und dann ein echter Grund. Nein ohne Entschuldigung ist kein Egoismus. Es ist Selbstrespekt.'},
+    {c:d=>d.s_teams<50,t:'Erreichbarkeitszeiten definieren',d:'Kommuniziere deinem Team und deinem Vorgesetzten deine Nicht-Erreichbarkeitszeiten. In MS Teams kannst du einen Status setzen. Das ist kein Rückzug — das ist professionelle Grenzziehung. Wer immer erreichbar ist, ist nie wirklich da.'},
+    {c:d=>d.s_give<40,t:'Energiebilanz täglich prüfen',d:'Führe 7 Tage lang ein Mini-Protokoll: Welche Gespräche haben dir Energie gegeben? Welche haben sie genommen? Nach einer Woche siehst du ein Muster — und eine Entscheidungsgrundlage.'},
   ];
   const matched=hebelAll.filter(h=>h.c(d)).slice(0,3);if(matched.length<3)hebelAll.filter(h=>!h.c(d)).forEach(h=>{if(matched.length<3)matched.push(h);});
   document.getElementById('r-hebel').innerHTML=matched.map((h,i)=>`<div class="h-card"><div class="h-num">${i+1}</div><div><div class="h-ct-t">${h.t}</div><div class="h-ct-d">${h.d}</div></div></div>`).join('');
-  document.getElementById('rm-type').value='Energiebilanz-Check';
-  document.getElementById('result-mail').style.display='block';
+
+  document.getElementById('email-h3').textContent = 'Du gibst viel. Ich sage dir konkret, wo deine Energie verloren geht.';
+  document.getElementById('email-p').textContent = 'Basierend auf deinen Antworten — nicht auf einem allgemeinen Vermittler-Profil.';
+  document.getElementById('rm-type').value=typ||'';
+  document.getElementById('result-mail-sec').style.display='block';
+  document.getElementById('share-sec').style.display='block';document.getElementById('email-sec').style.display='block';
 }
 
-function restartTest(){Object.keys(rState).forEach(k=>delete rState[k]);document.querySelectorAll('.r-opt').forEach(o=>o.classList.remove('sel'));[{id:'sl-cost',v:70},{id:'sl-prev',v:50},{id:'sl-mood',v:60},{id:'sl-give',v:75}].forEach(x=>{const el=document.getElementById(x.id);el.value=x.v;el.dispatchEvent(new Event('input'));});document.getElementById('result-sec').style.display='none';document.getElementById('result-mail').style.display='none';document.getElementById('result-mail-form').style.display='block';document.getElementById('result-mail-ok').style.display='none';document.getElementById('rm-btn').textContent='Ergebnis zusenden →';document.getElementById('rm-btn').disabled=false;document.getElementById('test-card').scrollIntoView({behavior:'smooth'});}
-async function submitResultMail() {
-  const name=document.getElementById('rm-name').value.trim();
-  const email=document.getElementById('rm-email').value.trim();
-  if(!name||!email){return;}
-  const btn=document.getElementById('rm-btn');
-  btn.textContent='Wird gesendet…';btn.disabled=true;
-  try{
-    const res=await fetch('https://formspree.io/f/'+FORMSPREE_ID,{
-      method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({name,email,typ:document.getElementById('rm-type').value,type:'result_mail',ref:_refId,depth:_depth,_replyto:email})
-    });
-    if(res.ok){document.getElementById('result-mail-form').style.display='none';document.getElementById('result-mail-ok').style.display='block';}
-    else throw new Error();
-  }catch{btn.textContent='Ergebnis zusenden →';btn.disabled=false;}
+async function submitEmail(e){
+  e.preventDefault();const btn=document.getElementById('e-btn');btn.textContent='Wird gesendet…';btn.disabled=true;
+  if(FORMSPREE_ID==='YOUR_FORM_ID'){document.getElementById('ef-wrap').style.display='none';document.getElementById('f-ok').style.display='block';return;}
+  try{const res=await fetch(`https://formspree.io/f/${FORMSPREE_ID}`,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:document.getElementById('e-name').value,email:document.getElementById('e-email').value,test:'Energiebilanz-Check (Vermittler)',score:document.getElementById('e-score').value,ref:_refId,depth:_depth,_replyto:document.getElementById('e-email').value})});if(res.ok){document.getElementById('ef-wrap').style.display='none';document.getElementById('f-ok').style.display='block';}else throw new Error();}
+  catch{btn.textContent='Gespräch anfragen';btn.disabled=false;document.getElementById('f-err').style.display='block';}
 }
-window.startTest=startTest;window.calcResult=calcResult;window.sel=sel;window.restartTest=restartTest;window.doShare=doShare;window.submitResultMail=submitResultMail;
+function restartTest(){Object.keys(rState).forEach(k=>delete rState[k]);document.querySelectorAll('.r-opt').forEach(o=>o.classList.remove('sel'));[{id:'sl-cost',v:70},{id:'sl-prev',v:50},{id:'sl-mood',v:60},{id:'sl-give',v:75}].forEach(x=>{const el=document.getElementById(x.id);el.value=x.v;el.dispatchEvent(new Event('input'));});document.getElementById('result-sec').style.display='none';['result-mail-sec','share-sec','email-sec'].forEach(id=>{document.getElementById(id).style.display='none';});document.getElementById('test-card').scrollIntoView({behavior:'smooth'});}
+
+function _trackResult(typ, score, page) {
+  if (FORMSPREE_ID === 'YOUR_FORM_ID') return;
+  fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    body: JSON.stringify({type:'result_view', page:page, typ:typ, score:score||'', ref:_refId, depth:_depth})
+  }).catch(()=>{});
+}
+
+async function submitResultMail() {
+  const name = document.getElementById('rm-name').value.trim();
+  const email = document.getElementById('rm-email').value.trim();
+  const typ = document.getElementById('rm-type').value;
+  const errEl = document.getElementById('rm-err');
+  errEl.style.display = 'none';
+  if (!name || !email) return;
+  const btn = document.querySelector('.rm-submit');
+  btn.textContent = 'Wird gesendet…'; btn.disabled = true;
+  if (FORMSPREE_ID === 'YOUR_FORM_ID') {
+    document.getElementById('rm-form-wrap').style.display = 'none';
+    document.getElementById('rm-ok').style.display = 'block'; return;
+  }
+  try {
+    const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({name, email, typ, type:'result_mail', ref:_refId, depth:_depth, _replyto:email})
+    });
+    if (res.ok) {
+      document.getElementById('rm-form-wrap').style.display='none';
+      document.getElementById('rm-ok').style.display='block';
+    } else throw new Error();
+  } catch {
+    btn.textContent='Ergebnis zusenden →'; btn.disabled=false;
+    errEl.style.display='block';
+  }
+}
+
+// expose to global scope (Cloudflare Rocket Loader fix)
+window.startTest=startTest;
+window.calcResult=calcResult;
+window.sel=sel;
+window.submitEmail=submitEmail;
+window.submitResultMail=submitResultMail;
+window.doShare=doShare;
+window.restartTest=restartTest;
 </script>
 </body>
 </html>
