@@ -160,7 +160,7 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 <div class="page">
   <nav class="nav">
     <a href="index.html" class="nav-logo">NORDSTERN <span>Leadership</span></a>
-    <a href="index.html" class="nav-back">← Zur Standortbestimmung</a>
+    <a href="kompass.html" class="nav-back">← Zur Standortbestimmung</a>
   </nav>
 
   <header class="hero" id="hero">
@@ -361,9 +361,6 @@ function calcResult(){
 }
 
 function showResult(score,d){_trackResult('Wirkungscheck', score, 'antreiber');
-  document.getElementById('e-score').value=`Wirkungsquotient: ${score}%`;
-  document.getElementById('e-ref').value=_refId;
-  document.getElementById('e-depth').value=String(_depth);
   const rs=document.getElementById('result-sec');rs.style.display='block';rs.classList.add('ani');
   rs.scrollIntoView({behavior:'smooth',block:'start'});
   setTimeout(()=>{
@@ -394,19 +391,10 @@ function showResult(score,d){_trackResult('Wirkungscheck', score, 'antreiber');
   if(matched.length<3)hebelAll.filter(h=>!h.c(d)).forEach(h=>{if(matched.length<3)matched.push(h);});
   document.getElementById('r-hebel').innerHTML=matched.map((h,i)=>`<div class="h-card"><div class="h-num">${i+1}</div><div class="h-ct"><div class="h-ct-t">${h.t}</div><div class="h-ct-d">${h.d}</div></div></div>`).join('');
 
-  document.getElementById('email-h3').textContent = 'Du lieferst — aber wächst dein Team auch ohne dich?';
-  document.getElementById('email-p').textContent = 'Ich gebe dir eine ehrliche Einschätzung zu genau dem, was du mir beschrieben hast.';
   document.getElementById('rm-type').value=typ||'';
   document.getElementById('result-mail').style.display='block';
 }
 
-async function submitEmail(e){
-  e.preventDefault();const btn=document.getElementById('e-btn');btn.textContent='Wird gesendet…';btn.disabled=true;
-  const err=document.getElementById('f-err');err.style.display='none';
-  if(FORMSPREE_ID==='YOUR_FORM_ID'){document.getElementById('ef-wrap').style.display='none';document.getElementById('f-ok').style.display='block';return;}
-  try{const res=await fetch(`https://formspree.io/f/${FORMSPREE_ID}`,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:document.getElementById('e-name').value,email:document.getElementById('e-email').value,test:'Wirkungscheck (Antreiber)',score:document.getElementById('e-score').value,ref:_refId,depth:_depth,_replyto:document.getElementById('e-email').value})});if(res.ok){document.getElementById('ef-wrap').style.display='none';document.getElementById('f-ok').style.display='block';}else throw new Error();}
-  catch{btn.textContent='Gespräch anfragen';btn.disabled=false;err.style.display='block';}
-}
 
 function restartTest(){Object.keys(rState).forEach(k=>delete rState[k]);document.querySelectorAll('.r-opt').forEach(o=>o.classList.remove('sel'));[{id:'sl-dep',v:65},{id:'sl-corr',v:4},{id:'sl-why',v:40},{id:'sl-react',v:70}].forEach(x=>{const el=document.getElementById(x.id);el.value=x.v;el.dispatchEvent(new Event('input'));});document.getElementById('result-sec').style.display='none';;document.getElementById('result-mail').style.display='none';document.getElementById('result-mail-form').style.display='block';document.getElementById('result-mail-ok').style.display='none';document.getElementById('rm-btn').textContent='Ergebnis zusenden →';document.getElementById('rm-btn').disabled=false;document.getElementById('test-card').scrollIntoView({behavior:'smooth'});}
 

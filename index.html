@@ -1,174 +1,124 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="robots" content="all">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NORDSTERN Leadership Kompass</title>
-<meta name="description" content="Welcher Führungstyp bist du wirklich? 8 ehrliche Fragen. Dein Führungsprofil.">
-<meta property="og:title" content="NORDSTERN Leadership Kompass">
-<meta property="og:description" content="8 Fragen. Dein Führungstyp. Kostenlos.">
-<meta property="og:url" content="https://nordstern-leadership.de">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
---white:#fff;--black:#1d1d1f;
---g50:#fafafa;--g100:#f5f5f7;--g200:#e8e8ed;--g300:#d2d2d7;--g400:#c7c7cc;--g600:#6e6e73;--g700:#86868b;
---border:rgba(0,0,0,.08);--border-md:rgba(0,0,0,.15);
---font:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Arial,sans-serif;
---font-d:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
---r-sm:8px;--r-md:12px;--r-lg:18px;
---shadow:0 4px 20px rgba(0,0,0,.07),0 1px 4px rgba(0,0,0,.04);
-}
-html{scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--white);color:var(--black);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-/* compass bg */
-.cbg{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(90vw,700px);height:min(90vw,700px);opacity:.032;pointer-events:none;z-index:0}
-/* layout */
-.page{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding:0 20px 80px}
-/* nav */
-.nav{width:100%;max-width:720px;padding:28px 0 0;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:var(--font-d);font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--black);text-decoration:none}
-.nav-logo span{color:var(--g600);font-weight:400}
-/* hero */
-.hero{max-width:600px;width:100%;text-align:center;padding:64px 0 48px}
-.hero-tag{display:inline-block;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--g600);background:var(--g100);border:1px solid var(--g200);padding:6px 16px;border-radius:100px;margin-bottom:24px}
-.hero h1{font-family:var(--font-d);font-size:clamp(34px,6vw,54px);font-weight:600;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
-.hero h1 em{font-style:normal;color:var(--g600)}
-.hero p{font-size:17px;color:var(--g600);line-height:1.6;max-width:420px;margin:0 auto 28px}
-.hero-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--g700)}
-.hero-meta span{display:flex;align-items:center;gap:5px}
-.dot{width:3px;height:3px;border-radius:50%;background:var(--g400)}
-/* card */
-.card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow);width:100%;max-width:640px;padding:40px 44px}
-@media(max-width:600px){.card{padding:28px 20px}}
-/* progress */
-.prog-wrap{margin-bottom:28px}
-.prog-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.prog-lbl{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--g600)}
-.prog-ct{font-size:13px;color:var(--g700)}
-.prog-track{height:2px;background:var(--g200);border-radius:2px;overflow:hidden}
-.prog-fill{height:100%;background:var(--black);border-radius:2px;transition:width .5s cubic-bezier(.4,0,.2,1)}
-/* question */
-.q-text{font-family:var(--font-d);font-size:clamp(18px,3vw,22px);font-weight:500;letter-spacing:-.02em;line-height:1.35;margin-bottom:24px}
-/* options */
-.opts{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-.opt{border:1px solid var(--border);border-radius:var(--r-md);padding:14px 18px;cursor:pointer;transition:all .18s;background:var(--white);text-align:left;width:100%;min-height:48px}
-.opt:hover{border-color:var(--border-md);background:var(--g100);transform:translateY(-1px)}
-.opt.sel{border:1.5px solid var(--black);background:var(--g100)}
-.opt-hdr{display:flex;align-items:center;gap:10px;margin-bottom:4px}
-.opt-let{width:22px;height:22px;border-radius:50%;background:var(--g200);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--g600);flex-shrink:0;transition:all .18s}
-.opt.sel .opt-let{background:var(--black);color:var(--white)}
-.opt-txt{font-size:14px;font-weight:500;color:var(--black);line-height:1.4}
-.opt-ex{font-size:12px;color:var(--g600);padding-left:32px;font-style:italic;line-height:1.45}
-/* buttons */
-.btn-row{display:flex;gap:10px}
-.btn{padding:12px 22px;border-radius:100px;font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer;transition:all .18s;border:1px solid var(--border);background:transparent;color:var(--black);min-height:44px}
-.btn:hover:not(:disabled){background:var(--g100);border-color:var(--border-md)}
-.btn:disabled{opacity:.3;cursor:default}
-.btn-p{background:var(--black);color:var(--white);border-color:var(--black);flex:1}
-.btn-p:hover:not(:disabled){background:#333;border-color:#333}
-/* result */
-.result{display:none}
-.r-badge{display:inline-block;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--g600);background:var(--g100);border:1px solid var(--g200);padding:5px 14px;border-radius:100px;margin-bottom:14px}
-.r-type{font-family:var(--font-d);font-size:clamp(28px,5vw,36px);font-weight:600;letter-spacing:-.03em;margin-bottom:8px}
-.r-tagline{font-size:16px;color:var(--g600);line-height:1.5;margin-bottom:24px}
-.scores{margin-bottom:24px}
-.scores-lbl{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--g600);margin-bottom:12px}
-.s-row{display:flex;align-items:center;gap:10px;margin-bottom:9px}
-.s-name{font-size:12px;color:var(--g600);width:130px;flex-shrink:0}
-.s-track{flex:1;height:3px;background:var(--g200);border-radius:3px;overflow:hidden}
-.s-fill{height:100%;background:var(--black);border-radius:3px;transition:width .8s cubic-bezier(.4,0,.2,1)}
-.s-fill.dim{background:var(--g300)}
-.s-n{font-size:11px;color:var(--g700);width:14px;text-align:right}
-.prof-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
-@media(max-width:420px){.prof-grid{grid-template-columns:1fr}}
-.prof-card{background:var(--g100);border-radius:var(--r-sm);padding:12px 14px}
-.prof-lbl{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--g700);margin-bottom:4px}
-.prof-val{font-size:13px;color:var(--black);line-height:1.4}
-.r-msg{background:var(--g100);border-radius:var(--r-md);padding:20px 24px;margin-bottom:20px;font-size:15px;color:var(--black);line-height:1.7;border-left:3px solid var(--black)}
-.r-msg p+p{margin-top:12px}
-.r-msg .cta{font-size:16px;font-weight:500;margin-top:14px}
-/* deep dive section */
-.deep-div{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px 32px;margin-top:16px;text-align:center}
-@media(max-width:600px){.deep-div{padding:22px 18px}}
-.dd-eyebrow{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--g600);margin-bottom:8px}
-.dd-title{font-family:var(--font-d);font-size:20px;font-weight:600;letter-spacing:-.02em;margin-bottom:8px}
-.dd-sub{font-size:14px;color:var(--g600);line-height:1.55;margin-bottom:20px}
-.dd-btn{display:inline-block;padding:14px 32px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;transition:background .18s;min-height:44px}
-.dd-btn:hover{background:#333}
-/* share section */
-.share-sec{background:var(--g50);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px 28px;margin-top:14px;text-align:center}
-@media(max-width:600px){.share-sec{padding:20px 16px}}
-.share-q{font-size:15px;font-weight:500;color:var(--black);margin-bottom:6px}
-.share-sub{font-size:13px;color:var(--g600);line-height:1.5;margin-bottom:16px}
-.share-btn{padding:12px 28px;background:transparent;color:var(--black);border:1px solid var(--border-md);border-radius:100px;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;transition:all .18s;min-height:44px}
-.share-btn:hover{background:var(--g100)}
-.share-toast{font-size:13px;color:var(--g600);margin-top:10px;min-height:20px;transition:opacity .3s}
-/* email cap */
-.email-sec{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px 32px;margin-top:14px;width:100%;max-width:640px}
-@media(max-width:600px){.email-sec{padding:22px 18px}}
-.email-sec h3{font-family:var(--font-d);font-size:20px;font-weight:600;letter-spacing:-.02em;margin-bottom:8px}
-.email-sec p{font-size:14px;color:var(--g600);line-height:1.55;margin-bottom:20px}
-.form-row{display:flex;gap:10px;flex-wrap:wrap}
-.form-row .fi{flex:1;min-width:140px}
-.fi input{width:100%;padding:12px 15px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font);font-size:14px;color:var(--black);background:var(--white);outline:none;transition:border-color .18s;min-height:44px}
-.fi input:focus{border-color:var(--black)}
-.fi input::placeholder{color:var(--g400)}
-.form-submit{padding:12px 24px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;transition:background .18s;white-space:nowrap;min-height:44px;width:100%;margin-top:8px}
-.form-submit:hover{background:#333}
-.form-note{font-size:11px;color:var(--g700);margin-top:8px}
-.form-err{display:none;font-size:12px;color:#c0392b;margin-top:6px}
-.form-ok{display:none;text-align:center;padding:16px}
-.form-ok-t{font-size:17px;font-weight:500;margin-bottom:5px}
-.form-ok-s{font-size:13px;color:var(--g600)}
-.restart{background:none;border:none;font-size:13px;color:var(--g700);cursor:pointer;text-decoration:underline;font-family:var(--font);margin-top:16px;display:block;text-align:center;width:100%}
-
-
-
-/* result mail */
-.result-mail-sec{background:var(--g50);border:1px solid var(--border);border-radius:var(--r-lg);padding:22px 28px;margin-top:10px;max-width:640px;width:100%}
-@media(max-width:600px){.result-mail-sec{padding:18px 16px}}
-.result-mail-sec h3{font-family:var(--font-d);font-size:17px;font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
-.result-mail-sec p{font-size:13px;color:var(--g600);line-height:1.5;margin-bottom:14px}
-.rm-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
-.rm-row .fi{flex:1;min-width:130px}
-.rm-submit{width:100%;padding:12px;background:transparent;color:var(--black);border:1px solid var(--border-md);border-radius:100px;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;transition:all .18s;min-height:44px}
-.rm-submit:hover{background:var(--g100)}
-.rm-note{font-size:11px;color:var(--g700);margin-top:6px}
-.rm-ok{display:none;font-size:14px;color:var(--g600);text-align:center;padding:10px 0}
-.rm-err{display:none;font-size:12px;color:#c0392b;margin-top:5px}
-
-/* quote block */
-.quote-block{display:block;background:var(--g100);border-left:3px solid var(--g300);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:12px 16px;margin-top:16px;font-size:14px;color:var(--black);line-height:1.6}
-.quote-src{display:block;font-size:12px;color:var(--g600);margin-top:6px;font-style:normal}
-
-/* infobox */
-.infobox{background:var(--g100);border:1px solid var(--g200);border-radius:var(--r-lg);padding:14px 18px;max-width:500px;margin:0 auto 16px;text-align:left}
-.infobox-lbl{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--g600);margin-bottom:10px}
-.infobox-items{display:flex;flex-direction:column;gap:8px}
-.infobox-item{display:flex;align-items:flex-start;gap:11px}
-.infobox-icon{width:24px;height:24px;border-radius:50%;background:var(--white);border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;color:var(--black)}
-.infobox-title{font-size:12px;font-weight:500;color:var(--black);margin:0 0 1px 0}
-.infobox-sub{font-size:11px;color:var(--g600);margin:0;line-height:1.4}
-
-/* footer */
-.footer{max-width:720px;width:100%;padding:40px 0 0;text-align:center;font-size:12px;color:var(--g700);border-top:1px solid var(--border);margin-top:40px}
-.footer a{color:var(--g700);text-decoration:underline}
-/* mobile full-width buttons */
-@media(max-width:480px){
-  .btn-row{flex-direction:column-reverse}
-  .btn-row .btn{width:100%;text-align:center}
-}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.fi{animation:fadeIn .4s ease both}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NORDSTERN.Leadership ein Konzept von Dr. Jochen Mall</title>
+  <link rel="stylesheet" href="nordstern-styles.css">
+  <style data-cfasync="false">
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root {
+      --white:#ffffff; --black:#1d1d1f;
+      --g50:#fafafa; --g100:#f5f5f7; --g200:#e8e8ed;
+      --g300:#d2d2d7; --g400:#c7c7cc; --g600:#6e6e73; --g700:#86868b;
+      --border:rgba(0,0,0,.08); --border-md:rgba(0,0,0,.15);
+      --font:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Arial,sans-serif;
+      --font-d:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
+      --r-sm:8px; --r-md:12px; --r-lg:18px;
+      --shadow:0 4px 20px rgba(0,0,0,.07),0 1px 4px rgba(0,0,0,.04);
+      --max-content:720px; --max-card:640px; --page-pad:20px;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font);background:var(--white);color:var(--black);
+         min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    .cbg{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+         width:min(90vw,700px);height:min(90vw,700px);
+         opacity:.032;pointer-events:none;z-index:0}
+    .page{position:relative;z-index:1;display:flex;flex-direction:column;
+          align-items:center;padding:0 var(--page-pad) 80px}
+    .nav{width:100%;max-width:var(--max-content);padding:28px 0 0;
+         display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-family:var(--font-d);font-size:15px;font-weight:600;
+              letter-spacing:-.01em;color:var(--black);text-decoration:none}
+    .nav-logo span{color:var(--g600);font-weight:400}
+    .nav-back{font-size:13px;color:var(--g600);text-decoration:none}
+    .nav-back:hover{color:var(--black)}
+    .hero{max-width:600px;width:100%;text-align:center;padding:64px 0 48px}
+    .hero-tag{display:inline-block;font-size:12px;font-weight:500;letter-spacing:.1em;
+              text-transform:uppercase;color:var(--g600);background:var(--g100);
+              border:1px solid var(--g200);padding:6px 16px;border-radius:100px;margin-bottom:24px}
+    .hero h1{font-family:var(--font-d);font-size:clamp(34px,6vw,54px);font-weight:600;
+             letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
+    .hero h1 em{font-style:normal;color:var(--g600)}
+    .hero p{font-size:17px;color:var(--g600);line-height:1.6;max-width:480px;margin:0 auto 28px}
+    .hero-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;
+               font-size:13px;color:var(--g700)}
+    .hero-meta span{display:flex;align-items:center;gap:5px}
+    .dot{width:3px;height:3px;border-radius:50%;background:var(--g400)}
+    .card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);
+          box-shadow:var(--shadow);width:100%;max-width:var(--max-card);padding:40px 44px}
+    .eyebrow,.sec-eye{font-size:11px;font-weight:500;letter-spacing:.08em;
+                      text-transform:uppercase;color:var(--g600);margin-bottom:6px}
+    .btn-primary{display:inline-block;padding:14px 32px;background:var(--black);
+                 color:var(--white);border:none;border-radius:100px;font-family:var(--font);
+                 font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;
+                 transition:background .18s;min-height:44px;text-align:center}
+    .btn-primary:hover{background:#333}
+    .btn-sec{display:inline-block;padding:12px 28px;background:transparent;color:var(--black);
+             border:1px solid var(--border-md);border-radius:100px;font-family:var(--font);
+             font-size:14px;font-weight:500;cursor:pointer;transition:all .18s;min-height:44px;
+             text-decoration:none}
+    .btn-sec:hover{background:var(--g100)}
+    .h-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+    .h-card{background:var(--g100);border-radius:var(--r-md);padding:15px 17px;
+            display:flex;gap:13px;align-items:flex-start}
+    .h-num{width:26px;height:26px;border-radius:50%;background:var(--black);color:var(--white);
+           font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;
+           flex-shrink:0;margin-top:1px}
+    .h-ct-t{font-size:14px;font-weight:500;color:var(--black);margin-bottom:3px}
+    .h-ct-d{font-size:13px;color:var(--g600);line-height:1.5}
+    .share-box{background:var(--g50);border:1px solid var(--border);border-radius:var(--r-lg);
+               padding:22px 26px;margin-top:14px;text-align:center;
+               max-width:var(--max-card);width:100%}
+    .share-box .share-q{font-size:15px;font-weight:500;color:var(--black);margin-bottom:5px}
+    .share-box .share-sub{font-size:13px;color:var(--g600);line-height:1.5;margin-bottom:14px}
+    .share-btn{display:inline-block;padding:12px 28px;background:transparent;color:var(--black);
+               border:1px solid var(--border-md);border-radius:100px;font-family:var(--font);
+               font-size:14px;font-weight:500;cursor:pointer;transition:all .18s}
+    .share-btn:hover{background:var(--g100)}
+    .share-toast{font-size:13px;color:var(--g600);margin-top:8px;min-height:18px}
+    .footer{max-width:var(--max-content);width:100%;padding:40px 0 0;text-align:center;
+            font-size:12px;color:var(--g700);border-top:1px solid var(--border);margin-top:40px}
+    .footer a{color:var(--g700);text-decoration:underline}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .ani{animation:fadeIn .4s ease both}
+    @media(max-width:600px){.card{padding:28px 20px}.hero{padding:48px 0 36px}}
+    .about-intro{display:flex;gap:28px;align-items:flex-start;margin-bottom:28px;flex-wrap:wrap}
+    .about-photo-wrap{text-align:center;flex-shrink:0}
+    .about-photo{width:100px;height:128px;background:var(--g100);border:1px solid var(--g200);
+                 border-radius:var(--r-md);display:flex;align-items:center;
+                 justify-content:center;color:var(--g400)}
+    .about-photo-label{font-size:10px;color:var(--g700);margin-top:5px;letter-spacing:.05em}
+    .about-text{flex:1;min-width:200px}
+    .about-text p{font-size:15px;color:var(--g600);line-height:1.7;margin:0}
+    .card-divider{border:none;border-top:1px solid var(--g200);margin:26px 0}
+    .pillar-label{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;
+                  color:var(--g700);margin-top:6px}
+    .why-quote{background:var(--g100);border-radius:var(--r-md);border-left:3px solid var(--black);
+               padding:18px 20px;font-size:15px;line-height:1.7;color:var(--black)}
+    .why-quote cite{display:block;margin-top:8px;font-size:12px;font-style:normal;
+                    color:var(--g700);letter-spacing:.05em}
+    .cta-group{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .card-section-title{font-size:13px;font-weight:600;letter-spacing:-.01em;
+                        color:var(--black);margin-bottom:10px}
+    @media(max-width:480px){.about-intro{flex-direction:column;gap:20px}}
+  </style>
 </head>
 <body>
+
 <svg class="cbg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
   <circle cx="200" cy="200" r="195" stroke="#1d1d1f" stroke-width="1.5"/>
   <circle cx="200" cy="200" r="180" stroke="#1d1d1f" stroke-width="0.5"/>
-  <g stroke="#1d1d1f"><line x1="200" y1="5" x2="200" y2="22" stroke-width="2"/><line x1="200" y1="378" x2="200" y2="395" stroke-width="2"/><line x1="5" y1="200" x2="22" y2="200" stroke-width="2"/><line x1="378" y1="200" x2="395" y2="200" stroke-width="2"/><line x1="338.2" y1="61.8" x2="326.9" y2="73.1" stroke-width="1.5"/><line x1="61.8" y1="61.8" x2="73.1" y2="73.1" stroke-width="1.5"/><line x1="61.8" y1="338.2" x2="73.1" y2="326.9" stroke-width="1.5"/><line x1="338.2" y1="338.2" x2="326.9" y2="326.9" stroke-width="1.5"/></g>
+  <g stroke="#1d1d1f">
+    <line x1="200" y1="5" x2="200" y2="22" stroke-width="2"/>
+    <line x1="200" y1="378" x2="200" y2="395" stroke-width="2"/>
+    <line x1="5" y1="200" x2="22" y2="200" stroke-width="2"/>
+    <line x1="378" y1="200" x2="395" y2="200" stroke-width="2"/>
+    <line x1="338.2" y1="61.8" x2="326.9" y2="73.1" stroke-width="1.5"/>
+    <line x1="61.8" y1="61.8" x2="73.1" y2="73.1" stroke-width="1.5"/>
+    <line x1="61.8" y1="338.2" x2="73.1" y2="326.9" stroke-width="1.5"/>
+    <line x1="338.2" y1="338.2" x2="326.9" y2="326.9" stroke-width="1.5"/>
+  </g>
   <text x="200" y="50" text-anchor="middle" font-family="-apple-system" font-size="20" font-weight="600" fill="#1d1d1f">N</text>
   <text x="200" y="368" text-anchor="middle" font-family="-apple-system" font-size="16" fill="#1d1d1f">S</text>
   <text x="368" y="205" text-anchor="middle" font-family="-apple-system" font-size="16" fill="#1d1d1f">O</text>
@@ -184,339 +134,122 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
 </svg>
 
 <div class="page">
+
   <nav class="nav">
-    <span class="nav-logo">NORDSTERN <span>Leadership</span></span>
+    <a href="index.html" class="nav-logo">NORDSTERN <span>Leadership</span></a>
     
   </nav>
 
   <header class="hero" id="hero">
-    <div class="hero-tag">Kostenlose Standortbestimmung</div>
-    <h1>Welcher Führungstyp<br><em>bist du wirklich?</em></h1>
-    <p>Dein Führungsprofil. Ehrlich und konkret.</p>
+    <div class="hero-tag">Über mich</div>
+    <h1>Dr. Jochen Mall<br><em>nicht aus dem Lehrbuch,<br>sondern aus eigener Erfahrung.</em></h1>
+    <p>Ingenieur, Senior Product Manager,<br>künftiger Professor.</p>
+    <p>Jemand, der Führung zuerst an der Schnittstelle zwischen Menschen und Technologie selbst durcharbeiten musste.</p>
     <div class="hero-meta">
-      <span><div class="dot"></div>ca. 4 Minuten</span>
+      <span><div class="dot"></div>Porsche AG</span>
+      <span><div class="dot"></div>MHP – A Porsche Company</span>
+      <span><div class="dot"></div>Smart Factory @ HHN ab September 2026</span>
     </div>
-    <div class="infobox" id="infobox">
-      <p class="infobox-lbl">Was dich erwartet</p>
-      <div class="infobox-items">
-        <div class="infobox-item">
-          <div class="infobox-icon">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><line x1="7" y1="4" x2="7" y2="7.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="7" cy="9.5" r="0.7" fill="currentColor"/></svg>
-          </div>
-          <div><p class="infobox-title">Dein Führungstyp</p><p class="infobox-sub">Welches Muster dich antreibt — und wo es dich bremst.</p></div>
-        </div>
-        <div class="infobox-item">
-          <div class="infobox-icon">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 7 L6.5 9 L9.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div><p class="infobox-title">Dein blinder Fleck</p><p class="infobox-sub">Was andere sehen — und du selbst kaum bemerkst.</p></div>
-        </div>
-        <div class="infobox-item">
-          <div class="infobox-icon">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2 L7 7 L10 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/></svg>
-          </div>
-          <div><p class="infobox-title">Dein konkreter nächster Schritt</p><p class="infobox-sub">Kein generisches Ergebnis. Was konkret für dich gilt.</p></div>
-        </div>
-      </div>
-    </div>
-    <button onclick="startQuiz()" style="display:block;margin:0 auto 0;padding:15px 40px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:16px;font-weight:500;cursor:pointer;min-height:48px;transition:background .18s" onmouseover="this.style.background='#333'" onmouseout="this.style.background='var(--black)'">Jetzt starten</button>
   </header>
 
-  <div class="card" id="quiz-card" style="display:none">
-    <div id="quiz-screen">
-      <div class="prog-wrap">
-        <div class="prog-hdr"><span class="prog-lbl">Standortbestimmung</span><span class="prog-ct" id="q-ct">1 / 8</span></div>
-        <div class="prog-track"><div class="prog-fill" id="prog" style="width:0%"></div></div>
+  <div class="card ani" id="main-card">
+
+    <p class="eyebrow">Wer ich bin</p>
+    <div class="about-intro">
+      <div class="about-photo-wrap">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/wAALCAEAAMgBAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/AEFBGSB6mvV/h/aCOzi47V6DCMRinE0lFFGaKTNGaM0uaKWlptFIaSkNFIaSvm0gVJZR+beRR+rV7X4Rt9lsldSOFApKKKKKaTTS2KN1G6lBpwNOFFJRSGkpKKQ0lfNrVp+FoPO1dMjhea9s8PxbbZBjtWyaSiikzSE1GzVi+JfE2ieHYVl1jUI7YPwqkEs34D+tcvF8WvCch+Y6jEhxiR7b5Tn3zV+z+JPhC5uBbnVvszt903ETIh/4FjH5110UySKGjdXX+8rAj8xU6Gng07NJRSGkpD1optFfNrV0/wAPrbfdNJjvgV7JpSbYV+lXTSUUhppNUdY1Sx0qza7v7hIYlHGTyx9AO5rx3xh8XbkJOlg8GmwxgiRnIaXrjAJwAT7A49a8O1fxC2vXstzf/bpmk6EjdkduSearPqYithDE0kUXR1kU7T9eeDUa6jeafLFG8B2vyqtyjg85U10XgT4ja5o9/JJY3bxKW2yRnBRvTKnofevoz4XfESx8V2awXRitdUU4MQbCy+6Z7+q9R716ApzTgaWig9KbSGikNJXza/SvQfhxa4gRiOSc16jaLtiFSnrRRSGsrxJrNnoWlS6jfMRFHgBV+87Hoo96+dPiZ421HWr55osoGULbIihxCMng4/iOOT2/l5pqFxLBaz/bbhmkkOAJNodj6qvJUe561yuLqNiEaZCxGSGLAZ6E5rotKnAt3ttUiLAjBcJklfXB649PyIq44tVsF0+6haQR/NA4kIRlbpxzn+lZvlJBeB0jMMozgqM8enow9utW7a/aw1VZdzJFOoIIP3G9QeoIIyO9fXHwi8WHxZ4UiuplIurciC4YnIdwB8w+owfxrtQc04dKKDTaDSUhpK+biNzKvqa9c8C23l2sQx0UV3MQxGKU0UUxq8e+OniJ5t3h+ynISMZudgG4ucYUHtj/ADnFfP23Uri7az0piYYgPMZSTg/Xuau2Hw51PUZJLiVJJhjLSnux6DJ9+9db4d+FCDB1JW3EYOzjH+NdXL8PNKFvtjhZWHPPIPHP/wCqsKb4e3SwmC3uEkgY5RGH3OecH0pB8PriSRRdxkHgDaB69at+I/hjDdaG2whLpBujcDoe1V/2e/E6+F9fk8OauDHJezra+ySrnafowOK+l0OaeKWim0GkpDSV87adF51/EmP4hXtPhaHbAOK6YdBSUUhpkrrGjSOcIoLMT2A5NfIXiHUr/wAW65eyIWjkvrtkRoyQdoJxj0GOTXq3gPwHZaRpsUOFdiPnO38/rXYPZwQoIkVCF6UxIFXGGJ9ATVmCJJGAYc4596dcWCovCjHp3FM8lVQ8dO5pCsckZjcZBGPrXh/x40d9K1Kx8SaegSWKVTJgcEqcqSK+g/h3rh8R+D9M1mTb5tzCGlCgAB+jDGTjntXRiloptBpKQ0leDeEYPO1UMRkLXtGgRbLdOO1a5pKTvQayfF07WvhbVLhGCslpIQSM4O0ivnn4baNDDcRXc6BZCflXHb1z/SvZXuEtwFXAwnWqhuQ5POakjbO3n8av2BCTrk8Vu6m1u0cZVQSV596wZ8AHGcDvVbeR/hXIfFrT1v8AwxMrjO3BHFP/AGV7yQ+EdR0mVwxsL0hQOysM/wAxXsw6UUU2g0lIetJXjfw9t98jykdTgV69pibYVHtVw009KSg1hePQT4N1QAZzAQR7ZGa8E07UJIdQgtg52o2Bg16Tc3BktEZGAO0c96r2s7DAOa1LXdIBwTjpV+IOCGGRjHvV9ps26rnp2zVGZiBjkj61XY5HbNZ/iG3+1aVLFjORXL/AaE6b8R/EVhj5ZrSOVSOBw2OnrzXuo6UUU2kNFIaSvNPh5bbbSI4+8c16ZartiFSGkNJQelYPxAXf4K1hcA5tW696+d7NMGGdsHH6n0r0TTpfNsIueQoBqwIivIPWtfTFKgZz+NaiBUK4wN1OWM7+eM9OKLiFAoBJJqi0a5OO1E8RlhKKcEiua8ExLZfF+FRlTcadMre7Ag17FRRTaQ9aKQ0lcb4LtxHbxD0UV20YwgpabRQaxfG2f+EQ1fBwfscmD+FfPXhqCW7mhjJyAMn2r0DTIMRlB0FaQjOMBTj1p8E3kZLE4rUgv0aMdyKQ6kAWIxmh7vzDuJ5PGKUFWXqOKVBtPtXO2/7r4x6KVwA8MoPvlD/hXrI6UUU2kPWikNJWD4Xh2wKcV0Y6UhpKM0hrN8UwG58NanbjOXtZAMf7pr57+Hzb7q5Z8gqgB9BzXcwXUVvbtLIwwOtcfrvjm6iWQWSjzM4G7t+Fctb+P9TW923eoWz5PMQIFdtoPjCG6KKfvHjg8H6V06ebcESfMI8ZHvXJeM/G2laOBBd6skEuSFjiBd2/AVn+EfGtrf3oih1bzCx4jmBRj9Aa9T02eU8ScqRwc1l6kHg+Ivh6+SFpdofgcdFPft1r0nQtVt9UhleFkLwyGKQKcgMO1aNBptIaKaaKz9Bi2QL9K1DTeaCaKKyvEOtabo1qr6jMI1nJjQZALEjoM14t4a0+O18Qa1bwNugJVoW77TnFU/Gd5JaWJjDlcElsHHevGdcvtS1WC+l0/Hk2q75j6Ju25Prz29BXIWmnS3OnXF/KDG0TqA2QDySOD+Rrufhnc3Vprdms0nmQySBWGc4NfT/iBWg8DX1xZrm4W1kMYxzkLxXyRp2n3esa9dwyCZ7l0YK+CSW7DPpXSeDvBupQxX2oX0E3mqWS2tniKlnyCo9NuMgn8q9r+HN9fTWptLpJFMJOzzBlwvZSe+Ome9ddqMUzTW0ltEXm+aNf9kMOT+AzVT4OtrFvrmt2OoWxig3+bESepzg/nXp9J/OkpDSGkoqHTU2wj6VZPWmnpSUopa8e/aXsbi50vRbiNC0aXhjbB6MwyvHvg1keG3UXl0rtGbiGFI51V9xU84z74rI8eWEl4piRWJYYBFcrp2iQaQjSXlm0aHgu8eQQfXmsnxFpUWuQi08PWY2K2SyQbI1z79zXS+APAT6bbfa9WUC43DykB4Qf3j7mvc9A8u80Se3Y5KoDg/ka8z1/4dRi4lv9D8u3uwxOxh8j5PQj0/lU/hyDWwn2W+0pbZhx5gcup/DrXeaZp6xRqzfMccnGKoeN5LuHTI5rKQxzRzo+ckcDr+ldV4KQyXVzdtyzQxgn1zzXUUlJSGkNJQaS2G2ICnmkJpKAaUmuN+LVobnwvHKFz9mvoJyPYNj+teQeCpgNb1fO1Wd8MMc5Gf8A69egad5DMFKKWx1Iq42i6deLie3ikJOTuUE0n9k2loMQwIqj0HSuZ1fWLOLUGslV5GUYcqM4FdX4SIiLY5WRCtPv9Qt7DUo7e4yglGVbHGfStKLyXUOoUg85pSQwOO1ZWqQpc3FtbythHkO7nrhTxXUeEYDHb3EhXbvcAAdAAMCtym0dqSkNJSGnoMIPpSE0hNGaQ0DpVLXrEalo15YkZM0LKv8AvdR+uK8AnsYtL1ZNR2+XczSD7QoJxjp09etdXZS7LksWOMfLzW1b6gqqACMnpVXXtWENjIS2MKTnPSvPvBGr2tnqWpDWHSKSVg8e843IR7133h/xLpkM4jhuon+XC4PFQ/EeWK+0eSG1mU6hbFLgIjfMB3z9RUXg3WzfadE5YllGDk811kcxMa98jmqNyhm1myVAWwXwAepK4rvtMtzaWMUDHLAZb6mrBpDSUU2ikp56U0mkooopRXmnxM8J3DzT6pp9u08M3zXCKeYsDlvp39q5K2uR9gjKHeyqFbjPI4NVW1cpLtZyCTxk9Kq6vfve+Va7i3mOFOBXIfFOGJLwQxx738tCvGccdKwPD+vXWhDKW0bsRkLIT1r1D4WPqWpPfazqMRKXa4B24zVrSbWfR9eniVgbeRt647A13Uc/7vAbAwK0vBMoufFEpDf6m3YYx3yBmu5NJTTSGjNJQaSlJppNJRQDS5ozTZY1nhkgb7silD9CMf1r5y1K4lsXktFAHlyOjZBHIJH9KybNGvb0KDvJ6kCrGqXcXh4JdXMgWJIixY8HOeee3FYWp+LP+Eht0TRtIa4RckXAGS2Bk4J7U7TbTWbi9tIJrDieMtGTEMkfXt1rub7xFqfhTwrHf3GjXT2QiO2MY3sQ2CoHrV7QNQl137LqMunT6e7A7oJxhlz0zW7OxjmYIR9306V03wziLS31yyqMKkYwc8nJP8hXaGkNJSGkNJmiikJpppCaM0oNGaM0oNeB/GzTW0/xPLPG22O8xOgA9eGGf94frXCeHb2S01ZCZPlYgsh7ZNdz4k0PTtftY4btBNGc/L6msXw7oNvo1utvo91JCsbSKIZ13qCeoJHIrXs7DXxeWtxd6hp8EUP3RDlieMY5HFdlDG2pvF9pJnjiO5TIBwx/ujtVi7gRLyJxhcHk1kahMH1RhvHlx5Dg8ZI/yK9M8F2P2LQIdylXn/esCMEZ6D8sVsE0hpKQmkoopDSNTDSZozRmlzRn3pQc15z8etON14ctryNcy2zv26qQCR+mfwr50nvhbszRkMXGCcda7fwzr4YrazSFXwpUn1FXfELzQ3YuYJGjaRQSVOM1Qh1q+FyoLKwAGWJ/pXqHheczadHLI2WI44qv4m1iKxnhjeVE+YCQHqAenFZ9oReeJLGFFO2eVULDkNzk5HpXtrYHAAAHAA7Cmk00mkzSUZoBozRTCaaTTc0ZozRmjNOU1wOs6u3iax8URwIrWOj3aWqEDJkkVczH6DeB+Br5s8RWJsNflswm2F28yBiuFH+zn27fWsi9vJYL6GGJmDiTcMYGef8APNe4eF7W28Q+F4I55wbmMcHv/wDXqxZeH9GsJsToJJWPDSDPNdPaX9naxlCVBUcKMda8x+IGow3Wqq335Y5MEOcBhjGPYiu8+EkL32p2GoSIQpH7sNjKquefxxXsjGmE0maM0lGaTNKKBUZNMY0mcUZpM0Zpc1m+JtbtPD+hXesXr7YbZC2O7N/Co9ycCvPf2cp0vvhveyT4drrVbtp/csRn9DXnXxZ0doLq40+dCSjZUgdsHaw+o/UYrx+/ingaM3ClipyGHO76+hre8H+Lb7SpI1R2VFDIecnk/wBK9F0HxZJfafP9rkD7RtRgOCcf55qjc+ICJTGJXGDvBU9sjIz6VQ06GTxJrxFvE/2YMGkkPOF5z+YxivUtY8VWnw/0OPxEIi1paT28UqAf8s2cI2PcKSfwr2a0u7e9s4bu1lWWCeNZIpFOQysMgj6g08mkz9KM+9JmjNGaUUo61ATTSabmjPvSZpd2KTdXzh8fPHKa9qSaJpk+7TLGQl5AeLiYcZHqq9B6nJq5+ylro2a94ekcbllW8iHqGG1v1C/nXonxQ8KHxPo5a0YRanbDdbuTgP32N7H9DXzhfFJ7mWzu7b7LdQMy3EUgwysP8/lXPz6QUPmQuAD1QHBP/wBatnQFuI7QwRXJDscSKyHj/wCtXQ6B4PfVLoH7U4UKCN3AwfavT9M0y20S3jggyiCPkNwWYdya8+/aPvGX4YtapnNzfQqo9QuWP8q6L9nT4kak3wkvbGC3TUNQ8OosyW8jkNLZk5O0+qc49sV6p4H+KXhfxUEhiuvsN63AtrlgpY/7LdG/nXbk4oBzS5oBpaBT1NViaaTTSaaTSbqcMnpXjfxr+JiW1nc+H/DswkldTHd3aHhAeCiH19W/AV863cwZi2/pwBmr/wAMPEZ8MfEzTdQdyttK/wBnuPTY/GT9Dg/hX2TFKJEBBBBrzX4yfDiPxNAdW0kLBrUK8EcC4UfwN7+hr57le6s7p4buGVJYW2SRyDDKR2PpWvompQtMqMoDMQ2Rxgj+len+EzPmMqhKvwCP0rf1h3QLEx3EDn0rx79oa6YaNpdiylj5pmb/AGTjA/qK5j9nzxJ/wi3xA0m9lbFpPKbS6U9GikO3n2Bwa6X4veG5PBnj690+3DLZSH7RZHt5THIH/ATlfwre+Hvxm8Q6AiWd8w1WxXhY7hzvQf7L9cexzXtvhH4r+GNe2RyyNp0zdpmBTPpuHT8a71XDIJEZWRhlWU5B+hpQ1OzSinrVQmmk00mm5pk80NvbyXFxKkMMa7pJHbCqPUmvEPil8UpL+KXS9BkeCwOVluPuvOPQd1X9TXit7fGRyo6E1ztzG6zFvmKk5FZ2ol2YEZDDoR2r7B+CPib/AISTwFp91I+bmFPInHfevGfx613vDDB5rz34o/Dy18TQPfWSRw6qi8NjCzAfwt7+h7V836np15Y3s1pNFLBcROVdHGCrDtXqHwK1qW+eewu+ZICCCemK7jU42u9S2ryN3Jrx348WUl3dNMnC27RRkk4A3ZzXlFskiRLIqsIg+wSAHG48jn1719QfEu0HjP4B6B4wLK+qadZq9wP4mj+5Jn6MA35189I+Ohq5aXskDgqxH412nhrx9r+kqqWGr3Vuo52B8pn/AHTwRXtnwq+LEXiC8i0PXxFb6pJkW8yDEdwf7uP4X9uh7V6upqQU9KpZpppuM1ieLfFGj+F7Pz9SnzMw/dW0eDJJ9B2HueK8D+IXxB1bxJJ5Tn7NZIcpaxn5fqx/iNee385bJZsmsiRyxz1O6lTDJ8w61Su44wcgCvUf2ZNaNl4mutFZ8RXkfmRr/tr1/T+VfTCZIGBV2z02S4I3navrXKfFb4U2PiaxN9p8iW+rQp8sj8JMB/C57ex7V4f4Ksrjw/4huIp4WguFYpLGwwQR/nr0r0+wPmJvQZJ5zXP+NPCLa94K8RNGhNxHbyXKgDJJQZA/nXgFjeW0Hg7VNGuYpN91Nb3unMFJ+ZSUZfxUn8RivdPGTt4M+AukeE5Pl1LUIFE6d0Td5kmfxKr+deFsw3ESIGHr0NQOoWQ46dRTo2IbIq7DPMm1kleORCGjkU4ZWByCD2Oa+v8A4M+LT4x8DWmozsDfwk216B/z1X+L/gQw341261Ko4qgaTGa8v+InxSt9N83TfDjx3F2uVkuzzHEfRf7ze/Qe9eIalqd1e3Ulxc3Es88hy8sjEs1ZVxIAD61k3smc81WiCmNOmTk1IY2CEBTWfd5XOa2vhbqK6X4+0a9kOFW6VXPoG+U/zr7btUUhW7YrXinSKEySMERBliewrk9U1l9bnKW8mLVD8qZwW9zXnmjeMtL8Q/Eq98Fat4baRrculvdSKMkoMnkfMo4ODmulvdHh0u/WGCffDKpaNHOZEx1B9R6Gup8EaekthfNIu5JSYiMdRt5H6187eAvh5G/xL1O8vYWOleH70wwLJyk0gOVAz2XhiPoK5n4p+Ll8S/E3UZYpTJZWp+xW/PBVOC34sWNcleR7JCBVV+UB7g4pV5UYqaJ+ApNez/sraybHxjqmgyOfJ1G1FzEM8eZGcH81J/KvpeKRDjnFTqy+tZN5c29nay3d3PHBbxLukkkOFUe9eEfE34m3es+bpeis9rph+VpOklwPf+6vt+fpXl0srMfm4AqCWTAzms+5m54NUJzu6HrWTepdW8/n20oweSj9M+x7Va03VmmVkliZHX7yt0/OmXc3nMTgAVDblklVlOGByD6Gvt/4a6yNe8GaVqgIZp7dfMA7OBhh+YNTeK9QchLCE/JnMpHf0FZMUXlt5yDr1q7avHHObmOCIyngybBvx6Z61g65bwD4iaHqt280K6jHJpxMQHzuo8xM5+jAfWvW9GhhhsUWGMRx9gK5HVolkRFRMiQNkKOpyc/0r5Z+OfhCfwn4wjvhAIrXU0MsYA6MDhh9eh/GuZnxLbpKO4wazyOWU9xTbc5yKeODXU/DXVf7J+I3hy/3EDzzA5Ho4x/WvqMeINvUkVJZ+KI2uFj8zk1478VvHj+Jr0WVmZINJhbMasMGZv77f0Hb6157NMFJ5qnPcqenNUp58jk1RmmGetVpp9q8Uy0ubaUuksZklTnaTxj1ps7tI2SAB2AGAKhIOKaODmvov9mPxE6eGNR0tst9ml3xj03jj8Mg16KsckzMWJZ2OSfU1btkkiJWaJlXpkjil+x3AufNtVMiYO5R6eorK+JMs9v4atrqO2ke5sL+2urdR8uWEqgj6EMR+Net2yiKBQThVHOe1YMDwXOuhrRD5MKsM44JPpXmH7Wmkre/DuPUQmZbG7RwcdFb5T/MV8yaTIJbZoTyQMiq84KPn0NRxHZdY7GpZRtY/WnwzmC5sLlTzDeRtn8a+mmugy5I4IzWfFMn9qQhTg7q8CXVmlXaw4b7wqC4vfkMZYnHQ+oqsLs4APSo5rkkcGqxkyeTTJMkH6VnTyfZ7qK57Kdr/wC6a18A4I/CmOvNRMOa9U/ZlvLeP4iLpt4WEOo2zxDDYy6/Ov8AIj8a+s7HStPt2DxRnd2JOcVfkihmjaOVFdWHIIqodKjiXdakqRyOaa0YuITBqEKOA6kFhkHByP1FYqeKbbxJp6T6HMZ7KSR4w6jmQqxU/hkH610mnQeRZRK0YR9o3getY3j7R49f8JalpUqhhPCwA9xyP1Ar4XRH07WJrWTKtDKyEH2NWNSjAc46EZFUmGUV+68VPcDdErjuKqSkm1OP4XVvyNe/W2qh7GB9w+aJT/46Kq2d6Zdft1Vv4q8MYMvSoLpm2bhnK8/hUavu5zwacDxSDj60MePWqN4olRk9RVzSJvOsEDffj+Vvwqy4JNRsOK1PB+pvo3iXTtUjYq1rcpLwewPP6Zr7l03UOFVzlWAZG9QeR+lbEcgYZFSByKq3jJKVhc8SOFP40eHtA0jw/pyWOk2UVtAhJVVHQk5P61bDdj2pjjKkV8WfH7QW0D4jXjIm2G6bzk/Hn/GuaJE+nxyd1GDVGMcvGfqKsRDfalcdDVONMyvF/eHSvQLK/kGnW3zEARgflxWn4XuDN4ithnPzV5pcqqJnFZrkk47VV/1btH6cr9Ker9s1KvNDjg1UYc0unN5OoPH0WZdw+orUYZ46VG/Gc01OGHevsz4V3/8Ab3w00TUN+6dLcQynvuj+U/yBrr9NuWBEbnmtUYdaoapE8SR3APEcqM303DNblVpeJPrzTe9eEftZ+Hfteg2+twx5ktm2uQP4T/k/nXztocm+KSA9xkVHINtyPfirNvgZHY1VnHl3aN716/8ADzw3DrnhAyty8c7xn1HQj+dTaP4Wn07xJCxJKq3Ff//Z"
+             alt="Dr. Jochen Mall"
+             style="width:100px;height:128px;object-fit:cover;border-radius:var(--r-md);border:1px solid var(--g200);display:block">
       </div>
-      <div class="q-text" id="q-text"></div>
-      <div class="opts" id="opts"></div>
-      <div class="btn-row">
-        <button class="btn" id="btn-back" onclick="goBack()" disabled>Zurück</button>
-        <button class="btn btn-p" id="btn-next" onclick="goNext()" disabled>Weiter</button>
+      <div class="about-text">
+        <p>Ich arbeite seit über zehn Jahren an den Schnittstellen zur Produktion. Ich habe komplexe Produktionsprozesse geplant, Schraubkurven mit KI analysiert, Prozesslandkarten für ganze Werke definiert. Dabei habe ich immer wieder erlebt, dass Visionen wie Smart Factory, Industrial AI und andere gute Entscheidungen nicht an fehlendem Wissen oder Technologie scheitern, sondern an fehlender Orientierung.</p>
       </div>
     </div>
-    <div class="result" id="result-screen">
-      <div class="r-badge" id="r-badge"></div>
-      <div class="r-type" id="r-type"></div>
-      <div class="r-tagline" id="r-tagline"></div>
-      <div class="scores"><div class="scores-lbl">Dein Profil im Überblick</div><div id="r-scores"></div></div>
-      <div class="prof-grid" id="r-prof"></div>
-      <div class="r-msg" id="r-msg"></div>
-      <button class="restart" onclick="restart()">Nochmal starten</button>
-    </div>
-  </div>
 
-  <!-- Deep dive - shown after result -->
-  <div class="deep-div" id="deep-div" style="display:none;max-width:640px;width:100%">
-    <div class="dd-eyebrow">Tiefer gehen</div>
-    <div class="dd-title" id="dd-title"></div>
-    <div class="dd-sub" id="dd-sub"></div>
-    <a class="dd-btn" id="dd-btn" href="#">Check starten →</a>
-  </div>
+    <hr class="card-divider">
 
-  <!-- Result mail -->
-  <div class="result-mail-sec" id="result-mail-sec" style="display:none">
-    <h3>Ergebnis per Mail erhalten</h3>
-    <p>Ich schicke dir dein Führungsprofil direkt in dein Postfach — kein Gespräch, kein Versprechen.</p>
-    <div id="rm-form-wrap">
-      <div class="rm-row">
-        <div class="fi"><input type="text" id="rm-name" placeholder="Dein Vorname" style="min-height:44px;width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font);font-size:14px;outline:none" required></div>
-        <div class="fi"><input type="email" id="rm-email" placeholder="Deine E-Mail" style="min-height:44px;width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font);font-size:14px;outline:none" required></div>
+    <p class="eyebrow">Wofür ich stehe</p>
+    <div class="h-grid">
+      <div class="h-card">
+        <div class="h-num">1</div>
+        <div>
+          <div class="h-ct-t">Humane Intelligenz (HI) zuerst, dann KI.</div>
+          <div class="h-ct-d">AI-Modelle in echten Schraubprozessen validiert. OPC-UA-Architekturen mit Shopfloor-Teams aufgebaut. Qualitätsfehler analysiert, die Millionen kosten. Smart Factory ist kein Strategiepapier — es ist Handwerk.</div>
+          <p class="pillar-label">MHP · bolt_it · SOUNCE · Ferry 4.0</p>
+        </div>
       </div>
-      <input type="hidden" id="rm-type">
-      <button class="rm-submit" onclick="submitResultMail()">Ergebnis zusenden →</button>
-      <div class="rm-note">Kein Newsletter. Einmalig dein Profil — fertig.</div>
-      <div class="rm-err" id="rm-err">Etwas hat nicht geklappt. Bitte versuche es später nochmal.</div>
+      <div class="h-card">
+        <div class="h-num">2</div>
+        <div>
+          <div class="h-ct-t">Führung aus eigener Erfahrung.</div>
+          <div class="h-ct-d">Ich habe Entscheidungen getroffen, die falsch waren. Teams geführt, die ich hätte besser führen können. NORDSTERN.Leadership ist das, was ich mir selbst vor ein paar Jahren gebraucht hätte.</div>
+          <p class="pillar-label">NORDSTERN.Leadership · Extreme Ownership</p>
+        </div>
+      </div>
+      <div class="h-card">
+        <div class="h-num">3</div>
+        <div>
+          <div class="h-ct-t">Ab September 2026: Hochschule Heilbronn.</div>
+          <div class="h-ct-d">W2-Professur Smart Factory — Künstliche Intelligenz &amp; industrielle Digitalisierung. Ich bringe Praxis in den Hörsaal, nicht Folien in die Fabrik.</div>
+          <p class="pillar-label">HHN · Studiengang KID · Gastdozentur HS Karlsruhe seit 2021</p>
+        </div>
+      </div>
     </div>
-    <div class="rm-ok" id="rm-ok">Ergebnis ist unterwegs. ✓</div>
+
+    <hr class="card-divider">
+
+    <p class="eyebrow">Warum ich das mache</p>
+    <blockquote class="why-quote">
+      Ich mache das, weil ich mir genau das vor ein paar Jahren selbst gewünscht hätte —
+      jemanden, der ehrlich sagt, wo die Orientierung fehlt.
+      <cite>— Jochen Mall</cite>
+    </blockquote>
+
+    <hr class="card-divider">
+
+    <p class="card-section-title">Was ich anbiete</p>
+    <p style="font-size:14px;color:var(--g600);line-height:1.6">
+      NORDSTERN.Leadership ist ein Konzept und richtet sich an Führungsspieler im Umfeld der Produktion,
+      die Orientierung suchen — nicht noch mehr Methoden.
+    </p>
+    <div class="cta-group">
+      <a class="btn-primary" href="kompass.html">NORDSTERN Kompass →</a>
+      <a class="btn-sec" href="kompass.html">NORDSTERN Kompass →</a>
+    </div>
+
   </div>
 
-  <!-- Share section -->
-  <div class="share-sec" id="share-sec" style="display:none;max-width:640px;width:100%">
-    <div class="share-q">Wen aus deinem Umfeld würde das gerade treffen?</div>
-    <div class="share-sub">Wenn du jemanden kennst, der an einem ähnlichen Punkt steht — schick ihm diesen Link. Manchmal ist der richtige Moment alles.</div>
-    <button class="share-btn" onclick="doShare()">Link teilen →</button>
-    <div class="share-toast" id="share-toast"></div>
+  <div class="share-box ani">
+    <p class="share-q">Kennst du jemanden, der das braucht?</p>
+    <p class="share-sub">Jemand in deinem Netzwerk, der gerade nicht weiß, wo er steht.</p>
+    <button class="share-btn" onclick="copyLink()">Seite teilen →</button>
+    <p class="share-toast" id="share-toast"></p>
   </div>
-
 
   <footer class="footer">
-    <p>© 2025 NORDSTERN Leadership</p>
-    
+    <p>
+      © 2026 NORDSTERN.Leadership ·
+      <a href="https://www.linkedin.com/in/dr-jochen-mall-84aba775/" target="_blank" rel="noopener">LinkedIn</a> ·
+      <a href="#">Impressum</a>
+    </p>
   </footer>
+
 </div>
 
 <script data-cfasync="false">
-const FORMSPREE_ID = 'xreovnld';
-
-// ── Referral tracking ──
-const _params = new URLSearchParams(window.location.search);
-const _refId   = _params.get('ref')    || '';
-const _depth   = parseInt(_params.get('depth') || '0');
-const _parent  = _params.get('parent') || '';
-const _myId    = (() => { let id = sessionStorage.getItem('ns_id'); if (!id) { id = Math.random().toString(36).slice(2,10); sessionStorage.setItem('ns_id', id); } return id; })();
-
-if (_refId && FORMSPREE_ID !== 'YOUR_FORM_ID') {
-  fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-    method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body: JSON.stringify({type:'referral_visit', ref:_refId, depth:_depth, parent:_parent, page:'index'})
-  }).catch(()=>{});
-}
-
-function _shareUrl() {
-  const u = new URL(window.location.origin + window.location.pathname);
-  u.searchParams.set('ref', _myId);
-  u.searchParams.set('depth', String(_depth + 1));
-  if (_myId) u.searchParams.set('parent', _myId);
-  return u.toString();
-}
-
-async function doShare() {
-  const url = _shareUrl();
-  const toast = document.getElementById('share-toast');
-  if (navigator.share) {
-    try { await navigator.share({ title:'NORDSTERN Leadership Kompass', text:'Welcher Führungstyp bist du wirklich? 8 ehrliche Fragen.', url }); toast.textContent = 'Geteilt. ✓'; } catch(e) {}
-  } else {
-    try { await navigator.clipboard.writeText(url); toast.textContent = 'Link kopiert! ✓'; } catch(e) { toast.textContent = url; }
+  function copyLink() {
+    const url = window.location.href;
+    const toast = document.getElementById('share-toast');
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(() => {
+        toast.textContent = 'Link kopiert ✓';
+        setTimeout(() => { toast.textContent = ''; }, 2500);
+      });
+    } else {
+      toast.textContent = url;
+    }
   }
-  setTimeout(() => { toast.textContent = ''; }, 3000);
-}
-
-// ── Quiz data ──
-const Q = [
-  { text:"Warum bist du eigentlich Führungskraft geworden?", opts:[
-    {l:"A",t:"Weil ich fachlich der Stärkste in meinem Bereich war — und das wurde anerkannt.",ex:"z.B. bester Techniker, Prozessexperte, niemand kennt das System so gut wie ich.",v:0},
-    {l:"B",t:"Weil ich wusste, dass ich mehr Wirkung haben kann als mein Vorgänger.",ex:"z.B. ich hatte klare Ideen, wie man das Team auf ein höheres Level bringt.",v:1},
-    {l:"C",t:"Weil das Team und mein Chef es mir zugetraut haben — ich habe nicht Nein gesagt.",ex:"z.B. ich war immer die erste Anlaufstelle, die inoffizielle Koordinationsperson.",v:2},
-    {l:"D",t:"Weil ich etwas bewegen und Menschen wirklich weiterentwickeln wollte.",ex:"z.B. ich hatte eine klare Vorstellung, welche Art von Führungskraft ich sein möchte.",v:3}
-  ]},
-  { text:"Ein Mitarbeiter macht denselben Fehler zum zweiten Mal. Was geht dir als erstes durch den Kopf?", opts:[
-    {l:"A",t:"Irgendwo stimmt der Prozess nicht — das ist ein Systemfehler, kein Personenfehler.",ex:"z.B. ich prüfe die Arbeitsanweisung, die Einweisung, das Übergabeprotokoll.",v:0},
-    {l:"B",t:"Das ist nicht akzeptabel — das muss klar angesprochen werden, sonst schadet das der Gruppe.",ex:"z.B. ich suche direkt das Gespräch und mache unmissverständlich klar, was erwartet wird.",v:1},
-    {l:"C",t:"Ich frage mich, ob ich ihn gut genug eingearbeitet habe oder zu wenig unterstützt habe.",ex:"z.B. ich mache mir Gedanken, bevor ich das Gespräch suche.",v:2},
-    {l:"D",t:"Ich nutze es als Anlass für ein echtes Gespräch: Was steckt dahinter? Was braucht er wirklich?",ex:"z.B. ich unterscheide zwischen Symptom und Ursache, bevor ich reagiere.",v:3}
-  ]},
-  { text:"Dein Mitarbeiter kommt mit einer Frage, die er eigentlich selbst beantworten könnte. Du...", opts:[
-    {l:"A",t:"...entscheide ich direkt und klar. Das spart Zeit, und ich kenne die richtige Antwort.",ex:"z.B. ich will keine langen Diskussionen — ich gebe die Lösung und wir machen weiter.",v:0},
-    {l:"B",t:"...entscheide ich — aber es ärgert mich — ich erwarte, dass mein Team eigenständiger arbeitet.",ex:"z.B. ich beantworte es, sage aber klar: nächstes Mal selbst lösen.",v:1},
-    {l:"C",t:"...beantworte es ausführlich — ich möchte, dass die Person wirklich versteht.",ex:"z.B. ich nehme mir Zeit, auch wenn es eigentlich schnell gehen sollte.",v:2},
-    {l:"D",t:"...gebe die Frage zurück: Was denkst du selbst? Was spricht für welche Option?",ex:"z.B. ich sehe es als Chance, ihn zu befähigen, statt die Abhängigkeit zu verstärken.",v:3}
-  ]},
-  { text:"Dein Team verfehlt ein wichtiges Quartalsziel. Was beschäftigt dich am meisten?", opts:[
-    {l:"A",t:"Welcher Prozess oder welche Kennzahl hat versagt? Wo war der Engpass?",ex:"z.B. ich will den Root Cause verstehen, bevor ich jemanden zur Rechenschaft ziehe.",v:0},
-    {l:"B",t:"Wer hat nicht geliefert — und wie stelle ich sicher, dass das nicht wieder passiert?",ex:"z.B. ich halte das Ergebnis für nicht verhandelbar und suche den Verantwortlichen.",v:1},
-    {l:"C",t:"Ich mache mir Gedanken, wie das nach oben wahrgenommen wird — und wie ich es richtig kommuniziere.",ex:"z.B. die Außenwirkung beschäftigt mich genauso wie das Ergebnis selbst.",v:2},
-    {l:"D",t:"Was habe ich als Führungskraft nicht gesehen, nicht ermöglicht oder zu spät korrigiert?",ex:"z.B. ich nehme zuerst Ownership, bevor ich auf andere schaue.",v:3}
-  ]},
-  { text:"Was unterscheidet dich am meisten von deinem Team?", opts:[
-    {l:"A",t:"Ich kenne die technischen Zusammenhänge und Prozesse tiefer als die meisten.",ex:"z.B. ich bin die letzte Instanz bei komplexen fachlichen Fragen.",v:0},
-    {l:"B",t:"Ich habe einen stärkeren Antrieb und mehr Leistungsbereitschaft.",ex:"z.B. ich gehe weiter als andere — mehr Initiative, mehr Einsatz.",v:1},
-    {l:"C",t:"Ich sorge dafür, dass alle miteinander funktionieren und niemand untergeht.",ex:"z.B. ich bin der soziale Kitt — ich spüre Spannungen, bevor andere sie sehen.",v:2},
-    {l:"D",t:"Ich versuche, den Blick zu schärfen: Wohin geht das? Welches Potenzial steckt hier?",ex:"z.B. ich denke in Entwicklungslinien, nicht nur in Tagesaufgaben.",v:3}
-  ]},
-  { text:"Wie fühlst du dich, wenn du eine unpopuläre Entscheidung treffen musst?", opts:[
-    {l:"A",t:"Ich erkläre die Fakten sachlich — wer die Daten versteht, wird die Entscheidung nachvollziehen.",ex:"z.B. ich präsentiere den Business Case und erwarte rationale Zustimmung.",v:0},
-    {l:"B",t:"Das gehört zur Führung dazu. Beliebt sein und klar führen schließen sich manchmal aus.",ex:"z.B. ich treffe die Entscheidung und stehe dazu — auch wenn es kurzfristig unbequem ist.",v:1},
-    {l:"C",t:"Ich verzögere es so lange wie möglich und suche Rückendeckung, bevor ich kommuniziere.",ex:"z.B. ich will sicher sein, dass genug Zustimmung da ist, bevor ich nach vorne trete.",v:2},
-    {l:"D",t:"Ich tue es bewusst, erkläre das Warum — und halte die Unsicherheit danach aus.",ex:"z.B. ich weiß, dass ich nicht jeden überzeugen kann, und bin damit im Frieden.",v:3}
-  ]},
-  { text:"Welcher Satz beschreibt deine Führungsrolle am besten?", opts:[
-    {l:"A",t:'"Ich bringe mein Team dazu, die Dinge richtig zu machen."',ex:"Qualität, Prozesstreue, Genauigkeit — das ist mein Maßstab.",v:0},
-    {l:"B",t:'"Ich bringe mein Team dazu, Höchstleistungen zu erbringen."',ex:"Performance, Tempo, Ergebnis — das treibt mich an.",v:1},
-    {l:"C",t:'"Ich bringe mein Team dazu, harmonisch zusammenzuarbeiten."',ex:"Atmosphäre, Zusammenhalt, gegenseitiges Vertrauen — das ist mir wichtig.",v:2},
-    {l:"D",t:'"Ich bringe mein Team dazu, die richtigen Dinge aus eigener Überzeugung zu tun."',ex:"Eigenverantwortung, Sinn, Wachstum — das ist mein Nordstern.",v:3}
-  ]},
-  { text:"Was macht dir an deiner Führungsrolle gerade am meisten zu schaffen?", opts:[
-    {l:"A",t:"Ich komme kaum noch zu meiner eigentlichen Facharbeit — Führungsaufgaben fressen mich.",ex:"z.B. ich vermisse die Zeit, wenn ich einfach selbst lösen konnte.",v:0},
-    {l:"B",t:"Ich habe das Gefühl, dass mein Einsatz nicht ausreichend gesehen oder gewürdigt wird.",ex:"z.B. ich arbeite mehr als andere, aber die Anerkennung bleibt aus.",v:1},
-    {l:"C",t:"Konflikte und schwierige Gespräche kosten mich unverhältnismäßig viel Energie.",ex:"z.B. ich bereite mich tagelang vor und schlafe schlecht danach.",v:2},
-    {l:"D",t:"Ich weiß, dass mehr in mir steckt — aber mir fehlt noch das richtige Werkzeug für den nächsten Schritt.",ex:"z.B. ich spüre die Lücke zwischen meinem Anspruch und meiner Wirkung.",v:3}
-  ]}
-];
-
-const TYPES = [
-  { key:"Der Steuermann", badge:"Führungstyp 1 · Fachführung",
-    tagline:"Dein Team läuft, wenn du da bist. Die Frage ist: was passiert, wenn du nicht da bist?",
-    staerke:"Tiefe Fachkenntnis, Verlässlichkeit, Überblick", hebel:"Aufgaben wirklich übergeben, andere entscheiden lassen",
-    risiko:"Alle wollen durch dich — du wirst zum Engpass", next:"Was würde passieren, wenn du eine Woche offline bist?",
-    msg:"Dein Team läuft, wenn du da bist. Ich kenne diesen Typ — ich war selbst einer. Die Fachkompetenz ist real. Aber sie wird irgendwann zum Engpass. Nicht weil du schlecht führst. Sondern weil du so gut bist, dass alle durch dich wollen.\n\nDas verändert sich nicht von allein. Irgendwann musst du aufhören, die beste Fachkraft im Raum zu sein — und anfangen, die Person zu sein, die andere besser macht.\n\n<span class=\"quote-block\"><em>\"Bei Unsicherheit entsteht oft der Reflex, Dinge stärker steuern zu wollen. Das kann dazu führen, dass wir uns an Details festbeißen — und dadurch erst recht den Überblick verlieren.\"</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>",
-    cta:"Wie viel deiner Zeit ist wirklich Führung — und wie viel davon könntest du morgen abgeben?",
-    ctaTitle:"Führungszeit-Check", ctaUrl:"steuermann-test.html", ctaBtnLabel:"Führungszeit-Check starten →"
-  },
-  { key:"Der Antreiber", badge:"Führungstyp 2 · Ergebnisführung",
-    tagline:"Du lieferst. Das ist keine Frage. Aber lieferst du auch, wenn du mal nicht da bist?",
-    staerke:"Klare Ansagen, hohes Tempo, Ergebniswille", hebel:"Anderen Raum lassen, Wachstum wichtiger als Kontrolle",
-    risiko:"Team funktioniert — aber wächst nicht", next:"Wächst dein Team auch, wenn du nicht im Raum bist?",
-    msg:"Du lieferst. Das ist keine Frage. Aber ich kenne diesen Typ — und ich weiß, wo er sich selbst im Weg steht.\n\nIrgendwann merkst du: Das Team funktioniert, wenn du drückst. Aber wächst es auch, wenn du nicht im Raum bist? Genau das ist der Unterschied zwischen einem Hochleister und jemandem, der echte Wirkung erzeugt. Das eine macht dich unentbehrlich. Das andere macht dich frei.\n\n<span class=\"quote-block\"><em>\"Wenn ich handele, steckt das andere oft an.\"</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>",
-    cta:"Wächst dein Team, wenn du nicht im Raum bist? Ehrliche Antwort: 8 Minuten, drei Hebel.",
-    ctaTitle:"Wirkungscheck", ctaUrl:"antreiber-test.html", ctaBtnLabel:"Wirkungscheck starten →"
-  },
-  { key:"Der Vermittler", badge:"Führungstyp 3 · Beziehungsführung",
-    tagline:"Du hältst einiges zusammen, was ohne dich auseinanderfallen würde. Und du weißt, was das kostet.",
-    staerke:"Gespür für Menschen, Teamzusammenhalt, Zuverlässigkeit", hebel:"Klare Erwartungen aussprechen, auch unbequeme Wahrheiten",
-    risiko:"Harmonie vor Klarheit — niemand weiß, wo du wirklich stehst", next:"Wissen die Menschen um dich, was du wirklich erwartest?",
-    msg:"Du hältst einiges zusammen, was ohne dich auseinanderfallen würde. Und du weißt, was das kostet.\n\nIch habe das oft gesehen. Die Menschen mögen dich. Aber mögen sie dich wegen dir — oder wegen dem, was du für sie tust? Das ist keine Provokation. Das ist die wichtigste Frage, die du dir stellen kannst. Weil die Antwort entscheidet, ob du führst — oder nur managst.\n\n<span class=\"quote-block\"><em>\"Führungskräfte sollten immer wieder fragen: Was haben wir bereits geschafft? Worauf sind wir stolz? Dadurch entsteht gelebte Wertschätzung — und ein wirksamer Puffer gegen Stress.\"</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>",
-    cta:"Was kostet dich am meisten — und wofür kriegst du am wenigsten zurück?",
-    ctaTitle:"Energiebilanz-Check", ctaUrl:"vermittler-test.html", ctaBtnLabel:"Energiebilanz-Check starten →"
-  },
-  { key:"Der Orientierungssucher", badge:"Führungstyp 4 · Wachstumsführung",
-    tagline:"Du hast das Zeug dazu. Das ist nicht die Frage. Die Frage ist: warum passiert es noch nicht?",
-    staerke:"Hohe Selbstwahrnehmung, Entwicklungswille, großes Bild", hebel:"Weniger anfangen, mehr fertigmachen — einen Schritt, nicht zehn",
-    risiko:"Viel wissen, wenig tun — die Lücke wächst und frustriert", next:"Was ist der eine konkrete Schritt, den du diese Woche gehst?",
-    msg:"Du hast das Zeug dazu. Das ist nicht die Frage.\n\nDie Frage ist: warum passiert es noch nicht? Ich kenne dieses Muster. Viel nachdenken, viel lesen, viel verstehen — und trotzdem das Gefühl, auf der Stelle zu treten. Das ist kein Charakterfehler. Aber es braucht eine andere Antwort als das nächste Buch oder der nächste Podcast. Es braucht einen klaren Schritt. Heute.\n\n<span class=\"quote-block\"><em>\"Was ist der allerkleinste konkrete Schritt, den ich jetzt gehen kann? Dadurch registriert unser Körper: Ich bin handlungsfähig — auch wenn ich nicht sofort die ganze Welt retten kann.\"</em><br><span class=\"quote-src\">— Eva Asselmann, Psychologieprofessorin</span></span>",
-    cta:"Du weißt, was du willst. Der konkrete nächste Schritt fehlt noch — 8 Minuten, herausfinden.",
-    ctaTitle:"Klarheits-Check", ctaUrl:"orientierungssucher-test.html", ctaBtnLabel:"Klarheits-Check starten →"
-  }
-];
-
-let cur=0, answers=[];
-
-function startQuiz(){
-  document.getElementById('hero').style.display='none';
-  const c=document.getElementById('quiz-card');c.style.display='block';c.classList.add('fi');
-  renderQ();
-}
-
-function renderQ(){
-  const q=Q[cur];
-  document.getElementById('q-ct').textContent=`${cur+1} / ${Q.length}`;
-  document.getElementById('prog').style.width=`${(cur/Q.length)*100}%`;
-  document.getElementById('q-text').textContent=q.text;
-  const el=document.getElementById('opts'); el.innerHTML='';
-  q.opts.forEach((o,i)=>{
-    const b=document.createElement('button'); b.className='opt'+(answers[cur]===i?' sel':'');
-    b.innerHTML=`<div class="opt-hdr"><div class="opt-let">${o.l}</div><div class="opt-txt">${o.t}</div></div><div class="opt-ex">${o.ex}</div>`;
-    b.onclick=()=>{ answers[cur]=i; document.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); document.getElementById('btn-next').disabled=false; };
-    el.appendChild(b);
-  });
-  document.getElementById('btn-back').disabled=cur===0;
-  document.getElementById('btn-next').disabled=answers[cur]===undefined;
-  document.getElementById('btn-next').textContent=cur===Q.length-1?'Ergebnis anzeigen →':'Weiter';
-}
-function goNext(){ if(cur===Q.length-1){showResult();}else{cur++;renderQ();} }
-function goBack(){ if(cur>0){cur--;renderQ();} }
-
-function showResult(){
-  const sc=[0,0,0,0]; answers.forEach((a,qi)=>{ sc[Q[qi].opts[a].v]++; });
-  const mi=sc.indexOf(Math.max(...sc)); const t=TYPES[mi]; _trackResult(t.key, '', 'index');
-  document.getElementById('prog').style.width='100%';
-  document.getElementById('quiz-screen').style.display='none';
-  const rs=document.getElementById('result-screen'); rs.style.display='block'; rs.classList.add('fi');
-
-  document.getElementById('r-badge').textContent=t.badge;
-  document.getElementById('r-type').textContent=t.key;
-  document.getElementById('r-tagline').textContent=t.tagline;
-
-  const names=['Der Steuermann','Der Antreiber','Der Vermittler','Der Orientierungssucher'];
-  let bh=''; sc.forEach((s,i)=>{ const p=Math.round(s/Q.length*100); bh+=`<div class="s-row"><div class="s-name"${i===mi?' style="font-weight:500;color:var(--black)"':''}>${names[i]}</div><div class="s-track"><div class="s-fill${i===mi?'':' dim'}" style="width:0" data-p="${p}"></div></div><div class="s-n">${s}</div></div>`; });
-  document.getElementById('r-scores').innerHTML=bh;
-  setTimeout(()=>{ document.querySelectorAll('.s-fill[data-p]').forEach(e=>{ e.style.width=e.dataset.p+'%'; }); },100);
-
-  document.getElementById('r-prof').innerHTML=`
-    <div class="prof-card"><div class="prof-lbl">Stärken</div><div class="prof-val">${t.staerke}</div></div>
-    <div class="prof-card"><div class="prof-lbl">Dein Hebel</div><div class="prof-val">${t.hebel}</div></div>
-    <div class="prof-card"><div class="prof-lbl">Blinder Fleck</div><div class="prof-val">${t.risiko}</div></div>
-    <div class="prof-card"><div class="prof-lbl">Nächster Schritt</div><div class="prof-val">${t.next}</div></div>`;
-
-  document.getElementById('r-msg').innerHTML=t.msg.split('\n\n').map(p=>`<p>${p}</p>`).join('')
-    +'<p class="cta">Du bist intelligent, du reflektierst — und du weißt, dass dir für den vollen Durchbruch noch das ein oder andere Werkzeug fehlt. <strong>Hast du Bock auf die gemeinsame Reise?</strong></p>';
-
-  // Deep dive
-  document.getElementById('rm-type').value=t.key;
-  const rms=document.getElementById('result-mail-sec'); rms.style.display='block'; rms.classList.add('fi');
-  const dd=document.getElementById('deep-div'); dd.style.display='block'; dd.classList.add('fi');
-  document.getElementById('dd-title').textContent=t.ctaTitle;
-  document.getElementById('dd-sub').textContent=t.cta;
-  const ddBtn=document.getElementById('dd-btn'); ddBtn.textContent=t.ctaBtnLabel;
-  ddBtn.href=t.ctaUrl+window.location.search; // carry ref params
-
-  // Share
-  const ss=document.getElementById('share-sec'); ss.style.display='block'; ss.classList.add('fi');
-
-}
-
-async function submitResultMail() {
-  const name = document.getElementById('rm-name').value.trim();
-  const email = document.getElementById('rm-email').value.trim();
-  const typ = document.getElementById('rm-type').value;
-  if (!name || !email) return;
-  const btn = document.getElementById('rm-btn');
-  btn.textContent = 'Wird gesendet…'; btn.disabled = true;
-  try {
-    const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-      body: JSON.stringify({name, email, typ, type:'result_mail', ref:_refId, depth:_depth, _replyto:email})
-    });
-    if (res.ok) {
-      document.getElementById('rm-form-inner').style.display='none';
-      document.getElementById('rm-ok').style.display='block';
-    } else throw new Error();
-  } catch { btn.textContent='Ergebnis zusenden →'; btn.disabled=false; }
-}
-function restart(){
-  cur=0;answers=[];
-  document.getElementById('quiz-screen').style.display='block';
-  document.getElementById('result-screen').style.display='none';
-  ['deep-div','result-mail-sec','share-sec'].forEach(id=>{document.getElementById(id).style.display='none';});
-  renderQ();
-}
-
-function _trackResult(typ, score, page) {
-  if (FORMSPREE_ID === 'YOUR_FORM_ID') return;
-  fetch('https://formspree.io/f/' + FORMSPREE_ID, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-    body: JSON.stringify({type:'result_view', page:page, typ:typ, score:score||'', ref:_refId, depth:_depth})
-  }).catch(()=>{});
-}
-
-// expose to global scope (Cloudflare Rocket Loader fix)
-window.startQuiz=startQuiz;
-window.goNext=goNext;
-window.goBack=goBack;
-window.doShare=doShare;
-window.restart=restart;
 </script>
+
 </body>
 </html>
