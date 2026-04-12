@@ -225,7 +225,7 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
   <div class="card" id="quiz-card" style="display:none">
     <div id="quiz-screen">
       <div class="prog-wrap">
-        <div class="prog-hdr"><span class="prog-lbl">Standortbestimmung</span><span class="prog-ct" id="q-ct">1 / 8</span></div>
+        <div class="prog-hdr"><span class="prog-lbl">Standortbestimmung</span><span class="prog-ct" id="q-ct">1 / 7</span></div>
         <div class="prog-track"><div class="prog-fill" id="prog" style="width:0%"></div></div>
       </div>
       <div class="q-text" id="q-text"></div>
@@ -324,29 +324,29 @@ async function doShare() {
 
 // ── Quiz data ──
 const Q = [
-  { text:"Warum bist du eigentlich Führungskraft geworden?", opts:[
+  { text:"Warum hast du deine aktuelle Führungsrolle bekommen?", opts:[
     {l:"A",t:"Weil ich fachlich der Stärkste in meinem Bereich war — und das wurde anerkannt.",ex:"z.B. bester Techniker, Prozessexperte, niemand kennt das System so gut wie ich.",v:0},
-    {l:"B",t:"Weil ich wusste, dass ich mehr Wirkung haben kann als mein Vorgänger.",ex:"z.B. ich hatte klare Ideen, wie man das Team auf ein höheres Level bringt.",v:1},
+    {l:"B",t:"Weil ich oder auch mein Chef wusste, dass ich mehr Wirkung haben kann als mein Vorgänger.",ex:"z.B. ich hatte klare Ideen, wie man das Team auf ein höheres Level bringt.",v:1},
     {l:"C",t:"Weil das Team und mein Chef es mir zugetraut haben — ich habe nicht Nein gesagt.",ex:"z.B. ich war immer die erste Anlaufstelle, die inoffizielle Koordinationsperson.",v:2},
     {l:"D",t:"Weil ich etwas bewegen und Menschen wirklich weiterentwickeln wollte.",ex:"z.B. ich hatte eine klare Vorstellung, welche Art von Führungskraft ich sein möchte.",v:3}
   ]},
-  { text:"Ein Mitarbeiter macht denselben Fehler zum zweiten Mal. Was geht dir als erstes durch den Kopf?", opts:[
+  { text:"Ein Mitarbeiter/Kollege macht denselben Fehler zum zweiten Mal. Was geht dir als erstes durch den Kopf?", opts:[
     {l:"A",t:"Irgendwo stimmt der Prozess nicht — das ist ein Systemfehler, kein Personenfehler.",ex:"z.B. ich prüfe die Arbeitsanweisung, die Einweisung, das Übergabeprotokoll.",v:0},
     {l:"B",t:"Das ist nicht akzeptabel — das muss klar angesprochen werden, sonst schadet das der Gruppe.",ex:"z.B. ich suche direkt das Gespräch und mache unmissverständlich klar, was erwartet wird.",v:1},
     {l:"C",t:"Ich frage mich, ob ich ihn gut genug eingearbeitet habe oder zu wenig unterstützt habe.",ex:"z.B. ich mache mir Gedanken, bevor ich das Gespräch suche.",v:2},
     {l:"D",t:"Ich nutze es als Anlass für ein echtes Gespräch: Was steckt dahinter? Was braucht er wirklich?",ex:"z.B. ich unterscheide zwischen Symptom und Ursache, bevor ich reagiere.",v:3}
   ]},
   { text:"Dein Mitarbeiter kommt mit einer Frage, die er eigentlich selbst beantworten könnte. Du...", opts:[
-    {l:"A",t:"...entscheide ich direkt und klar. Das spart Zeit, und ich kenne die richtige Antwort.",ex:"z.B. ich will keine langen Diskussionen — ich gebe die Lösung und wir machen weiter.",v:0},
-    {l:"B",t:"...entscheide ich — aber es ärgert mich — ich erwarte, dass mein Team eigenständiger arbeitet.",ex:"z.B. ich beantworte es, sage aber klar: nächstes Mal selbst lösen.",v:1},
-    {l:"C",t:"...beantworte es ausführlich — ich möchte, dass die Person wirklich versteht.",ex:"z.B. ich nehme mir Zeit, auch wenn es eigentlich schnell gehen sollte.",v:2},
-    {l:"D",t:"...gebe die Frage zurück: Was denkst du selbst? Was spricht für welche Option?",ex:"z.B. ich sehe es als Chance, ihn zu befähigen, statt die Abhängigkeit zu verstärken.",v:3}
+    {l:"A",t:"...entscheidest direkt und klar. Das spart Zeit, und du kennst die richtige Antwort.",ex:"z.B. ich will keine langen Diskussionen — ich gebe die Lösung und wir machen weiter.",v:0},
+    {l:"B",t:"...entscheidest — aber es ärgert dich — du erwartest, dass dein Team eigenständiger arbeitet.",ex:"z.B. ich beantworte es, sage aber klar: nächstes Mal selbst lösen.",v:1},
+    {l:"C",t:"...beantwortest es ausführlich — du möchtest, dass die Person es wirklich versteht.",ex:"z.B. ich nehme mir Zeit, auch wenn es eigentlich schnell gehen sollte.",v:2},
+    {l:"D",t:"...gibst die Frage zurück: Was denkst du selbst? Was spricht für welche Option?",ex:"z.B. ich sehe es als Chance, ihn zu befähigen, statt die Abhängigkeit zu verstärken.",v:3}
   ]},
   { text:"Dein Team verfehlt ein wichtiges Quartalsziel. Was beschäftigt dich am meisten?", opts:[
     {l:"A",t:"Welcher Prozess oder welche Kennzahl hat versagt? Wo war der Engpass?",ex:"z.B. ich will den Root Cause verstehen, bevor ich jemanden zur Rechenschaft ziehe.",v:0},
     {l:"B",t:"Wer hat nicht geliefert — und wie stelle ich sicher, dass das nicht wieder passiert?",ex:"z.B. ich halte das Ergebnis für nicht verhandelbar und suche den Verantwortlichen.",v:1},
-    {l:"C",t:"Ich mache mir Gedanken, wie das nach oben wahrgenommen wird — und wie ich es richtig kommuniziere.",ex:"z.B. die Außenwirkung beschäftigt mich genauso wie das Ergebnis selbst.",v:2},
-    {l:"D",t:"Was habe ich als Führungskraft nicht gesehen, nicht ermöglicht oder zu spät korrigiert?",ex:"z.B. ich nehme zuerst Ownership, bevor ich auf andere schaue.",v:3}
+    {l:"C",t:"Du machst dir Gedanken, wie das nach oben wahrgenommen wird — und wie du es richtig kommunizierst.",ex:"z.B. die Außenwirkung beschäftigt mich genauso wie das Ergebnis selbst.",v:2},
+    {l:"D",t:"Was habst du als Führungskraft/Führungsspieler nicht gesehen, nicht ermöglicht oder zu spät korrigiert?",ex:"z.B. ich nehme zuerst Ownership, bevor ich auf andere schaue.",v:3}
   ]},
   { text:"Was unterscheidet dich am meisten von deinem Team?", opts:[
     {l:"A",t:"Ich kenne die technischen Zusammenhänge und Prozesse tiefer als die meisten.",ex:"z.B. ich bin die letzte Instanz bei komplexen fachlichen Fragen.",v:0},
@@ -423,7 +423,10 @@ function renderQ(){
   document.getElementById('prog').style.width=`${(cur/Q.length)*100}%`;
   document.getElementById('q-text').textContent=q.text;
   const el=document.getElementById('opts'); el.innerHTML='';
-  q.opts.forEach((o,i)=>{
+  // Shuffle options so answer order is randomized per load
+  const shuffledOpts=[...q.opts].sort(()=>Math.random()-.5);
+  const origIdx=shuffledOpts.map(o=>q.opts.indexOf(o));
+  shuffledOpts.forEach((o,i)=>{
     const b=document.createElement('button'); b.className='opt'+(answers[cur]===i?' sel':'');
     b.innerHTML=`<div class="opt-hdr"><div class="opt-let">${o.l}</div><div class="opt-txt">${o.t}</div></div><div class="opt-ex">${o.ex}</div>`;
     b.onclick=()=>{ answers[cur]=i; document.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); document.getElementById('btn-next').disabled=false; };

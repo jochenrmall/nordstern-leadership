@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NORDSTERN.Leadership ein Konzept von Dr. Jochen Mall</title>
-  <link rel="stylesheet" href="nordstern-styles.css">
   <style data-cfasync="false">
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root {
@@ -31,24 +30,28 @@
     .nav-logo{font-family:var(--font-d);font-size:15px;font-weight:600;
               letter-spacing:-.01em;color:var(--black);text-decoration:none}
     .nav-logo span{color:var(--g600);font-weight:400}
-    .nav-back{font-size:13px;color:var(--g600);text-decoration:none}
-    .nav-back:hover{color:var(--black)}
     .hero{max-width:600px;width:100%;text-align:center;padding:64px 0 48px}
     .hero-tag{display:inline-block;font-size:12px;font-weight:500;letter-spacing:.1em;
               text-transform:uppercase;color:var(--g600);background:var(--g100);
               border:1px solid var(--g200);padding:6px 16px;border-radius:100px;margin-bottom:24px}
     .hero h1{font-family:var(--font-d);font-size:clamp(34px,6vw,54px);font-weight:600;
              letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
-    .hero h1 em{font-style:normal;color:var(--g600)}
-    .hero p{font-size:17px;color:var(--g600);line-height:1.6;max-width:480px;margin:0 auto 28px}
-    .hero-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;
+    .hero h1 .muted{color:var(--g600);font-style:normal}
+    .hero p{font-size:17px;color:var(--g600);line-height:1.6;max-width:480px;margin:0 auto 14px}
+    .hero p.last{margin-bottom:28px}
+    .hero-meta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
                font-size:13px;color:var(--g700)}
     .hero-meta span{display:flex;align-items:center;gap:5px}
     .dot{width:3px;height:3px;border-radius:50%;background:var(--g400)}
     .card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);
-          box-shadow:var(--shadow);width:100%;max-width:var(--max-card);padding:40px 44px}
-    .eyebrow,.sec-eye{font-size:11px;font-weight:500;letter-spacing:.08em;
-                      text-transform:uppercase;color:var(--g600);margin-bottom:6px}
+          box-shadow:var(--shadow);width:100%;max-width:var(--max-card);padding:40px 44px;
+          margin-bottom:14px}
+    @media(max-width:600px){.card{padding:28px 20px}}
+    .eyebrow{font-size:11px;font-weight:500;letter-spacing:.08em;
+              text-transform:uppercase;color:var(--g600);margin-bottom:14px}
+    .card-section-title{font-size:13px;font-weight:600;letter-spacing:-.01em;
+                        color:var(--black);margin-bottom:10px}
+    .card-text{font-size:14px;color:var(--g600);line-height:1.6;margin-bottom:18px}
     .btn-primary{display:inline-block;padding:14px 32px;background:var(--black);
                  color:var(--white);border:none;border-radius:100px;font-family:var(--font);
                  font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;
@@ -59,7 +62,17 @@
              font-size:14px;font-weight:500;cursor:pointer;transition:all .18s;min-height:44px;
              text-decoration:none}
     .btn-sec:hover{background:var(--g100)}
-    .h-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+    .cta-group{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+    .card-divider{border:none;border-top:1px solid var(--g200);margin:24px 0}
+    .why-quote{background:var(--g100);border-radius:var(--r-md);border-left:3px solid var(--black);
+               padding:18px 20px;font-size:15px;line-height:1.7;color:var(--black)}
+    .why-quote cite{display:block;margin-top:8px;font-size:12px;font-style:normal;
+                    color:var(--g700);letter-spacing:.05em}
+    .about-intro{display:flex;gap:28px;align-items:flex-start;margin-bottom:0;flex-wrap:wrap}
+    .about-photo-wrap{text-align:center;flex-shrink:0}
+    .about-text{flex:1;min-width:200px}
+    .about-text p{font-size:15px;color:var(--g600);line-height:1.7}
+    .h-grid{display:flex;flex-direction:column;gap:10px;margin-top:14px}
     .h-card{background:var(--g100);border-radius:var(--r-md);padding:15px 17px;
             display:flex;gap:13px;align-items:flex-start}
     .h-num{width:26px;height:26px;border-radius:50%;background:var(--black);color:var(--white);
@@ -67,11 +80,13 @@
            flex-shrink:0;margin-top:1px}
     .h-ct-t{font-size:14px;font-weight:500;color:var(--black);margin-bottom:3px}
     .h-ct-d{font-size:13px;color:var(--g600);line-height:1.5}
+    .pillar-label{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;
+                  color:var(--g700);margin-top:6px}
     .share-box{background:var(--g50);border:1px solid var(--border);border-radius:var(--r-lg);
-               padding:22px 26px;margin-top:14px;text-align:center;
+               padding:22px 26px;margin-top:0;text-align:center;
                max-width:var(--max-card);width:100%}
-    .share-box .share-q{font-size:15px;font-weight:500;color:var(--black);margin-bottom:5px}
-    .share-box .share-sub{font-size:13px;color:var(--g600);line-height:1.5;margin-bottom:14px}
+    .share-q{font-size:15px;font-weight:500;color:var(--black);margin-bottom:5px}
+    .share-sub{font-size:13px;color:var(--g600);line-height:1.5;margin-bottom:14px}
     .share-btn{display:inline-block;padding:12px 28px;background:transparent;color:var(--black);
                border:1px solid var(--border-md);border-radius:100px;font-family:var(--font);
                font-size:14px;font-weight:500;cursor:pointer;transition:all .18s}
@@ -82,26 +97,8 @@
     .footer a{color:var(--g700);text-decoration:underline}
     @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
     .ani{animation:fadeIn .4s ease both}
-    @media(max-width:600px){.card{padding:28px 20px}.hero{padding:48px 0 36px}}
-    .about-intro{display:flex;gap:28px;align-items:flex-start;margin-bottom:28px;flex-wrap:wrap}
-    .about-photo-wrap{text-align:center;flex-shrink:0}
-    .about-photo{width:100px;height:128px;background:var(--g100);border:1px solid var(--g200);
-                 border-radius:var(--r-md);display:flex;align-items:center;
-                 justify-content:center;color:var(--g400)}
-    .about-photo-label{font-size:10px;color:var(--g700);margin-top:5px;letter-spacing:.05em}
-    .about-text{flex:1;min-width:200px}
-    .about-text p{font-size:15px;color:var(--g600);line-height:1.7;margin:0}
-    .card-divider{border:none;border-top:1px solid var(--g200);margin:26px 0}
-    .pillar-label{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;
-                  color:var(--g700);margin-top:6px}
-    .why-quote{background:var(--g100);border-radius:var(--r-md);border-left:3px solid var(--black);
-               padding:18px 20px;font-size:15px;line-height:1.7;color:var(--black)}
-    .why-quote cite{display:block;margin-top:8px;font-size:12px;font-style:normal;
-                    color:var(--g700);letter-spacing:.05em}
-    .cta-group{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    .card-section-title{font-size:13px;font-weight:600;letter-spacing:-.01em;
-                        color:var(--black);margin-bottom:10px}
-    @media(max-width:480px){.about-intro{flex-direction:column;gap:20px}}
+    @media(max-width:600px){.hero{padding:48px 0 36px}}
+    @media(max-width:480px){.about-intro{flex-direction:column;gap:20px}.cta-group{flex-direction:column}}
   </style>
 </head>
 <body>
@@ -135,25 +132,48 @@
 
 <div class="page">
 
+  <!-- NAV -->
   <nav class="nav">
-    <a href="index.html" class="nav-logo">NORDSTERN <span>Leadership</span></a>
-    
+    <span class="nav-logo">NORDSTERN <span>Leadership</span></span>
   </nav>
 
-  <header class="hero" id="hero">
+  <!-- HERO -->
+  <header class="hero ani">
     <div class="hero-tag">Über mich</div>
-    <h1>Dr. Jochen Mall<br><em>nicht aus dem Lehrbuch,<br>sondern aus eigener Erfahrung.</em></h1>
+    <h1>Dr. Jochen Mall<br>
+      <span class="muted">nicht aus dem Lehrbuch,<br>sondern aus eigener Erfahrung.</span>
+    </h1>
     <p>Ingenieur, Senior Product Manager,<br>künftiger Professor.</p>
-    <p>Jemand, der Führung zuerst an der Schnittstelle zwischen Menschen und Technologie selbst durcharbeiten musste.</p>
+    <p class="last">Jemand, der Führung zuerst an der Schnittstelle zwischen Menschen und Technologie selbst durcharbeiten musste.</p>
     <div class="hero-meta">
       <span><div class="dot"></div>Porsche AG</span>
       <span><div class="dot"></div>MHP – A Porsche Company</span>
-      <span><div class="dot"></div>Smart Factory @ HHN ab September 2026</span>
+      <span><div class="dot"></div>Professor für Smart Factory @ HHN ab September 2026</span>
     </div>
   </header>
 
-  <div class="card ani" id="main-card">
+  <!-- CARD 1: Was ich anbiete -->
+  <div class="card ani">
+    <p class="eyebrow">Was ich anbiete</p>
+    <p class="card-text">NORDSTERN.Leadership ist ein Konzept und richtet sich an Führungsspieler im Umfeld der Produktion, die Orientierung suchen<br>— um deinen NORDSTERN zu finden musst du ehrlich zu dir selbst sein und wissen wo du stehst und was dir wirklich wichtig ist.</p>
+    <div class="cta-group">
+      <a class="btn-primary" href="kompass.html">NORDSTERN Kompass →</a>
+      <a class="btn-sec" href="kompass.html">Gespräch anfragen</a>
+    </div>
+  </div>
 
+  <!-- CARD 2: Warum ich das mache -->
+  <div class="card ani">
+    <p class="eyebrow">Warum ich das mache</p>
+    <blockquote class="why-quote">
+      Ich habe NORDSTERN.Leadership entwickelt, weil ich mir genau das vor ein paar Jahren selbst gewünscht hätte —
+      jemanden, der ehrlich sagt, wo die Orientierung fehlt und dir einen Schubs in die richtige Richtung gibt.
+      <cite>— Jochen Mall</cite>
+    </blockquote>
+  </div>
+
+  <!-- CARD 3: Wer ich bin -->
+  <div class="card ani">
     <p class="eyebrow">Wer ich bin</p>
     <div class="about-intro">
       <div class="about-photo-wrap">
@@ -165,16 +185,17 @@
         <p>Ich arbeite seit über zehn Jahren an den Schnittstellen zur Produktion. Ich habe komplexe Produktionsprozesse geplant, Schraubkurven mit KI analysiert, Prozesslandkarten für ganze Werke definiert. Dabei habe ich immer wieder erlebt, dass Visionen wie Smart Factory, Industrial AI und andere gute Entscheidungen nicht an fehlendem Wissen oder Technologie scheitern, sondern an fehlender Orientierung.</p>
       </div>
     </div>
+  </div>
 
-    <hr class="card-divider">
-
+  <!-- CARD 4: Wofür ich stehe -->
+  <div class="card ani">
     <p class="eyebrow">Wofür ich stehe</p>
     <div class="h-grid">
       <div class="h-card">
         <div class="h-num">1</div>
         <div>
           <div class="h-ct-t">Humane Intelligenz (HI) zuerst, dann KI.</div>
-          <div class="h-ct-d">AI-Modelle in echten Schraubprozessen validiert. OPC-UA-Architekturen mit Shopfloor-Teams aufgebaut. Qualitätsfehler analysiert, die Millionen kosten. Smart Factory ist kein Strategiepapier — es ist Handwerk.</div>
+          <div class="h-ct-d">Prozesse in komplexen Produktionshallen optimiert. KI-Modelle in echten Schraubprozessen validiert. Qualitätsfehler analysiert, die Millionen kosten.<br>Smart Factory ist kein Strategiepapier — es ist Handwerk.</div>
           <p class="pillar-label">MHP · bolt_it · SOUNCE · Ferry 4.0</p>
         </div>
       </div>
@@ -195,30 +216,9 @@
         </div>
       </div>
     </div>
-
-    <hr class="card-divider">
-
-    <p class="eyebrow">Warum ich das mache</p>
-    <blockquote class="why-quote">
-      Ich mache das, weil ich mir genau das vor ein paar Jahren selbst gewünscht hätte —
-      jemanden, der ehrlich sagt, wo die Orientierung fehlt.
-      <cite>— Jochen Mall</cite>
-    </blockquote>
-
-    <hr class="card-divider">
-
-    <p class="card-section-title">Was ich anbiete</p>
-    <p style="font-size:14px;color:var(--g600);line-height:1.6">
-      NORDSTERN.Leadership ist ein Konzept und richtet sich an Führungsspieler im Umfeld der Produktion,
-      die Orientierung suchen — nicht noch mehr Methoden.
-    </p>
-    <div class="cta-group">
-      <a class="btn-primary" href="kompass.html">NORDSTERN Kompass →</a>
-      <a class="btn-sec" href="kompass.html">NORDSTERN Kompass →</a>
-    </div>
-
   </div>
 
+  <!-- SHARE-BOX -->
   <div class="share-box ani">
     <p class="share-q">Kennst du jemanden, der das braucht?</p>
     <p class="share-sub">Jemand in deinem Netzwerk, der gerade nicht weiß, wo er steht.</p>
@@ -226,6 +226,7 @@
     <p class="share-toast" id="share-toast"></p>
   </div>
 
+  <!-- FOOTER -->
   <footer class="footer">
     <p>
       © 2026 NORDSTERN.Leadership ·
