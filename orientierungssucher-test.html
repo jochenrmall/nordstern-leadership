@@ -267,8 +267,7 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
     </div>
 
     <footer class="footer">
-    <p>© 2025 NORDSTERN Leadership · <a href="mailto:jochen.r.mall@gmail.com">jochen.r.mall@gmail.com</a></p>
-    <p style="margin-top:5px">Dr.-Ing. Jochen Mall · MHP – A Porsche Company · Hochschule Heilbronn ab Sept. 2026</p>
+    <p>© 2025 NORDSTERN Leadership</p>
   </footer>
 </div>
 
@@ -307,7 +306,7 @@ function showResult(score,d){
   let lvBadge,lvTitle,lvDesc;
   if(score<30){lvBadge='Erkenntnissammler';lvTitle='Du weißt viel — und tust noch wenig damit.';lvDesc='Dein Bewusstsein für Führung ist auf einem hohen Niveau. Die Frustration entsteht, weil du spürst: Erkenntnis allein verändert nichts. Was du jetzt brauchst, ist kein weiteres Buch — sondern einen Kontext, in dem Erkenntnisse zu Handlungen werden.';}
   else if(score<60){lvBadge='Umsetzer in Entwicklung';lvTitle='Du bewegst dich — und brauchst Struktur, um zu beschleunigen.';lvDesc='Du hast aufgehört, nur zu wissen — du beginnst zu tun. Die Herausforderung: Ohne klare Struktur verlierst du den Faden. Die nächste Ebene ist nicht mehr Erkenntnis, sondern konsequente Praxis.';}
-  else{lvBadge='Konsequenter Leader';lvTitle:'Du weißt, was du willst — und tust es.';lvDesc='Erkenntnis und Handlung sind bei dir eng verbunden. Das ist selten. Dein nächster Schritt ist nicht mehr Richtung, sondern Tiefe: Wie schaffst du ein Umfeld, das dieses Niveau auch von anderen fordert?';}
+  else{lvBadge='Konsequenter Leader';lvTitle='Du weißt, was du willst — und tust es.';lvDesc='Erkenntnis und Handlung sind bei dir eng verbunden. Das ist selten. Dein nächster Schritt ist nicht mehr Richtung, sondern Tiefe: Wie schaffst du ein Umfeld, das dieses Niveau auch von anderen fordert?';}
   document.getElementById('r-lv-badge').textContent=lvBadge;document.getElementById('r-lv-t').textContent=lvTitle;document.getElementById('r-lv-d').textContent=lvDesc;
   const dims=[{l:'Konkreter Schritt',v:d.s_next},{l:'Abschlussquote',v:d.s_done},{l:'12-Monats-Vision',v:d.s_vis},{l:'Wissen→Handlung',v:d.s_gap},{l:'Entscheidungsfreude',v:d.s_decide},{l:'Fokus (wenig parallel)',v:d.s_proj},{l:'Idee→Umsetzung',v:d.s_idea},{l:'Externe Perspektive',v:d.s_coach}];
   let bh='';dims.forEach(b=>{bh+=`<div class="b-row"><div class="b-lbl">${b.l}</div><div class="b-track"><div class="b-fill" data-v="${b.v}" style="width:0%"></div></div><div class="b-v">${b.v}</div></div>`;});
