@@ -296,8 +296,6 @@ function calcResult(){
 
 function showResult(score,d){
   if(FORMSPREE_ID!=='YOUR_FORM_ID'){fetch('https://formspree.io/f/'+FORMSPREE_ID,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({type:'result_view',page:'steuermann',ref:_refId,depth:_depth})}).catch(()=>{});};
-  document.getElementById('e-score').value=`Führungsquotient: ${score}%`;
-  document.getElementById('e-ref').value=_refId;document.getElementById('e-depth').value=String(_depth);
   const rs=document.getElementById('result-sec');rs.style.display='block';rs.classList.add('ani');rs.scrollIntoView({behavior:'smooth',block:'start'});
   setTimeout(()=>{const arc=314;const off=arc-(score/100)*arc;document.getElementById('g-fill').style.strokeDashoffset=off;let n=0;const iv=setInterval(()=>{n=Math.min(n+2,score);document.getElementById('g-num').textContent=n;if(n>=score)clearInterval(iv);},18);},200);
   let lvBadge,lvTitle,lvDesc;
