@@ -53,7 +53,7 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
 .q-text{font-family:var(--font-d);font-size:clamp(18px,3vw,22px);font-weight:500;letter-spacing:-.02em;line-height:1.35;margin-bottom:24px}
 /* options */
 .opts{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-.opt{border:1px solid var(--border);border-radius:var(--r-md);padding:14px 18px;cursor:pointer;transition:all .18s;background:var(--white);text-align:left;width:100%;min-height:48px}
+.opt{border:1px solid var(--border);border-radius:var(--r-md);padding:14px 18px;cursor:pointer;transition:all .18s;background:var(--white);text-align:left;width:100%;min-height:48px;display:block}
 .opt:hover{border-color:var(--border-md);background:var(--g100);transform:translateY(-1px)}
 .opt.sel{border:1.5px solid var(--black);background:var(--g100)}
 .opt-hdr{display:flex;align-items:center;gap:10px;margin-bottom:4px}
@@ -275,8 +275,8 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
   <div id="coach-cta" style="display:none;max-width:640px;width:100%;background:var(--black);border-radius:var(--r-lg);padding:28px 32px;margin-top:14px;text-align:center;color:var(--white)">
     <p style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px">Individuelles Coaching</p>
     <p style="font-family:var(--font-d);font-size:20px;font-weight:600;letter-spacing:-.02em;margin-bottom:8px">Konkreter Fahrplan — zugeschnitten auf dich.</p>
-    <p id="coach-cta-msg" style="font-size:14px;color:rgba(255,255,255,.75);line-height:1.6;margin-bottom:20px;max-width:440px;margin-left:auto;margin-right:auto">Der Test zeigt dir, wo du stehst. Das Coaching zeigt dir, wie du von dort weiterkommst.</p>
-    <a href="mailto:jochen.r.mall@gmail.com" style="display:inline-block;padding:13px 32px;background:var(--white);color:var(--black);border-radius:100px;font-family:var(--font);font-size:15px;font-weight:500;text-decoration:none;transition:opacity .18s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">30-Minuten-Gespräch anfragen →</a>
+    <p id="coach-cta-msg" style="font-size:14px;color:rgba(255,255,255,.75);line-height:1.6;margin-bottom:20px;max-width:440px;margin-left:auto;margin-right:auto">Der Test zeigt dir, wo du stehst. Was er nicht zeigt: wie viel größer dein Spielfeld sein könnte. Genau da fange ich an.</p>
+    <a href="mailto:kompass@nordstern-leadership.de" style="display:inline-block;padding:13px 32px;background:var(--white);color:var(--black);border-radius:100px;font-family:var(--font);font-size:15px;font-weight:500;text-decoration:none;transition:opacity .18s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">30-Minuten-Gespräch anfragen →</a>
     <p style="font-size:11px;color:rgba(255,255,255,.5);margin-top:10px">Kein Pitch. Kein Funnel. Jochen antwortet persönlich.</p>
   </div>
 
@@ -437,7 +437,7 @@ function renderQ(){
   const origIdx=shuffledOpts.map(o=>q.opts.indexOf(o));
   shuffledOpts.forEach((o,i)=>{
     const b=document.createElement('button'); b.className='opt'+(answers[cur]===i?' sel':'');
-    b.innerHTML=`<div class="opt-hdr"><div class="opt-let">${o.l}</div><div class="opt-txt">${o.t}</div></div><div class="opt-ex">${o.ex}</div>`;
+    b.innerHTML=`<div class="opt-txt">${o.t}</div><div class="opt-ex">${o.ex}</div>`;
     b.onclick=()=>{ answers[cur]=i; document.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); document.getElementById('btn-next').disabled=false; };
     el.appendChild(b);
   });
@@ -479,7 +479,7 @@ function showResult(){
     0: 'Du spürst die Decke. Mehr wäre möglich — aber du kannst dir selbst nicht von außen zuschauen. Kein Chirurg operiert sich selbst. Ich bin deine externen Augen und Ohren.',
     1: 'Du lieferst. Die Frage ist: Wächst dein Team noch — oder hängt alles an dir? Was du von innen nicht siehst, sehe ich von außen.',
     2: 'Dein blinder Fleck kostet dich mehr Energie als alles andere. Niemand sieht sein eigenes Führungsverhalten klar — ich zeige dir, was ich sehe.',
-    3: 'Du weißt schon viel. Was fehlt, ist nicht mehr Erkenntnis — es ist jemand, der von außen draufschaut und sagt: hier, genau da, das ist deine Öffnung.'
+    3: 'Du weißt schon viel. Was fehlt, ist nicht mehr Erkenntnis — es ist jemand, der zeigt: dein Spielfeld ist größer als das, in dem du gerade spielst. Das kann ich sein.'
   };
   const mi_g = sc.indexOf(Math.max(...sc));
   const coachCtaEl = document.getElementById('coach-cta');
