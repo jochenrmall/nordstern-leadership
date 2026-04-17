@@ -149,7 +149,7 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
 .infobox-items{display:flex;flex-direction:column;gap:8px}
 .infobox-item{display:flex;align-items:flex-start;gap:11px}
 .infobox-icon{width:24px;height:24px;border-radius:50%;background:var(--white);border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;color:var(--black)}
-.infobox-title{font-size:12px;font-weight:500;color:var(--black);margin:0 0 1px 0}
+.infobox-title{font-size:12px;font-weight:700;color:var(--black);margin:0 0 1px 0}
 .infobox-sub{font-size:11px;color:var(--g600);margin:0;line-height:1.4}
 
 /* footer */
@@ -271,6 +271,15 @@ body{font-family:var(--font);background:var(--white);color:var(--black);min-heig
     <div class="rm-ok" id="rm-ok">Ergebnis ist unterwegs. ✓</div>
   </div>
 
+  <!-- Coaching CTA -->
+  <div id="coach-cta" style="display:none;max-width:640px;width:100%;background:var(--black);border-radius:var(--r-lg);padding:28px 32px;margin-top:14px;text-align:center;color:var(--white)">
+    <p style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px">Individuelles Coaching</p>
+    <p style="font-family:var(--font-d);font-size:20px;font-weight:600;letter-spacing:-.02em;margin-bottom:8px">Konkreter Fahrplan — zugeschnitten auf dich.</p>
+    <p id="coach-cta-msg" style="font-size:14px;color:rgba(255,255,255,.75);line-height:1.6;margin-bottom:20px;max-width:440px;margin-left:auto;margin-right:auto">Der Test zeigt dir, wo du stehst. Das Coaching zeigt dir, wie du von dort weiterkommst.</p>
+    <a href="mailto:jochen.r.mall@gmail.com" style="display:inline-block;padding:13px 32px;background:var(--white);color:var(--black);border-radius:100px;font-family:var(--font);font-size:15px;font-weight:500;text-decoration:none;transition:opacity .18s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">30-Minuten-Gespräch anfragen →</a>
+    <p style="font-size:11px;color:rgba(255,255,255,.5);margin-top:10px">Kein Pitch. Kein Funnel. Jochen antwortet persönlich.</p>
+  </div>
+
   <!-- Share section -->
   <div class="share-sec" id="share-sec" style="display:none;max-width:640px;width:100%">
     <div class="share-q">Wen aus deinem Umfeld würde das gerade treffen?</div>
@@ -346,7 +355,7 @@ const Q = [
     {l:"A",t:"Welcher Prozess oder welche Kennzahl hat versagt? Wo war der Engpass?",ex:"z.B. ich will den Root Cause verstehen, bevor ich jemanden zur Rechenschaft ziehe.",v:0},
     {l:"B",t:"Wer hat nicht geliefert — und wie stelle ich sicher, dass das nicht wieder passiert?",ex:"z.B. ich halte das Ergebnis für nicht verhandelbar und suche den Verantwortlichen.",v:1},
     {l:"C",t:"Du machst dir Gedanken, wie das nach oben wahrgenommen wird — und wie du es richtig kommunizierst.",ex:"z.B. die Außenwirkung beschäftigt mich genauso wie das Ergebnis selbst.",v:2},
-    {l:"D",t:"Was habst du als Führungskraft/Führungsspieler nicht gesehen, nicht ermöglicht oder zu spät korrigiert?",ex:"z.B. ich nehme zuerst Ownership, bevor ich auf andere schaue.",v:3}
+    {l:"D",t:"Was hast du als Führungskraft/Führungsspieler nicht gesehen, nicht ermöglicht oder zu spät korrigiert?",ex:"z.B. ich nehme zuerst Ownership, bevor ich auf andere schaue.",v:3}
   ]},
   { text:"Was unterscheidet dich am meisten von deinem Team?", opts:[
     {l:"A",t:"Ich kenne die technischen Zusammenhänge und Prozesse tiefer als die meisten.",ex:"z.B. ich bin die letzte Instanz bei komplexen fachlichen Fragen.",v:0},
@@ -357,7 +366,7 @@ const Q = [
   { text:"Wie fühlst du dich, wenn du eine unpopuläre Entscheidung treffen musst?", opts:[
     {l:"A",t:"Ich erkläre die Fakten sachlich — wer die Daten versteht, wird die Entscheidung nachvollziehen.",ex:"z.B. ich präsentiere den Business Case und erwarte rationale Zustimmung.",v:0},
     {l:"B",t:"Das gehört zur Führung dazu. Beliebt sein und klar führen schließen sich manchmal aus.",ex:"z.B. ich treffe die Entscheidung und stehe dazu — auch wenn es kurzfristig unbequem ist.",v:1},
-    {l:"C",t:"Ich verzögere es so lange wie möglich und suche Rückendeckung, bevor ich kommuniziere.",ex:"z.B. ich will sicher sein, dass genug Zustimmung da ist, bevor ich nach vorne trete.",v:2},
+    {l:"C",t:"Ich entscheide nicht direkt — ich warte erst ab, ob sich die Rahmenbedingungen klären.",ex:"z.B. ich brauche erst das richtige Timing und genug Rückendeckung.",v:2},
     {l:"D",t:"Ich tue es bewusst, erkläre das Warum — und halte die Unsicherheit danach aus.",ex:"z.B. ich weiß, dass ich nicht jeden überzeugen kann, und bin damit im Frieden.",v:3}
   ]},
   { text:"Welcher Satz beschreibt deine Führungsrolle am besten?", opts:[
@@ -464,6 +473,23 @@ function showResult(){
   document.getElementById('r-msg').innerHTML=t.msg.split('\n\n').map(p=>`<p>${p}</p>`).join('')
     +'<p class="cta">Du bist intelligent, du reflektierst — und du weißt, dass dir für den vollen Durchbruch noch das ein oder andere Werkzeug fehlt. <strong>Hast du Bock auf die gemeinsame Reise?</strong></p>';
 
+
+  // Gawande-Bridge: typ-spezifische Botschaft
+  const gawandeMsgs = {
+    0: 'Du spürst die Decke. Mehr wäre möglich — aber du kannst dir selbst nicht von außen zuschauen. Kein Chirurg operiert sich selbst. Ich bin deine externen Augen und Ohren.',
+    1: 'Du lieferst. Die Frage ist: Wächst dein Team noch — oder hängt alles an dir? Was du von innen nicht siehst, sehe ich von außen.',
+    2: 'Dein blinder Fleck kostet dich mehr Energie als alles andere. Niemand sieht sein eigenes Führungsverhalten klar — ich zeige dir, was ich sehe.',
+    3: 'Du weißt schon viel. Was fehlt, ist nicht mehr Erkenntnis — es ist jemand, der von außen draufschaut und sagt: hier, genau da, das ist deine Öffnung.'
+  };
+  const mi_g = sc.indexOf(Math.max(...sc));
+  const coachCtaEl = document.getElementById('coach-cta');
+  if (coachCtaEl) {
+    const coachMsgEl = document.getElementById('coach-cta-msg');
+    if (coachMsgEl && gawandeMsgs[mi_g]) coachMsgEl.textContent = gawandeMsgs[mi_g];
+    coachCtaEl.style.display = 'block';
+    coachCtaEl.classList.add('fi');
+  }
+
   // Deep dive
   document.getElementById('rm-type').value=t.key;
   const rms=document.getElementById('result-mail-sec'); rms.style.display='block'; rms.classList.add('fi');
@@ -472,6 +498,10 @@ function showResult(){
   document.getElementById('dd-sub').textContent=t.cta;
   const ddBtn=document.getElementById('dd-btn'); ddBtn.textContent=t.ctaBtnLabel;
   ddBtn.href=t.ctaUrl+window.location.search; // carry ref params
+
+  // Coaching CTA after deep dive
+  const coachCta = document.getElementById('coach-cta');
+  if (coachCta) { coachCta.style.display='block'; coachCta.classList.add('fi'); }
 
   // Share
   const ss=document.getElementById('share-sec'); ss.style.display='block'; ss.classList.add('fi');

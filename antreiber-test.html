@@ -117,7 +117,7 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .infobox-items{display:flex;flex-direction:column;gap:12px}
 .infobox-item{display:flex;align-items:flex-start;gap:11px}
 .infobox-icon{width:26px;height:26px;border-radius:50%;background:var(--white);border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;color:var(--black)}
-.infobox-title{font-size:13px;font-weight:500;color:var(--black);margin:0 0 2px 0}
+.infobox-title{font-size:13px;font-weight:700;color:var(--black);margin:0 0 2px 0}
 .infobox-sub{font-size:12px;color:var(--g600);margin:0;line-height:1.5}
 
 
@@ -252,7 +252,7 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
       <div class="r-opts" id="r-diff">
         <div class="r-opt" onclick="sel('r-diff',this,0)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich zeige, wie ich es angegangen wäre — der eigene Weg interessiert mich weniger.</div></div>
         <div class="r-opt" onclick="sel('r-diff',this,33)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich lasse es durchgehen, aber es stört mich ein wenig.</div></div>
-        <div class="r-opt" onclick="sel('r-diff',this,66)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich anerkenne es — und frage nach dem Gedankengang dahinter.</div></div>
+        <div class="r-opt" onclick="sel('r-diff',this,66)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich schaue hin — und frage nach dem Gedankengang dahinter.</div></div>
         <div class="r-opt" onclick="sel('r-diff',this,100)"><div class="r-circle"><div class="r-dot"></div></div><div class="r-txt">Ich freue mich. Andere Wege zum Ziel bedeuten Wachstum im Team.</div></div>
       </div>
     </div>
@@ -307,6 +307,14 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
           <p style="font-size:11px;color:var(--g700);margin:6px 0 0">Kein Newsletter. Einmalig dein Profil — fertig.</p>
         </div>
         <div id="rm-ok" style="display:none;font-size:14px;color:var(--g600);text-align:center;padding:8px 0">Ergebnis ist unterwegs. ✓</div>
+      </div>
+      
+      <div style="background:var(--black);border-radius:var(--r-md);padding:22px 24px;margin-top:16px;text-align:center;color:var(--white)">
+        <p style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px">Individuelles Coaching</p>
+        <p style="font-family:var(--font-d);font-size:17px;font-weight:600;letter-spacing:-.02em;margin-bottom:6px">Konkreter Fahrplan — zugeschnitten auf dich.</p>
+        <p style="font-size:13px;color:rgba(255,255,255,.7);line-height:1.55;margin-bottom:16px">Der Test zeigt, wo du stehst. Das Coaching zeigt, wie du weiterkommst — mit jemandem, der selbst an der Schnittstelle von Führung und Produktion stand.</p>
+        <a href="mailto:jochen.r.mall@gmail.com" style="display:inline-block;padding:12px 28px;background:var(--white);color:var(--black);border-radius:100px;font-family:var(--font);font-size:14px;font-weight:500;text-decoration:none">30-Minuten-Gespräch →</a>
+        <p style="font-size:11px;color:rgba(255,255,255,.45);margin-top:8px">Kein Pitch. Jochen antwortet persönlich.</p>
       </div>
       <button class="restart-lnk" onclick="restartTest()">Test wiederholen</button>
     <div id="result-mail" style="display:none;border-top:1px solid var(--g200);padding-top:20px;margin-top:20px">
@@ -368,7 +376,7 @@ function showResult(score,d){_trackResult('Wirkungscheck', score, 'antreiber');
     let n=0;const iv=setInterval(()=>{n=Math.min(n+2,score);document.getElementById('g-num').textContent=n;if(n>=score)clearInterval(iv);},18);
   },200);
   let lvBadge,lvTitle,lvDesc;
-  if(score<30){lvBadge='Hochleister mit Engpass';lvTitle='Du lieferst selbst — dein Team hängt an dir.';lvDesc='Deine Energie und dein Antrieb sind real. Aber ein Team, das nur funktioniert, wenn du da bist, ist kein Multiplikator — es ist eine Abhängigkeit. Das kostet dich langfristig mehr, als es bringt.';}
+  if(score<30){lvBadge='Hochleister mit Engpass';lvTitle='Du lieferst. Aber liefert das Team auch, wenn du mal nicht da bist?';lvDesc='Deine Energie und dein Antrieb sind real. Aber ein Team, das nur funktioniert, wenn du da bist, ist kein Multiplikator — es ist eine Abhängigkeit. Das kostet dich langfristig mehr, als es bringt.';}
   else if(score<60){lvBadge='Multiplikator in Entwicklung';lvTitle='Du siehst die Richtung — und gehst erste Schritte.';lvDesc='Du weißt, dass dein Team mehr Eigenständigkeit braucht. Du arbeitest daran. Die Herausforderung: Konsequenz. Loslassen im Alltag ist schwerer als im Prinzip.';}
   else{lvBadge='Echter Multiplikator';lvTitle='Dein Team wächst — auch ohne dich im Raum.';lvDesc='Du hast verstanden, dass deine Aufgabe nicht ist, die beste Lösung zu liefern. Deine Aufgabe ist, ein Team zu bauen, das das selbst kann. Das ist selten.';}
   document.getElementById('r-lv-badge').textContent=lvBadge;document.getElementById('r-lv-t').textContent=lvTitle;document.getElementById('r-lv-d').textContent=lvDesc;
