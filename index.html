@@ -197,5 +197,37 @@
   </footer>
 </div>
 
+
+<script data-cfasync="false">
+// ── Referral & Visit Tracking ──
+const FORMSPREE_ID = 'xreovnld';
+const _params = new URLSearchParams(window.location.search);
+const _refId  = _params.get('ref')    || '';
+const _depth  = parseInt(_params.get('depth') || '0');
+const _parent = _params.get('parent') || '';
+const _myId   = (() => {
+  let id = sessionStorage.getItem('ns_v2_id');
+  if (!id) { id = Math.random().toString(36).slice(2,10); sessionStorage.setItem('ns_v2_id', id); }
+  return id;
+})();
+
+// Track visit (only if came from a ref link)
+if (_refId) {
+  fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({type:'referral_visit', ref:_refId, depth:_depth, parent:_parent, page:'index_v2', version:'v2'})
+  }).catch(()=>{});
+}
+
+// Track direct visit with ref tag (e.g. ?ref=linkedin_v2)
+if (!_refId && _params.has('src')) {
+  fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({type:'direct_visit', src:_params.get('src'), page:'index_v2', version:'v2'})
+  }).catch(()=>{});
+}
+</script>
 </body>
 </html>
