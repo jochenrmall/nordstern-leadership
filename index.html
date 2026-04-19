@@ -3,102 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NORDSTERN.Leadership ein Konzept von Dr. Jochen Mall</title>
+  <title>NORDSTERN Leadership — Führung in der Produktion neu denken</title>
   <style data-cfasync="false">
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    
     :root {
       --white:#ffffff; --black:#1d1d1f;
       --g50:#fafafa; --g100:#f5f5f7; --g200:#e8e8ed;
       --g300:#d2d2d7; --g400:#c7c7cc; --g600:#6e6e73; --g700:#86868b;
-      --border:rgba(0,0,0,.08); --border-md:rgba(0,0,0,.15);
+      --border:rgba(0,0,0,.08); --border-md:rgba(0,0,0,.18);
       --font:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Arial,sans-serif;
       --font-d:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
       --r-sm:8px; --r-md:12px; --r-lg:18px;
       --shadow:0 4px 20px rgba(0,0,0,.07),0 1px 4px rgba(0,0,0,.04);
-      --max-content:720px; --max-card:640px; --page-pad:20px;
+      --max-w:720px; --max-card:640px;
     }
     html{scroll-behavior:smooth}
-    body{font-family:var(--font);background:var(--white);color:var(--black);
-         min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-    .cbg{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
-         width:min(90vw,700px);height:min(90vw,700px);
-         opacity:.032;pointer-events:none;z-index:0}
-    .page{position:relative;z-index:1;display:flex;flex-direction:column;
-          align-items:center;padding:0 var(--page-pad) 80px}
-    .nav{width:100%;max-width:var(--max-content);padding:28px 0 0;
-         display:flex;align-items:center;justify-content:space-between}
-    .nav-logo{font-family:var(--font-d);font-size:15px;font-weight:600;
-              letter-spacing:-.01em;color:var(--black);text-decoration:none}
+    body{font-family:var(--font);background:var(--white);color:var(--black);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    .cbg{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(90vw,700px);height:min(90vw,700px);opacity:.028;pointer-events:none;z-index:0}
+    .page{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding:0 20px 80px}
+    
+    .nav{width:100%;max-width:var(--max-w);padding:24px 0 0;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-family:var(--font-d);font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--black);text-decoration:none}
     .nav-logo span{color:var(--g600);font-weight:400}
-    .hero{max-width:600px;width:100%;text-align:center;padding:64px 0 48px}
-    .hero-tag{display:inline-block;font-size:12px;font-weight:500;letter-spacing:.1em;
-              text-transform:uppercase;color:var(--g600);background:var(--g100);
-              border:1px solid var(--g200);padding:6px 16px;border-radius:100px;margin-bottom:24px}
-    .hero h1{font-family:var(--font-d);font-size:clamp(34px,6vw,54px);font-weight:600;
-             letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
-    .hero h1 .muted{color:var(--g600);font-style:normal}
-    .hero p{font-size:17px;color:var(--g600);line-height:1.6;max-width:480px;margin:0 auto 14px}
-    .hero p.last{margin-bottom:28px}
-    .hero-meta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
-               font-size:13px;color:var(--g700)}
-    .hero-meta span{display:flex;align-items:center;gap:5px}
-    .dot{width:3px;height:3px;border-radius:50%;background:var(--g400)}
-    .card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);
-          box-shadow:var(--shadow);width:100%;max-width:var(--max-card);padding:40px 44px;
-          margin-bottom:14px}
-    @media(max-width:600px){.card{padding:28px 20px}}
-    .eyebrow{font-size:11px;font-weight:500;letter-spacing:.08em;
-              text-transform:uppercase;color:var(--g600);margin-bottom:14px}
-    .card-section-title{font-size:13px;font-weight:600;letter-spacing:-.01em;
-                        color:var(--black);margin-bottom:10px}
-    .card-text{font-size:14px;color:var(--g600);line-height:1.6;margin-bottom:18px}
-    .btn-primary{display:inline-block;padding:14px 32px;background:var(--black);
-                 color:var(--white);border:none;border-radius:100px;font-family:var(--font);
-                 font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;
-                 transition:background .18s;min-height:44px;text-align:center}
-    .btn-primary:hover{background:#333}
-    .btn-sec{display:inline-block;padding:12px 28px;background:transparent;color:var(--black);
-             border:1px solid var(--border-md);border-radius:100px;font-family:var(--font);
-             font-size:14px;font-weight:500;cursor:pointer;transition:all .18s;min-height:44px;
-             text-decoration:none}
-    .btn-sec:hover{background:var(--g100)}
-    .cta-group{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
-    .card-divider{border:none;border-top:1px solid var(--g200);margin:24px 0}
-    .why-quote{background:var(--g100);border-radius:var(--r-md);border-left:3px solid var(--black);
-               padding:18px 20px;font-size:15px;line-height:1.7;color:var(--black)}
-    .why-quote cite{display:block;margin-top:8px;font-size:12px;font-style:normal;
-                    color:var(--g700);letter-spacing:.05em}
-    .about-intro{display:flex;gap:28px;align-items:flex-start;margin-bottom:0;flex-wrap:wrap}
-    .about-photo-wrap{text-align:center;flex-shrink:0}
-    .about-text{flex:1;min-width:200px}
-    .about-text p{font-size:15px;color:var(--g600);line-height:1.7}
-    .h-grid{display:flex;flex-direction:column;gap:10px;margin-top:14px}
-    .h-card{background:var(--g100);border-radius:var(--r-md);padding:15px 17px;
-            display:flex;gap:13px;align-items:flex-start}
-    .h-num{width:26px;height:26px;border-radius:50%;background:var(--black);color:var(--white);
-           font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;
-           flex-shrink:0;margin-top:1px}
-    .h-ct-t{font-size:14px;font-weight:500;color:var(--black);margin-bottom:3px}
-    .h-ct-d{font-size:13px;color:var(--g600);line-height:1.5}
-    .pillar-label{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;
-                  color:var(--g700);margin-top:6px}
-    .share-box{background:var(--g50);border:1px solid var(--border);border-radius:var(--r-lg);
-               padding:22px 26px;margin-top:0;text-align:center;
-               max-width:var(--max-card);width:100%}
-    .share-q{font-size:15px;font-weight:500;color:var(--black);margin-bottom:5px}
-    .share-sub{font-size:13px;color:var(--g600);line-height:1.5;margin-bottom:14px}
-    .share-btn{display:inline-block;padding:12px 28px;background:transparent;color:var(--black);
-               border:1px solid var(--border-md);border-radius:100px;font-family:var(--font);
-               font-size:14px;font-weight:500;cursor:pointer;transition:all .18s}
-    .share-btn:hover{background:var(--g100)}
-    .share-toast{font-size:13px;color:var(--g600);margin-top:8px;min-height:18px}
-    .footer{max-width:var(--max-content);width:100%;padding:40px 0 0;text-align:center;
-            font-size:12px;color:var(--g700);border-top:1px solid var(--border);margin-top:40px}
+    .nav-links{display:flex;gap:4px;background:var(--g100);border:1px solid var(--g200);border-radius:100px;padding:4px}
+    .nav-link{font-size:13px;font-weight:500;color:var(--g600);text-decoration:none;padding:7px 16px;border-radius:100px;transition:all .18s;white-space:nowrap}
+    .nav-link:hover{color:var(--black)}
+    .nav-link.active{background:var(--black);color:var(--white)}
+    @media(max-width:560px){.nav-links{gap:2px}.nav-link{padding:6px 10px;font-size:12px}}
+    
+    .footer{max-width:var(--max-w);width:100%;padding:36px 0 0;text-align:center;font-size:12px;color:var(--g700);border-top:1px solid var(--border);margin-top:48px}
     .footer a{color:var(--g700);text-decoration:underline}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-    .ani{animation:fadeIn .4s ease both}
-    @media(max-width:600px){.hero{padding:48px 0 36px}}
-    @media(max-width:480px){.about-intro{flex-direction:column;gap:20px}.cta-group{flex-direction:column}}
+
+    /* ── WHY HERO ── */
+    .why-hero{max-width:var(--max-w);width:100%;padding:88px 0 72px;text-align:center}
+    .why-tag{display:inline-block;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--g600);background:var(--g100);border:1px solid var(--g200);padding:5px 16px;border-radius:100px;margin-bottom:32px}
+    .why-hero h1{font-family:var(--font-d);font-size:clamp(32px,5.5vw,54px);font-weight:600;letter-spacing:-.035em;line-height:1.08;margin-bottom:28px;max-width:640px;margin-left:auto;margin-right:auto}
+    .why-hero h1 .muted{color:var(--g600)}
+    .why-hero .lede{font-size:clamp(16px,2.2vw,19px);color:var(--g600);line-height:1.65;max-width:540px;margin:0 auto 40px}
+    .why-hero .lede strong{color:var(--black)}
+    .hero-cta{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:var(--black);color:var(--white);border:none;border-radius:100px;font-family:var(--font);font-size:16px;font-weight:500;cursor:pointer;text-decoration:none;transition:background .18s}
+    .hero-cta:hover{background:#333}
+    .hero-meta{font-size:12px;color:var(--g700);margin-top:12px}
+
+    /* ── WUNDE ── */
+    .wunde{max-width:var(--max-w);width:100%;background:var(--g50);border:1px solid var(--border);border-radius:var(--r-lg);padding:44px 52px;text-align:center;margin-bottom:14px}
+    @media(max-width:600px){.wunde{padding:28px 22px}}
+    .wunde-eyebrow{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--g600);margin-bottom:20px}
+    .wunde p{font-family:var(--font-d);font-size:clamp(17px,2.8vw,22px);line-height:1.5;color:var(--black);font-weight:400;letter-spacing:-.015em}
+    .wunde p strong{font-weight:600}
+    .wunde-source{font-size:12px;color:var(--g700);margin-top:20px;font-style:italic}
+
+    /* ── GAWANDE ── */
+    .gawande{max-width:var(--max-card);width:100%;background:var(--black);color:var(--white);border-radius:var(--r-lg);padding:44px 48px;text-align:center;margin-bottom:14px}
+    @media(max-width:600px){.gawande{padding:28px 22px}}
+    .gawande-quote{font-family:var(--font-d);font-size:clamp(18px,3vw,26px);font-weight:600;letter-spacing:-.025em;line-height:1.25;margin-bottom:12px}
+    .gawande-source{font-size:12px;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;margin-bottom:24px}
+    .gawande-bridge{font-size:15px;color:rgba(255,255,255,.75);line-height:1.65;max-width:440px;margin:0 auto}
+
+    /* ── VISION / BHAG ── */
+    .vision{max-width:var(--max-card);width:100%;border:1px solid var(--border);border-radius:var(--r-lg);padding:44px 48px;text-align:center;margin-bottom:14px;background:var(--white);box-shadow:var(--shadow)}
+    @media(max-width:600px){.vision{padding:28px 22px}}
+    .vision-eyebrow{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--g600);margin-bottom:14px}
+    .vision h2{font-family:var(--font-d);font-size:clamp(20px,3.5vw,30px);font-weight:600;letter-spacing:-.025em;line-height:1.2;margin-bottom:20px}
+    .vision-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0 28px}
+    @media(max-width:480px){.vision-stats{grid-template-columns:repeat(2,1fr)}}
+    .stat{background:var(--g100);border:1px solid var(--g200);border-radius:var(--r-md);padding:16px 12px}
+    .stat-num{font-family:var(--font-d);font-size:clamp(22px,4vw,32px);font-weight:700;letter-spacing:-.03em;color:var(--black);margin-bottom:4px}
+    .stat-lbl{font-size:11px;color:var(--g600);line-height:1.3}
+    .vision-story{font-size:14px;color:var(--g600);line-height:1.7;max-width:480px;margin:0 auto 24px;text-align:left}
+    .vision-story strong{color:var(--black)}
+
+    /* ── CTA CARD ── */
+    .cta-card{max-width:var(--max-card);width:100%;border:1px solid var(--border);border-radius:var(--r-lg);padding:40px 44px;text-align:center;box-shadow:var(--shadow)}
+    @media(max-width:600px){.cta-card{padding:28px 20px}}
+    .cta-eyebrow{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--g600);margin-bottom:12px}
+    .cta-card h2{font-family:var(--font-d);font-size:clamp(20px,3.5vw,28px);font-weight:600;letter-spacing:-.025em;line-height:1.2;margin-bottom:10px}
+    .cta-card .sub{font-size:15px;color:var(--g600);line-height:1.6;margin-bottom:24px;max-width:400px;margin-left:auto;margin-right:auto}
+    .benefits{display:flex;flex-direction:column;gap:9px;margin-bottom:26px;text-align:left;max-width:360px;margin-left:auto;margin-right:auto}
+    .benefit{display:flex;align-items:flex-start;gap:11px}
+    .b-check{width:20px;height:20px;border-radius:50%;background:var(--black);color:var(--white);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:10px;font-weight:700}
+    .b-text{font-size:14px;line-height:1.45}
+    .b-text strong{font-weight:600}
+    .btn{display:inline-block;padding:15px 36px;background:var(--black);color:var(--white);border-radius:100px;font-family:var(--font);font-size:16px;font-weight:500;text-decoration:none;transition:background .18s}
+    .btn:hover{background:#333}
+    .cta-meta{font-size:12px;color:var(--g700);margin-top:11px}
+
+    @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    .ani{animation:fadeIn .55s ease both}
+    .ani2{animation:fadeIn .55s ease .12s both}
+    .ani3{animation:fadeIn .55s ease .22s both}
+    .ani4{animation:fadeIn .55s ease .32s both}
   </style>
 </head>
 <body>
@@ -106,16 +101,7 @@
 <svg class="cbg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
   <circle cx="200" cy="200" r="195" stroke="#1d1d1f" stroke-width="1.5"/>
   <circle cx="200" cy="200" r="180" stroke="#1d1d1f" stroke-width="0.5"/>
-  <g stroke="#1d1d1f">
-    <line x1="200" y1="5" x2="200" y2="22" stroke-width="2"/>
-    <line x1="200" y1="378" x2="200" y2="395" stroke-width="2"/>
-    <line x1="5" y1="200" x2="22" y2="200" stroke-width="2"/>
-    <line x1="378" y1="200" x2="395" y2="200" stroke-width="2"/>
-    <line x1="338.2" y1="61.8" x2="326.9" y2="73.1" stroke-width="1.5"/>
-    <line x1="61.8" y1="61.8" x2="73.1" y2="73.1" stroke-width="1.5"/>
-    <line x1="61.8" y1="338.2" x2="73.1" y2="326.9" stroke-width="1.5"/>
-    <line x1="338.2" y1="338.2" x2="326.9" y2="326.9" stroke-width="1.5"/>
-  </g>
+  <g stroke="#1d1d1f"><line x1="200" y1="5" x2="200" y2="22" stroke-width="2"/><line x1="200" y1="378" x2="200" y2="395" stroke-width="2"/><line x1="5" y1="200" x2="22" y2="200" stroke-width="2"/><line x1="378" y1="200" x2="395" y2="200" stroke-width="2"/><line x1="338.2" y1="61.8" x2="326.9" y2="73.1" stroke-width="1.5"/><line x1="61.8" y1="61.8" x2="73.1" y2="73.1" stroke-width="1.5"/><line x1="61.8" y1="338.2" x2="73.1" y2="326.9" stroke-width="1.5"/><line x1="338.2" y1="338.2" x2="326.9" y2="326.9" stroke-width="1.5"/></g>
   <text x="200" y="50" text-anchor="middle" font-family="-apple-system" font-size="20" font-weight="600" fill="#1d1d1f">N</text>
   <text x="200" y="368" text-anchor="middle" font-family="-apple-system" font-size="16" fill="#1d1d1f">S</text>
   <text x="368" y="205" text-anchor="middle" font-family="-apple-system" font-size="16" fill="#1d1d1f">O</text>
@@ -131,141 +117,85 @@
 </svg>
 
 <div class="page">
-
-  <!-- NAV -->
   <nav class="nav">
-    <span class="nav-logo">NORDSTERN <span>Leadership</span></span>
+    <a href="index.html" class="nav-logo">NORDSTERN <span>Leadership</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="about.html" class="nav-link">Über mich</a>
+      <a href="leistungen.html" class="nav-link">Leistungen</a>
+    </div>
   </nav>
 
-  <!-- HERO -->
-  <header class="hero ani">
-    <div class="hero-tag">Über mich</div>
-    <h1>Dr. Jochen Mall<br>
-      <span class="muted">nicht aus dem Lehrbuch,<br>sondern aus eigener Erfahrung.</span>
+  <!-- WHY HERO -->
+  <div class="why-hero ani">
+    <div class="why-tag">NORDSTERN.Leadership</div>
+    <h1>Deutschland verliert seinen Produktionsvorsprung.<br>
+      <span class="muted">Nicht wegen Technologie —<br>wegen Menschen ohne Orientierung.</span>
     </h1>
-    <p>Ingenieur, Senior Product Manager,<br>künftiger Professor.</p>
-    <p class="last">Jemand, der Führung zuerst an der Schnittstelle zwischen Menschen und Technologie selbst durcharbeiten musste.</p>
-    <div class="hero-meta">
-      <span><div class="dot"></div>Porsche AG</span>
-      <span><div class="dot"></div>MHP – A Porsche Company</span>
-      <span><div class="dot"></div>Professor für Smart Factory @ HHN ab September 2026</span>
+    <p class="lede">Die Maschinen laufen. Die KI rechnet. Aber wer führt die Menschen dahinter — und wohin? Es fehlt die Orientierung! <br><strong>Wir existieren, um das zu ändern.<br>Eine Führungskraft nach der anderen.</strong></p>
+    <a class="hero-cta" href="kompass.html">Wie steht es mit deiner Orientierung? Jetzt herausfinden →</a>
+    <p class="hero-meta">Kostenlos · ca. 4 Minuten · Sofort-Ergebnis</p>
+  </div>
+
+  <!-- WUNDE: Das Problem -->
+  <div class="wunde ani2">
+    <p class="wunde-eyebrow">Das eigentliche Problem</p>
+    <p>Führungskräfte in der Produktion sind in Deutschland sehr gut ausgebildet. Sie arbeiten hart und wissen, was zu tun ist.<br><strong>Aber irgendwann hören sie auf zu wachsen —<br>und wissen oft nicht warum.</strong></p>
+    <p class="wunde-source">Nicht weil ihnen Wissen fehlt.<br>Sondern weil niemand von außen draufschaut.</p>
+  </div>
+
+  <!-- NOWITZKI -->
+  <div class="gawande ani3">
+    <p class="gawande-quote">Selbst die besten Experten der Welt haben Coaches. Nicht weil sie schlecht sind — sondern weil niemand sich selbst von außen sehen kann.</p>
+    <p class="gawande-source">Eine bekannte Lektion aus dem Spitzensport</p>
+    <p class="gawande-bridge">Dirk Nowitzki gilt als einer der besten Basketballspieler, die Europa je hervorgebracht hat. Über seine gesamte Karriere hinweg — von Würzburg bis Dallas — arbeitete er mit demselben Coach: Holger Geschwindner. Nicht weil Dirk schwach war. Sondern weil selbst das größte Talent einen braucht, der von außen draufschaut und sagt, was er selbst nicht sehen kann.<br><br>Bei Führung in der Produktion sollte es genauso sein.</p>
+  </div>
+
+  <!-- VISION -->
+  <div class="vision ani4">
+    <p class="vision-eyebrow">Unsere Vision</p>
+    <h2>1.000 Führungsspieler in der Produktion haben bis 2045 ihren NORDSTERN gefunden.</h2>
+    <div class="vision-stats">
+      <div class="stat"><div class="stat-num">1.000</div><div class="stat-lbl">Transformierte Führungsspieler</div></div>
+      <div class="stat"><div class="stat-num">200+</div><div class="stat-lbl">Smart Factories</div></div>
+      <div class="stat"><div class="stat-num">50.000</div><div class="stat-lbl">Betroffene Mitarbeiter</div></div>
+      <div class="stat"><div class="stat-num">2045</div><div class="stat-lbl">Zieljahr</div></div>
     </div>
-  </header>
-
-  <!-- CARD 1: Was ich anbiete -->
-  <div class="card ani">
-    <p class="eyebrow">Was ich anbiete</p>
-    <p class="card-text">NORDSTERN.Leadership ist ein Konzept und richtet sich an Führungsspieler im Umfeld der Produktion, die Orientierung suchen<br>— um deinen NORDSTERN zu finden musst du ehrlich zu dir selbst sein und wissen wo du stehst und was dir wirklich wichtig ist.</p>
-    <div style="text-align:center;margin-top:18px">
-      <a class="btn-primary" href="kompass.html">NORDSTERN Kompass – Standortbestimmung →</a>
+    <div class="vision-story">
+      <p>Es ist 2045. Thomas steht in seiner Smart Factory. Um ihn herum autonome Roboter, KI-gestützte Qualitätskontrolle, Datenströme in Echtzeit. <strong>Aber Thomas ist nicht gestresst. Er führt nicht mit Druck — sondern mit Klarheit.</strong> Er weiß, wer er ist. Er kennt seinen NORDSTERN. Er führt, weil er weiß warum — nicht weil der Schichtplan es verlangt.</p>
+      <br>
+      <p>Das ist keine Utopie. Das ist der Beweis, dass Industrie 4.0 nur gelingt, wenn Führungskräfte zuerst sich selbst transformieren.</p>
     </div>
+    <a href="about.html" class="btn" style="font-size:14px;padding:12px 26px">Mehr über die Vision →</a>
   </div>
 
-
-  <!-- CARD: Dein blinder Fleck — Spiegel-Metapher -->
-  <div class="card ani" style="margin-bottom:14px;border-left:3px solid var(--black)">
-    <p class="eyebrow">Warum ein Blick von außen alles verändert</p>
-    <p style="font-family:var(--font-d);font-size:18px;font-weight:600;letter-spacing:-.02em;line-height:1.3;margin-bottom:14px;color:var(--black)">Der blinde Fleck in der Führung kostet dich mehr als du denkst.</p>
-    <p style="font-size:15px;color:var(--g600);line-height:1.7;margin-bottom:14px">Nicht weil du zu wenig weißt. Du weißt genug. Aber kein Mensch kann sein eigenes Führungsverhalten von außen sehen — genauso wenig wie ein Chirurg seine eigene Operation beobachten kann.</p>
-    <p style="font-size:15px;color:var(--g600);line-height:1.7">Ich bin deine externen Augen. Jemand, der selbst in der Produktion stand — und dir sagt, was er sieht.</p>
-  </div>
-
-  <!-- VIDEO PLACEHOLDER — wird ersetzt sobald Video fertig -->
-  <!--
-  <div style="max-width:640px;width:100%;margin-bottom:14px">
-    <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:var(--r-lg);overflow:hidden;background:var(--g100)">
-      <iframe src="VIDEO_URL_HIER" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" allowfullscreen></iframe>
-    </div>
-  </div>
-  -->
-
-  <!-- CARD 2: Warum ich das mache -->
-  <div class="card ani">
-    <p class="eyebrow">Warum ich das mache</p>
-    <blockquote class="why-quote">
-      Ich habe NORDSTERN.Leadership entwickelt, weil ich mir genau das vor ein paar Jahren selbst gewünscht hätte —
-      jemanden, der ehrlich sagt, wo die Orientierung fehlt und dir einen Schubs in die richtige Richtung gibt.
-      <cite>— Jochen Mall</cite>
-    </blockquote>
-  </div>
-
-  <!-- CARD 3: Wer ich bin -->
-  <div class="card ani">
-    <p class="eyebrow">Wer ich bin</p>
-    <div class="about-intro">
-      <div class="about-photo-wrap">
-        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/wAALCAEsASwBAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/AEFLimkZYD14r1LwVYBLSPjk8mvWdNhCxLWuOlBNJmkoopepoJ9KSikzRmjNGaXNGaKUGlopD0pKKKaetFGKbRRSHrSUV8kFc03nHWprKLz9RjT3Fe2+FbTy4UG3oK9Cs49qCrlNoooooooJppPc0maQtRu4o3Cl3UZpwP5UvvSjpS0hpKKKQ0lIaSiimnrRRXyT0NNPStrwvaG41UNjgGvcvD9vtt1OK6+BcJUhpKKKKKKQmmk80wtzTS/NN3ZzjmguyjlSPqKTzPUGlElPD809WzTwaUUvTtig0lFFIetJRTe9FBNNoor5JPWmN0rufBFl8vmFep4r2bR4dluowOldAgwgFB60UUUU3NFNLUwkk4HNYmseK/Dugws+qaxaQMDgReYGkJ9Ao5zXj3jj9oa202OWy8NWDvPgj7RMQGQ+ydPzrxe6+MPj7WNYC3+tX5jXOBbTmAgH2AFTp8TPEthAn9n+KtXkmjJUxzXBb8Mg/oRUkPxq8Zo/mr4k1S0lV8FTIrq31DCvQNC/aF13TrWRfEdvp+qDrDLGwhfAP8W3Kn8MV6n4V+MXgzxLb4a/GmXQGWgvDtA9w3Qj8q9BguI5oUmhkWSNxlXRgysPUEdasK1Oz6U7OaKKKKQ0lFNI70UHpTaKK+SjTFXfKq46mvW/B9kEtYhtxnmvUdPi2xD6VqdBTaKKKQ00nFMJrG8R+JtN8L6T9u1JmIYlY4kwGkOOgyQPxrwHx78X9VvlZILptMt0YAWkcpRnHq7DHH1IFeQ6t4tuBpMmoW1j5s24/wClLIqxxj2JGc9OT17V5vH4iupLsyvrNuJmJZgyBsnP97vWmmp31xsCaqkhXgJtVQB7GkvotUEX2qezW49V8va6j/2Ye/NI+m/aNCOpaZqHloP9bbXQJ2N7HHSsV3vHswlv5hZTlkP3c/7LdjW14f1S6eVIg8izBfmSYgOfXB6GvVfhx8YdV8Dam1iZTPZSODJZycoe2UHWNvpx7V9UeCviHoHjaGZdNeWC9tgpnsrgYkQHowxwyn1FdgrU+lBzS0UUhpKKQ9aSim0UV8lHgZqxpcBn1RFx3r3Dw1ahY0G3oBXd2qbUHFWqbRRRSHrTGNcV8Q/HDeDNDSe2sjdXcx2oGVvLX3Zug+hIr5i8UeNtQ8S6ourNeJdXxLBgg2rAoGPkBzt9mx7j1rzW906WWKTU7+2hi5zsublii+56kk+nJrF1TWtMSBbS0uYbqbbtaTyWWMZ7KrEnj1PNc+8EhIHnxuTwfugL+GOKnsNFlkLShfs86PgmN8Aeh9Dmuusr+/trMwX2niZUH7yJgQG9GXHKn6cVctZL6xjN7o6NPZXACOrrvMTd1YdPx6Gql2bu/WSRVKlSA0TxKBn6rjFZvlzG4MM1qQ6kAK7bsHsUbqD7U7VYLprWK/8ALdZYhtkJHzMOze5rqfAvxC1Pw9rtlrOmTbLuAEMCu9ZIjwy4P0/lX3h4c1dNd8MWWrIYsXMSyfum3LyM8Vrg+tOHWnUUUHGORTaKaetFFNPWiivkpuldB4RtPO1LzCMgGvbtBt9sCnArq4BhBUhPem0UUe9NNU9Qv7XTNMuNQvpRFbwIZJHPYD+tfKfxI8UXvjDUp5JLmd7Ivst7RWwoGMDOPY5OOfcV4rqL3MdxDpmiMvnchoowAAR3Pqalh8EatfoEvpZE287QDgt7AV0Gn/BrVJdPaa4snUOAIQcYLZ6se3HbrXT6N8E3QqNSXdjHyFOPz9K73TvhZ4ftVLf2ap3rhkkGR/n3q1efDrR5I8w2xjYLyGGcev1Fcu3wqEFy11pt8YAx+aJBmNs9cj8uKrRfC7VY5mmiEbFn+bAIFSwfDBWlCzxSFjIWLhs7e9dTB8MLJ9PaK5iWXf2YdBivEvHnw3u/B+qjWdMBlsEfMkYHIX1H+e1e1/Af4raci6d4AvGJaZTLZXGeCGGRHjtjDfjj1r6PRgRzUvandqKKKbRSHrSUU2iivklvTFd/4Ks9sPmY5Jr2HSYdluox0FbqgBBQaSiikNNPSvIv2gfGX/CLfD6GzjjV5dSl8nJxlQOcjPTnHOK+WL5tT1eO303TLiaGSbI3K3zyHPTnkAc89PavVvh/8IYtKsFnvFjaVhlv4mz9e1esWHhK0gPnGGLdjoAOlXZbK3JJEQwByB0FRJZkKMSHb6H0qeNAj7SuR39asx2sUh4GVx0obSVjT92oK/3T1qulmsbnA2gHp3FSG3jALBRuPr3FOTYCFJycd6ydb0Ozv7GVJoVdJRhwR2r5H8WabefDj4p215Zgm3t5Vmg3EgYDbtvHavtz4beMk8dfD6x8RBIopJgRNFFuKxv3UFgM9q7IdKf2oooptFIetJR2pDSUV8mRIZLlEHc1674VsvLtolxXptjHtjFaNITSUhPNLTaTPNfLP7SlwNR+ImlacQ8YtoAN/DbixJ4HX8azvh/4TaHUY7++RvP2AKJPmIX06YH0r3WCOK1gjBOCeeafcXwbCqQBj1qm05YE5waVZGaInp+PSpULbV6DHY960tNCmcBlA7kV0l3p9v8AYEnGAcZwK5+5gCSZQjB6g9qpS5K7eDVfcAuAo+XrSswaMoOeORXhvxt8OC/tEuEjyRwNoyav/sp+JrkXGreEbx5SEQXEO98hSOGAH4j8q+pV5FSUUUHpTaKQ0lFNPWiivlrRLf7TqyLjODXtvh62ClcDoMV3FqoCDirFNpCaSiim18z/ABPjjm+MV3d3KrIkZEQJwOijiotE1e2i1KOGEFkyMNv6j2r06W586zSQuBgcVjvf7pioLehzVmKcFOWb/wCvVyJ1dMBTmrcDvs+Y5OKt284WQE5561vLePLY/vGI2/dI5yKy7hj0C8Z67qqTEEbQMd85zVY9MqcCmo57AZ+tcd4/08X2ilMd8r25ryP4Z3Nz4V/aT01ImBjvm8iYP8pAfg/jkDmvtWP7tS5pKKKbRTe9FFNoor5z8F2fmXXmkV7RosG2IH1rqYhhKcelJSGkopD0pK+YfinOsfxM1W2ERQtMGEhbOSVHT0FcjozTRawrE7sdcHqP617BYXvm6bE7AEY7iq8p3OZOv04p8L7Tkk8ngDmtezkRyDyR3zxWusahQ4j3fQ9qspGGXjKEdMmpEuTGdgCr/jTHJOPu8+9VZlw2VXJPXnpVfc44C/TNLHkkdB61S1iGOWyZGx0z9DXifiuxGn/EPQtbI8sQXabnXgkbgQcgdOK+w4iGQODkN8wPseakoooptFNooptFFeJeC7MpZKxHJr1rS4dsS/StpRhQKSjOKbRRSGmnrXzF8XIEh+MF07KPnVTjPHKDnHrXMRx7bnbFhn7v2Ht9a9B0SVvsKxOpGPWteNFc4Yf/AFqkMI3AkYz3NaFmqAjD84/Cty2AdsDbyO561OEcXAHl5Q+p6GnGELJuG0k8EdRU6RqkeTtG0cc8VUlkDklTwevtVRgS5OMjFN+UEHHWleBLhSrjIYY6V5N8VLJrfR4mUYME6up6HFfSejz/AGrw/Y3JxmW3jc4Oeqir1FFFNoptFFNPWiivMfDNqI7eJAO2a9GsUwg4xV/tSUhNJRRSE00g5r5f+NSZ+MEsq/KfKQE46ECs/wAM6cLuczMQYlbH19DXb2NuFmCgYHNbUUPy5HOe3pUnlMSd2Oneo1IifJwMYxViHVNknoVrTXVd4yp7ZOagbVWE2SxGOOKRdTZ3YBhg+hp5vE3YBC56kmnpdW54M64zjrUgaJwQGBGcZzT1GB7g1518X493hyIglQSeR6gV7T4IlWb4caHKrhwbOPDDPPy10FFFHam0HpTaKDTT1oorifD1uNoIHArtrdQqVNSGkopM80fjSUetfM3x9t2sviPFeKh23ECksT1xxx7cVX8EBB4cZ9zAM5OT3rrLSRAwbeCfWs7X/F0GmwiOFt7E4J/rXA6x8R9WEO3TWVSRkMecj+lclL478SCcyXOtxRtnJUkDNdNpHxHmIX7RJHLjgsGySK7fS/GdtcuETIyOR3roRLNdBfJLbD3ANLczf2bD5hdU9SxxXmnin4m+FrC7aC98TxifGGgtw0hH5dKxtK+ImiXV8Ps3iMruOf3ytHk/iK9d0PUZ7+0EqSrJnGChyG/GussbiRoQkwAz05rmPibbGfwR5qgny5QTgZ4PFdZ4S8UjRPhlo631ultBDbIjSTtgt9AK9HtriK6tY7mFg0cihlI7gipe1FB6cU2imnrRSdRSUUVzmhwbYF45rp0GEpT0ppJoz60E0lFFMZ1RS7sFUDJJ7CvGPjdY6f4k0CHUdMvY57mxUhoVX5ipPX/61cj4HgMvgOFwp3EkkHuc81Zvrp7Cxlk6Pnap9K8h8TeJfs8csl1KX+bAHrntivMde1/W5LeSS2tnW33iItGcIrf3S3c/SuN06CTxBqptzuMhcplg2QwGfXpVyyXVbK7a3hmlIVtuwscqa9k+GOtTy+IodP1HG4HAZutfXGjadA+lbxg7FHNfMf7Q3iTVbXxbNo9rM1vbRRIzEHAJYfr9K8V0TR31PSr64tDm5jG5QSC7k8k/l2qz4b8M6/4g8US2tnGkkKOjCNXO/wAvPzM2fTqa9h0W/k8H+IrjT9LvHla3dQrYIt7lT95D2Vx6jrXvuhar/atkl0kWzjOCclfUVqa1are+HLmAgHdHuAPtzXAfEPVp/wDhE1mtrZ/skbrDEApwSuMHHoTmvV/hN4gm8Q/DuCe5gkilhPlMrjHQdq7wdKKToOKSg9KbRTc0UUVm6ZFtiWtjoKYTmkpMmjJpQc0UVxfxTvLqy+FGsz2UxhlEQG8dVBIBx7818v8AgLXL+4S4g1W/mnhbhWnJY8nGM9cV6X4SjNn4b+z+ZykrhT9DWZ4q3G3YBgjdTx1rwvX9EutT1UtIxCKcrz3roNK8JQS+EX0C4eWTTpH8wRhFYhz3DZBFULnwFpnhmzmurA3hmAJWe4ZFCj2ya8wSC5fVJpMTbXfLOM4Y+3rXtvgrwFqcC2WtXx8mT5WjgI+YD1b/AAr6d8KS/aY1t3IJdcD61518WvhlD4qnEqkxXSALns4GeD7145B4S1P4fXZnlsGnst3M8MAZ4/8AeU549xXa+HNX8L3RLLcWKzOMOotVjdvrjrXXWWjWF+6wJYeZAPmBaPAz7V2OkaNHYQeTAixqDyAK1bnK2zjAICEEfhXJ+FvFH/CT6TNpt9aRbrYsA3l4GAeDj1r0rwDZrbeFcgBfMlZhj07V1NITR0pO9FNpD0pKKKTNQWKYjA9qutTT1pKQ0mRRmnUhNZ+r2kN9o17Z3ESyxTQSIyMMg5U18h6fG/h/4dXM9t5SX0k8kQmZQxVVOBgfrXZ+CLua58DW/wBrmEs6lg74wWPUE+9dBNo66sgSRwgK4B9qqN8PNMEIUp50jcZc8D61kal8LbmVR/Zs8VocctHG2f1b+lULX4Nx+eJdZvbm+K8hZmwn4KK6ay8CaLp7pKtjE7oOCyjgj61ZmiC8KR5g6D1FbHh26nt76IgHCtnH867HXIUnuGcYKt8+R2yM1j/Yba5iEcoDqPYH86zv+ED0A3Pnrp8AYn7wQA59a2bTR4LMARu+Aem4kfrVsqAMLg88kVRvpAlrIf7qMf0rmPD+mPaTXGqOpSOaHIVurEjivXPDcRh8LWaFdp2ZI9zWrSGkopD1pKQ0lFIelJS24xEKlNNpD1pKKb0pQe1L2phGTjGc18tfEfw/Pp9xrVhbQkmC6aeNR3jcbsgVT8Baqz6TFZTwyQTAcrKpUnB7V30d95UqLk+mPSujtblSF+XcfQ9q1YZl434yelMmMMinJwR0xXD+MfFFvoumyCMFnK8Y7GuX0Gw17WbIav8A2gVZ/mVOoNegaNGzrG0mA/cDsa7aWHFookcMSmBivLdd1298IeJ4lnnLWt380eR0wcEV2Wm69b3tkkobfuGcitL7WsmArAAinbwYsE4I6471ka1OsGkXMrKSFjbj14qXS9t5pmnwNHgmJFTA74r0uCEW9rHAvRFC1JTSaO1IOtB60lN+tFFITSVIgwgoJptJmjJozRmkpRzRgV5r8TvDMdxPb+Igp2Rr5Vzt9P4Sfbt+VeM6hO0OsRarGhVE6kHgiurjljmaK6Rsq6huOlacWolFGTtOOSTirSauC4QuAuOBnGaLzVfLt9wkwB1NeU+LFk8UXUtorFUhUsW6ZIFUtB+KUXhjQYNL1K2m8yJdgdEyHA710Wm/FnT7+7jXT4GLZyQThsfSvRLDxrb/ANkT6nqBaCGBec87j2Arl9eu0+Ing03NrbyQfZZGMRkxuLY9ulYngnXpkZtPvGKyRnYRjkkf0r1OxuC208YIyK0vO/i34UdhWbrbCbT5I/mG8YGK7jw3oM1pBBc36gSIgCR5ztOOprpD1pCaSkNJRRTT1ooJ4ptFSdsU0mkJzSGjIoooopc0y4ghu7SS1uI1khkUo6NyGB7V4v4y+Gmoaes15pXk3GkRKXdZHxJGvcY/iArkdLu4/wCz0tlViYSUyOjDtUF9ezRArIcZOBlqz115fOMZkCheMDnpRdawWhZVdmwM8npU/hy1U6LNc3UTBrgMwLDJOeBXjniWO7ubprZLWSN04K4561l2r6rpKpOu6FlJ+cLWzb614w8R3kOmedczxvjairtA9+O9fQ3grQ73QPCa2l4jO7fNIW/vHrXM634d+xeIU1KzkwspO4Y5Bz0PvXa6FcuLcLMDkDgnofetnz1aFfnyQegrPluFvNftbNkYoJ0CsD6kfpXuJ44FIeBmm0ZptFNyaXOKSikJpKKeT7UwmkzSUUUuaM+1GfelzRmo7iBLyymtJOUmjaNvoRivle9km0q8vLNNplimaEkjG3ZwT+lc9d6jLcRgPKqKeTjq1Jptq95cHau7PcDAzWjf2Mmn6ZFIrgCST53K9AKy5/idoOkzNDeyCSVF4iLgM3oK53WfGV/4iuDJY+HpI0iTcwhj/h9STULXfiGHRo7t7WZbRyCJHi3cE13nhuHU7PUbGeTTruSS4fy4TGgUbsZ59K2vFXxQv/AmmXE/iHR7wxwSLGY1IdmJ5GPY07R/GI8daGbpNIvdOZxvSO6TaWHr+tdzYQhLBS2MBR+A71Cs0kcLoJAdrEhiMHB4rT8HwS3vjSxjeFAIyZXIPGFGf517IaaaQmm0cetITSUE8UmaTNFFFKT6UwmkJpM8UZFGaM4pc+1LkUZFGRRnFfPvxl8PTWPip9QtoVFvqCGUEd5QMOPTJ4NeJXtxczfLvYyH5weMDBxjPtW94Q1maO+SK52bS2A6dOleh6vpKajpDxjbz3HbNeP6n8EtKfXItSj1WW3uidwaVN6uM5x+dd7ZWOrabLdP9jstQjkiCMsJ8twAPRuv51DPd+JrrRV0238H3iJ5fl5lUBFPqT6dK7/w1d69aaZGmoQ2drcKQ4LfPtx2A71cudJtfE+qrqGp2q3LqAoaUfLx0wv51e1DTIUt8xIqsFxhRjH0p8f7vRgzbVXGPm7VzlvLLcXcgcFYAN6HByQDjmvS/hvpCxWk2sMqkOPIgbOSVB+Y/ngV3pNNpvekzSUUmaSiiiikPWg0wmkzSZ96KMijNLmjNGaM0tch8TtCTXvhtfwhVM9sBcwMRnaw6/mCRXyBqGUlaNE2MoI5X7ntVO1voNPRnDuJVbKsfX2FemaH4nW7ijinY/OoDr3BrduViv8ASntJowrjJV1P3fQ5rmBrk9lLieBZmX5A5JDDH0q8/jZVhWN5DErDLq5JyK2dE1yyvbgEK8uT9M+9ek2Q2xKxXCgfKvaodTnhhsZJpSNqjnJrBmuor/SyqFhFIATu9Aef5Vk6Or3+uxacjNItxN5fmxNnAYgcew619EWlpBY2ENnbIFhhQIoA9O9SE00mkJpKTNITzRmikzzS0dqM80h600mmk00mkzRketGRRntRn3oz70ufejPNOBzVDVrmw+zjSLi5RLnUEkit4ifmkIQk4HoAM5r4++KGmT2N7JrMChbcjNwgySG6b8flmvNJCZZopBKChxvbn1yME960hqxtw7KxXyRwqE5Y+pNd94F8aRaw0VrdE5O5QQDjI963vEegXttdGeKN5IZPmBUZI9qwrfw5rWpXASOzAXqGl4AFdt4c8J31reCW8uIgVPCRqcD869Mtom8jO87R1z2rhvHWu3VrAZdOUvHCpMqYyG7YP61xPhbWrue3KXdwjQsglUo24qc9OPQV6V8M9NW+8c22qqmyNXJjCDaCBklj9eK94JppPFNJ4pM0maTIozSUUhNLRRS9ajJppNNJxSbqMijIpMijNGeaXIoBp2/BxkV4d8ONem8e/tN+LfEsjl7DQYBpmnoTwm5zvYD1OwnPvUHxN8PfZdbu48f6PcKZYzjseo/PivmfU9MfwxdHzS97YOCVI5aLnp7Vg6xfrcWxkt3ZYh7cMO31NangrWrfS9TtZpTIsjybdzHI9QuK+mPD3jnSdXsHhuykbRgAkkZzjPT8qtvqVtMnmafcwliA0alvvD1+lQSeJPsiMt0AJUON4Py8n1pkvjcQg27ziItjbg85JwFrzrxZ4juJdTl8uZwoUoRnBIIPBHt61n+CdMudY1+IRq8FvGBNcGNsBlH8PHRiTz7V9OfDqC3TWTIFCOYWIRjyPb8q9HbrUZNNzRk+tGfekozSZozSUU6ilNQk0wmmn3pM0ZNGTSbqM5pcmjNBbFebfGD4mQ+AvCvkWbo+t3yMlrGefKXoZWHoO3qfpXkv7J2pxtrHjGykfNw7QT4PVh84J/M1734w0JPEWgPbKwS7i+eCQ9M9wfY18oeLrFxqVxY3MawzqGiMEgwyOT0PqCOc+5rzK+8Pz2ySC3aVW5LRnoMHse9c/M11a4dh5Wx/MVQpxnpmtrSdfurKZporhmDHMjNx16iu68I+JJBqhaKXYu0jaxzn/Cui1nxOst2ySExyOmAijKgjv/n1rnU8UiRiGmizFIrooGTgf/qxU9haeIvGGsRNGjIgBYu2AEzkMD6cY4717P4W0iDwxpaWUUaOCBukJyzt3Ncf8cviLq/w1sPCXiDQpkF3FrO9lHCyxiJt0beoIbFfTfgTxtpPj7wFp3inR5A0F3GGaMnLRP0ZG9wa6ItmkJx1pMj3pMijIozRmjNGaAfWnA+9LSmqxNNJppNJk03dRmjNGaN1Jux3rk/H3j/RvAPh1r/UmE13ICLWyRsPMw/ko7n8q+K/FvibU/FXim517XLrzbuY8KD8sa9lUdlA6VJ8FvGA8IfHixnnm8uz1DNlOScD5j8pP0YD86+6RKJF3A1578TPhpZeONL+02zrZ6zAp8i6xw3+y/qv8q+WdXuNU0XV5vDviOzaw1CI5yRlTg4DKT1BFZt9ZWlwyKNrYHzYHX3rHm0CJJiYZUndTkKw4rQ0SzjtnELfaY5z0YDIc+2Pr0rorXRVvWWO6e4uGcnhifp1/wA4xXYeGPhrp11FHK+I2DEZIycdMZPTOfyr0xNDstM0iCCCDyUgO4BDknHc+tPku43lCRFWIXIxxivnH9qe9ku5vDWjqw3RLNdMAe5wv9DWr+yd8Vm8L+LU8JatdGPSNYIRSTgQ3PRWHpu+6fwr3LxJ8avG3wx+IVx4d8XabaavYk+baXcS+RJNCTweMqSOh46ivQ/Cfxq8B+LfLgg1ZbG8b/l2vv3ZJ9A33T+deg7wQGBBBGQR3o3cZpdwPelyaMmgHNLRRnFPU8UtVCaaTSZFNJ70hPFN3CjcKAc0vJNcH8QviroPgS0e3yuoawRhLKNuEPrIw+6PbrXx54x8Zaz4t8RXOs61d+ZcyHaAowsajoqDsorkpm2ktuyT6msHU3eOdZomKspBDL1BHIr7p+C3j+Pxx8LrG+lkBvYV+z3QzyHXjP48GvSQ+7r0rjfiB8OdA8faI1nqtuFnUEwXcfEkJ9QfT1HSvkbxd4F8S/DvWGtdVEk1m52297ED5co9D/db2NYcN+YXUuN69eev51rWOtQrKssqLljgr3A9jXbaNcLJHELYN5ZO4Ar1BHTivR9BlnEpiMTKzKAmeMY7+9dBfSS29mN8g37RyvAz64rBBd7tQu7H3mP0r5m+O2qrqPxG8sIWFrGqJL2A53D+VedaK0kRd0dkZJAyODgqRzkV9v8A2aL9oL9lez1aEK/ivREZQ4+88iDDofZ1wR74r5bW4nt5WT5kdWwUbjB9PY16H4K+NnjbwgyQ2OqvcWa9bK8PmRkegzyv4GvePDv7T+h36pFrWhTWkh6tbzBl/Jq9X8P/ABA8JeJiI9M1eITkZ8if92/4A9fwrpTlTgjH1pN1KGHrTs8UA06nL1p4PFUM00tSE00tTSeKbmlzVfUdS07RtMk1HVr2G0tI/vSytgD2HqfYV4J4/wDj1c3SS6Z4Q8yxtiNrX7DE0g77B/APfr9K8A1DV2lu3kklMjtlmLEszHuSa5nU5HmgEkRAbPT1rDEku/Mjc571Xv5BJFjFek/s8ePW8K/EtdKvJtthqeIjk4CyD7p/p+VfctvMJEDKQQehqz1HNZmtaHpuuaVNp2qWcV1bSja8UgyD/wDX96+aPiL8Eb3QFl1Tw+st9pYyzRdZbcf+zL79a8Zlt5IZCVPBOQPQ1b0nxPfaFqCucum4AkjpX1B4B1K11zR7e9iZXJHzkdQf6Vd8QS/v22rgjgAdqzYYGi0qeaTdyhIJ618m/EO1u5tYgvHDMLqRwvpnd29yK4+BfJhaPb8248Y5r6R/ZK8bTaN8VX8LvJ/oWtRkKpPCzouVI+o3D8q1P2lvhuPCXjU+KNPtxHpOrsZCqjiKfqy+277w/GvA1fuOc9RVmO5dCCGIxWzYeIbq2ZQk7YBz16V6V4c+N3jTRIFittbmkhXjyrgCZR+DV6Pon7TN5BMkfiPRYLu3JG65sT5bqP8AcOQcfhXu3hrxX4f8XaMuqeHtThvbc8NsOGjP91l6qfrW2DkU9TTh0pw61KOlZhY0hOaaaaaTmggKhd2CqoyWY4AHqT2rzjxj8aPDXhuN7XSHXWNRGQBE37mM/wC0/f6D86+cfF/j7WvFmom61e9adlP7uFTtii9lXoK4i9u5ZOWf6gVjSy7i/wDDhTUCyZRQSDzimyWkUg3EYPtWfc2C8+3TiqItvs86TwOUmRgysOCpByDX3J8GfG3/AAl3w9tbicj7XCPKmH+0vH/169PU5XOaeWyc4oW1nuG2RxFieOa8l+Jf7PMmsxy654XtIoL8gvLZjCxznvt/ut+hr5k1jw5eWtxLpt/azW1xCSrxSoVZD7g1638I71tI0b7C7n1z6V6IEW7uBI5zzTNbXPh+WCMAMVKivFvi54KvbD4e2+r2UT/8S/a7so6GRhH/AFrzT4VaHoutfEhfDOvxxYvbaSC3d2OI5yuUPB65yPritT4QaZrNn+0Joek2QeO+tdSAkbbygQnefb5Qfzr6e/aV1yztPhDFoNy/nXmp3aSRI5yUSPJZ/bqF/E18fmC2DbQzoffkUkluYk3rIrD/AGajUkHk/lUqztGQQ351fh1CRRgklT1rpPCXjrXPAviiLxFoM3zLhZ7ZyfLuEzyjD+R6g19zeBvGWlePPBVn4k0dz5M64eJj80Mg+8je4/XrXTrTx0p6in9BzWZnFJmk7Uigk4ANefeMPjB4V8Ku9nbv/a2orwbe1YbIz6O/QfQZNeC+Mvif4m8XHZqF59lss/LY2pKx/wDAuct+PHtXn1xcO2QMqB2BrOmk2gkcfSsq6nOD0qiu6RZXHTAXr6//AKqAhDDgevWpGJUdwaqTSZznms6VsPz17CvbP2atemtPiDPoruBBdRGQLn+JfT8D+lfYqQkqDWlZ2SFgZAMYrdto4YgAij8qTVNZsNItfNu5Pmb7kS/eb6CvIvHei6B8QovM1SxTT7iPHlX8ABmA/utnhh7Hp2NcJZ/CbxFpzNLpN3Yanbj5sRuYXYD2bj9a0rOK5tLk2V/BLb3MeC0My7WHvjuPccVqT2qTQgsoGDnFdPfeCbfxX8FdZ0a5iDNqdsyIxH3Soyh/MZr8/dVsbrQFtbaSK6ttWs5WcTBguxQ5BwAM5DjIJ5619Qfs7/DxfC2g3vxI8XuY7+7t2nRpyS0FsRueRs/xOB+X1ryHx145n+JPjO+1uUlIAfLs4CeIoVJ2j6nqfc+1cLOmHJIqJGUEqTweDmoSCjlenNOUZGT2qSNlDbSOtWQQDwcjOOlez/s0eOJPDfxTfwjeSkadrS/ugTwlwoyCM+oyPyr7PQVKFNShcU7bWSaTFYfinxj4e8G6d9q1y9WNiMx20fzSy+yr/U8V85eOfjL4h8TmSzs5DpGlMSBBA/7yUf7b9/oMCvMHuyQQmEH61VMmeWOfc1WlnxkDIHTNZ08o5wfrWZcSZ+naqa6lbQZtpGxJuzycZrQieGWMHdjNTPbhk4bOemKzbyEoeRwf1rJkz5hY9e3tXS+Atfbw14/0vWVOEgnUyD1Q8N+hNfopptxFc6fDMjhlZAysOjAjIP5GtWF8EZpmr6/Fo1hu4e4fiKP1PqfavOZNWvrvUzNqq+Yzn74OAPYelZvxA0XVfEnw4vtJ8N6idOv5tu2UsVyoOWUMPu5Heub+BHgj4j+Dbi/t/F2rmTTXTMFu1z55Em77ynqBjrXb/E/xPpPhzTdMOqafLObm5FvFfqq7LQk87yeQD7cGlsrSfUoxb2cZlkYc7ew9SfSvYLOzSDTI7ZANqxhBjtxivma7+CS3n7QGp+OdaNu2ilvMtrAHebiXaA2/P3VDDJHfPuazfj9q/iS0+E+o6VoluWjvXH2udWwRFnLIB6HGPpXyrol40bo2eD1ravYvmDjo3I4rLkTk4PSmyjeiykexpsRzkZ/GpCMEVJHIVarbXs2lz6frlpIUuLS5SRXH8JB4P6Cv0R8P+JbfXPC2na1C42Xluk/HYlQT+ua2I9TjHVqnXUoSPvVOLyMjIYVnuyxxtJI6xxoNzMxwAB1JPYV4p4++O1rZCXS/BbJNOMq+pyDKJ/1zX+I+549M18+6nql9ql9Je393NdXEhy807Fmb8ay33ZzuJ9zUJk9OvqarzThTwe1UZrjtkZ/OqTS5O0fmarSAE5x+NUNQsbe5gHmxqxXoe+KyI7LU4Jc6VLJIBz5T/MPz7VtWuoXggBukMD9CgOf1qKWd5jk5xVZhk1JDwwzwK+4P2evFq+JPhXbWM0++903/AEaQE8lR9w/lx+FevXV5DYWjXE7AAdB3+lef389xf6o13O+SeFHZR6CrEUKzIQRz/Onqz2xKOpKVZimkdQ0UpIHHBrI8beHZ/Efw71QGBLiW1j+0wRyJvDSx/Mo29+ldD8KddHiT4caJqkdrFbNcwL56RqAfMX5XB/4EDXqQO1MgZwOgrgr/AC2lOzqQVnI59+1ZF34JfxDp7W2oRhbaRcEnkke1fCvxK8F3Hw9+KOo6Adxt0k823cj70Tcqf6VXtJBdabsY5ZelUbiPBwR0quBkMh7ioI2Ky4PAJq2yEIDnrTFz1qW6Jl0S4i6/JuH4V9Q/BLxZdX/wb0yMtlrUtbn6A5H6GvQm1+4jXmqj+MZInw27rXQWPiczWSyZzn1NeLfE34wX3itX0jSYriy0TPzA/wCsufd8dF/2R+Oa8okmRhu3hs96qPcqp+909arSXqFeDk1Ue6Y9DiqstwCeWqnLcKBgmq5nX8T3FVprojoeKgt9Ut4rxIbuEPv4UscAGtC4vJWXyowIk/uoMCqDAk80wr600jn0BpqjB9vrXtP7O/imbR/iR/ZqyBVvo9qgngyLyB+IyPyr6m1W/k1O5VsMsSdEJ6nuagjtTNhFQsewA5qxHZahDL/x7SHHOdtWwIbmIqw+bupqvBo+oxTyS2iNLCedo5Kn+tam66t7LEsEoR15yvBFcv8AACO8trjxho0lmttpun63KLJVI+UOquy8dACcj/er3AukUZZ2CoOSSelcZrWoQareC0sICRuy0n949OldHGhjs4oyPuqBXyh+1/4cUQ6J4kih+dWa1kcDsfmGf1r5m0m68qVQc4zgitO/i53KODzxWS+UcH0qGddsocDg81ejPmWgbqR1qFsq2DwKmgIdJI853KR+leufs86i6+FNTsc/6qZZB+Ix/SvY2uyVINYt/dR4x3zXQ6RIG0pDmvk2PxDuXdkqxPXNNkv2f/SEOHHVRxu/+vVW41BZY8q34VWW9IXAzilN5xnPNVpbtiMdqqtIWP3sUgYnkHNROcqScVmX8XnwFQfmHKn0NX9Kvftlgu8/vY/lcf1q9t+bPHWmOnFRlQB3qMjk81qeH9Uk0bxHY6rCSJLWdJlwf7pyR+I4r9GdI0Xw9rGj2mq2k0zwXcKTxnfkbWAI/nXQ2ej6fZHdBHh/7x5rRAXI4Huao3OhaddTeaYwkncrxmoJNJltvntnPFPtrqZpfs15DkHjJFVZtW8M+EIFmvLm2sm1G7EUan5WuJ2GAoHdiF/Ss3Vtbur+cR5KQEfLEnc+/rW/olqkekwu9uElIOSRgmtBiQvA5rz/AOLfhOHxf8Nb7TpIw8ir5sfH8S8/41+dt7ayaVrlxZScNFIV59O1btu/2vT8E5ZB1rLuY/vVCF823K45WprJsOY24BpLpCGJ9KZaSYuAD9K774IXpsdW1W1PG5M4Ps3/ANevYpNV6/MKwdU1MkgK1dr4dmd9BibPc18gYKLjj1pwmY8k9OlVbmZo5hIWyGPP19aaZScAHj0o3n1NLu4wabyck08HAGBxTXb5D82BVObbg1Qs5v7P1wEnEU3BrpzxyDkUx+VqM9MenrTGUc47UsTYYAV9q/s5+M5tS+EkOnyyGSTSpjanP9w/Mn4ckfhXutrfxzqCGGauB1NSBz2FPEvGM1DK6k5wvBrgfFXws0z4havoWr6ne3MQ0id57dInwC5bqR+GK7220Wws8Mke+UdJH5OanD54z9aa5OKhmjEsTKRkMCK+Af2gfB0nhv4nXN1FERb3B8xDjsTn9DkflXnmjXQS5CMflaruoQbJTjkHkcVmQny7oq3RuKfgRzgjjBq5dIrIGBzkc1lcx3Ax0zXV+C7g2PiqSVeBMhH5j/61d4+sS7uTVS41AySrlu9et+FiT4ZhPHevlRrc4Oen86pzKEPP5VVl2yIU25BqpGzKxhf7y+vcVJv9eafvB79afnPrS9OoqN+lU5Bk854qrd2/m2h2/fU7lP8AStjSrr7VpiOc71+Vvwq4Rx1zTDzxgcUwgEFvSmDrnkCveP2YvEKaf8TJ9AncCLVrcooJ/wCWifMv4n5hX1m0ctnLlSdta1lfiRQGPNaqOGofIGRVO5MnUZxmn+GbjztDGeqSyIf++v8A69bRqpKNkxx0PIppORnNJ1HNeHftF+Cl8Q+B3v4owZ7UFsgc7D1/I4P518MxmS0vDG+VkRirZ9RXUMwu9MVwckdaxrlCkgI7VKw3oHP1q6g8y3246Vl3ke057itjQ5QLm2k9HCtj0zXqeoeC9Ujj3wqTxmuYlsNQt7kJNC6kH0r23wmsg8LwBl557V8uPyjg9hWROTvHvVf+ICqt6AGilHDbtufamhjk09Txmp14AxUnY0yQ/Ln1qowG4/SmqMuBTNIYxa1cW6H92Rux71vN0z6U08xkHscVAxOaQnjFdJ4E1C60v4g6Lf2Unlzw3sTI3/AwP61+jcyrJG24DgcVmAeXLlTituykZouTWghyvNOKrsOQKz9AURahq0CcRrcBgPQkc1uHvVe4/wBXn0NRD7tA+8B61leILWG80WaC4QPG6lGU9wRg1+bfj6zgsPH17DbqQm/OD9SKTQ2LWzI3KkGob5ArHHc1FAxMajtg1ehPAqvfIPKNO0gkW8h7ryK+2LO1guPD9jPLGC720bsfUlATXH69pNibgnyRnNb2i28SaPGqjAr/2Q==" alt="Dr. Jochen Mall" style="width:96px;height:96px;object-fit:cover;object-position:center top;border-radius:var(--r-md);border:1px solid var(--g200);display:block">
+  <!-- CTA CARD -->
+  <div class="cta-card" style="margin-top:14px">
+    <p class="cta-eyebrow">Dein erster Schritt</p>
+    <h2>Welcher Führungstyp bist du wirklich?</h2>
+    <p class="sub">8 ehrliche Fragen. Dein Führungsprofil. Kein generisches Ergebnis.</p>
+    <div class="benefits">
+      <div class="benefit">
+        <div class="b-check">✓</div>
+        <div class="b-text"><strong>Dein Führungstyp</strong> — welches Muster dich antreibt und wo es dich bremst</div>
       </div>
-      <div class="about-text">
-        <p>Ich arbeite seit über zehn Jahren an den Schnittstellen zur Produktion. Ich habe komplexe Produktionsprozesse geplant, Schraubkurven mit KI analysiert, Prozesslandkarten für ganze Werke definiert. Dabei habe ich immer wieder erlebt, dass Visionen wie Smart Factory, Industrial AI und andere gute Entscheidungen nicht an fehlendem Wissen oder Technologie scheitern, sondern an fehlender Orientierung.</p>
+      <div class="benefit">
+        <div class="b-check">✓</div>
+        <div class="b-text"><strong>Dein blinder Fleck</strong> — was andere sehen und du selbst kaum bemerkst</div>
       </div>
-    </div>
-  </div>
-
-  <!-- CARD 4: Wofür ich stehe -->
-  <div class="card ani">
-    <p class="eyebrow">Wofür ich stehe</p>
-    <div class="h-grid">
-      <div class="h-card">
-        <div class="h-num">1</div>
-        <div>
-          <div class="h-ct-t">Humane Intelligenz (HI) zuerst, dann KI.</div>
-          <div class="h-ct-d">Prozesse in komplexen Produktionshallen optimiert. KI-Modelle in echten Schraubprozessen validiert. Qualitätsfehler analysiert, die Millionen kosten.<br>Smart Factory ist kein Strategiepapier — es ist Handwerk.</div>
-          <p class="pillar-label">MHP · bolt_it · SOUNCE · Ferry 4.0</p>
-        </div>
-      </div>
-      <div class="h-card">
-        <div class="h-num">2</div>
-        <div>
-          <div class="h-ct-t">Führung aus eigener Erfahrung.</div>
-          <div class="h-ct-d">Ich habe Entscheidungen getroffen, die falsch waren. Teams geführt, die ich hätte besser führen können. NORDSTERN.Leadership ist das, was ich selbst vor ein paar Jahren gebraucht hätte.</div>
-          <p class="pillar-label">NORDSTERN.Leadership · Extreme Ownership</p>
-        </div>
-      </div>
-      <div class="h-card">
-        <div class="h-num">3</div>
-        <div>
-          <div class="h-ct-t">Ab September 2026: Hochschule Heilbronn.</div>
-          <div class="h-ct-d">W2-Professur Smart Factory — Künstliche Intelligenz &amp; industrielle Digitalisierung. Ich bringe Praxis in den Hörsaal, nicht Folien in die Fabrik.</div>
-          <p class="pillar-label">HHN · Studiengang KID · Gastdozentur HS Karlsruhe seit 2021</p>
-        </div>
+      <div class="benefit">
+        <div class="b-check">✓</div>
+        <div class="b-text"><strong>3 konkrete Hebel</strong> — was du diese Woche anders tun kannst</div>
       </div>
     </div>
+    <a class="btn" href="kompass.html">NORDSTERN Kompass starten →</a>
+    <p class="cta-meta">Kostenlos · Keine Anmeldung · ca. 4 Minuten · Sofort-Ergebnis</p>
   </div>
 
-  <!-- SHARE-BOX -->
-  <div class="share-box ani">
-    <p class="share-q">Kennst du jemanden, der das braucht?</p>
-    <p class="share-sub">Jemand in deinem Netzwerk, der gerade nicht weiß, wo er steht.</p>
-    <button class="share-btn" onclick="copyLink()">Seite teilen →</button>
-    <p class="share-toast" id="share-toast"></p>
-  </div>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>
-      © 2026 NORDSTERN.Leadership ·
-      <a href="https://www.linkedin.com/in/dr-jochen-mall-84aba775/" target="_blank" rel="noopener">LinkedIn</a> ·
-      <a href="#">Impressum</a>
-    </p>
+    <footer class="footer">
+    <p>© 2026 NORDSTERN.Leadership · <a href="https://www.linkedin.com/in/dr-jochen-mall-84aba775/" target="_blank" rel="noopener">LinkedIn</a> · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
   </footer>
-
 </div>
-
-<script data-cfasync="false">
-  function copyLink() {
-    const url = window.location.href;
-    const toast = document.getElementById('share-toast');
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(url).then(() => {
-        toast.textContent = 'Link kopiert ✓';
-        setTimeout(() => { toast.textContent = ''; }, 2500);
-      });
-    } else {
-      toast.textContent = url;
-    }
-  }
-</script>
 
 </body>
 </html>

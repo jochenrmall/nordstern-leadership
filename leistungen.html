@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leistungen · NORDSTERN Leadership</title>
+  <style data-cfasync="false">
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    
+    :root {
+      --white:#ffffff; --black:#1d1d1f;
+      --g50:#fafafa; --g100:#f5f5f7; --g200:#e8e8ed;
+      --g300:#d2d2d7; --g400:#c7c7cc; --g600:#6e6e73; --g700:#86868b;
+      --border:rgba(0,0,0,.08); --border-md:rgba(0,0,0,.18);
+      --font:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Arial,sans-serif;
+      --font-d:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
+      --r-sm:8px; --r-md:12px; --r-lg:18px;
+      --shadow:0 4px 20px rgba(0,0,0,.07),0 1px 4px rgba(0,0,0,.04);
+      --max-w:720px; --max-card:640px;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font);background:var(--white);color:var(--black);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    .cbg{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(90vw,700px);height:min(90vw,700px);opacity:.028;pointer-events:none;z-index:0}
+    .page{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding:0 20px 80px}
+    
+    .nav{width:100%;max-width:var(--max-w);padding:24px 0 0;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-family:var(--font-d);font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--black);text-decoration:none}
+    .nav-logo span{color:var(--g600);font-weight:400}
+    .nav-links{display:flex;gap:4px;background:var(--g100);border:1px solid var(--g200);border-radius:100px;padding:4px}
+    .nav-link{font-size:13px;font-weight:500;color:var(--g600);text-decoration:none;padding:7px 16px;border-radius:100px;transition:all .18s;white-space:nowrap}
+    .nav-link:hover{color:var(--black)}
+    .nav-link.active{background:var(--black);color:var(--white)}
+    @media(max-width:560px){.nav-links{gap:2px}.nav-link{padding:6px 10px;font-size:12px}}
+    
+    .footer{max-width:var(--max-w);width:100%;padding:36px 0 0;text-align:center;font-size:12px;color:var(--g700);border-top:1px solid var(--border);margin-top:48px}
+    .footer a{color:var(--g700);text-decoration:underline}
+
+    /* ── HOOK ── */
+    .hook{max-width:var(--max-w);width:100%;padding:80px 0 48px;text-align:center}
+    .hook-tag{display:inline-block;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--g600);background:var(--g100);border:1px solid var(--g200);padding:5px 16px;border-radius:100px;margin-bottom:24px}
+    .hook h1{font-family:var(--font-d);font-size:clamp(30px,5vw,48px);font-weight:600;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
+    .hook h1 .muted{color:var(--g600)}
+    .hook .sub{font-size:clamp(15px,2vw,18px);color:var(--g600);line-height:1.65;max-width:500px;margin:0 auto}
+    .hook .sub strong{color:var(--black)}
+
+    /* ── Journey Steps ── */
+    .journey{max-width:var(--max-w);width:100%;display:flex;flex-direction:column;gap:0;margin-bottom:14px;position:relative}
+    .journey::before{content:'';position:absolute;left:27px;top:28px;bottom:28px;width:2px;background:var(--g200);z-index:0}
+    @media(max-width:600px){.journey::before{left:19px}}
+    .step{display:flex;gap:20px;align-items:flex-start;position:relative;z-index:1;padding:12px 0}
+    @media(max-width:600px){.step{gap:14px}}
+    .step-num{width:56px;height:56px;border-radius:50%;background:var(--white);border:2px solid var(--g200);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--font-d);font-size:18px;font-weight:700;color:var(--g400)}
+    .step-num.active{background:var(--black);border-color:var(--black);color:var(--white)}
+    @media(max-width:600px){.step-num{width:40px;height:40px;font-size:14px}}
+    .step-body{flex:1;background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px 28px;box-shadow:var(--shadow)}
+    .step-body.featured{border-color:var(--black);border-width:1.5px}
+    @media(max-width:600px){.step-body{padding:18px 18px}}
+    .step-badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 12px;border-radius:100px;margin-bottom:10px}
+    .step-badge.free{background:var(--g100);color:var(--g600);border:1px solid var(--g200)}
+    .step-badge.core{background:var(--black);color:var(--white)}
+    .step-badge.beta{background:var(--g100);color:var(--black);border:1px solid var(--g200)}
+    .step-body h2{font-family:var(--font-d);font-size:20px;font-weight:600;letter-spacing:-.02em;margin-bottom:7px}
+    .step-body .tagline{font-size:14px;color:var(--g600);line-height:1.6;margin-bottom:16px}
+    .features{display:flex;flex-direction:column;gap:7px;margin-bottom:20px}
+    .feat{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--black);line-height:1.4}
+    .feat-check{width:17px;height:17px;border-radius:50%;background:var(--g200);color:var(--black);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:9px;font-weight:700}
+    .step-body.featured .feat-check{background:var(--black);color:var(--white)}
+    .step-price{font-family:var(--font-d);font-size:22px;font-weight:600;letter-spacing:-.02em;margin-bottom:4px}
+    .step-note{font-size:12px;color:var(--g700);margin-bottom:16px}
+    .pkg-cta{display:inline-block;padding:12px 26px;border-radius:100px;font-family:var(--font);font-size:14px;font-weight:500;text-decoration:none;transition:all .18s}
+    .pkg-cta.outline{border:1px solid var(--border-md);color:var(--black)}
+    .pkg-cta.outline:hover{background:var(--g100)}
+    .pkg-cta.solid{background:var(--black);color:var(--white);border:none}
+    .pkg-cta.solid:hover{background:#333}
+
+    /* ── Honest note ── */
+    .honest{max-width:var(--max-w);width:100%;background:var(--g50);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px 28px;margin-bottom:14px}
+    .honest p{font-size:14px;color:var(--g600);line-height:1.65}
+    .honest strong{color:var(--black)}
+
+    /* ── Bottom CTA ── */
+    .bottom-cta{max-width:var(--max-w);width:100%;background:var(--black);border-radius:var(--r-lg);padding:40px 44px;text-align:center;color:var(--white)}
+    @media(max-width:600px){.bottom-cta{padding:28px 20px}}
+    .bottom-cta p.ey{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px}
+    .bottom-cta h2{font-family:var(--font-d);font-size:clamp(20px,3.5vw,26px);font-weight:600;letter-spacing:-.025em;margin-bottom:10px}
+    .bottom-cta p.desc{font-size:14px;color:rgba(255,255,255,.7);line-height:1.65;max-width:400px;margin:0 auto 22px}
+    .btn-w{display:inline-block;padding:13px 30px;background:var(--white);color:var(--black);border-radius:100px;font-family:var(--font);font-size:15px;font-weight:500;text-decoration:none;transition:opacity .18s}
+    .btn-w:hover{opacity:.85}
+
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .ani{animation:fadeIn .5s ease both}
+    .ani2{animation:fadeIn .5s ease .1s both}
+    .ani3{animation:fadeIn .5s ease .2s both}
+  </style>
+</head>
+<body>
+
+<svg class="cbg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <circle cx="200" cy="200" r="195" stroke="#1d1d1f" stroke-width="1.5"/>
+  <circle cx="200" cy="200" r="180" stroke="#1d1d1f" stroke-width="0.5"/>
+  <g stroke="#1d1d1f"><line x1="200" y1="5" x2="200" y2="22" stroke-width="2"/><line x1="200" y1="378" x2="200" y2="395" stroke-width="2"/><line x1="5" y1="200" x2="22" y2="200" stroke-width="2"/><line x1="378" y1="200" x2="395" y2="200" stroke-width="2"/><line x1="338.2" y1="61.8" x2="326.9" y2="73.1" stroke-width="1.5"/><line x1="61.8" y1="61.8" x2="73.1" y2="73.1" stroke-width="1.5"/><line x1="61.8" y1="338.2" x2="73.1" y2="326.9" stroke-width="1.5"/><line x1="338.2" y1="338.2" x2="326.9" y2="326.9" stroke-width="1.5"/></g>
+  <text x="200" y="50" text-anchor="middle" font-family="-apple-system" font-size="20" font-weight="600" fill="#1d1d1f">N</text>
+  <text x="200" y="368" text-anchor="middle" font-family="-apple-system" font-size="16" fill="#1d1d1f">S</text>
+  <text x="368" y="205" text-anchor="middle" font-family="-apple-system" font-size="16" fill="#1d1d1f">O</text>
+  <text x="32" y="205" text-anchor="middle" font-family="-apple-system" font-size="16" fill="#1d1d1f">W</text>
+  <circle cx="200" cy="200" r="120" stroke="#1d1d1f" stroke-width="0.5"/>
+  <circle cx="200" cy="200" r="60" stroke="#1d1d1f" stroke-width="0.5"/>
+  <line x1="200" y1="80" x2="200" y2="320" stroke="#1d1d1f" stroke-width="0.5"/>
+  <line x1="80" y1="200" x2="320" y2="200" stroke="#1d1d1f" stroke-width="0.5"/>
+  <polygon points="200,65 193,200 207,200" fill="#1d1d1f"/>
+  <polygon points="200,335 193,200 207,200" fill="none" stroke="#1d1d1f" stroke-width="1.5"/>
+  <circle cx="200" cy="200" r="6" fill="#1d1d1f"/>
+  <circle cx="200" cy="200" r="3" fill="white"/>
+</svg>
+
+<div class="page">
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">NORDSTERN <span>Leadership</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">Über mich</a>
+      <a href="leistungen.html" class="nav-link active">Leistungen</a>
+    </div>
+  </nav>
+
+  <!-- HOOK -->
+  <div class="hook ani">
+    <div class="hook-tag">Leistungen</div>
+    <h1>Drei Schritte.<br>
+      <span class="muted">Eine Richtung.</span>
+    </h1>
+    <p class="sub">Der Weg vom blinden Fleck zum klaren NORDSTERN beginnt mit einer ehrlichen Standortbestimmung. <strong>Jeder Schritt ist freiwillig. Jeder Schritt ist 1:1.</strong></p>
+  </div>
+
+  <!-- JOURNEY: 3 Schritte als visuelle Pipeline -->
+  <div class="journey ani2">
+
+    <!-- SCHRITT 1 -->
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-badge free">Kostenlos · Sofort</div>
+        <h2>NORDSTERN Kompass</h2>
+        <p class="tagline">Dein Führungstyp. Dein blinder Fleck. 3 konkrete Hebel. In ca. 4 Minuten.</p>
+        <div class="features">
+          <div class="feat"><div class="feat-check">✓</div>8 ehrliche Fragen zu deiner Führungssituation</div>
+          <div class="feat"><div class="feat-check">✓</div>Sofort-Ergebnis — kein Warten, keine E-Mail nötig</div>
+          <div class="feat"><div class="feat-check">✓</div>Dein Führungstyp mit konkreten Entwicklungsfeldern</div>
+          <div class="feat"><div class="feat-check">✓</div>Option: Tiefer-Test für deinen Führungstyp (weitere 8 Min.)</div>
+        </div>
+        <div class="step-price">Kostenlos</div>
+        <a href="kompass.html" class="pkg-cta outline">Jetzt starten →</a>
+      </div>
+    </div>
+
+    <!-- SCHRITT 2 -->
+    <div class="step">
+      <div class="step-num active">2</div>
+      <div class="step-body featured">
+        <div class="step-badge core">Empfohlen · Nächster Schritt</div>
+        <h2>Discovery Call</h2>
+        <p class="tagline">30 Minuten. Dein Kompass-Ergebnis als Ausgangspunkt. Mein ehrlicher Blick von außen. Kein Pitch.</p>
+        <div class="features">
+          <div class="feat"><div class="feat-check">✓</div>Einordnung deines Führungstyps in deinen konkreten Arbeitsalltag</div>
+          <div class="feat"><div class="feat-check">✓</div>Ein konkreter nächster Schritt — den du sofort umsetzen kannst</div>
+          <div class="feat"><div class="feat-check">✓</div>Ehrliche Einschätzung, ob und wie ich dir weiterhelfen kann</div>
+          <div class="feat"><div class="feat-check">✓</div>Video oder Telefon · keine Vorbereitung nötig außer dem Kompass</div>
+        </div>
+        <div class="step-price">Kostenlos <span style="font-size:14px;font-weight:400;color:var(--g600)">· unverbindlich</span></div>
+        <p class="step-note">Weil ich nur mit Menschen arbeite, bei denen ich wirklich etwas bewirken kann.</p>
+        <a href="mailto:kompass@nordstern-leadership.de" class="pkg-cta solid">Gespräch anfragen →</a>
+      </div>
+    </div>
+
+    <!-- SCHRITT 3 -->
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-badge beta">Beta · Ab Herbst 2026</div>
+        <h2>NORDSTERN Coaching</h2>
+        <p class="tagline">Individuelles 1:1 Coaching über mehrere Monate. Für Führungsspieler in der Produktion, die bereit sind, ihr Spielfeld zu vergrößern.</p>
+        <div class="features">
+          <div class="feat"><div class="feat-check">✓</div>Monatliche 1:1 Sessions (60–90 Min.) auf deine Situation zugeschnitten</div>
+          <div class="feat"><div class="feat-check">✓</div>Konkrete Aufgaben und Reflexionen zwischen den Sessions</div>
+          <div class="feat"><div class="feat-check">✓</div>Kombination aus Führungsentwicklung und Smart Factory Expertise</div>
+          <div class="feat"><div class="feat-check">✓</div>Laufzeit 3–6 Monate · kleines Kontingent</div>
+        </div>
+        <div class="step-price">Auf Anfrage <span style="font-size:14px;font-weight:400;color:var(--g600)">· Beta-Rate</span></div>
+        <p class="step-note">Startet immer mit einem kostenlosen Discovery Call.</p>
+        <a href="mailto:kompass@nordstern-leadership.de" class="pkg-cta outline">Interesse bekunden →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Honest note -->
+  <div class="honest ani3">
+    <p><strong>Warum kein fertiges Programm?</strong> Ich beginne diese Reise im Herbst 2026 — parallel zur Professur. Ich biete dir nicht mehr an, als ich mit meiner Erfahrung tatsächlich liefern kann. Was ich liefern kann: einen ehrlichen Blick von außen, tiefen Produktions-Kontext — und die Bereitschaft, mit dir durch unbequeme Erkenntnisse zu gehen.</p>
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="bottom-cta ani3">
+    <p class="ey">Dein nächster Schritt</p>
+    <h2>Starte kostenlos mit dem Kompass.</h2>
+    <p class="desc">Schritt 1 kostet dich 4 Minuten und nichts außer Ehrlichkeit. Der Rest ergibt sich.</p>
+    <a href="kompass.html" class="btn-w">NORDSTERN Kompass starten →</a>
+    <p style="font-size:11px;color:rgba(255,255,255,.35);margin-top:10px">Keine Anmeldung erforderlich · Sofort-Ergebnis</p>
+  </div>
+
+    <footer class="footer">
+    <p>© 2026 NORDSTERN.Leadership · <a href="https://www.linkedin.com/in/dr-jochen-mall-84aba775/" target="_blank" rel="noopener">LinkedIn</a> · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
+  </footer>
+</div>
+
+</body>
+</html>
